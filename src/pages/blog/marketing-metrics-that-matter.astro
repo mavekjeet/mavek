@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="The Only 5 Marketing Metrics That Actually Matter" description="Stop drowning in dashboards. These are the five marketing metrics that predict revenue growth and deserve your attention.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">Analytics</span>
+          <span class="post__date">March 9, 2026</span>
+          <span class="post__read">6 min read</span>
+        </div>
+        <h1>The Only 5 Marketing Metrics That Actually Matter</h1>
+        <p class="post__lead">Your marketing dashboard has 47 metrics. Your CEO cares about 5. Here is how to focus on the numbers that actually predict business growth.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>The Metrics <em>Overload Problem</em></h2>
+        <p>Modern marketing tools make it trivially easy to measure everything. Impressions, clicks, open rates, scroll depth, time on page, bounce rate, engagement rate, share rate, follower count. The result is dashboards that take 30 minutes to review and still leave you unsure whether marketing is working. The solution is not better dashboards. It is fewer metrics with clearer connections to revenue.</p>
+
+        <h2>Metric 1: <em>Customer Acquisition Cost</em> (CAC)</h2>
+        <p>CAC tells you how much you spend to acquire each customer. Calculate it by dividing total marketing and sales spend by the number of new customers acquired in the same period. Track it by channel to understand which acquisition paths are most efficient. The trend matters more than the absolute number. If your CAC is increasing faster than your revenue per customer, your unit economics are deteriorating regardless of how fast you are growing.</p>
+
+        <h2>Metric 2: <em>CAC Payback Period</em></h2>
+        <p>CAC alone does not tell you enough. A $500 CAC is excellent if customers pay $200 per month and terrible if they pay $20 per month. CAC payback period measures how many months it takes to recoup your acquisition cost from a customer's revenue. For most B2B SaaS companies, a payback period under 12 months is healthy. Above 18 months signals a problem that needs immediate attention, regardless of what your growth rate looks like.</p>
+
+        <h2>Metric 3: <em>Marketing-Sourced Pipeline</em></h2>
+        <p>How much qualified pipeline does marketing generate? This is the metric that directly measures marketing's contribution to revenue. Track both the volume of pipeline created and the percentage of total pipeline that originates from marketing activities. If marketing is generating leads but not pipeline, there is a qualification or handoff problem. If marketing is generating pipeline but not enough, it is a volume or channel problem. This metric tells you exactly where to focus.</p>
+
+        <h2>Metric 4: <em>Pipeline Velocity</em></h2>
+        <p>Pipeline velocity measures how quickly deals move through your funnel. It combines deal count, average deal value, win rate, and sales cycle length into a single number that represents the rate at which your pipeline converts to revenue. Improving any one of these four components increases velocity. This metric is especially valuable because it captures the full-funnel impact of marketing, not just top-of-funnel activity.</p>
+
+        <h2>Metric 5: <em>Revenue Retention</em> and Expansion</h2>
+        <p>The most efficient customer acquisition is the one you do not have to make. Net revenue retention measures whether your existing customers are spending more or less over time. A net retention rate above 110% means your customer base grows even without new acquisitions. Marketing plays a direct role through customer education, cross-sell campaigns, and adoption programs. This metric connects marketing to the most capital-efficient growth lever a company has.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Marketing measured by what matters." subtitle="Mavek tracks the metrics that predict revenue, not the ones that look good on slides." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

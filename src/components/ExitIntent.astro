@@ -1,0 +1,269 @@
+---
+---
+
+<div class="exit-popup" id="exitPopup">
+  <div class="exit-popup__overlay" id="exitOverlay"></div>
+  <div class="exit-popup__modal">
+    <button class="exit-popup__close" id="exitClose" aria-label="Close">&times;</button>
+    <span class="sec-label">Before you go</span>
+    <h3>Grab your free marketing resources</h3>
+    <p>Get our AI Marketing Playbook and Marketing Budget Template — free, no signup required.</p>
+
+    <div class="exit-popup__resources">
+      <div class="exit-popup__resource">
+        <div class="exit-popup__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
+        </div>
+        <div>
+          <strong>AI Marketing Playbook</strong>
+          <span>How to 10x your marketing with AI</span>
+        </div>
+      </div>
+      <div class="exit-popup__resource">
+        <div class="exit-popup__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+        </div>
+        <div>
+          <strong>Marketing Budget Template</strong>
+          <span>Plan your spend like a pro</span>
+        </div>
+      </div>
+    </div>
+
+    <form class="exit-popup__form" id="exitForm">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit" class="btn btn--primary">Send me both <span>&rarr;</span></button>
+    </form>
+    <p class="exit-popup__note">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<style>
+  .exit-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .exit-popup.active {
+    display: flex;
+  }
+
+  .exit-popup__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 13, 13, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .exit-popup__modal {
+    position: relative;
+    background: var(--parchment);
+    max-width: 480px;
+    width: 90%;
+    padding: var(--space-xl);
+    border-radius: 10px;
+    z-index: 1;
+    animation: popIn 0.3s var(--ease);
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .exit-popup__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--ink);
+    opacity: 0.4;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    line-height: 1;
+  }
+
+  .exit-popup__close:hover { opacity: 1; }
+
+  .sec-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+  }
+
+  .exit-popup__modal h3 {
+    margin: var(--space-xs) 0 var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+
+  .exit-popup__modal > p {
+    font-size: 14px;
+    margin-bottom: var(--space-md);
+    color: var(--ink-soft);
+  }
+
+  .exit-popup__resources {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .exit-popup__resource {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.06);
+    border-radius: 10px;
+  }
+
+  .exit-popup__icon {
+    color: var(--gold-dark);
+    flex-shrink: 0;
+  }
+
+  .exit-popup__resource strong {
+    display: block;
+    font-size: 0.9rem;
+  }
+
+  .exit-popup__resource span {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+  }
+
+  .exit-popup__form {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .exit-popup__form input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.1);
+    border-radius: 10px;
+    color: var(--ink);
+    outline: none;
+  }
+
+  .exit-popup__form input:focus {
+    border-color: var(--gold-mid);
+  }
+
+  .exit-popup__note {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    color: var(--ink-muted);
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .exit-popup__success {
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .exit-popup__success svg {
+    margin-bottom: 0.75rem;
+  }
+
+  .exit-popup__success p {
+    font-size: 0.95rem;
+    margin: 0.25rem 0;
+    color: var(--ink-soft);
+  }
+
+  .exit-popup__success p:first-of-type {
+    font-size: 1.1rem;
+    color: var(--ink);
+  }
+
+  @media (max-width: 600px) {
+    .exit-popup__form { flex-direction: column; }
+    .exit-popup__modal { padding: var(--space-lg); }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var shown = false;
+    var popup = document.getElementById('exitPopup');
+    var overlay = document.getElementById('exitOverlay');
+    var closeBtn = document.getElementById('exitClose');
+    var form = document.getElementById('exitForm');
+    var pageLoadTime = Date.now();
+    var MIN_TIME_MS = 20000; // 20 seconds minimum on page
+    var MIN_SCROLL_PERCENT = 25; // must have scrolled 25% of page
+
+    function getScrollPercent() {
+      var h = document.documentElement;
+      var b = document.body;
+      var st = h.scrollTop || b.scrollTop;
+      var sh = h.scrollHeight || b.scrollHeight;
+      return (st / (sh - h.clientHeight)) * 100;
+    }
+
+    function canShow() {
+      if (shown) return false;
+      if (sessionStorage.getItem('exitPopupShown')) return false;
+      if (Date.now() - pageLoadTime < MIN_TIME_MS) return false;
+      if (getScrollPercent() < MIN_SCROLL_PERCENT) return false;
+      return true;
+    }
+
+    function showPopup() {
+      if (!canShow()) return;
+      shown = true;
+      sessionStorage.setItem('exitPopupShown', '1');
+      popup.classList.add('active');
+    }
+
+    function hidePopup() {
+      popup.classList.remove('active');
+    }
+
+    // Exit intent — mouse leaves viewport from top only
+    document.documentElement.addEventListener('mouseleave', function(e) {
+      if (e.clientY < 10) showPopup();
+    });
+
+    // Mobile fallback — 90 seconds
+    setTimeout(function() { showPopup(); }, 90000);
+
+    overlay.addEventListener('click', hidePopup);
+    closeBtn.addEventListener('click', hidePopup);
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = form.querySelector('input').value;
+      // Replace with actual form handler (Mailchimp, ConvertKit, etc.)
+      var successEl = document.createElement('div');
+      successEl.className = 'exit-popup__success';
+      successEl.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold-mid)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg><p><strong>You\'re all set!</strong></p><p>We\'ve sent the resources to <strong>' + email + '</strong>. Check your inbox.</p>';
+      form.parentNode.replaceChild(successEl, form);
+    });
+  })();
+</script>

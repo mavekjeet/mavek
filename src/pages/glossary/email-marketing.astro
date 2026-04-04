@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Email Campaigns",
+    description: "One-time sends to your list -- newsletters, product announcements, promotions, and event invitations that keep your audience engaged and informed.",
+  },
+  {
+    title: "Automated Sequences",
+    description: "Trigger-based email flows that send the right message at the right time -- welcome series, onboarding drips, abandoned cart reminders, and re-engagement campaigns.",
+  },
+  {
+    title: "List Management",
+    description: "Building, segmenting, and maintaining a healthy email list through signup forms, lead magnets, preference centers, and regular list hygiene.",
+  },
+  {
+    title: "Personalization",
+    description: "Tailoring subject lines, content, and offers based on subscriber data -- from basic name insertion to dynamic content blocks driven by behavior and preferences.",
+  },
+  {
+    title: "Deliverability",
+    description: "Ensuring your emails reach the inbox instead of the spam folder through authentication protocols, sender reputation management, and engagement-based sending.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Marketing Automation", slug: "marketing-automation" },
+  { term: "Lead Generation", slug: "lead-generation" },
+  { term: "A/B Testing", slug: "a-b-testing" },
+  { term: "Customer Lifetime Value (CLV/LTV)", slug: "customer-lifetime-value" },
+];
+---
+
+<Layout title="What Is Email Marketing? Definition & Guide" description="Email marketing is the use of email to promote products, nurture leads, and build customer relationships. Learn what it is, its key components, and how Mavek automates email at scale.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Email Marketing</h1>
+        <p class="article__lead">The practice of using email to build relationships, nurture leads, and drive conversions -- consistently one of the highest-ROI channels in digital marketing.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>email marketing</em>?</h2>
+        <p>Email marketing is the use of email to communicate with prospects and customers, promote your products or services, and build long-term relationships. It includes everything from one-off promotional blasts and newsletters to sophisticated automated sequences triggered by user behavior.</p>
+        <p>Despite being one of the oldest digital channels, email remains one of the most effective. It offers direct access to your audience without depending on algorithms or paid distribution. When someone gives you their email address, they are inviting you into their inbox -- a level of permission that no social platform can match.</p>
+        <p>Modern email marketing goes far beyond mass blasts. The best programs use segmentation, personalization, and behavioral triggers to send the right message to the right person at the right moment. This combination of relevance and timing is what makes email consistently deliver some of the highest returns of any marketing channel.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>email marketing</em></h2>
+        <p>Email marketing success depends on strategy, infrastructure, and execution working together.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Email campaigns that write and <em>optimize themselves</em></h2>
+        <p>Running an email program well requires a strategist to plan campaigns, a copywriter to craft messages, a designer to build templates, and an analyst to interpret results. Most small teams either skip email entirely or send sporadic newsletters that barely move the needle.</p>
+        <p>Mavek handles the entire email workflow autonomously. It plans campaign calendars, writes subject lines and body copy in your brand voice, segments your audience based on behavior and demographics, sends at optimal times, and continuously tests variations to improve open rates and conversions.</p>
+        <p>Because Mavek manages your full marketing stack, email does not operate in isolation. When a prospect visits your pricing page after reading a blog post, Mavek can trigger a relevant email sequence. When an ad campaign generates new leads, they are automatically enrolled in the right nurture flow. Every channel informs every other channel, creating a cohesive experience that converts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Email marketing that runs itself"
+    subtitle="Mavek writes, sends, and optimizes email campaigns autonomously -- in your brand voice."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

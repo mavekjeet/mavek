@@ -1,0 +1,185 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const challenges = [
+  { title: "ROAS Pressure", desc: "Every dollar in ad spend needs to drive measurable revenue. With rising CPCs and shrinking margins, there's no room for wasted budget." },
+  { title: "Creative Fatigue", desc: "Ad creative burns out faster than ever. Your audience scrolls past the same visuals in days, and keeping up with fresh variations is exhausting." },
+  { title: "Multi-Channel Complexity", desc: "Google Shopping, Meta Ads, email, SEO, influencer — customers shop across channels but most teams can only manage a few well." },
+  { title: "Seasonal Volatility", desc: "Demand swings from Black Friday peaks to January lulls. Your marketing needs to adapt instantly, not lag behind by weeks." },
+];
+
+const solutions = [
+  { title: "Dynamic Ad Optimization", desc: "Google Shopping, Search, and Performance Max campaigns that adjust bids, budgets, and targeting in real time based on product performance and margin data." },
+  { title: "Product-Focused Content", desc: "Category pages, buying guides, comparison articles, and product descriptions optimized for SEO. Content that drives organic traffic directly to your products." },
+  { title: "Email Sequences", desc: "Abandoned cart recovery, post-purchase flows, win-back campaigns, and product launch sequences — all personalized and running on autopilot." },
+  { title: "Retargeting", desc: "Multi-channel retargeting that reaches shoppers who browsed, carted, or purchased. Dynamic creative based on the products they actually viewed." },
+  { title: "Seasonal Campaigns", desc: "Holiday, sale, and promotional campaigns planned and executed automatically. Mavek ramps up spend when demand spikes and pulls back when it fades." },
+  { title: "Cross-Channel Analytics", desc: "Unified view of ROAS, CAC, and LTV across every channel. See which products, campaigns, and channels actually drive profit — not just revenue." },
+];
+
+const metrics = [
+  { value: "Higher ROAS", desc: "Dynamic bid optimization and budget allocation drive more revenue per dollar spent across Google and Meta campaigns." },
+  { value: "Lower CAC", desc: "Precise targeting and retargeting reduce customer acquisition costs while maintaining conversion volume." },
+  { value: "More Revenue", desc: "Always-on email sequences, SEO content, and paid campaigns compound over time, growing topline revenue consistently." },
+];
+---
+
+<Layout title="AI Marketing for Ecommerce & D2C" description="Sell more with less spend. AI-powered Google Shopping, SEO, email sequences, and retargeting built for ecommerce and D2C brands.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">ECOMMERCE & D2C</span>
+        <h1>Sell more with less spend.</h1>
+        <p class="hero__subtitle">Dynamic ad optimization, product-focused content, automated email flows, and cross-channel retargeting — all running autonomously for your store.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Get Started <span>&rarr;</span></a>
+          <a href="/industries" class="btn btn--secondary">All Industries</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Ecommerce Challenges</span>
+        <h2>The ecommerce <em>marketing grind</em></h2>
+      </div>
+      <div class="grid-2">
+        {challenges.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{c.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">How Mavek Helps</span>
+        <h2>Your entire ecommerce <em>marketing team</em></h2>
+      </div>
+      <div class="grid-3">
+        {solutions.map((s, i) => (
+          <div class="card reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{s.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Results</span>
+        <h2>Metrics that <em>matter</em> for ecommerce</h2>
+      </div>
+      <div class="grid-3">
+        {metrics.map((m, i) => (
+          <div class="card card--dark metric-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h3 class="metric-card__value">{m.value}</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{m.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="fit reveal">
+        <span class="sec-label">Built for Your Store</span>
+        <h2>Works with <em>your stack</em></h2>
+        <p class="fit__subtitle">Mavek connects to the platforms ecommerce brands already use — Shopify, WooCommerce, Google Merchant Center, Meta Business Suite, Klaviyo, and more.</p>
+        <div class="grid-2" style="margin-top: var(--space-xl); text-align: left;">
+          <div class="card reveal">
+            <h4>For D2C Brands</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Build brand awareness through content, drive purchases through targeted ads, and increase LTV through post-purchase email sequences. The full D2C playbook, automated.</p>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.1s">
+            <h4>For Multi-SKU Retailers</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Product-level ad optimization, category-focused SEO, and dynamic campaigns that scale across hundreds or thousands of SKUs without manual effort.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Grow your store without growing your team."
+    subtitle="Ads, SEO, email, and analytics — all automated for ecommerce."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section {
+    padding-top: calc(var(--nav-height) + var(--space-3xl));
+    text-align: center;
+  }
+
+  .hero__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero__inner h1 {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__subtitle {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .metric-card__value {
+    color: var(--gold-mid) !important;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  }
+
+  .fit {
+    text-align: center;
+  }
+
+  .fit h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .fit__subtitle {
+    max-width: 600px;
+    margin: var(--space-sm) auto 0;
+  }
+
+  @media (max-width: 600px) {
+    .hero__actions { flex-direction: column; align-items: center; }
+  }
+</style>

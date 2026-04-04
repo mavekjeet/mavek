@@ -1,0 +1,332 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const models = [
+  {
+    title: "First-Touch Attribution",
+    description: "Gives 100% credit to the first interaction a customer has with your brand. Useful for understanding which channels drive initial awareness, but ignores everything that happens after.",
+    pros: "Simple to implement. Good for measuring awareness channels.",
+    cons: "Overvalues top-of-funnel. Ignores nurture and closing touchpoints.",
+  },
+  {
+    title: "Last-Touch Attribution",
+    description: "Gives 100% credit to the final interaction before conversion. This is the default in most analytics platforms, including Google Analytics.",
+    pros: "Easy to understand. Highlights closing channels.",
+    cons: "Ignores every touchpoint that built awareness and trust before the final click.",
+  },
+  {
+    title: "Multi-Touch Attribution",
+    description: "Distributes credit across multiple touchpoints in the customer journey. Common variants include linear (equal credit), time-decay (more credit to recent touches), and position-based (40/20/40 split).",
+    pros: "More accurate picture of the full journey. Reduces channel bias.",
+    cons: "More complex to implement. Requires good tracking across channels.",
+  },
+  {
+    title: "Data-Driven Attribution",
+    description: "Uses machine learning to analyze your actual conversion data and assign credit based on the statistical impact of each touchpoint. Google Ads and some enterprise platforms offer this model.",
+    pros: "Most accurate. Adapts to your specific business and data.",
+    cons: "Requires large data volume. Can be a black box. Platform-specific.",
+  },
+];
+
+const challenges = [
+  {
+    title: "Cross-device tracking",
+    description: "A customer sees a mobile ad, researches on their laptop, and converts on their tablet. Connecting these touchpoints is technically difficult and getting harder as privacy restrictions tighten.",
+  },
+  {
+    title: "Walled gardens",
+    description: "Google, Meta, and other ad platforms each report conversions using their own models and data. These numbers often conflict, making it impossible to get a single source of truth without additional tooling.",
+  },
+  {
+    title: "Offline interactions",
+    description: "Phone calls, in-person meetings, word-of-mouth referrals, and conference conversations all influence buying decisions but rarely appear in digital attribution models.",
+  },
+  {
+    title: "Privacy regulations",
+    description: "GDPR, CCPA, iOS tracking restrictions, and the deprecation of third-party cookies are all reducing the data available for attribution. Models that rely on individual-level tracking are becoming less reliable.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Marketing Automation", slug: "marketing-automation" },
+  { term: "Full-Funnel Marketing", slug: "full-funnel-marketing" },
+  { term: "ROAS (Return on Ad Spend)", slug: "roas" },
+  { term: "Customer Acquisition Cost (CAC)", slug: "customer-acquisition-cost" },
+];
+---
+
+<Layout title="What Is Marketing Attribution? Models & Guide" description="Marketing attribution identifies which channels and touchpoints drive conversions. Learn about first-touch, last-touch, multi-touch, and data-driven models.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Marketing Attribution</h1>
+        <p class="article__lead">The process of identifying which marketing channels, campaigns, and touchpoints contribute to conversions -- so you can invest in what actually works.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>marketing attribution</em>?</h2>
+        <p>Marketing attribution is the analytical practice of assigning credit to the marketing touchpoints that lead to a desired outcome, usually a sale or conversion. It answers the fundamental question every marketer faces: which of these campaigns actually drove revenue?</p>
+        <p>Without attribution, you are flying blind. You know how much you spent on Google Ads, SEO, email, and social media, but you do not know which channels deserve more budget and which are wasting money. Attribution connects spending to outcomes.</p>
+        <p>The challenge is that modern buying journeys rarely follow a straight line. A customer might discover your brand through a blog post, click a retargeting ad a week later, read three emails, and finally convert after a Google search. Which touchpoint gets the credit? The answer depends on your attribution model.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section models-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2><em>Attribution models</em></h2>
+        <p>Each model assigns credit differently. The right choice depends on your data maturity, business model, and what questions you need answered.</p>
+      </div>
+      <div class="models-grid">
+        {models.map((model, i) => (
+          <div class="card model-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h3>{model.title}</h3>
+            <p class="model-card__desc">{model.description}</p>
+            <div class="model-card__pros-cons">
+              <div class="model-card__pro">
+                <span class="model-card__label">Strengths</span>
+                <span>{model.pros}</span>
+              </div>
+              <div class="model-card__con">
+                <span class="model-card__label">Weaknesses</span>
+                <span>{model.cons}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section challenges-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Why attribution is <em>hard</em></h2>
+        <p>Even the best attribution model is only as good as the data feeding it. Several structural challenges make accurate attribution difficult for most teams.</p>
+      </div>
+      <div class="grid-2 challenges-grid">
+        {challenges.map((item, i) => (
+          <div class="card challenge-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Unified attribution across <em>every channel</em></h2>
+        <p>When your ads, content, email, and analytics live inside one platform, attribution becomes dramatically simpler. Mavek tracks the full journey from first impression to conversion within a single system -- no stitching together data from five different tools.</p>
+        <p>Because Mavek manages campaigns across Google, Meta, email, and SEO simultaneously, it can build a complete picture of how each channel contributes to revenue. There are no walled-garden conflicts because the data is unified at the source.</p>
+        <p>The result is clear, actionable attribution data that shows you exactly where your marketing dollars are working hardest -- without the analytics headaches that plague fragmented tool stacks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Attribution clarity without the complexity"
+    subtitle="Mavek unifies your channels so you always know what is driving revenue."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .models-section {
+    padding-top: 0;
+  }
+
+  .models-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .model-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .model-card__desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .model-card__pros-cons {
+    border-top: 1px solid rgba(26, 26, 24, 0.08);
+    padding-top: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .model-card__label {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .model-card__pro span:not(.model-card__label),
+  .model-card__con span:not(.model-card__label) {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    opacity: 0.7;
+  }
+
+  .challenges-section {
+    padding-top: var(--space-xl);
+  }
+
+  .challenges-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .challenge-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .challenge-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 600px) {
+    .models-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

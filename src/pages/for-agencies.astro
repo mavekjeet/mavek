@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+const painPoints = [
+  {
+    problem: "Client demands keep growing",
+    solution: "Mavek multiplies your team's capacity without new hires. Handle more clients, deliver more campaigns, maintain quality.",
+  },
+  {
+    problem: "Junior staff need constant oversight",
+    solution: "Mavek operates autonomously with your strategy as the guardrail. Senior talent focuses on strategy, Mavek handles execution.",
+  },
+  {
+    problem: "Margins are shrinking",
+    solution: "Deliver enterprise-grade execution at a fraction of the labor cost. Your margins expand as Mavek handles the heavy lifting.",
+  },
+];
+
+const agencyFeatures = [
+  { title: "White-Label Execution", desc: "Run campaigns under your brand. Clients see your agency — Mavek is invisible." },
+  { title: "Multi-Client Dashboard", desc: "Manage all client campaigns from one unified view. Switch contexts in seconds." },
+  { title: "Automated Reporting", desc: "Generate client-ready reports with real metrics. No more late-night deck building." },
+  { title: "Scalable Workflows", desc: "Template winning strategies and deploy them across clients instantly." },
+  { title: "Approval Workflows", desc: "Your team reviews everything before it goes live. Layer approvals by seniority." },
+  { title: "Team Collaboration", desc: "Assign campaigns to team members. Track progress. No work falls through cracks." },
+];
+---
+
+<Layout title="For Agencies" description="Supercharge your agency with AI-powered marketing execution. 10x campaign output without new hires.">
+  <Nav />
+
+  <Hero
+    eyebrow="FOR AGENCIES"
+    title="Your team, supercharged."
+    highlight="supercharged"
+    subtitle="10x campaign output without new hires. Mavek becomes your execution layer — you keep the strategy and client relationships."
+    primaryCta="Book a Demo"
+    primaryHref="/contact"
+    secondaryCta="See Pricing"
+    secondaryHref="/pricing"
+  >
+    <div class="hero__dashboard">
+      <div class="dash__header">
+        <div class="dash__dots"><span></span><span></span><span></span></div>
+        <span class="dash__title">Agency Dashboard — 8 Clients</span>
+      </div>
+      <div class="dash__body">
+        <div class="dash__sidebar">
+          <div class="dash__nav-item active">All Clients</div>
+          <div class="dash__nav-item">Nexus Co</div>
+          <div class="dash__nav-item">BloomHQ</div>
+          <div class="dash__nav-item">ScaleUp</div>
+        </div>
+        <div class="dash__main">
+          <div class="dash__stats">
+            <div class="dash__stat">
+              <span class="dash__stat-label">Clients</span>
+              <span class="dash__stat-value">8</span>
+            </div>
+            <div class="dash__stat">
+              <span class="dash__stat-label">Campaigns</span>
+              <span class="dash__stat-value">47</span>
+            </div>
+            <div class="dash__stat">
+              <span class="dash__stat-label">Leads</span>
+              <span class="dash__stat-value">3.2k</span>
+            </div>
+          </div>
+          <div class="dash__chart">
+            <div class="dash__chart-bars">
+              <div class="dash__bar" data-height="50%"></div>
+              <div class="dash__bar" data-height="65%"></div>
+              <div class="dash__bar" data-height="40%"></div>
+              <div class="dash__bar" data-height="80%"></div>
+              <div class="dash__bar" data-height="55%"></div>
+              <div class="dash__bar" data-height="90%"></div>
+              <div class="dash__bar" data-height="70%"></div>
+              <div class="dash__bar gold" data-height="95%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Hero>
+
+  <section class="dark">
+    <div class="container">
+      <div class="pain__header reveal">
+        <span class="sec-label">The Agency Struggle</span>
+        <h2>Scaling an agency shouldn't mean <em>scaling headcount</em></h2>
+      </div>
+      <div class="pain__grid grid-3">
+        {painPoints.map((p, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h4 class="pain__problem">{p.problem}</h4>
+            <p>{p.solution}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="container">
+      <div class="agency-features__header reveal">
+        <span class="sec-label">Built for Agency Workflows</span>
+        <h2>Everything your team needs to <em>deliver at scale</em></h2>
+      </div>
+      <div class="grid-3">
+        {agencyFeatures.map((f, i) => (
+          <div class="card reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{f.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <HowItWorks />
+
+  <Testimonials />
+
+  <section class="light faq-aeo">
+    <div class="container">
+      <div class="faq-aeo__header reveal">
+        <span class="sec-label">Frequently Asked Questions</span>
+        <h2>AI Marketing for Agencies: <em>Common Questions</em></h2>
+      </div>
+      <div class="faq-aeo__list">
+        <details class="faq-aeo__item reveal">
+          <summary>What is Mavek and how does it help marketing agencies?</summary>
+          <p>Mavek is an AI-powered marketing execution platform designed for agencies. It automates campaign management, content creation, SEO, paid ads, and outreach -- allowing agencies to handle more clients without hiring additional staff. Mavek acts as your invisible execution layer while your team focuses on strategy and client relationships.</p>
+        </details>
+        <details class="faq-aeo__item reveal">
+          <summary>Can Mavek run campaigns under my agency's brand?</summary>
+          <p>Yes. Mavek offers full white-label execution. Your clients see your agency brand throughout the entire experience. Mavek operates behind the scenes, invisible to your clients, so your agency retains full ownership of the relationship and deliverables.</p>
+        </details>
+        <details class="faq-aeo__item reveal">
+          <summary>How many clients can an agency manage with Mavek?</summary>
+          <p>Agencies using Mavek typically increase client capacity by 2-3x without adding headcount. For example, a 12-person agency went from 8 clients to 22 using Mavek. The multi-client dashboard lets you switch between accounts in seconds and manage all campaigns from one unified view.</p>
+        </details>
+        <details class="faq-aeo__item reveal">
+          <summary>Will my team still be needed with Mavek?</summary>
+          <p>No. Mavek augments your team, never sidelines it. Senior strategists still define the direction. Mavek handles the repetitive execution -- ad management, content production, reporting, and outreach -- so your team can focus on high-value strategic work that clients pay premium rates for.</p>
+        </details>
+        <details class="faq-aeo__item reveal">
+          <summary>What approval controls do agencies have over Mavek's output?</summary>
+          <p>Mavek includes multi-layer approval gates. Nothing goes live without your sign-off. You can set approval workflows by seniority level, campaign type, or spend threshold. For trusted, repeatable workflows, you can optionally enable auto-approve to speed things up.</p>
+        </details>
+        <details class="faq-aeo__item reveal">
+          <summary>How much does Mavek cost compared to hiring more staff?</summary>
+          <p>Mavek starts at $299/month -- a fraction of what a single marketing hire costs. Agencies typically see margins expand significantly because they can deliver more campaigns without proportional increases in labor costs. The Growth plan supports multi-brand management, and Enterprise offers unlimited brands with white-label capabilities.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to 10x your agency's output?"
+    subtitle="Join agencies delivering enterprise-grade campaigns without the enterprise-sized team."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .pain__header, .agency-features__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .pain__header h2, .agency-features__header h2 { margin-top: var(--space-xs); }
+  .pain__problem { color: #F5F5F7; margin-bottom: var(--space-xs); }
+
+  .faq-aeo__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .faq-aeo__header h2 { margin-top: var(--space-xs); }
+  .faq-aeo__list {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .faq-aeo__item {
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+    padding: var(--space-md) 0;
+  }
+  .faq-aeo__item summary {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-aeo__item summary::-webkit-details-marker { display: none; }
+  .faq-aeo__item summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--gold-mid);
+    font-weight: 300;
+    transition: transform 0.2s ease;
+  }
+  .faq-aeo__item[open] summary::after { content: '-'; }
+  .faq-aeo__item p {
+    margin-top: var(--space-sm);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.7;
+    max-width: 640px;
+  }
+</style>

@@ -1,0 +1,143 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const comparisons = [
+  {
+    title: "Mavek vs Jasper",
+    summary: "AI writing assistant vs full-funnel autonomous marketing platform.",
+    href: "/compare/mavek-vs-jasper",
+  },
+  {
+    title: "Mavek vs Hiring an Agency",
+    summary: "Expensive retainers and slow turnarounds vs instant, transparent execution.",
+    href: "/compare/mavek-vs-hiring-agency",
+  },
+  {
+    title: "Mavek vs Hiring a Marketing Team",
+    summary: "Months of recruiting and lakhs in salaries vs one platform that covers it all.",
+    href: "/compare/mavek-vs-marketing-team",
+  },
+  {
+    title: "Mavek vs HubSpot",
+    summary: "A CRM you operate yourself vs an autonomous system that executes for you.",
+    href: "/compare/mavek-vs-hubspot",
+  },
+  {
+    title: "Mavek vs ChatGPT",
+    summary: "General-purpose AI assistant vs purpose-built autonomous marketing engine.",
+    href: "/compare/mavek-vs-chatgpt",
+  },
+  {
+    title: "Mavek vs Freelancers",
+    summary: "Managing multiple specialists vs one platform that covers all channels autonomously.",
+    href: "/compare/mavek-vs-freelancers",
+  },
+  {
+    title: "Mavek vs Marketo",
+    summary: "Enterprise complexity and dedicated admins vs autonomous full-funnel execution.",
+    href: "/compare/mavek-vs-marketo",
+  },
+  {
+    title: "Mavek vs Semrush",
+    summary: "Research and data tools you act on yourself vs autonomous execution across channels.",
+    href: "/compare/mavek-vs-semrush",
+  },
+  {
+    title: "Mavek vs Zapier + AI Stack",
+    summary: "DIY automation with fragile workflows vs an integrated platform that thinks and acts.",
+    href: "/compare/mavek-vs-zapier",
+  },
+];
+---
+
+<Layout title="Compare Mavek" description="See how Mavek stacks up against Jasper, agencies, in-house teams, and HubSpot. Honest, side-by-side comparisons.">
+  <Nav />
+
+  <section class="light compare-hero">
+    <div class="container" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+      <div class="compare__header reveal">
+        <span class="sec-label">Compare</span>
+        <h1>See how <em>Mavek stacks up</em>.</h1>
+        <p>Honest, side-by-side breakdowns so you can make the right call for your business.</p>
+      </div>
+
+      <div class="compare__grid grid-2">
+        {comparisons.map((item, i) => (
+          <a href={item.href} class="compare__card card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <div class="compare__card-inner">
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+              <span class="compare__link">View comparison <span>&rarr;</span></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to upgrade your entire marketing stack?"
+    subtitle="See what Mavek can do for your business."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="View Pricing"
+    secondaryHref="/pricing"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .compare__header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .compare__header h1 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .compare__card {
+    display: block;
+    text-decoration: none;
+    padding: var(--space-lg);
+  }
+
+  .compare__card h3 {
+    margin-bottom: var(--space-xs);
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  }
+
+  .compare__card p {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .compare__link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: gap var(--duration) var(--ease);
+  }
+
+  .compare__card:hover .compare__link {
+    gap: 0.7rem;
+  }
+
+  @media (max-width: 600px) {
+    .compare__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

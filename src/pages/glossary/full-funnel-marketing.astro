@@ -1,0 +1,281 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const stages = [
+  {
+    label: "TOFU",
+    title: "Awareness",
+    description: "Get in front of people who have never heard of you. Paid ads, SEO content, social media, and PR put your brand on the radar.",
+    tactics: "Display ads, blog posts, social content, video, podcasts",
+  },
+  {
+    label: "MOFU",
+    title: "Consideration",
+    description: "Nurture interested prospects with deeper content and targeted messaging. Email sequences, retargeting ads, and case studies build trust.",
+    tactics: "Email nurture, retargeting, webinars, case studies, comparison pages",
+  },
+  {
+    label: "BOFU",
+    title: "Conversion",
+    description: "Turn warm leads into paying customers with compelling offers, optimized landing pages, and sales enablement content.",
+    tactics: "Landing pages, demos, free trials, special offers, sales outreach",
+  },
+  {
+    label: "Post-Sale",
+    title: "Retention",
+    description: "Keep customers engaged, increase lifetime value, and generate referrals through ongoing communication and upsell campaigns.",
+    tactics: "Onboarding emails, loyalty programs, upsell sequences, review requests",
+  },
+];
+
+const relatedTerms = [
+  { term: "Marketing Automation", slug: "marketing-automation" },
+  { term: "ROAS (Return on Ad Spend)", slug: "roas" },
+  { term: "Customer Acquisition Cost (CAC)", slug: "customer-acquisition-cost" },
+  { term: "Marketing Attribution", slug: "marketing-attribution" },
+];
+---
+
+<Layout title="What Is Full-Funnel Marketing? Definition & Guide" description="Full-funnel marketing covers every stage of the buyer journey, from awareness to retention. Learn the TOFU/MOFU/BOFU framework and how Mavek orchestrates it all.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Full-Funnel Marketing</h1>
+        <p class="article__lead">A strategy that addresses every stage of the buyer journey -- from first impression to loyal customer -- instead of optimizing a single channel or moment in isolation.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>full-funnel marketing</em>?</h2>
+        <p>Full-funnel marketing is the practice of building coordinated campaigns that guide prospects through every stage of the buying process: awareness, consideration, conversion, and retention. Rather than pouring budget into one slice of the journey, a full-funnel approach ensures no stage is neglected.</p>
+        <p>The funnel metaphor comes from the natural drop-off at each stage. Thousands of people may see your ad, hundreds might visit your site, dozens will request a demo, and a fraction become customers. Full-funnel marketing acknowledges this reality and builds targeted messaging for each layer.</p>
+        <p>Marketers often use the shorthand TOFU (top of funnel), MOFU (middle of funnel), and BOFU (bottom of funnel) to categorize tactics by the stage they serve. The best strategies also include a post-sale layer for retention and expansion.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section stages-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>The <em>four stages</em></h2>
+        <p>Each stage serves a different purpose and requires different tactics, messaging, and success metrics.</p>
+      </div>
+      <div class="stages-grid">
+        {stages.map((stage, i) => (
+          <div class="card stage-card reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <span class="stage-card__label">{stage.label}</span>
+            <h3>{stage.title}</h3>
+            <p class="stage-card__desc">{stage.description}</p>
+            <div class="stage-card__tactics">
+              <span class="stage-card__tactics-label">Common tactics</span>
+              <span class="stage-card__tactics-list">{stage.tactics}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Every stage, <em>orchestrated simultaneously</em></h2>
+        <p>Most teams tackle the funnel one piece at a time. They run paid ads for awareness, hire a content writer for SEO, bring in an email specialist for nurture, and bolt on a retention tool later. Each piece works in its own silo with its own data.</p>
+        <p>Mavek collapses those silos. Because the platform handles ads, content, email, and analytics as a single system, it can coordinate messaging across every funnel stage at once. A blog post that drives awareness automatically feeds into a retargeting audience. An email sequence adjusts based on which ads a prospect clicked. Conversion data flows back to improve targeting at the top.</p>
+        <p>The result is a funnel that operates as one machine rather than a collection of disconnected parts -- and a single marketer can manage the whole thing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Run a full-funnel strategy with one platform"
+    subtitle="Mavek coordinates awareness, nurture, conversion, and retention -- autonomously."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .stages-section {
+    padding-top: 0;
+  }
+
+  .stages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .stage-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .stage-card__label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold-dark);
+    background: rgba(138, 112, 40, 0.08);
+    padding: 0.2rem 0.5rem;
+    display: inline-block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .stage-card__desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+  }
+
+  .stage-card__tactics {
+    border-top: 1px solid rgba(26, 26, 24, 0.08);
+    padding-top: var(--space-sm);
+  }
+
+  .stage-card__tactics-label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .stage-card__tactics-list {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 600px) {
+    .stages-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

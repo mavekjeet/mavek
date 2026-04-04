@@ -1,0 +1,108 @@
+---
+const benefits = [
+  {
+    image: "/images/team-collab.jpg",
+    alt: "Marketing team collaborating around a laptop",
+    title: "Deliver 10x more",
+    description: "One person with Mavek produces the output of an entire marketing team. Paid ads, SEO, content, outreach — all running simultaneously.",
+  },
+  {
+    image: "/images/content-review.jpg",
+    alt: "Person reviewing high-quality content on screen",
+    title: "Zero junk content",
+    description: "No AI slop. Every asset is crafted using your brand voice, your data, and your standards. Quality that feels unmistakably human.",
+  },
+  {
+    image: "/images/data-dashboard.jpg",
+    alt: "Data dashboard showing growth metrics",
+    title: "Your data, not generic prompts",
+    description: "Mavek learns from your analytics, your customers, and your market. Every decision is grounded in what actually works for you.",
+  },
+];
+---
+
+<section class="light benefits">
+  <div class="container">
+    <div class="benefits__header reveal">
+      <span class="sec-label">Why Mavek</span>
+      <h2>The <em>unfair</em> advantage</h2>
+    </div>
+    <div class="benefits__grid grid-3">
+      {benefits.map((b, i) => (
+        <div class="benefit-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+          <div class="benefit-img">
+            <img src={b.image} alt={b.alt} loading="lazy" />
+          </div>
+          <h3 class="benefit-card__title">{b.title}</h3>
+          <p class="benefit-card__desc">{b.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .benefits__header h2 {
+    margin-top: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+
+  .benefits__header h2 em {
+    font-style: italic;
+    color: var(--gold-dark);
+  }
+
+  .sec-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+  }
+
+  .benefit-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background: var(--surface);
+  }
+
+  .benefit-card .benefit-img {
+    margin-bottom: var(--space-md);
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .benefit-card .benefit-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .benefit-card:hover .benefit-img img {
+    transform: scale(1.03);
+    border-radius: 10px 10px 0 0;
+  }
+
+  .benefit-card__title {
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+    padding: 0 var(--space-md);
+  }
+
+  .benefit-card__desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    padding: 0 var(--space-md) var(--space-md);
+  }
+</style>

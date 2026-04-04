@@ -1,0 +1,459 @@
+/* ============================================
+   MAVEK — Global Design System
+   Philosopher's Stone Visual Identity
+   ============================================ */
+
+/* --- Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* --- Design Tokens --- */
+:root {
+  /* Light section backgrounds (parchment family) */
+  --parchment: #F6F3E8;
+  --surface: #EDEADF;
+  --raised: #E4E0D4;
+  --hover: #DBD7CA;
+
+  /* Dark section backgrounds (night family) */
+  --night: #0A0A08;
+  --night-2: #141412;
+  --night-3: #1E1E1A;
+  --night-4: #2A2820;
+
+  /* Text on light sections */
+  --ink: #1A1A18;
+  --ink-2: #2A2A25;
+  --ink-soft: #4A4840;
+  --ink-muted: #8A8878;
+
+  /* Text on dark sections */
+  --cream: #F6F3E8;
+  --cream-60: rgba(246, 243, 232, 0.6);
+  --cream-40: rgba(246, 243, 232, 0.4);
+  --cream-25: rgba(246, 243, 232, 0.25);
+
+  /* Gold accent ramp */
+  --gold-bright: #E8C95A;
+  --gold-mid: #C9A84C;
+  --gold-dark: #6B5A28;
+  --gold-deep: #6B5A28;
+  --gold-muted: #4A3D1C;
+
+  /* Semantic states */
+  --success: #5A9E3E;
+  --success-light: #3D7A28;
+  --warning: #D4A537;
+  --error: #C44B3F;
+  --info: #5A8EC9;
+
+  /* Typography */
+  --font-display: 'Instrument Sans', system-ui, sans-serif;
+  --font-body: 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Layout */
+  --max-width: 1080px;
+  --nav-height: 72px;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 64px;
+
+  /* Animation */
+  --duration: 0.3s;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--parchment);
+  overflow-x: hidden;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: clamp(44px, 5.5vw, 68px);
+  line-height: 1.06;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+/* Gold italic accent in headings */
+.light h1 em, .light h2 em, .light h3 em { font-style: italic; color: var(--gold-dark); }
+.dark h1 em, .dark h2 em, .dark h3 em { font-style: italic; color: var(--gold-bright); }
+
+p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+p.sub {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- Section Pattern --- */
+.light {
+  background: var(--parchment);
+  color: var(--ink);
+  padding: 120px 0;
+}
+
+.dark {
+  background: var(--night);
+  color: var(--cream);
+  padding: 120px 0;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4 { color: var(--cream); }
+.dark p { color: var(--cream-60); }
+.dark p.sub { color: var(--cream-60); }
+
+/* Legacy support — map old classes to new */
+.section { padding: 120px 0; }
+.section--dark { background: var(--night); color: var(--cream); }
+.section--dark h1, .section--dark h2, .section--dark h3, .section--dark h4 { color: var(--cream); }
+.section--dark p { color: var(--cream-60); }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* --- Section Label (eyebrow) --- */
+.sec-label,
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+  color: var(--gold-dark);
+}
+
+.dark .sec-label, .dark .eyebrow,
+.section--dark .sec-label, .section--dark .eyebrow {
+  color: var(--gold-mid);
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+  border: none;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+/* Primary (gold fill) */
+.btn--primary,
+.btn-gold {
+  background: var(--gold-mid);
+  color: var(--night);
+}
+
+.btn--primary:hover,
+.btn-gold:hover {
+  background: var(--gold-bright);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+}
+
+/* Secondary on light */
+.btn--secondary,
+.btn-outline-dark {
+  border: 1px solid rgba(26, 26, 24, 0.15);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn--secondary:hover,
+.btn-outline-dark:hover {
+  border-color: var(--gold-mid);
+  color: var(--gold-dark);
+}
+
+/* Secondary on dark */
+.btn--outline-light,
+.btn-outline-gold {
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  color: var(--gold-mid);
+  background: transparent;
+}
+
+.btn--outline-light:hover,
+.btn-outline-gold:hover {
+  border-color: var(--gold-bright);
+  color: var(--gold-bright);
+}
+
+.btn--sm { padding: 10px 24px; font-size: 13px; }
+
+/* --- Cards --- */
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(26, 26, 24, 0.06);
+  border-radius: 10px;
+  padding: 32px;
+  transition: transform 0.2s, border-color 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(138, 112, 40, 0.2);
+}
+
+.card--dark {
+  background: var(--night-3);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 10px;
+}
+
+.card--dark:hover {
+  transform: translateY(-3px);
+  border-color: rgba(201, 168, 76, 0.2);
+}
+
+/* --- Photo Placeholders --- */
+.photo-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 8px,
+    rgba(26,26,24,0.04) 8px,
+    rgba(26,26,24,0.04) 9px
+  );
+  background-color: var(--raised);
+  border: 1px dashed rgba(26,26,24,0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+
+/* --- Input fields --- */
+input, textarea, select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  background: var(--parchment);
+  border: 1px solid rgba(26, 26, 24, 0.12);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--gold-mid);
+}
+
+.dark input, .dark textarea, .dark select {
+  background: var(--night-3);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  color: var(--cream);
+}
+
+.dark input:focus, .dark textarea:focus, .dark select:focus {
+  border-color: var(--gold-bright);
+}
+
+/* --- Stat numbers --- */
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 400;
+}
+
+/* --- Grid Utilities --- */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+/* --- Comparison Tables --- */
+.diff-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr;
+  border-bottom: 1px solid rgba(26, 26, 24, 0.06);
+  padding: 18px 0;
+  font-size: 14px;
+  align-items: center;
+}
+
+.diff-row.header {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--gold-dark);
+}
+
+.diff-cat { font-weight: 600; color: var(--ink); font-size: 13px; }
+.diff-them { color: var(--ink-muted); padding: 0 20px; }
+.diff-us { color: var(--gold-dark); font-weight: 600; padding: 0 20px; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  .light, .dark, .section { padding: 80px 0; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .btn { width: 100%; justify-content: center; }
+
+  .diff-row { grid-template-columns: 1fr; gap: 8px; }
+  .diff-row.header { display: none; }
+}
+
+@media (max-width: 480px) {
+  .grid-4 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* --- Scroll to Top Button --- */
+.scroll-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold-mid);
+  color: var(--night);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+  z-index: 50;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  background: var(--gold-bright);
+  transform: translateY(-2px);
+}
+
+/* Input border-radius consistency */
+input, textarea, select {
+  border-radius: 10px;
+}

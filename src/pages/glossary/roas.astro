@@ -1,0 +1,355 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const benchmarks = [
+  { industry: "E-commerce", roas: "4:1", note: "Varies heavily by margin and AOV" },
+  { industry: "SaaS / B2B", roas: "5:1+", note: "Higher LTV justifies higher CAC" },
+  { industry: "Local Services", roas: "3:1", note: "Lower volume, higher intent" },
+  { industry: "DTC Brands", roas: "3:1 - 5:1", note: "Depends on retention and repeat rate" },
+];
+
+const improvements = [
+  {
+    title: "Sharpen your targeting",
+    description: "Narrow audiences to high-intent segments instead of casting a wide net. Better targeting means fewer wasted impressions and more conversions per dollar.",
+  },
+  {
+    title: "Improve creative and copy",
+    description: "Ad fatigue kills ROAS. Test new creative regularly, lead with benefits over features, and match ad messaging to landing page copy for higher conversion rates.",
+  },
+  {
+    title: "Optimize landing pages",
+    description: "A 1% conversion rate improvement on your landing page can dramatically shift ROAS. Focus on speed, clarity, and a single clear call to action.",
+  },
+  {
+    title: "Adjust bidding strategy",
+    description: "Move from manual to value-based bidding. Use target ROAS bidding on Google Ads or value optimization on Meta to let algorithms find the highest-value conversions.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Marketing Automation", slug: "marketing-automation" },
+  { term: "Full-Funnel Marketing", slug: "full-funnel-marketing" },
+  { term: "Customer Acquisition Cost (CAC)", slug: "customer-acquisition-cost" },
+  { term: "Marketing Attribution", slug: "marketing-attribution" },
+];
+---
+
+<Layout title="What Is ROAS? Return on Ad Spend Definition & Guide" description="ROAS (Return on Ad Spend) measures the revenue earned for every dollar spent on advertising. Learn the formula, benchmarks by industry, and how to improve it.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>ROAS (Return on Ad Spend)</h1>
+        <p class="article__lead">A metric that measures the revenue earned for every dollar spent on advertising. ROAS tells you whether your ad budget is working -- and by how much.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>ROAS</em>?</h2>
+        <p>Return on Ad Spend (ROAS) is one of the most important metrics in paid advertising. It answers a simple question: for every dollar you put into ads, how many dollars come back as revenue?</p>
+        <p>Unlike ROI, which accounts for all costs (salaries, tools, overhead), ROAS focuses specifically on ad spend versus revenue. This makes it a clean, actionable metric for evaluating campaign performance and making budget allocation decisions.</p>
+
+        <div class="formula-block">
+          <span class="formula-block__label">Formula</span>
+          <div class="formula-block__formula">ROAS = Revenue from Ads / Cost of Ads</div>
+          <span class="formula-block__example">Example: $40,000 revenue / $10,000 ad spend = 4.0x ROAS</span>
+        </div>
+
+        <h2>What is a <em>good ROAS</em>?</h2>
+        <p>There is no universal answer. A "good" ROAS depends on your industry, margins, customer lifetime value, and business model. A company with 80% gross margins can thrive at 2:1 ROAS, while a low-margin e-commerce brand might need 6:1 or higher to break even.</p>
+        <p>That said, 4:1 is a commonly cited benchmark -- four dollars of revenue for every dollar of ad spend. Use it as a starting point, not a rule.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section benchmarks-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>ROAS <em>benchmarks</em> by industry</h2>
+      </div>
+      <div class="benchmarks-table reveal">
+        <div class="benchmarks-header">
+          <span>Industry</span>
+          <span>Typical ROAS</span>
+          <span>Notes</span>
+        </div>
+        {benchmarks.map(row => (
+          <div class="benchmarks-row">
+            <span class="benchmarks-row__industry">{row.industry}</span>
+            <span class="benchmarks-row__roas">{row.roas}</span>
+            <span class="benchmarks-row__note">{row.note}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section improvements-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>How to <em>improve ROAS</em></h2>
+        <p>ROAS improves two ways: increase revenue per click or decrease cost per click. The best strategies attack both sides simultaneously.</p>
+      </div>
+      <div class="grid-2 improvements-grid">
+        {improvements.map((item, i) => (
+          <div class="card improvement-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>ROAS optimization on <em>autopilot</em></h2>
+        <p>Mavek continuously monitors your ad performance across Google and Meta, then automatically adjusts targeting, creative rotation, bid strategy, and budget allocation to maximize return on every dollar.</p>
+        <p>Instead of logging in weekly to check dashboards and manually shift budgets, Mavek's autonomous system reacts to performance data in real time. Underperforming campaigns get paused. Winning audiences get more budget. Creative fatigue gets caught before ROAS drops.</p>
+        <p>The outcome: consistently higher ROAS without the operational overhead of managing it all yourself.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Stop guessing. Start optimizing."
+    subtitle="Mavek automatically maximizes your ROAS across every ad platform."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="View Pricing"
+    secondaryHref="/pricing"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .formula-block {
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.08);
+    border-left: 3px solid var(--gold-mid);
+    padding: var(--space-lg);
+    margin: var(--space-lg) 0;
+  }
+
+  .formula-block__label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold-dark);
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .formula-block__formula {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: var(--space-xs);
+  }
+
+  .formula-block__example {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    opacity: 0.5;
+  }
+
+  .benchmarks-section {
+    padding-top: 0;
+  }
+
+  .benchmarks-table {
+    max-width: 720px;
+    margin-top: var(--space-md);
+  }
+
+  .benchmarks-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    border-bottom: 2px solid var(--ink);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+  }
+
+  .benchmarks-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    align-items: center;
+  }
+
+  .benchmarks-row__industry {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .benchmarks-row__roas {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--gold-dark);
+    font-weight: 500;
+  }
+
+  .benchmarks-row__note {
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  .improvements-section {
+    padding-top: var(--space-xl);
+  }
+
+  .improvements-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .improvement-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .improvement-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 600px) {
+    .benchmarks-header,
+    .benchmarks-row {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .benchmarks-header span:last-child,
+    .benchmarks-row__note {
+      display: none;
+    }
+  }
+</style>

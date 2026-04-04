@@ -1,0 +1,184 @@
+---
+const plans = [
+  {
+    name: "Starter",
+    price: "$299",
+    period: "/month",
+    description: "For teams of 1-2 managing up to 2 marketing channels.",
+    features: [
+      "2 marketing channels",
+      "Up to 10 campaigns/month",
+      "Basic analytics dashboard",
+      "Email support",
+      "Approval gates",
+      "Brand voice setup",
+    ],
+    cta: "Get Started",
+    highlighted: false,
+  },
+  {
+    name: "Growth",
+    price: "$499",
+    period: "/month",
+    description: "For growing teams running 5+ channels with advanced analytics.",
+    features: [
+      "All 6 marketing channels",
+      "Unlimited campaigns",
+      "Advanced analytics & attribution",
+      "Priority support",
+      "Memory layer (learns & compounds)",
+      "Multi-brand management",
+      "Custom integrations",
+      "Dedicated onboarding",
+    ],
+    cta: "Get Started",
+    highlighted: true,
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    period: "",
+    description: "For agencies and large teams managing 10+ brands.",
+    features: [
+      "Everything in Growth",
+      "White-label execution",
+      "Unlimited brands & clients",
+      "Custom API access",
+      "SLA guarantees",
+      "Dedicated account manager",
+      "Custom model training",
+      "On-premise deployment option",
+    ],
+    cta: "Talk to Sales",
+    highlighted: false,
+  },
+];
+---
+
+<div class="pricing__grid">
+  {plans.map((plan) => (
+    <div class:list={["pricing-card", { "pricing-card--highlighted": plan.highlighted }]}>
+      {plan.highlighted && <div class="pricing-card__badge">Most Popular</div>}
+      <div class="pricing-card__header">
+        <h3>{plan.name}</h3>
+        <div class="pricing-card__price">
+          <span class="pricing-card__amount">{plan.price}</span>
+          {plan.period && <span class="pricing-card__period">{plan.period}</span>}
+        </div>
+        <p class="pricing-card__desc">{plan.description}</p>
+      </div>
+      <ul class="pricing-card__features">
+        {plan.features.map(f => (
+          <li>{f}</li>
+        ))}
+      </ul>
+      <a href="/contact" class:list={["btn", plan.highlighted ? "btn--primary" : "btn--secondary"]}>{plan.cta}</a>
+    </div>
+  ))}
+</div>
+
+<style>
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .pricing-card {
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.08);
+    border-radius: 10px;
+    padding: var(--space-lg);
+    position: relative;
+    transition: all var(--duration) var(--ease);
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(26,26,24,0.08);
+  }
+
+  .pricing-card--highlighted {
+    border-color: var(--gold-mid);
+    box-shadow: 0 0 0 1px var(--gold-mid);
+  }
+
+  .pricing-card__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold-mid);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 0.25rem 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-radius: 4px;
+  }
+
+  .pricing-card__header {
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(26,26,24,0.06);
+  }
+
+  .pricing-card__header h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .pricing-card__amount {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 2.5rem;
+  }
+
+  .pricing-card__period {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+  }
+
+  .pricing-card__desc {
+    font-size: 14px;
+    margin-top: var(--space-xs);
+    color: var(--ink-muted);
+  }
+
+  .pricing-card__features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--space-lg);
+  }
+
+  .pricing-card__features li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  .pricing-card__features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 8px;
+    height: 8px;
+    background: var(--gold-mid);
+    border-radius: 1px;
+  }
+
+  .pricing-card .btn { width: 100%; justify-content: center; }
+
+  @media (max-width: 900px) {
+    .pricing__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  }
+</style>

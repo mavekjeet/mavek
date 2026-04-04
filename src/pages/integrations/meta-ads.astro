@@ -1,0 +1,229 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const connected = [
+  { item: "Facebook & Instagram campaigns", desc: "Full campaign structure across both platforms, including objectives, placements, and delivery settings." },
+  { item: "Audiences", desc: "Custom audiences, lookalikes, saved audiences, and detailed targeting parameters." },
+  { item: "Creative assets", desc: "All ad creatives including images, videos, carousels, and copy variants with performance data." },
+  { item: "Pixel & conversion data", desc: "Event tracking, custom conversions, attribution windows, and funnel data from Meta Pixel." },
+  { item: "Ad sets & budgets", desc: "Campaign and ad set budgets, scheduling, bid strategies, and spend pacing." },
+  { item: "Reporting metrics", desc: "CPM, CPC, CTR, ROAS, frequency, reach, and all standard Meta performance metrics." },
+];
+
+const actions = [
+  { title: "Creative testing at scale", desc: "Mavek generates ad copy and headline variants, pairs them with your visuals, tests combinations systematically, and kills underperformers before they waste budget." },
+  { title: "Audience optimization", desc: "Analyzes performance across audience segments, identifies high-value lookalikes, pauses fatigued audiences, and recommends new targeting angles based on conversion data." },
+  { title: "Budget management", desc: "Dynamically shifts spend between ad sets based on real-time performance. Scales winners and cuts losers without waiting for you to check the dashboard." },
+  { title: "Cross-platform attribution", desc: "When paired with the Google Ads integration, Mavek maps the full customer journey across Meta and Google to show true channel contribution and eliminate double-counting." },
+  { title: "Frequency & fatigue monitoring", desc: "Tracks ad frequency and creative fatigue signals. Automatically rotates creatives or pauses delivery before your audience tunes out." },
+];
+
+const steps = [
+  { step: "01", title: "Connect via OAuth", desc: "Authorize Mavek through Meta Business Suite. Select the ad accounts and pages you want Mavek to manage. Takes 30 seconds." },
+  { step: "02", title: "Set your objectives", desc: "Define your target CPA, ROAS, or growth goals. Mavek aligns its optimization strategy to your metrics." },
+  { step: "03", title: "Mavek takes over", desc: "Mavek begins analyzing your campaigns immediately. First optimizations happen within 24 hours. Major changes require your approval." },
+];
+---
+
+<Layout title="Meta Ads Integration" description="Mavek connects to Meta Ads for creative testing, audience optimization, budget management, and cross-platform attribution across Facebook and Instagram.">
+  <Nav />
+
+  <section class="section light detail-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/integrations" class="back-link reveal">&larr; All Integrations</a>
+      <div class="detail__header reveal">
+        <span class="sec-label">Integration</span>
+        <h1>Meta Ads</h1>
+        <p class="detail__lead">Mavek connects to your Facebook and Instagram ad accounts via Meta's OAuth flow. It reads your campaigns, audiences, and creative performance, then optimizes everything autonomously.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="sec-label">Data Access</span>
+        <h2>What gets <em>connected</em></h2>
+        <p>Mavek syncs these data points from Meta Business Suite to power its optimization engine.</p>
+      </div>
+      <div class="grid-3">
+        {connected.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.06}s; padding: var(--space-md);`}>
+            <h4 class="card__title">{c.item}</h4>
+            <p class="card__desc">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="sec-label">Capabilities</span>
+        <h2>What Mavek <em>does with it</em></h2>
+        <p>Autonomous campaign management across Facebook and Instagram, with full transparency.</p>
+      </div>
+      <div class="actions-list">
+        {actions.map((a, i) => (
+          <div class="action-item reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <div class="action-item__marker"></div>
+            <div class="action-item__content">
+              <h3>{a.title}</h3>
+              <p>{a.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section__header reveal">
+        <span class="sec-label">Setup</span>
+        <h2>Live in <em>three steps</em></h2>
+      </div>
+      <div class="grid-3">
+        {steps.map((s, i) => (
+          <div class="step-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <span class="step-card__number">{s.step}</span>
+            <h4>{s.title}</h4>
+            <p>{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="security-note reveal" style="max-width: 640px;">
+        <span class="sec-label">Data Security</span>
+        <h2>Built on <em>trust</em></h2>
+        <p>Mavek uses Meta's official OAuth 2.0 flow through the Marketing API. Your login credentials are never stored on our servers. All data is encrypted in transit and at rest. You choose exactly which ad accounts and pages Mavek can access.</p>
+        <p>Permissions can be revoked at any time from your Meta Business Settings. Mavek only requests the scopes required for campaign management and reporting.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Connect Meta Ads in 30 seconds."
+    subtitle="Start optimizing your Facebook and Instagram campaigns with autonomous creative testing and audience management."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="View All Integrations"
+    secondaryHref="/integrations"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    display: inline-block;
+    margin-bottom: var(--space-md);
+    transition: opacity var(--duration) var(--ease);
+  }
+  .back-link:hover { opacity: 0.6; }
+
+  .detail__header {
+    max-width: 680px;
+  }
+  .detail__header h1 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+  .detail__lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    opacity: 0.8;
+    max-width: 560px;
+  }
+
+  .section__header {
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto var(--space-xl);
+  }
+  .section__header h2 { margin-top: var(--space-xs); margin-bottom: var(--space-xs); }
+
+  .card__title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #F5F5F7;
+    margin-bottom: 0.25rem;
+  }
+  .card__desc { font-size: 0.85rem; }
+
+  .actions-list {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 2rem;
+  }
+  .actions-list::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(26,26,24,0.08);
+  }
+  .action-item {
+    position: relative;
+    margin-bottom: var(--space-xl);
+  }
+  .action-item:last-child { margin-bottom: 0; }
+  .action-item__marker {
+    position: absolute;
+    left: -2rem;
+    top: 0.4rem;
+    width: 12px;
+    height: 12px;
+    background: var(--gold-mid);
+    margin-left: -5px;
+  }
+  .action-item__content h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+  }
+  .action-item__content p { font-size: 0.95rem; }
+
+  .step-card {
+    padding: var(--space-lg);
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: 10px;
+  }
+  .step-card__number {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--gold-mid);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+  .step-card h4 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xs);
+    color: #F5F5F7;
+  }
+  .step-card p { font-size: 0.9rem; }
+
+  .security-note h2 { margin-top: var(--space-xs); margin-bottom: var(--space-sm); }
+  .security-note p { margin-bottom: var(--space-sm); }
+  .security-note p:last-child { margin-bottom: 0; }
+</style>

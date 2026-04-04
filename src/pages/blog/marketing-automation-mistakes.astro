@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="7 Marketing Automation Mistakes That Kill Your ROI" description="The most common marketing automation mistakes and how to avoid them. Stop wasting budget on broken workflows and underperforming sequences.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">Strategy</span>
+          <span class="post__date">February 21, 2026</span>
+          <span class="post__read">5 min read</span>
+        </div>
+        <h1>7 Marketing Automation Mistakes That Kill Your ROI</h1>
+        <p class="post__lead">Marketing automation promises efficiency and scale. But most implementations fail not because of the technology, but because of how it is deployed.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>Automating <em>Before</em> You Have a Process</h2>
+        <p>The most common mistake is automating a broken process. If your manual follow-up sequence has poor conversion rates, automating it just delivers bad results faster. Before you build any workflow, validate the process manually. Send the emails by hand, track the responses, and iterate until the sequence works. Only then does it make sense to automate.</p>
+
+        <h2><em>Over-Segmenting</em> Too Early</h2>
+        <p>Marketers love segments. The temptation is to build elaborate branching logic from day one, with different paths for every persona, industry, and behavior signal. The problem is that complex segmentation requires large volumes to be statistically meaningful. If you have 500 leads, splitting them into 12 segments means each path has fewer than 50 contacts, far too few to learn from. Start with broad segments and add specificity as volume grows.</p>
+
+        <h2>Ignoring <em>Deliverability</em> and List Hygiene</h2>
+        <p>Automation makes it easy to email your entire database on autopilot. Without proper list hygiene, this erodes sender reputation over time. Bounced emails, spam complaints, and disengaged contacts all signal to email providers that your messages are unwanted. Set up automatic suppression rules for contacts who have not engaged in 90 days and regularly clean your list of invalid addresses.</p>
+
+        <h2><em>Set-It-and-Forget-It</em> Syndrome</h2>
+        <p>The word "automation" implies you can build it once and walk away. In reality, automated workflows need regular auditing. Market conditions change, messaging gets stale, and what worked six months ago may be underperforming today. Schedule quarterly reviews of every active workflow to check performance, update copy, and prune sequences that are no longer relevant.</p>
+        <p>The best teams treat their automation library like a product. They have a backlog of improvements, they ship updates regularly, and they retire workflows that are past their useful life.</p>
+
+        <h2>Measuring Activity Instead of <em>Outcomes</em></h2>
+        <p>Open rates and click rates are easy to measure, which is exactly why teams fixate on them. But these metrics are proxies, not outcomes. The automation mistakes that truly kill ROI are invisible in engagement metrics: sequences that generate clicks but not pipeline, workflows that nurture leads who were never going to buy, and scoring models that pass unqualified leads to sales. Connect your automation platform to your CRM and measure what actually matters: pipeline generated, deals closed, and revenue influenced.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Automation that actually drives revenue." subtitle="Mavek builds marketing systems that measure what matters and optimize for outcomes, not vanity metrics." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

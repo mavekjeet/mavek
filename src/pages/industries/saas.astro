@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const challenges = [
+  { title: "Long Sales Cycles", desc: "B2B SaaS deals take weeks or months. You need content and nurturing at every stage — awareness, consideration, and decision — running simultaneously." },
+  { title: "Technical Audiences", desc: "Your buyers are smart. Generic marketing content gets ignored. You need depth, accuracy, and credibility in every piece." },
+  { title: "Content-Heavy Growth", desc: "SEO, thought leadership, comparison pages, documentation, case studies — SaaS marketing demands a constant stream of high-quality content." },
+  { title: "PLG + Sales-Led Tension", desc: "Balancing product-led growth with outbound sales requires different strategies running in parallel. Most teams can only do one well." },
+];
+
+const solutions = [
+  { title: "Content for Every Funnel Stage", desc: "Top-of-funnel blog posts, mid-funnel comparison guides, bottom-funnel case studies, and product documentation — all produced consistently and on-brand." },
+  { title: "Targeted Outreach to ICPs", desc: "Personalized email sequences reaching the right decision-makers at the right companies. No spray-and-pray — every prospect matches your ideal customer profile." },
+  { title: "Trial-to-Paid Optimization", desc: "In-app messaging, onboarding email sequences, and conversion nudges designed to turn free users into paying customers." },
+  { title: "Product-Led Content", desc: "Feature announcements, integration guides, and use-case content that drives adoption and reduces churn. Content your product team doesn't have time to write." },
+  { title: "Paid Acquisition", desc: "Google Ads and LinkedIn campaigns targeting high-intent keywords and ICP-matched audiences. Budget allocated dynamically based on pipeline impact." },
+  { title: "Performance Analytics", desc: "Pipeline attribution across every channel. See which content, outreach, and ads actually generate revenue — not just traffic." },
+];
+
+const metrics = [
+  { value: "Pipeline Generated", desc: "Track qualified pipeline sourced and influenced by Mavek-driven campaigns across content, outreach, and paid channels." },
+  { value: "Content Velocity", desc: "Publish more high-quality content in a month than most SaaS teams produce in a quarter. No hiring, no bottleneck." },
+  { value: "Lead Quality", desc: "Mavek targets your ICP precisely. Fewer junk leads, more sales-ready opportunities entering your pipeline." },
+];
+---
+
+<Layout title="AI Marketing for SaaS Companies" description="Scale your SaaS marketing without scaling your team. AI-powered content, outreach, and paid acquisition built for B2B SaaS growth.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">SAAS</span>
+        <h1>Scale your SaaS marketing without scaling your team.</h1>
+        <p class="hero__subtitle">Content, outreach, paid ads, and analytics — all running autonomously. Built for the way SaaS companies actually grow.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Get Started <span>&rarr;</span></a>
+          <a href="/industries" class="btn btn--secondary">All Industries</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">SaaS Challenges</span>
+        <h2>SaaS marketing is <em>uniquely demanding</em></h2>
+      </div>
+      <div class="grid-2">
+        {challenges.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{c.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">How Mavek Helps</span>
+        <h2>Your full marketing engine, <em>automated</em></h2>
+      </div>
+      <div class="grid-3">
+        {solutions.map((s, i) => (
+          <div class="card reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{s.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Key Metrics</span>
+        <h2>Metrics that <em>matter</em> for SaaS</h2>
+      </div>
+      <div class="grid-3">
+        {metrics.map((m, i) => (
+          <div class="card card--dark metric-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h3 class="metric-card__value">{m.value}</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{m.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="fit reveal">
+        <span class="sec-label">Built for SaaS</span>
+        <h2>Whether you're PLG, sales-led, or <em>both</em></h2>
+        <div class="grid-2" style="margin-top: var(--space-xl); text-align: left;">
+          <div class="card reveal">
+            <h4>Product-Led Growth</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">SEO content that drives signups, onboarding sequences that activate users, and feature content that reduces churn. Mavek fuels the flywheel.</p>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.1s">
+            <h4>Sales-Led Growth</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Targeted outreach to decision-makers, pipeline-focused Google Ads, and bottom-funnel content that helps your sales team close faster.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="10x your SaaS marketing. Zero new hires."
+    subtitle="Content, outreach, ads, and analytics — all running while you sleep."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section {
+    padding-top: calc(var(--nav-height) + var(--space-3xl));
+    text-align: center;
+  }
+
+  .hero__inner {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  .hero__inner h1 {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__subtitle {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .metric-card__value {
+    color: var(--gold-mid) !important;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  }
+
+  .fit {
+    text-align: center;
+  }
+
+  .fit h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .hero__actions { flex-direction: column; align-items: center; }
+  }
+</style>

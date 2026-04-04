@@ -1,0 +1,227 @@
+---
+---
+
+<form class="contact-form" id="contactForm" novalidate>
+  <div class="form__grid">
+    <div class="form__field">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required aria-required="true" />
+      <span class="form__error" id="nameError">Please enter your name.</span>
+    </div>
+    <div class="form__field">
+      <label for="email">Work Email</label>
+      <input type="email" id="email" name="email" placeholder="you@company.com" required aria-required="true" />
+      <span class="form__error" id="emailError">Please enter a valid email address.</span>
+    </div>
+    <div class="form__field">
+      <label for="company">Company</label>
+      <input type="text" id="company" name="company" placeholder="Company name" />
+    </div>
+    <div class="form__field">
+      <label for="type">I am a...</label>
+      <select id="type" name="type">
+        <option value="">Select one</option>
+        <option value="agency">Marketing Agency</option>
+        <option value="brand">Brand / In-house Team</option>
+        <option value="founder">Founder / Solo Marketer</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form__field form__field--full">
+      <label for="message">Tell us about your marketing needs</label>
+      <textarea id="message" name="message" rows="4" placeholder="What are your biggest marketing challenges?"></textarea>
+    </div>
+  </div>
+  <button type="submit" class="btn btn--primary" id="contactSubmit">Book a Demo <span>&rarr;</span></button>
+</form>
+
+<div class="form__success" id="contactSuccess" hidden>
+  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold-mid)" stroke-width="1.5">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M9 12l2 2 4-4"/>
+  </svg>
+  <h3>Demo request received.</h3>
+  <p>We'll get back to you within 24 hours at the email you provided. Keep an eye on your inbox.</p>
+  <a href="/how-it-works" class="btn btn--secondary">See How It Works</a>
+</div>
+
+<style>
+  .contact-form {
+    max-width: 640px;
+  }
+
+  .form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .form__field--full {
+    grid-column: 1 / -1;
+  }
+
+  .form__field label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 0.4rem;
+    color: var(--gold-dark);
+  }
+
+  .form__field input,
+  .form__field select,
+  .form__field textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.1);
+    border-radius: 10px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .form__field input:focus,
+  .form__field select:focus,
+  .form__field textarea:focus {
+    border-color: var(--gold-mid);
+  }
+
+  .form__field input::placeholder,
+  .form__field textarea::placeholder {
+    color: var(--ink-muted);
+  }
+
+  /* Error states */
+  .form__error {
+    display: none;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 4px;
+  }
+
+  .form__field.has-error input,
+  .form__field.has-error select,
+  .form__field.has-error textarea {
+    border-color: var(--error);
+  }
+
+  .form__field.has-error .form__error {
+    display: block;
+  }
+
+  /* Loading state */
+  .btn.loading {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .form__field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%231A1A18' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  .form__field textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  /* Success state */
+  .form__success {
+    max-width: 480px;
+    text-align: center;
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .form__success h3 {
+    margin: var(--space-sm) 0 var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+
+  .form__success p {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-md);
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 600px) {
+    .form__grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var form = document.getElementById('contactForm');
+    var success = document.getElementById('contactSuccess');
+    if (!form) return;
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function clearErrors() {
+      form.querySelectorAll('.form__field').forEach(function(f) {
+        f.classList.remove('has-error');
+      });
+    }
+
+    function showError(fieldId, errorId) {
+      var field = document.getElementById(fieldId);
+      if (field) {
+        field.closest('.form__field').classList.add('has-error');
+        field.setAttribute('aria-invalid', 'true');
+      }
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      clearErrors();
+
+      var nameVal = document.getElementById('name').value.trim();
+      var emailVal = document.getElementById('email').value.trim();
+      var valid = true;
+
+      if (!nameVal) {
+        showError('name', 'nameError');
+        valid = false;
+      }
+
+      if (!emailVal || !validateEmail(emailVal)) {
+        showError('email', 'emailError');
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      // Show loading state
+      var btn = document.getElementById('contactSubmit');
+      btn.classList.add('loading');
+      btn.textContent = 'Sending...';
+
+      // Simulate submission (replace with actual form handler)
+      setTimeout(function() {
+        form.hidden = true;
+        success.hidden = false;
+      }, 800);
+    });
+
+    // Clear errors on input
+    form.querySelectorAll('input, select, textarea').forEach(function(el) {
+      el.addEventListener('input', function() {
+        this.closest('.form__field').classList.remove('has-error');
+        this.removeAttribute('aria-invalid');
+      });
+    });
+  })();
+</script>

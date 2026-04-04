@@ -1,0 +1,247 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const capabilities = [
+  { title: "Campaign Creation", desc: "Mavek builds search, display, and Performance Max campaigns from scratch — structured around your goals, audience, and budget." },
+  { title: "Bid Optimization", desc: "Real-time bid adjustments across every keyword and audience segment. No wasted spend, no missed opportunities." },
+  { title: "A/B Testing", desc: "Automated ad copy and landing page experiments. Mavek tests variations, picks winners, and iterates continuously." },
+  { title: "Budget Allocation", desc: "Dynamic budget shifting across campaigns based on performance signals. Money flows to what works, automatically." },
+  { title: "Negative Keywords", desc: "Continuous search term analysis to eliminate wasted spend. Mavek catches the irrelevant queries humans miss." },
+  { title: "Performance Reporting", desc: "Clear, actionable reports delivered weekly. Know exactly what happened, why, and what Mavek is doing about it." },
+];
+
+const steps = [
+  { num: "01", title: "Connect Your Account", desc: "Link your Google Ads account via secure OAuth. Mavek audits your existing campaigns and identifies immediate opportunities." },
+  { num: "02", title: "Set Your Goals", desc: "Define your target CPA, ROAS, or conversion volume. Mavek builds a strategy around your specific objectives and constraints." },
+  { num: "03", title: "Mavek Optimizes 24/7", desc: "Campaigns run autonomously with continuous optimization. Bids adjust, budgets shift, and creatives evolve — while you focus on your business." },
+];
+
+const metrics = [
+  { value: "Lower CPA", label: "Cost per acquisition drops as Mavek eliminates waste and focuses spend on high-intent audiences." },
+  { value: "Higher ROAS", label: "Return on ad spend improves through precision targeting, smarter bidding, and continuous experimentation." },
+  { value: "More Conversions", label: "Total conversion volume grows as budgets shift to top-performing campaigns and new opportunities are uncovered." },
+];
+---
+
+<Layout title="AI-Powered Google Ads Management" description="Autonomous Google Ads management that lowers CPA, increases ROAS, and scales conversions — powered by AI, running 24/7.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">USE CASE</span>
+        <h1>AI-Powered Google Ads Management</h1>
+        <p class="hero__subtitle">Stop babysitting campaigns. Mavek manages your Google Ads autonomously — creating, optimizing, and scaling campaigns around the clock while you focus on strategy.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Get Started <span>&rarr;</span></a>
+          <a href="/use-cases" class="btn btn--secondary">All Use Cases</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Capabilities</span>
+        <h2>What Mavek does with <em>your Google Ads</em></h2>
+      </div>
+      <div class="grid-3">
+        {capabilities.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{c.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">How It Works</span>
+        <h2>Three steps to <em>autonomous ads</em></h2>
+      </div>
+      <div class="steps">
+        {steps.map((s, i) => (
+          <div class="step reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <span class="step__num">{s.num}</span>
+            <div class="step__content">
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Results</span>
+        <h2>Results you can <em>expect</em></h2>
+      </div>
+      <div class="grid-3">
+        {metrics.map((m, i) => (
+          <div class="card card--dark metric-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h3 class="metric-card__value">{m.value}</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{m.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="differentiator reveal">
+        <span class="sec-label">Why Mavek</span>
+        <h2>Not another ads tool. An <em>autonomous ads team</em>.</h2>
+        <div class="grid-2" style="margin-top: var(--space-xl);">
+          <div class="card reveal">
+            <h4>Traditional PPC Agency</h4>
+            <ul class="diff-list diff-list--old">
+              <li>Monthly retainer of $2,000-$10,000+</li>
+              <li>Account checked a few times per week</li>
+              <li>Manual bid adjustments and reporting</li>
+              <li>Generic strategies across clients</li>
+            </ul>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.1s; border-color: var(--gold-mid);">
+            <h4>Mavek AI</h4>
+            <ul class="diff-list diff-list--new">
+              <li>Fraction of the cost of an agency</li>
+              <li>24/7 continuous monitoring and optimization</li>
+              <li>Automated bidding, testing, and reporting</li>
+              <li>Strategy built on your specific data</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek manage your Google Ads."
+    subtitle="Lower CPA, higher ROAS, and zero campaign babysitting."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section {
+    padding-top: calc(var(--nav-height) + var(--space-3xl));
+    text-align: center;
+  }
+
+  .hero__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero__inner h1 {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__subtitle {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .steps {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .step {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+  }
+
+  .step__num {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    padding-top: 0.3rem;
+  }
+
+  .step__content h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .metric-card__value {
+    color: var(--gold-mid) !important;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .differentiator {
+    text-align: center;
+  }
+
+  .differentiator h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .diff-list {
+    list-style: none;
+    margin-top: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .diff-list li {
+    font-size: 0.9rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .diff-list--old li::before {
+    content: "\2717";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+
+  .diff-list--new li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--gold-dark);
+  }
+
+  @media (max-width: 600px) {
+    .hero__actions { flex-direction: column; align-items: center; }
+    .step { flex-direction: column; gap: var(--space-sm); }
+  }
+</style>

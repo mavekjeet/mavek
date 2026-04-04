@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="How to Run Content Marketing Without a Full Team" description="A practical playbook for running content marketing with a lean team. Prioritize, systematize, and leverage AI to produce quality content at scale.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">Content</span>
+          <span class="post__date">February 25, 2026</span>
+          <span class="post__read">6 min read</span>
+        </div>
+        <h1>How to Run Content Marketing Without a Full Team</h1>
+        <p class="post__lead">You do not need a head of content, two writers, a designer, and an SEO specialist to run effective content marketing. You need a system.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>The <em>Myth</em> of the Content Team</h2>
+        <p>The conventional wisdom is that content marketing requires a dedicated team. But many of the best B2B content programs are run by one or two people who are ruthlessly focused on what matters. The secret is not more people. It is fewer content types, tighter distribution, and systems that multiply the impact of every piece you publish.</p>
+
+        <h2>Pick Two Formats and <em>Master Them</em></h2>
+        <p>Trying to maintain a blog, podcast, YouTube channel, newsletter, and social presence simultaneously with a small team is a recipe for mediocre output across the board. Choose two formats that align with where your audience already consumes content and go deep. For most B2B companies, that means long-form written content and a newsletter. For B2C, it might be short-form video and email. Master those two before adding a third.</p>
+        <p>The companies that succeed with lean content teams are not doing more. They are doing less, better, and more consistently.</p>
+
+        <h2>Build a <em>Content System</em>, Not a Content Calendar</h2>
+        <p>A content calendar tells you what to publish and when. A content system tells you how to generate ideas, validate them with data, produce them efficiently, distribute them across channels, and measure their impact. The system approach means that even when the person running content is out for a week, the machine keeps running. Document your workflows, templatize your formats, and build repeatable processes for every stage of content production.</p>
+
+        <h2>Use AI as a <em>Force Multiplier</em></h2>
+        <p>AI does not make your content team obsolete. It accelerates the parts of the process that slow your team down. Research, outlining, first drafts, repurposing across formats, and generating social snippets from long-form pieces can all be accelerated dramatically with AI tools. The human layer should focus on strategy, original thinking, editing for voice, and quality control. One person with good AI workflows can produce what used to require three.</p>
+
+        <h2>Distribution Is More Important Than <em>Production</em></h2>
+        <p>Most lean teams spend 90% of their time creating content and 10% distributing it. Flip that ratio. A great piece of content that reaches 100 people generates less impact than a good piece that reaches 10,000. For every hour you spend creating, spend two hours distributing: email it to your list, share it in relevant communities, repurpose it for social, and pitch it for syndication. The best content strategy for a small team is fewer pieces with broader reach.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Content marketing without the headcount." subtitle="Mavek runs your content engine so your team can focus on what they do best." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

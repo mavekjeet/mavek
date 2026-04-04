@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Brand Awareness",
+    description: "Building recognition and visibility through content, thought leadership, social media, PR, and advertising so your target audience knows you exist and what you stand for.",
+  },
+  {
+    title: "Content & Thought Leadership",
+    description: "Creating high-value content -- research reports, frameworks, guides, webinars -- that positions your brand as an authority and educates your market before they are ready to buy.",
+  },
+  {
+    title: "Multi-Channel Campaigns",
+    description: "Coordinating campaigns across paid media, organic search, email, social, events, and partnerships to create multiple touchpoints that move prospects toward engagement.",
+  },
+  {
+    title: "Lead Nurturing",
+    description: "Building relationships with prospects over time through targeted content and communication sequences that match their stage in the buyer journey.",
+  },
+  {
+    title: "Pipeline Acceleration",
+    description: "Using targeted tactics -- account-based marketing, personalized outreach, retargeting -- to speed up the journey from engaged prospect to qualified opportunity.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Lead Generation", slug: "lead-generation" },
+  { term: "Marketing Funnel", slug: "marketing-funnel" },
+  { term: "Content Marketing", slug: "content-marketing" },
+  { term: "Marketing Qualified Lead (MQL)", slug: "marketing-qualified-lead" },
+];
+---
+
+<Layout title="What Is Demand Generation? Definition & Guide" description="Demand generation creates awareness and interest in your products or services. Learn what it is, its key components, and how Mavek automates demand gen across channels.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Demand Generation</h1>
+        <p class="article__lead">The full spectrum of marketing programs that create awareness, build interest, and drive demand for your products or services -- from first impression through to qualified pipeline.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>demand generation</em>?</h2>
+        <p>Demand generation is a marketing strategy focused on creating awareness and interest in your products or services across your entire target market. Unlike lead generation, which focuses on capturing contact information from people already interested, demand generation creates the interest in the first place.</p>
+        <p>Think of it this way: lead generation is fishing with a hook. Demand generation is seeding the lake. Before you can capture leads, people need to know your category exists, understand the problem you solve, and recognize your brand as a credible option. Demand generation handles all of that groundwork.</p>
+        <p>The discipline spans the full buyer journey from awareness through consideration to decision. It includes brand building, content marketing, social media, events, paid advertising, and thought leadership -- all coordinated to move your target market from unaware to engaged to ready-to-buy. Done well, demand generation fills the top of your funnel with high-quality prospects who already understand your value proposition.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>demand generation</em></h2>
+        <p>Demand generation is a coordinated effort across multiple disciplines and channels.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Demand generation that <em>runs itself</em></h2>
+        <p>Demand generation is one of the hardest marketing disciplines to execute well because it requires sustained, coordinated effort across many channels. Most companies either do it sporadically -- a blog post here, a webinar there -- or hire large teams to manage the complexity. Neither approach scales efficiently.</p>
+        <p>Mavek approaches demand generation as a system, not a set of isolated tactics. It creates awareness through SEO-optimized content and paid campaigns, builds authority through thought leadership articles, nurtures interest through email sequences and retargeting, and accelerates pipeline through personalized outreach -- all running continuously and coordinated by a single intelligence layer.</p>
+        <p>The result is a demand generation engine that operates 24/7 without the overhead of a large marketing team. Mavek identifies which content topics resonate, which channels drive the most engagement, and which messages move prospects forward -- then doubles down on what works and adjusts what does not. The machine gets smarter with every cycle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Build demand without building a team"
+    subtitle="Mavek creates awareness, nurtures interest, and drives pipeline autonomously."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

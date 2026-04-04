@@ -1,0 +1,183 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const challenges = [
+  { title: "Local Competition", desc: "Every agent in your market is bidding on the same keywords and farming the same neighborhoods. Standing out requires precision, not just more spend." },
+  { title: "Lead Quality", desc: "Volume without quality is a time sink. Most real estate leads never convert — you need systems that filter for intent and readiness." },
+  { title: "Seasonal Demand", desc: "Spring and summer surge, winter slows down. Your marketing needs to adapt spend and strategy to match market rhythms." },
+  { title: "Multi-Channel Presence", desc: "Buyers start on Google, scroll through social, check reviews, and visit your site. You need to show up consistently across every touchpoint." },
+];
+
+const solutions = [
+  { title: "Local SEO", desc: "Dominate your neighborhoods in search results. Mavek builds location-specific content, optimizes your Google Business Profile, and targets the searches buyers and sellers actually make." },
+  { title: "Targeted Google Ads", desc: "Hyper-local campaigns targeting high-intent keywords like 'homes for sale in [your area]' and 'best realtor near me'. Budget flows to the searches that generate actual leads." },
+  { title: "Listing Content", desc: "Property descriptions, neighborhood guides, market reports, and blog posts that establish your expertise and rank in local search results." },
+  { title: "Lead Nurturing Sequences", desc: "Automated email and follow-up sequences that keep you top of mind with prospects who aren't ready to transact today but will be in weeks or months." },
+  { title: "Market Reports", desc: "Automated monthly market reports for your farm areas. Position yourself as the local expert with data-driven insights delivered to your prospect list." },
+  { title: "Review & Reputation", desc: "Automated review requests after closings and reputation monitoring. Build the social proof that makes prospects choose you over the competition." },
+];
+
+const metrics = [
+  { value: "Qualified Leads", desc: "More leads from buyers and sellers who are ready to transact — not tire-kickers and automated form fills." },
+  { value: "Local Rankings", desc: "Dominate the Google results for your neighborhoods and property types. Be the agent buyers and sellers find first." },
+  { value: "Lower Cost Per Lead", desc: "Precise targeting and continuous optimization drive down the cost of every lead in your pipeline." },
+];
+---
+
+<Layout title="AI Marketing for Real Estate" description="Fill your pipeline with qualified leads. AI-powered local SEO, Google Ads, listing content, and lead nurturing for real estate professionals.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">REAL ESTATE</span>
+        <h1>Fill your pipeline with qualified leads.</h1>
+        <p class="hero__subtitle">Local SEO, targeted Google Ads, listing content, and automated lead nurturing — running 24/7 so you can focus on closing deals.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Get Started <span>&rarr;</span></a>
+          <a href="/industries" class="btn btn--secondary">All Industries</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Real Estate Challenges</span>
+        <h2>Marketing in a <em>hyper-local, hyper-competitive</em> market</h2>
+      </div>
+      <div class="grid-2">
+        {challenges.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{c.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">How Mavek Helps</span>
+        <h2>Your <em>marketing machine</em> for real estate</h2>
+      </div>
+      <div class="grid-3">
+        {solutions.map((s, i) => (
+          <div class="card reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{s.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Results</span>
+        <h2>Metrics that <em>matter</em> for real estate</h2>
+      </div>
+      <div class="grid-3">
+        {metrics.map((m, i) => (
+          <div class="card card--dark metric-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h3 class="metric-card__value">{m.value}</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{m.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="fit reveal">
+        <span class="sec-label">Built for Real Estate</span>
+        <h2>Whether you're an agent, team, or <em>brokerage</em></h2>
+        <div class="grid-3" style="margin-top: var(--space-xl); text-align: left;">
+          <div class="card reveal">
+            <h4>Solo Agents</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Get the marketing power of a full team without the overhead. Mavek handles everything while you focus on showings and closings.</p>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.1s">
+            <h4>Teams</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Scale your marketing across agents and farm areas without hiring a dedicated marketing coordinator. One platform, multiple campaigns.</p>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.2s">
+            <h4>Brokerages</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Provide marketing support to your agents at scale. Consistent branding, local targeting, and lead generation under one roof.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="More leads. Less busywork. Close more deals."
+    subtitle="AI-powered marketing built for real estate professionals."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section {
+    padding-top: calc(var(--nav-height) + var(--space-3xl));
+    text-align: center;
+  }
+
+  .hero__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero__inner h1 {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__subtitle {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .metric-card__value {
+    color: var(--gold-mid) !important;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  }
+
+  .fit {
+    text-align: center;
+  }
+
+  .fit h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .hero__actions { flex-direction: column; align-items: center; }
+  }
+</style>

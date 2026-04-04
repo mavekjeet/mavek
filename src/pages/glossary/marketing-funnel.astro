@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Top of Funnel (TOFU)",
+    description: "The awareness stage where you attract a broad audience through content marketing, social media, SEO, and paid ads -- introducing your brand to people who do not know you yet.",
+  },
+  {
+    title: "Middle of Funnel (MOFU)",
+    description: "The consideration stage where leads evaluate solutions through case studies, webinars, comparison guides, and email nurture sequences that build trust and demonstrate expertise.",
+  },
+  {
+    title: "Bottom of Funnel (BOFU)",
+    description: "The decision stage where qualified prospects convert through free trials, demos, consultations, and targeted offers that remove final objections and drive action.",
+  },
+  {
+    title: "Post-Purchase",
+    description: "The retention and advocacy stage where customers are onboarded, supported, and engaged to drive repeat purchases, upsells, referrals, and long-term loyalty.",
+  },
+  {
+    title: "Funnel Analytics",
+    description: "Measuring conversion rates between stages, identifying drop-off points, and calculating the cost and time to move prospects through each phase of the journey.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Full-Funnel Marketing", slug: "full-funnel-marketing" },
+  { term: "Lead Generation", slug: "lead-generation" },
+  { term: "Conversion Rate Optimization (CRO)", slug: "conversion-rate-optimization" },
+  { term: "Marketing Qualified Lead (MQL)", slug: "marketing-qualified-lead" },
+];
+---
+
+<Layout title="What Is a Marketing Funnel? Definition & Guide" description="A marketing funnel maps the customer journey from awareness to purchase. Learn what it is, its key stages, and how Mavek manages the full funnel autonomously.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Marketing Funnel</h1>
+        <p class="article__lead">A model that maps the customer journey from first awareness of your brand through to purchase and beyond -- helping you understand where prospects are and what they need at each stage.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is a <em>marketing funnel</em>?</h2>
+        <p>A marketing funnel is a framework that visualizes the stages a prospect goes through on their way to becoming a customer. It is called a funnel because many people enter at the top (awareness), but only a fraction make it to the bottom (purchase). The goal of marketing is to widen the top, reduce leakage in the middle, and increase conversions at the bottom.</p>
+        <p>The funnel concept helps marketers plan the right content and campaigns for each stage. A blog post that introduces a concept belongs at the top. A comparison guide that evaluates options belongs in the middle. A free trial offer that drives action belongs at the bottom. Without this structure, marketing efforts become scattered and disconnected.</p>
+        <p>Modern funnels extend beyond the initial purchase. The most effective growth strategies include post-purchase stages -- onboarding, retention, and advocacy -- because keeping an existing customer is far more profitable than acquiring a new one. A complete funnel treats the first sale as the beginning of a relationship, not the end of a campaign.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key stages of the <em>marketing funnel</em></h2>
+        <p>Each stage requires different content, channels, and tactics to move prospects forward.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Full-funnel execution in a <em>single system</em></h2>
+        <p>The biggest challenge with funnel marketing is coordination. Different teams own different stages, different tools manage different channels, and the handoffs between stages are where most leads get lost. A prospect who reads a great blog post but never receives a follow-up email is a funnel failure.</p>
+        <p>Mavek manages every stage of the funnel as a single coordinated system. It creates awareness through SEO content and paid ads, nurtures leads through email sequences and retargeting, drives conversions through optimized landing pages and targeted offers, and retains customers through ongoing engagement -- all connected by a shared memory layer that knows where every prospect is in the journey.</p>
+        <p>This unified approach eliminates the gaps between stages. When a prospect moves from reading a blog post to visiting the pricing page, Mavek detects the shift in intent and adjusts messaging in real time -- across ads, email, and on-site experience. No handoffs, no dropped leads, no disconnected campaigns.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Own the full funnel with one platform"
+    subtitle="Mavek manages every stage from awareness to advocacy, autonomously."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

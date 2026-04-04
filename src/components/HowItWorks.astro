@@ -1,0 +1,152 @@
+---
+interface Props {
+  dark?: boolean;
+  extended?: boolean;
+}
+const { dark = false, extended = false } = Astro.props;
+
+const steps = [
+  {
+    number: "01",
+    title: "Connect",
+    short: "Link your ad accounts, analytics, CRM, and content platforms. Mavek integrates with your existing stack in minutes.",
+    extended: "Mavek connects directly to Google Ads, Meta, GA4, Search Console, Apollo.io, HubSpot, Ahrefs, and more. One-click OAuth — no engineering required. Your data stays encrypted and never leaves your control.",
+  },
+  {
+    number: "02",
+    title: "Brief",
+    short: "Tell Mavek your goals, brand voice, and target audience. It learns your business context — not generic templates.",
+    extended: "Share your brand guidelines, past campaigns, ideal customer profiles, and goals. Mavek's memory layer absorbs this context and references it in every decision — from ad copy tone to keyword selection to outreach messaging.",
+  },
+  {
+    number: "03",
+    title: "Approve",
+    short: "Review and approve campaigns, content, and strategies before anything goes live. You stay in control.",
+    extended: "Nothing goes live without your sign-off. Mavek surfaces proposed campaigns, content pieces, and strategic recommendations through approval gates. Review, edit, or reject — your call. When you trust the output, set auto-approve for low-risk tasks.",
+  },
+  {
+    number: "04",
+    title: "Scale",
+    short: "Mavek executes 24/7 — optimizing, learning, and compounding results across every channel simultaneously.",
+    extended: "Watch your marketing compound. Mavek continuously optimizes bids, rotates creative, nurtures leads, publishes content, and surfaces insights. One person managing Mavek delivers the output of a 10-person team.",
+  },
+];
+---
+
+<section class:list={["hiw", dark ? "dark" : "light"]}>
+  <div class="container">
+    <div class="hiw__header reveal">
+      <span class="sec-label">How It Works</span>
+      <h2>Four steps to <em>10x</em></h2>
+    </div>
+    <div class="hiw__steps">
+      {steps.map((step, i) => (
+        <div class="hiw__step reveal" style={`transition-delay: ${i * 0.1}s`}>
+          <div class="hiw__number">{step.number}</div>
+          <div class="hiw__content">
+            <h3>{step.title}</h3>
+            <p>{extended ? step.extended : step.short}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hiw__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .hiw__header h2 {
+    margin-top: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+
+  .hiw__header h2 em {
+    font-style: italic;
+  }
+
+  .light .hiw__header h2 em {
+    color: var(--gold-dark);
+  }
+
+  .dark .hiw__header h2 em {
+    color: var(--gold-bright);
+  }
+
+  .sec-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .light .sec-label {
+    color: var(--gold-dark);
+  }
+
+  .dark .sec-label {
+    color: var(--gold-mid);
+  }
+
+  .hiw__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .hiw__step {
+    position: relative;
+  }
+
+  .hiw__number {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .light .hiw__number {
+    color: var(--gold-dark);
+  }
+
+  .dark .hiw__number {
+    color: var(--gold-mid);
+  }
+
+  .hiw__content h3 {
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+
+  .dark .hiw__content h3 {
+    color: var(--cream);
+  }
+
+  .hiw__content p {
+    font-size: 14px;
+  }
+
+  .light .hiw__content p {
+    color: var(--ink-soft);
+  }
+
+  .dark .hiw__content p {
+    color: var(--cream-60);
+  }
+
+  @media (max-width: 900px) {
+    .hiw__steps { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .hiw__steps { grid-template-columns: 1fr; }
+  }
+</style>

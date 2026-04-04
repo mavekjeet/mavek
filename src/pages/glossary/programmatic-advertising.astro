@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Real-Time Bidding (RTB)",
+    description: "An auction-based system where ad impressions are bought and sold in milliseconds as a page loads, allowing advertisers to bid on individual impressions based on user data.",
+  },
+  {
+    title: "Demand-Side Platform (DSP)",
+    description: "The software advertisers use to buy ad inventory programmatically, manage campaigns, set targeting parameters, and optimize bids across multiple ad exchanges.",
+  },
+  {
+    title: "Audience Targeting",
+    description: "Using first-party and third-party data to target specific audiences based on demographics, interests, behaviors, and intent signals across the open web.",
+  },
+  {
+    title: "Ad Creative Optimization",
+    description: "Dynamically adjusting ad creative elements -- images, headlines, CTAs -- based on audience segment, context, and performance data to maximize engagement.",
+  },
+  {
+    title: "Cross-Channel Orchestration",
+    description: "Coordinating programmatic campaigns across display, video, mobile, connected TV, and audio to deliver a consistent brand experience regardless of where the user is.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Pay-Per-Click (PPC) Advertising", slug: "pay-per-click" },
+  { term: "Retargeting", slug: "retargeting" },
+  { term: "ROAS (Return on Ad Spend)", slug: "roas" },
+  { term: "Marketing Attribution", slug: "marketing-attribution" },
+];
+---
+
+<Layout title="What Is Programmatic Advertising? Definition & Guide" description="Programmatic advertising uses automated technology to buy and sell digital ad space. Learn what it is, its key components, and how Mavek handles ad buying autonomously.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Programmatic Advertising</h1>
+        <p class="article__lead">The automated buying and selling of digital advertising space using software and algorithms -- replacing manual insertion orders and negotiations with real-time, data-driven decisions.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>programmatic advertising</em>?</h2>
+        <p>Programmatic advertising is the use of automated technology to buy digital ad space. Instead of negotiating directly with publishers, making phone calls, and sending insertion orders, programmatic platforms use algorithms to purchase ad impressions in real time, targeting specific audiences at optimal prices.</p>
+        <p>The process happens in milliseconds. When a user loads a web page, information about the page and the user is sent to an ad exchange. Advertisers' systems evaluate whether this impression matches their targeting criteria and submit a bid. The highest bidder wins, and their ad appears -- all before the page finishes loading.</p>
+        <p>Programmatic advertising now accounts for the vast majority of digital display ad spending. Its appeal lies in efficiency and precision: instead of buying ad space on specific sites and hoping the right people see it, programmatic lets you target individuals across the entire web based on their demographics, behavior, interests, and intent.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>programmatic advertising</em></h2>
+        <p>The programmatic ecosystem involves several interconnected technologies and strategies.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Intelligent ad buying <em>without the complexity</em></h2>
+        <p>Programmatic advertising is powerful but notoriously complex. DSPs have steep learning curves, campaign setup requires expertise in targeting, bidding, and creative optimization, and ongoing management demands constant attention to budgets, performance, and fraud prevention.</p>
+        <p>Mavek abstracts away the complexity while preserving the power. It manages ad campaigns across Google and Meta programmatically, handling audience targeting, bid optimization, creative testing, and budget allocation autonomously. You describe your goals and audience -- Mavek handles the technical execution.</p>
+        <p>The key advantage is integration. Standalone programmatic tools optimize ads in isolation. Mavek connects ad performance to your full marketing picture -- content engagement, email conversions, SEO traffic, and CRM data. This cross-channel intelligence means ad targeting gets smarter over time, informed by data that siloed ad platforms never see.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Smarter ad buying, zero complexity"
+    subtitle="Mavek handles programmatic campaigns across platforms, optimizing in real time."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

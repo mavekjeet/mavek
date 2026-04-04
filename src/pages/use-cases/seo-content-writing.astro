@@ -1,0 +1,274 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const capabilities = [
+  { title: "Keyword Research", desc: "Mavek mines your Search Console data and analytics to find the keywords your audience actually uses — not vanity terms from generic tools." },
+  { title: "Content Strategy", desc: "A prioritized content calendar built around search opportunity, business value, and competitive gaps. Updated continuously as data changes." },
+  { title: "Long-Form Article Writing", desc: "Well-researched, original articles that match your brand voice. Structured for both readers and search engines." },
+  { title: "On-Page Optimization", desc: "Title tags, meta descriptions, headers, schema markup, and internal linking — optimized on every page, every time." },
+  { title: "Internal Linking", desc: "Automated internal link suggestions that strengthen topical authority and guide users through your content ecosystem." },
+  { title: "Performance Tracking", desc: "Rankings, traffic, and conversions tracked per article. Mavek identifies underperformers and refreshes them automatically." },
+];
+
+const qualityPoints = [
+  { title: "No AI Slop", desc: "Every piece is reviewed against quality benchmarks. Generic filler, hallucinated stats, and robotic phrasing get caught and removed before anything ships." },
+  { title: "Your Brand Voice", desc: "Mavek learns your tone, style, and terminology from existing content. Articles sound like your team wrote them, not a chatbot." },
+  { title: "Data-Driven Topics", desc: "Topics are chosen based on your analytics — what your audience searches for, what converts, what has gaps. No guesswork." },
+];
+---
+
+<Layout title="AI SEO & Content Writing" description="Autonomous SEO content powered by your analytics. Keyword research, content strategy, and long-form writing that ranks — without the AI slop.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">USE CASE</span>
+        <h1>AI SEO & Content Writing</h1>
+        <p class="hero__subtitle">Content that ranks, reads well, and converts — written autonomously using your analytics data, not generic keyword scrapers.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Get Started <span>&rarr;</span></a>
+          <a href="/use-cases" class="btn btn--secondary">All Use Cases</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Capabilities</span>
+        <h2>What Mavek does for <em>your SEO</em></h2>
+      </div>
+      <div class="grid-3">
+        {capabilities.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{c.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Quality Promise</span>
+        <h2>Content you're <em>proud to publish</em></h2>
+      </div>
+      <div class="grid-3">
+        {qualityPoints.map((q, i) => (
+          <div class="card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h4>{q.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{q.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="differentiator reveal">
+        <span class="sec-label">Key Differentiator</span>
+        <h2>Mavek uses <em>YOUR analytics</em> to choose topics</h2>
+        <p class="diff__subtitle">Most AI content tools pull from the same generic keyword databases. They produce the same articles everyone else is writing. Mavek takes a fundamentally different approach.</p>
+        <div class="diff__grid grid-2">
+          <div class="card card--dark reveal">
+            <h4 style="color: var(--muted);">Generic AI Content Tools</h4>
+            <ul class="diff-list diff-list--old">
+              <li>Pull from shared keyword databases</li>
+              <li>Same suggestions for every business</li>
+              <li>No connection to your actual performance</li>
+              <li>Topics based on volume alone</li>
+              <li>Content sounds like every competitor</li>
+            </ul>
+          </div>
+          <div class="card card--dark reveal" style="transition-delay: 0.1s; border-color: var(--gold-mid);">
+            <h4 style="color: #F5F5F7;">Mavek</h4>
+            <ul class="diff-list diff-list--new">
+              <li>Mines your Search Console and GA data</li>
+              <li>Finds opportunities unique to your site</li>
+              <li>Prioritizes by conversion potential</li>
+              <li>Balances volume, difficulty, and business value</li>
+              <li>Content matches your proven brand voice</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="process reveal">
+        <span class="sec-label">The Process</span>
+        <h2>How Mavek <em>creates content</em></h2>
+        <div class="process__steps">
+          <div class="process__step reveal">
+            <span class="process__num">01</span>
+            <div>
+              <h4>Analyze your data</h4>
+              <p>Mavek audits your Search Console, Google Analytics, and existing content to map what's working, what's not, and where the gaps are.</p>
+            </div>
+          </div>
+          <div class="process__step reveal" style="transition-delay: 0.1s">
+            <span class="process__num">02</span>
+            <div>
+              <h4>Build your content calendar</h4>
+              <p>Topics are prioritized by search opportunity, competitive gap, and business impact. You approve the calendar before anything is written.</p>
+            </div>
+          </div>
+          <div class="process__step reveal" style="transition-delay: 0.2s">
+            <span class="process__num">03</span>
+            <div>
+              <h4>Write and optimize</h4>
+              <p>Each article is researched, written in your brand voice, and optimized for on-page SEO — then submitted for your review before publishing.</p>
+            </div>
+          </div>
+          <div class="process__step reveal" style="transition-delay: 0.3s">
+            <span class="process__num">04</span>
+            <div>
+              <h4>Track and refresh</h4>
+              <p>Mavek monitors rankings and traffic per article. Underperformers are flagged and refreshed automatically to keep content climbing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Content that ranks. Written by AI that understands your data."
+    subtitle="No AI slop. No generic keyword lists. Just results."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section {
+    padding-top: calc(var(--nav-height) + var(--space-3xl));
+    text-align: center;
+  }
+
+  .hero__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero__inner h1 {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__subtitle {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .differentiator {
+    text-align: center;
+  }
+
+  .differentiator h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .diff__subtitle {
+    max-width: 600px;
+    margin: var(--space-sm) auto var(--space-xl);
+  }
+
+  .diff-list {
+    list-style: none;
+    margin-top: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: left;
+  }
+
+  .diff-list li {
+    font-size: 0.9rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .diff-list--old li::before {
+    content: "\2717";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+
+  .diff-list--new li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--gold-mid);
+  }
+
+  .process {
+    text-align: center;
+  }
+
+  .process h2 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-xl);
+  }
+
+  .process__steps {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .process__step {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .process__num {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    padding-top: 0.3rem;
+  }
+
+  .process__step h4 {
+    margin-bottom: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .hero__actions { flex-direction: column; align-items: center; }
+    .process__step { flex-direction: column; gap: var(--space-sm); }
+  }
+</style>

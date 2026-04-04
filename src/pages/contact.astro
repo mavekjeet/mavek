@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Get Started" description="Book a demo and see how Mavek can 10x your marketing.">
+  <Nav />
+
+  <section class="light contact-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="contact__grid">
+        <div class="contact__info reveal">
+          <span class="sec-label">Get Started</span>
+          <h1>Let's make your marketing <em>10x.</em></h1>
+          <p class="contact__lead">Book a demo and see Mavek in action. We'll walk you through how it works for your specific use case — whether you're an agency or a brand.</p>
+
+          <div class="contact__details">
+            <div class="contact__detail">
+              <span class="contact__detail-label">Email</span>
+              <a href="mailto:hello@mavek.io">hello@mavek.io</a>
+            </div>
+            <div class="contact__detail">
+              <span class="contact__detail-label">Response Time</span>
+              <span>Within 24 hours</span>
+            </div>
+          </div>
+
+          <div class="contact__checklist">
+            <h4>What happens next:</h4>
+            <ul>
+              <li>We review your needs and set up a personalized demo</li>
+              <li>Walk through Mavek with your actual use case</li>
+              <li>Get started with a 14-day free trial — no credit card required</li>
+            </ul>
+          </div>
+        </div>
+        <div class="contact__form reveal" style="transition-delay: 0.1s">
+          <ContactForm />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="faq-mini__header reveal">
+        <span class="sec-label">Quick Answers</span>
+        <h2>Before <em>you reach out</em></h2>
+      </div>
+      <div class="faq-mini__grid grid-3">
+        {[
+          { q: "Is there a free trial?", a: "Yes. 14 days, full access, no credit card required." },
+          { q: "How long is onboarding?", a: "Most teams are fully operational within 48 hours of connecting their tools." },
+          { q: "Do I need technical skills?", a: "No. If you can write a marketing brief, you can use Mavek." },
+          { q: "What if I'm not satisfied?", a: "Cancel anytime. No contracts, no lock-in, no hard feelings." },
+          { q: "Is my data safe?", a: "End-to-end encryption. Your data never leaves your control. SOC 2 compliant." },
+          { q: "Which plan is right for me?", a: "Start with Growth for most use cases. Enterprise for agencies managing 10+ clients." },
+        ].map((faq, i) => (
+          <div class="faq-mini-card card card--dark reveal" style={`transition-delay: ${i * 0.05}s; padding: 1.5rem;`}>
+            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; color: #F5F5F7; margin-bottom: 0.5rem;">{faq.q}</h4>
+            <p style="font-size: 0.85rem;">{faq.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .contact__info h1 { margin: var(--space-xs) 0 var(--space-md); }
+  .contact__lead { font-size: 1.1rem; margin-bottom: var(--space-xl); }
+
+  .contact__details {
+    display: flex;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+  }
+
+  .contact__detail-label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .contact__detail a,
+  .contact__detail span {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .contact__checklist h4 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .contact__checklist ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .contact__checklist li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+
+  .contact__checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 8px;
+    height: 8px;
+    background: var(--gold-mid);
+  }
+
+  .faq-mini__header { text-align: center; margin-bottom: var(--space-xl); }
+  .faq-mini__header h2 { margin-top: var(--space-xs); }
+
+  @media (max-width: 900px) {
+    .contact__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+  }
+</style>

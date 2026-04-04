@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "On-Page SEO",
+    description: "Optimizing individual pages through keyword targeting, meta tags, header structure, internal linking, and content quality to rank for relevant search queries.",
+  },
+  {
+    title: "Technical SEO",
+    description: "Ensuring search engines can crawl and index your site efficiently -- covering site speed, mobile responsiveness, structured data, sitemaps, and Core Web Vitals.",
+  },
+  {
+    title: "Content Strategy",
+    description: "Planning and creating high-quality content that targets search intent, fills content gaps, and builds topical authority in your niche.",
+  },
+  {
+    title: "Link Building",
+    description: "Earning backlinks from authoritative websites to increase your domain authority and signal to search engines that your content is trustworthy and valuable.",
+  },
+  {
+    title: "Local SEO",
+    description: "Optimizing your online presence for location-based searches, including Google Business Profile management, local citations, and geo-targeted content.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Content Marketing", slug: "content-marketing" },
+  { term: "ROAS (Return on Ad Spend)", slug: "roas" },
+  { term: "Lead Generation", slug: "lead-generation" },
+  { term: "Marketing ROI", slug: "marketing-roi" },
+];
+---
+
+<Layout title="What Is Search Engine Optimization (SEO)? Definition & Guide" description="SEO is the practice of optimizing your website to rank higher in search engine results. Learn what it is, its key components, and how Mavek automates SEO end to end.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Search Engine Optimization (SEO)</h1>
+        <p class="article__lead">The practice of optimizing your website and content to rank higher in organic search results -- driving free, high-intent traffic from people actively looking for what you offer.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>SEO</em>?</h2>
+        <p>Search engine optimization is the process of improving your website so it appears higher in unpaid search results on engines like Google and Bing. When someone searches for a term related to your business, SEO determines whether they find your site on page one or page ten.</p>
+        <p>SEO works by aligning your content and technical infrastructure with the factors search engines use to rank pages. These factors include content relevance, page authority, user experience, site speed, and hundreds of other signals that algorithms weigh when deciding which pages deserve top positions.</p>
+        <p>Unlike paid advertising, organic search traffic does not stop when you pause your budget. A well-optimized page can rank for years, generating compounding returns on the initial investment. This makes SEO one of the highest-ROI marketing channels available -- though it requires patience, consistency, and ongoing effort to maintain results.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>SEO</em></h2>
+        <p>Modern SEO spans content, technology, and authority. Here are the core pillars.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>SEO that executes, <em>not just reports</em></h2>
+        <p>Most SEO tools give you data: keyword rankings, backlink profiles, technical audits. But they leave the execution -- writing content, fixing issues, building links -- entirely to you and your team.</p>
+        <p>Mavek closes the gap between insight and action. It performs keyword research, identifies content opportunities, writes SEO-optimized articles in your brand voice, handles on-page optimization, and monitors rankings -- then adjusts the strategy based on what is working. All of this runs autonomously with approval gates before publication.</p>
+        <p>Because Mavek also manages your paid campaigns and content distribution, it can coordinate SEO with your broader marketing strategy. If a blog post is gaining organic traction, Mavek can amplify it with paid promotion. If a paid campaign reveals high-converting keywords, Mavek can create organic content to capture that traffic for free. The cross-channel intelligence makes every channel work harder.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Rank higher without hiring an SEO team"
+    subtitle="Mavek handles keyword research, content creation, and optimization autonomously."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

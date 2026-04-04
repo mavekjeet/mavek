@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Pixel-Based Retargeting",
+    description: "A JavaScript pixel on your site tracks visitors and adds them to retargeting audiences, allowing you to show ads to people who visited specific pages.",
+  },
+  {
+    title: "List-Based Retargeting",
+    description: "Upload email lists to ad platforms to target known contacts with tailored ads -- useful for re-engaging leads who have gone cold or promoting to existing customers.",
+  },
+  {
+    title: "Dynamic Retargeting",
+    description: "Automatically show ads featuring the exact products or services a visitor viewed on your site, creating highly personalized and relevant ad experiences.",
+  },
+  {
+    title: "Cross-Platform Retargeting",
+    description: "Reach the same visitor across multiple platforms -- Google Display, Meta, LinkedIn -- ensuring your brand stays visible regardless of where they browse.",
+  },
+  {
+    title: "Frequency Capping",
+    description: "Limiting how often retargeting ads are shown to prevent ad fatigue and brand damage from over-exposure -- because there is a fine line between persistent and annoying.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Pay-Per-Click (PPC) Advertising", slug: "pay-per-click" },
+  { term: "Programmatic Advertising", slug: "programmatic-advertising" },
+  { term: "Conversion Rate Optimization (CRO)", slug: "conversion-rate-optimization" },
+  { term: "Marketing Funnel", slug: "marketing-funnel" },
+];
+---
+
+<Layout title="What Is Retargeting? Definition & Guide" description="Retargeting shows ads to people who have already visited your site or engaged with your brand. Learn what it is, how it works, and how Mavek automates retargeting campaigns.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Retargeting</h1>
+        <p class="article__lead">A digital advertising strategy that shows targeted ads to people who have already visited your website or engaged with your brand -- bringing warm prospects back to convert.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>retargeting</em>?</h2>
+        <p>Retargeting, sometimes called remarketing, is the practice of showing ads to people who have already interacted with your website, app, or content. When someone visits your site but leaves without converting, retargeting follows them across the web with relevant ads that encourage them to come back and complete the action.</p>
+        <p>The logic is straightforward: most people do not convert on their first visit. Studies consistently show that fewer than three percent of first-time visitors take action. Retargeting keeps your brand visible during the consideration phase, reminding prospects of what they were interested in and giving them another reason to return.</p>
+        <p>Retargeting is one of the highest-ROI advertising tactics because it targets people who have already expressed interest. These are warm audiences who know your brand, have seen your offering, and just need another nudge. The cost per acquisition from retargeting is typically far lower than from cold prospecting campaigns.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>retargeting</em></h2>
+        <p>Effective retargeting goes beyond simple pixel-and-pray tactics.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Retargeting that thinks, <em>not just follows</em></h2>
+        <p>Basic retargeting shows the same ad to everyone who visited your site. That works, but it is blunt. A visitor who spent thirty seconds on your homepage needs a different message than someone who read three blog posts and viewed your pricing page. Most teams lack the time to build segmented retargeting campaigns with tailored creative for each stage.</p>
+        <p>Mavek builds intelligent retargeting automatically. It segments your visitors based on behavior -- pages visited, content consumed, time on site, and funnel stage -- then creates tailored ad sequences for each segment. A top-of-funnel visitor sees educational content. A pricing-page visitor sees a case study and a trial offer.</p>
+        <p>Because Mavek manages your entire marketing stack, retargeting does not operate in a silo. When a retargeted visitor returns and enters their email, Mavek automatically transitions them from ad-based nurture to email-based nurture. The cross-channel handoff is seamless, and every touchpoint builds on the last.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Bring visitors back automatically"
+    subtitle="Mavek builds and manages intelligent retargeting campaigns across every platform."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

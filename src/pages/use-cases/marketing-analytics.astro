@@ -1,0 +1,253 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const capabilities = [
+  { title: "Unified Dashboard", desc: "Every channel, every metric, one view. No more tab-switching between GA, ad platforms, and spreadsheets to piece together the picture." },
+  { title: "Attribution Modeling", desc: "Understand which channels and touchpoints actually drive conversions. Multi-touch attribution that goes beyond last-click." },
+  { title: "ROI Tracking", desc: "See real return on every dollar spent — across paid ads, content, outreach, and organic. Apples-to-apples comparison across channels." },
+  { title: "Automated Reporting", desc: "Weekly and monthly reports generated and delivered automatically. No analyst time wasted on pulling data and building decks." },
+  { title: "Actionable Insights", desc: "Not just charts — recommendations. Mavek surfaces what's working, what's not, and what to do about it." },
+  { title: "Anomaly Detection", desc: "Traffic drops, cost spikes, and conversion changes are flagged in real time. Know about problems before they become crises." },
+];
+
+const integrations = [
+  { name: "Google Analytics", desc: "Traffic, behavior, and conversion data" },
+  { name: "Search Console", desc: "Organic search performance and indexing" },
+  { name: "Google Ads", desc: "Campaign spend, clicks, and conversions" },
+  { name: "Meta Ads", desc: "Facebook and Instagram ad performance" },
+  { name: "LinkedIn Ads", desc: "B2B ad performance and engagement" },
+  { name: "HubSpot", desc: "CRM pipeline and deal attribution" },
+  { name: "Apollo.io", desc: "Outreach engagement and reply rates" },
+  { name: "Ahrefs", desc: "SEO rankings and backlink health" },
+];
+---
+
+<Layout title="Unified Marketing Analytics" description="Cross-channel marketing analytics with unified dashboards, attribution modeling, ROI tracking, and automated reporting — all in one platform.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">USE CASE</span>
+        <h1>Unified Marketing Analytics</h1>
+        <p class="hero__subtitle">Stop guessing which channels drive results. Mavek unifies your marketing data into a single dashboard with real attribution, automated reports, and actionable insights.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Get Started <span>&rarr;</span></a>
+          <a href="/use-cases" class="btn btn--secondary">All Use Cases</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Capabilities</span>
+        <h2>What Mavek does with <em>your data</em></h2>
+      </div>
+      <div class="grid-3">
+        {capabilities.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{c.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">The Problem</span>
+        <h2>Your data is <em>scattered</em>. Your insights are too.</h2>
+      </div>
+      <div class="problem__grid grid-2">
+        <div class="card reveal">
+          <h4>Without Mavek</h4>
+          <ul class="diff-list diff-list--old">
+            <li>Data spread across 5-10 different platforms</li>
+            <li>Hours spent pulling and combining reports</li>
+            <li>Last-click attribution hides the full picture</li>
+            <li>Decisions based on incomplete data</li>
+            <li>Reporting always lags behind by weeks</li>
+          </ul>
+        </div>
+        <div class="card reveal" style="transition-delay: 0.1s; border-color: var(--gold-mid);">
+          <h4>With Mavek</h4>
+          <ul class="diff-list diff-list--new">
+            <li>Everything in one unified dashboard</li>
+            <li>Reports generated and delivered automatically</li>
+            <li>Multi-touch attribution shows the real story</li>
+            <li>Decisions backed by cross-channel data</li>
+            <li>Real-time anomaly detection catches issues early</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Integrations</span>
+        <h2>Connects to your <em>entire stack</em></h2>
+        <p class="section-header__sub">One-click OAuth. No engineering. Your data stays encrypted and under your control.</p>
+      </div>
+      <div class="grid-4">
+        {integrations.map((int, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.05}s; padding: 1.5rem;`}>
+            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; color: #F5F5F7; margin-bottom: 0.25rem;">{int.name}</h4>
+            <p style="font-size: 0.8rem;">{int.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">How It Works</span>
+        <h2>From data chaos to <em>clarity</em></h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="step__num">01</span>
+          <div class="step__content">
+            <h3>Connect your platforms</h3>
+            <p>Link your ad accounts, analytics, CRM, and SEO tools via secure OAuth. Mavek starts pulling data immediately.</p>
+          </div>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.1s">
+          <span class="step__num">02</span>
+          <div class="step__content">
+            <h3>Mavek builds your dashboard</h3>
+            <p>Data is unified, cleaned, and organized into a single dashboard. Attribution models are built from your actual conversion paths.</p>
+          </div>
+        </div>
+        <div class="step reveal" style="transition-delay: 0.2s">
+          <span class="step__num">03</span>
+          <div class="step__content">
+            <h3>Get insights, not just data</h3>
+            <p>Mavek surfaces what matters — which channels drive ROI, where to increase spend, and what to cut. Reports delivered automatically.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="See your marketing clearly for the first time."
+    subtitle="Unified data. Real attribution. Actionable insights."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section {
+    padding-top: calc(var(--nav-height) + var(--space-3xl));
+    text-align: center;
+  }
+
+  .hero__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .hero__inner h1 {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__subtitle {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .section-header__sub {
+    max-width: 550px;
+    margin: var(--space-sm) auto 0;
+  }
+
+  .steps {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .step {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+  }
+
+  .step__num {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    padding-top: 0.3rem;
+  }
+
+  .step__content h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .diff-list {
+    list-style: none;
+    margin-top: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .diff-list li {
+    font-size: 0.9rem;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .diff-list--old li::before {
+    content: "\2717";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+
+  .diff-list--new li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--gold-dark);
+  }
+
+  @media (max-width: 600px) {
+    .hero__actions { flex-direction: column; align-items: center; }
+    .step { flex-direction: column; gap: var(--space-sm); }
+  }
+</style>

@@ -1,0 +1,185 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const allPosts = [
+  { slug: "ai-marketing-tools-comparison", title: "AI Marketing Tools Compared: What Actually Works in 2026", excerpt: "Every marketing tool claims to be AI-powered now. Most are wrappers around the same APIs. Here is what actually delivers measurable results.", date: "March 28, 2026", category: "Tools", readTime: "8 min read" },
+  { slug: "future-of-ai-marketing", title: "The Future of AI in Marketing: Beyond Copilots to Autonomous Execution", excerpt: "Most AI tools are glorified assistants. The next wave is autonomous marketing systems that think, decide, and execute -- with human oversight built in.", date: "March 28, 2026", category: "Industry", readTime: "6 min read" },
+  { slug: "marketing-budget-allocation", title: "How to Allocate Your Marketing Budget for Maximum ROI", excerpt: "Most marketing budgets are set by gut feeling and last year's numbers. Here is a framework for allocating spend based on where each dollar generates the highest return.", date: "March 24, 2026", category: "Strategy", readTime: "7 min read" },
+  { slug: "agency-efficiency-playbook", title: "The Agency Efficiency Playbook: How to 10x Output Without 10x Headcount", excerpt: "The agencies winning right now aren't hiring faster -- they're leveraging AI execution layers to deliver more campaigns per person.", date: "March 21, 2026", category: "For Agencies", readTime: "8 min read" },
+  { slug: "full-funnel-marketing-guide", title: "Full-Funnel Marketing: The Complete Framework", excerpt: "Most marketing teams optimize individual channels in isolation. The companies that win build a connected system where every stage reinforces the others.", date: "March 20, 2026", category: "Strategy", readTime: "9 min read" },
+  { slug: "brand-voice-ai", title: "How to Maintain Brand Voice When Using AI for Marketing", excerpt: "AI makes content production faster. But speed without brand consistency erodes trust. Here is how to get both.", date: "March 17, 2026", category: "Content", readTime: "5 min read" },
+  { slug: "data-driven-growth", title: "Why Your Marketing Data Is Your Biggest Competitive Advantage", excerpt: "Generic AI tools use generic data and produce generic results. The brands pulling ahead are using their own data to fuel autonomous marketing.", date: "March 14, 2026", category: "Strategy", readTime: "5 min read" },
+  { slug: "roas-optimization-guide", title: "ROAS Optimization: A Practical Guide for 2026", excerpt: "Most ROAS optimization advice focuses on bid strategies. The biggest gains come from places most advertisers never look.", date: "March 14, 2026", category: "Paid Ads", readTime: "8 min read" },
+  { slug: "scaling-agency-without-hiring", title: "How to Scale Your Agency Without Hiring", excerpt: "The traditional agency model ties revenue directly to headcount. Here is how forward-thinking agencies are breaking that link.", date: "March 12, 2026", category: "For Agencies", readTime: "7 min read" },
+  { slug: "marketing-metrics-that-matter", title: "The Only 5 Marketing Metrics That Actually Matter", excerpt: "Your marketing dashboard has 47 metrics. Your CEO cares about 5. Here is how to focus on the numbers that predict growth.", date: "March 9, 2026", category: "Analytics", readTime: "6 min read" },
+  { slug: "no-ai-slop", title: "No AI Slop: Why Quality Over Volume Is the Only Sustainable Strategy", excerpt: "The content arms race is producing diminishing returns. Smart marketers are choosing fewer, better assets over noise.", date: "March 7, 2026", category: "Content", readTime: "4 min read" },
+  { slug: "email-outreach-personalization", title: "Why Generic Email Outreach Is Dead (And What Works Now)", excerpt: "Reply rates on cold email have dropped below 1%. The reason is not that email doesn't work. It's that most email is spam.", date: "March 5, 2026", category: "Outreach", readTime: "5 min read" },
+  { slug: "seo-for-saas", title: "SaaS SEO Strategy: From Zero to 100K Organic Visitors", excerpt: "Organic search is the highest-leverage channel for SaaS. Here is the exact framework for sustainable growth.", date: "March 2, 2026", category: "SEO", readTime: "9 min read" },
+  { slug: "content-marketing-without-team", title: "How to Run Content Marketing Without a Full Team", excerpt: "You don't need a head of content, two writers, a designer, and an SEO specialist. You need a system.", date: "February 25, 2026", category: "Content", readTime: "6 min read" },
+  { slug: "marketing-automation-mistakes", title: "7 Marketing Automation Mistakes That Kill Your ROI", excerpt: "Marketing automation promises efficiency and scale. But most implementations fail because of how they're deployed.", date: "February 21, 2026", category: "Strategy", readTime: "5 min read" },
+  { slug: "ai-google-ads-guide", title: "The Complete Guide to AI-Powered Google Ads Management", excerpt: "Google's own AI features are powerful but limited. Here is how to layer external AI for results Smart Bidding alone can't deliver.", date: "February 17, 2026", category: "Guides", readTime: "10 min read" },
+  { slug: "agency-vs-inhouse", title: "Agency vs In-House Marketing: The Real Cost Comparison", excerpt: "Everyone compares agency retainers to employee salaries. Almost no one accounts for the hidden costs that determine which model wins.", date: "February 12, 2026", category: "For Brands", readTime: "6 min read" },
+  { slug: "best-marketing-stack-startups", title: "The Best Marketing Stack for Startups in 2026", excerpt: "Most startups pay for 12 marketing tools and use 3. Here is the lean stack that scales from pre-seed to Series B.", date: "February 7, 2026", category: "Tools", readTime: "8 min read" },
+  { slug: "how-to-reduce-cac", title: "How to Reduce Customer Acquisition Cost in 2026", excerpt: "CAC has increased 60% across most B2B verticals in the last three years. Here are the levers that bring it back down.", date: "February 3, 2026", category: "Strategy", readTime: "7 min read" },
+];
+
+const POSTS_PER_PAGE = 10;
+const currentPage = 1;
+const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+const posts = allPosts.slice(0, POSTS_PER_PAGE);
+const hasNextPage = currentPage < totalPages;
+---
+
+<Layout title="Blog" description="Insights on AI marketing, autonomous execution, and the future of growth.">
+  <Nav />
+
+  <section class="light blog-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="blog__header reveal">
+        <span class="sec-label">Blog</span>
+        <h1>Insights for the <em>10x marketer</em></h1>
+        <p class="sub">Thinking on autonomous marketing, AI execution, and building growth machines.</p>
+      </div>
+
+      <div class="blog__grid">
+        {posts.map((post, i) => (
+          <article class="blog-card reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <div class="photo-placeholder" style="aspect-ratio: 16/9; margin-bottom: 1.5rem;">
+              <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+            </div>
+            <div class="blog-card__meta">
+              <span class="blog-card__category">{post.category}</span>
+              <span class="blog-card__date">{post.date}</span>
+            </div>
+            <h3 class="blog-card__title">
+              <a href={`/blog/${post.slug}`}>{post.title}</a>
+            </h3>
+            <p class="blog-card__excerpt">{post.excerpt}</p>
+            <div class="blog-card__footer">
+              <span class="blog-card__read-time">{post.readTime}</span>
+              <a href={`/blog/${post.slug}`} class="blog-card__link">Read &rarr;</a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <nav class="blog__pagination" aria-label="Blog pagination">
+        <span class="blog__page-info">Page {currentPage} of {totalPages}</span>
+        <div class="blog__page-links">
+          {hasNextPage && (
+            <a href="/blog/page/2" class="btn btn--secondary" rel="next">Older posts &rarr;</a>
+          )}
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .blog__header {
+    max-width: 560px;
+    margin-bottom: var(--space-xl);
+  }
+  .blog__header h1 { margin-top: 8px; margin-bottom: 8px; }
+
+  .blog__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .blog-card {
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+    padding-bottom: 32px;
+  }
+
+  .blog-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .blog-card__category {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold-dark);
+    background: rgba(138, 112, 40, 0.08);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+
+  .blog-card__date {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  .blog-card__title {
+    margin-bottom: 8px;
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
+  .blog-card__title a { transition: color 0.2s ease; }
+  .blog-card__title a:hover { color: var(--gold-dark); }
+
+  .blog-card__excerpt {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+
+  .blog-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .blog-card__read-time {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  .blog-card__link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: color 0.2s ease;
+  }
+
+  .blog-card__link:hover { color: var(--gold-dark); }
+
+  .blog__pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(26,26,24,0.08);
+  }
+
+  .blog__page-info {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 1px;
+  }
+
+  .blog__page-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .blog__grid { grid-template-columns: 1fr; }
+  }
+</style>

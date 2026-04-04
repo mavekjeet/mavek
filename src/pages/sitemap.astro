@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Sitemap" description="Complete sitemap of all Mavek pages.">
+  <Nav />
+  <section style="padding-top: calc(var(--nav-height) + var(--space-3xl));" class="light">
+    <div class="container">
+      <span class="sec-label">Navigation</span>
+      <h1 class="sitemap__title"><em>Sitemap</em></h1>
+      <p class="sitemap__subtitle">A complete index of every page on Mavek.</p>
+
+      <div class="sitemap__grid">
+
+        <div class="sitemap__group">
+          <h3 class="sitemap__heading">Main Pages</h3>
+          <ul class="sitemap__list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/for-agencies">For Agencies</a></li>
+            <li><a href="/for-brands">For Brands</a></li>
+            <li><a href="/how-it-works">How It Works</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/case-studies">Case Studies</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/changelog">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap__group">
+          <h3 class="sitemap__heading">Free Tools</h3>
+          <ul class="sitemap__list">
+            <li><a href="/tools">All Tools</a></li>
+            <li><a href="/tools/marketing-roi-calculator">Marketing ROI Calculator</a></li>
+            <li><a href="/tools/utm-builder">UTM Builder</a></li>
+            <li><a href="/tools/headline-analyzer">Headline Analyzer</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap__group">
+          <h3 class="sitemap__heading">Compare</h3>
+          <ul class="sitemap__list">
+            <li><a href="/compare">All Comparisons</a></li>
+            <li><a href="/compare/mavek-vs-jasper">Mavek vs Jasper</a></li>
+            <li><a href="/compare/mavek-vs-hiring-agency">Mavek vs Hiring an Agency</a></li>
+            <li><a href="/compare/mavek-vs-marketing-team">Mavek vs Marketing Team</a></li>
+            <li><a href="/compare/mavek-vs-hubspot">Mavek vs HubSpot</a></li>
+            <li><a href="/compare/mavek-vs-marketo">Mavek vs Marketo</a></li>
+            <li><a href="/compare/mavek-vs-semrush">Mavek vs Semrush</a></li>
+            <li><a href="/compare/mavek-vs-freelancers">Mavek vs Freelancers</a></li>
+            <li><a href="/compare/mavek-vs-chatgpt">Mavek vs ChatGPT</a></li>
+            <li><a href="/compare/mavek-vs-zapier">Mavek vs Zapier</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap__group">
+          <h3 class="sitemap__heading">Use Cases</h3>
+          <ul class="sitemap__list">
+            <li><a href="/use-cases">All Use Cases</a></li>
+            <li><a href="/use-cases/google-ads-management">Google Ads Management</a></li>
+            <li><a href="/use-cases/seo-content-writing">SEO Content Writing</a></li>
+            <li><a href="/use-cases/email-outreach">Email Outreach</a></li>
+            <li><a href="/use-cases/marketing-analytics">Marketing Analytics</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap__group">
+          <h3 class="sitemap__heading">Industries</h3>
+          <ul class="sitemap__list">
+            <li><a href="/industries">All Industries</a></li>
+            <li><a href="/industries/saas">SaaS</a></li>
+            <li><a href="/industries/ecommerce">Ecommerce</a></li>
+            <li><a href="/industries/real-estate">Real Estate</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap__group">
+          <h3 class="sitemap__heading">Integrations</h3>
+          <ul class="sitemap__list">
+            <li><a href="/integrations">All Integrations</a></li>
+            <li><a href="/integrations/google-ads">Google Ads</a></li>
+            <li><a href="/integrations/meta-ads">Meta Ads</a></li>
+            <li><a href="/integrations/hubspot">HubSpot</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap__group sitemap__group--wide">
+          <h3 class="sitemap__heading">Blog</h3>
+          <ul class="sitemap__list sitemap__list--multi">
+            <li><a href="/blog">All Posts</a></li>
+            <li><a href="/blog/future-of-ai-marketing">Future of AI Marketing</a></li>
+            <li><a href="/blog/agency-efficiency-playbook">Agency Efficiency Playbook</a></li>
+            <li><a href="/blog/data-driven-growth">Data-Driven Growth</a></li>
+            <li><a href="/blog/no-ai-slop">No AI Slop</a></li>
+            <li><a href="/blog/how-to-reduce-cac">How to Reduce CAC</a></li>
+            <li><a href="/blog/best-marketing-stack-startups">Best Marketing Stack for Startups</a></li>
+            <li><a href="/blog/agency-vs-inhouse">Agency vs In-House</a></li>
+            <li><a href="/blog/ai-google-ads-guide">AI Google Ads Guide</a></li>
+            <li><a href="/blog/marketing-automation-mistakes">Marketing Automation Mistakes</a></li>
+            <li><a href="/blog/content-marketing-without-team">Content Marketing Without a Team</a></li>
+            <li><a href="/blog/seo-for-saas">SEO for SaaS</a></li>
+            <li><a href="/blog/email-outreach-personalization">Email Outreach Personalization</a></li>
+            <li><a href="/blog/marketing-metrics-that-matter">Marketing Metrics That Matter</a></li>
+            <li><a href="/blog/scaling-agency-without-hiring">Scaling Agency Without Hiring</a></li>
+            <li><a href="/blog/roas-optimization-guide">ROAS Optimization Guide</a></li>
+            <li><a href="/blog/brand-voice-ai">Brand Voice AI</a></li>
+            <li><a href="/blog/full-funnel-marketing-guide">Full-Funnel Marketing Guide</a></li>
+            <li><a href="/blog/marketing-budget-allocation">Marketing Budget Allocation</a></li>
+            <li><a href="/blog/ai-marketing-tools-comparison">AI Marketing Tools Comparison</a></li>
+          </ul>
+        </div>
+
+        <div class="sitemap__group sitemap__group--wide">
+          <h3 class="sitemap__heading">Glossary</h3>
+          <ul class="sitemap__list sitemap__list--multi">
+            <li><a href="/glossary">All Terms</a></li>
+            <li><a href="/glossary/marketing-automation">Marketing Automation</a></li>
+            <li><a href="/glossary/full-funnel-marketing">Full-Funnel Marketing</a></li>
+            <li><a href="/glossary/roas">ROAS</a></li>
+            <li><a href="/glossary/customer-acquisition-cost">Customer Acquisition Cost</a></li>
+            <li><a href="/glossary/marketing-attribution">Marketing Attribution</a></li>
+            <li><a href="/glossary/lead-generation">Lead Generation</a></li>
+            <li><a href="/glossary/content-marketing">Content Marketing</a></li>
+            <li><a href="/glossary/conversion-rate-optimization">Conversion Rate Optimization</a></li>
+            <li><a href="/glossary/search-engine-optimization">Search Engine Optimization</a></li>
+            <li><a href="/glossary/pay-per-click">Pay Per Click</a></li>
+            <li><a href="/glossary/email-marketing">Email Marketing</a></li>
+            <li><a href="/glossary/customer-lifetime-value">Customer Lifetime Value</a></li>
+            <li><a href="/glossary/a-b-testing">A/B Testing</a></li>
+            <li><a href="/glossary/marketing-funnel">Marketing Funnel</a></li>
+            <li><a href="/glossary/brand-voice">Brand Voice</a></li>
+            <li><a href="/glossary/retargeting">Retargeting</a></li>
+            <li><a href="/glossary/marketing-roi">Marketing ROI</a></li>
+            <li><a href="/glossary/programmatic-advertising">Programmatic Advertising</a></li>
+            <li><a href="/glossary/demand-generation">Demand Generation</a></li>
+            <li><a href="/glossary/marketing-qualified-lead">Marketing Qualified Lead</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <Footer />
+</Layout>
+
+<style>
+  .sitemap__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--ink);
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-xs);
+  }
+
+  .sitemap__subtitle {
+    font-size: 1.1rem;
+    color: rgba(26, 26, 24, 0.55);
+    margin-bottom: var(--space-2xl);
+    max-width: 440px;
+  }
+
+  .sitemap__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .sitemap__group {
+    padding-bottom: var(--space-lg);
+  }
+
+  .sitemap__group--wide {
+    grid-column: 1 / -1;
+  }
+
+  .sitemap__heading {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+  }
+
+  .sitemap__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sitemap__list--multi {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem 2rem;
+  }
+
+  .sitemap__list li a {
+    font-size: 0.95rem;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: inline-block;
+  }
+
+  .sitemap__list li a:hover {
+    color: var(--gold-dark);
+  }
+
+  @media (max-width: 900px) {
+    .sitemap__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .sitemap__list--multi {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .sitemap__grid {
+      grid-template-columns: 1fr;
+    }
+    .sitemap__list--multi {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

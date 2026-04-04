@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Why Generic Email Outreach Is Dead (And What Works Now)" description="Generic cold email is dead. Learn the new personalization strategies that actually get responses in 2026 and how to implement them at scale.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">Outreach</span>
+          <span class="post__date">March 5, 2026</span>
+          <span class="post__read">5 min read</span>
+        </div>
+        <h1>Why Generic Email Outreach Is Dead (And What Works Now)</h1>
+        <p class="post__lead">Reply rates on cold email have dropped below 1% for most B2B companies. The reason is not that email does not work. It is that most email is indistinguishable from spam.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>The Death of <em>Spray and Pray</em></h2>
+        <p>The playbook that worked in 2020 is dead. Buying a list of 10,000 contacts, writing a generic template, and blasting it out no longer generates meaningful pipeline. Email providers have gotten smarter at filtering mass outreach, recipients have gotten better at ignoring it, and regulations have made it riskier. The companies still running this playbook are burning their domain reputation and getting diminishing returns with every send.</p>
+
+        <h2>What Modern Personalization <em>Actually Means</em></h2>
+        <p>Personalization is not inserting someone's first name and company into a template. Real personalization means referencing something specific about the recipient's situation that demonstrates you understand their challenges. This could be a recent funding announcement, a job posting that signals a strategic priority, a piece of content they published, or a technology change visible on their website. The goal is to make the recipient feel like the email was written specifically for them, because it was.</p>
+
+        <h2>Scaling <em>Personalization</em> with AI</h2>
+        <p>The challenge with deep personalization is that it traditionally requires significant research time per prospect. AI changes this equation dramatically. Modern AI tools can analyze a prospect's LinkedIn activity, company news, tech stack, and job postings to generate personalized opening lines in seconds. This makes it feasible to send genuinely personalized emails to hundreds of prospects per week rather than dozens.</p>
+        <p>The key is using AI for research and draft generation while keeping a human in the loop for quality control. A human should review every email before it sends to catch hallucinations, tone mismatches, and factual errors. The result is personalization that feels handcrafted at a scale that feels automated.</p>
+
+        <h2>The New <em>Outreach Stack</em></h2>
+        <p>Effective outreach in 2026 requires three layers. First, intent data that tells you who is actively in-market for your solution. Second, enrichment tools that give you the context needed for personalization. Third, a sending platform that manages deliverability, sequencing, and reply handling. The best results come from smaller, highly targeted lists sent through properly warmed domains with genuine personalization, not from maximizing volume.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Outreach that gets replies." subtitle="Mavek builds personalized outreach systems that turn cold prospects into warm conversations." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

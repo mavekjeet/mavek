@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import LogoBar from '../components/LogoBar.astro';
+import Features from '../components/Features.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="How It Works" description="Four steps to 10x your marketing. Connect, Brief, Approve, Scale.">
+  <Nav />
+
+  <Hero
+    eyebrow="HOW IT WORKS"
+    title="From setup to 10x in four steps."
+    highlight="four steps"
+    subtitle="No complex onboarding. No engineering required. Connect your tools, share your goals, and let Mavek handle the rest."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="View Pricing"
+    secondaryHref="/pricing"
+  />
+
+  <HowItWorks extended={true} />
+
+  <section class="dark">
+    <div class="container">
+      <div class="integrations__header reveal">
+        <span class="sec-label">Integrations</span>
+        <h2>Connects to <em>your entire stack</em></h2>
+        <p>One-click OAuth. No engineering required. Your data stays encrypted and under your control.</p>
+      </div>
+      <div class="integrations__grid grid-4">
+        {[
+          { name: "Google Ads", desc: "Campaign management & bid optimization" },
+          { name: "Meta Ads", desc: "Facebook & Instagram ad automation" },
+          { name: "Google Analytics", desc: "Traffic analysis & attribution" },
+          { name: "Search Console", desc: "SEO performance & indexing" },
+          { name: "Apollo.io", desc: "Lead generation & outreach" },
+          { name: "Ahrefs", desc: "Keyword research & backlinks" },
+          { name: "HubSpot", desc: "CRM & pipeline management" },
+          { name: "LinkedIn", desc: "Professional network & ads" },
+        ].map((int, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.05}s; padding: 1.5rem;`}>
+            <h4 style="font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; color: #F5F5F7; margin-bottom: 0.25rem;">{int.name}</h4>
+            <p style="font-size: 0.8rem;">{int.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Features />
+
+  <CTASection
+    title="Ready to get started?"
+    subtitle="Connect your tools and see results in days, not months."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .integrations__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .integrations__header h2 { margin-top: var(--space-xs); margin-bottom: var(--space-xs); }
+</style>

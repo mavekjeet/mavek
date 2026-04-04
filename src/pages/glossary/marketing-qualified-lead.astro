@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Lead Scoring",
+    description: "Assigning numerical values to leads based on their actions and attributes -- page visits, content downloads, email engagement, job title, company size -- to rank buying intent.",
+  },
+  {
+    title: "Behavioral Triggers",
+    description: "Identifying specific actions that signal purchase intent -- visiting the pricing page, requesting a demo, downloading a case study -- that move a lead from marketing to sales.",
+  },
+  {
+    title: "Demographic Fit",
+    description: "Evaluating whether a lead matches your ideal customer profile based on firmographic data like industry, company size, revenue, and role to ensure sales talks to the right people.",
+  },
+  {
+    title: "Engagement Thresholds",
+    description: "Setting minimum engagement levels -- number of touchpoints, content consumed, email interactions -- that a lead must reach before qualifying as marketing-ready.",
+  },
+  {
+    title: "Sales-Marketing Alignment",
+    description: "The shared definition between marketing and sales of what constitutes a qualified lead, ensuring both teams agree on criteria before handoff to prevent wasted time and friction.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Lead Generation", slug: "lead-generation" },
+  { term: "Marketing Funnel", slug: "marketing-funnel" },
+  { term: "Demand Generation", slug: "demand-generation" },
+  { term: "Customer Acquisition Cost (CAC)", slug: "customer-acquisition-cost" },
+];
+---
+
+<Layout title="What Is a Marketing Qualified Lead (MQL)? Definition & Guide" description="An MQL is a lead that marketing has identified as more likely to become a customer. Learn what it is, how to define one, and how Mavek automates lead qualification.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Marketing Qualified Lead (MQL)</h1>
+        <p class="article__lead">A lead that has been evaluated by the marketing team and deemed more likely to become a customer compared to other leads -- based on engagement level, demographic fit, and buying signals.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is a <em>marketing qualified lead</em>?</h2>
+        <p>A marketing qualified lead is a prospect who has demonstrated enough interest and fit to be worth passing to the sales team. Not every lead is worth a sales call -- an MQL is a lead that has crossed a threshold of engagement and profile match that suggests genuine purchase intent.</p>
+        <p>The concept exists to solve a common problem: marketing generates a flood of leads, but many are unqualified -- tire-kickers, students, competitors, or people who downloaded one piece of content and never returned. Without a qualification layer, sales wastes time on leads that will never convert, and the relationship between marketing and sales deteriorates.</p>
+        <p>Defining what makes a lead "qualified" varies by company. For some, it is a specific action like requesting a demo. For others, it is a combination of behavioral signals -- visiting certain pages, engaging with multiple emails, and matching a target company profile. The key is that marketing and sales agree on the criteria before leads start flowing.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>MQL definition</em></h2>
+        <p>Defining and identifying MQLs requires clear criteria and consistent measurement.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Smarter lead qualification, <em>automatically</em></h2>
+        <p>Traditional lead qualification is a manual process. Someone sets up scoring rules, assigns point values to actions, and hopes the thresholds are calibrated correctly. But most scoring models are set once and rarely updated, meaning they quickly drift from reality as markets and buyer behavior change.</p>
+        <p>Mavek qualifies leads dynamically based on real engagement data across every channel. Because it manages your ads, content, email, and analytics in a single system, Mavek sees the complete picture of how each lead interacts with your brand -- not just the fragments visible to individual tools.</p>
+        <p>The result is more accurate qualification that adapts over time. Mavek learns which combinations of behaviors and attributes actually predict conversion -- not just which ones you guessed would matter when setting up a scoring model. Leads that reach qualification thresholds are flagged and routed to sales with full context: every page visited, every email opened, every ad clicked, and every piece of content consumed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Qualify leads with data, not guesswork"
+    subtitle="Mavek scores and qualifies leads automatically based on real cross-channel engagement."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

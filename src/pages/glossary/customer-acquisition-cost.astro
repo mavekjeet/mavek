@@ -1,0 +1,287 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const strategies = [
+  {
+    title: "Improve conversion rates",
+    description: "You are already paying for traffic. Converting a higher percentage of visitors into customers lowers your effective CAC without increasing spend.",
+  },
+  {
+    title: "Invest in organic channels",
+    description: "SEO, content marketing, and referral programs compound over time. They require upfront effort but dramatically reduce CAC at scale compared to paid-only strategies.",
+  },
+  {
+    title: "Refine audience targeting",
+    description: "Stop paying to reach people who will never buy. Tighter targeting on paid platforms eliminates wasted spend and brings CAC down.",
+  },
+  {
+    title: "Shorten the sales cycle",
+    description: "Every extra day in the funnel costs money. Better lead nurturing, clearer pricing, and reduced friction all accelerate conversion and reduce CAC.",
+  },
+  {
+    title: "Increase customer lifetime value",
+    description: "Higher LTV means you can afford a higher CAC while staying profitable. Upsells, cross-sells, and retention programs shift the math in your favor.",
+  },
+  {
+    title: "Automate the operational overhead",
+    description: "Every hour a marketer spends on manual tasks is a hidden cost folded into CAC. Automation platforms reduce headcount and tool costs per customer acquired.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Marketing Automation", slug: "marketing-automation" },
+  { term: "Full-Funnel Marketing", slug: "full-funnel-marketing" },
+  { term: "ROAS (Return on Ad Spend)", slug: "roas" },
+  { term: "Marketing Attribution", slug: "marketing-attribution" },
+];
+---
+
+<Layout title="What Is Customer Acquisition Cost (CAC)? Definition & Guide" description="Customer Acquisition Cost (CAC) is the total cost of acquiring a new customer. Learn the formula, why it matters, and practical strategies to reduce it.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Customer Acquisition Cost (CAC)</h1>
+        <p class="article__lead">The total cost of acquiring a new customer -- including ad spend, salaries, tools, and overhead -- divided by the number of new customers gained in that period.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>CAC</em>?</h2>
+        <p>Customer Acquisition Cost (CAC) measures how much your business spends to win each new customer. It includes every cost associated with marketing and sales: ad budgets, team salaries, software subscriptions, agency fees, content production, and any other expense that contributes to generating new business.</p>
+        <p>CAC is a vital health metric. If it costs you more to acquire a customer than that customer is worth, the business loses money on every sale. Tracking CAC over time reveals whether your growth is efficient and sustainable or whether rising costs are eroding margins.</p>
+
+        <div class="formula-block">
+          <span class="formula-block__label">Formula</span>
+          <div class="formula-block__formula">CAC = Total Marketing & Sales Spend / New Customers Acquired</div>
+          <span class="formula-block__example">Example: $50,000 spend / 100 new customers = $500 CAC</span>
+        </div>
+
+        <h2>Why CAC <em>matters</em></h2>
+        <p>CAC determines how fast you can grow and how much you can afford to invest in acquisition. It is inseparable from customer lifetime value (LTV). The ratio of LTV to CAC is one of the most important numbers in business: a 3:1 or higher LTV:CAC ratio generally signals healthy unit economics.</p>
+        <p>Rising CAC is one of the earliest warning signs of a struggling growth engine. It can signal market saturation, creative fatigue, increased competition, or inefficient operations -- and the sooner you spot the trend, the sooner you can correct it.</p>
+        <p>Investors, board members, and leadership teams all watch CAC closely. It is often the deciding factor in whether a company scales aggressively or pumps the brakes.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section strategies-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>How to <em>reduce CAC</em></h2>
+        <p>Lowering CAC is not about spending less -- it is about spending smarter. The most effective approaches attack inefficiency on multiple fronts.</p>
+      </div>
+      <div class="grid-3 strategies-grid">
+        {strategies.map((item, i) => (
+          <div class="card strategy-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Lower CAC through <em>radical efficiency</em></h2>
+        <p>Every traditional marketing team carries structural costs that inflate CAC: multiple specialist salaries, a stack of disconnected tools, agency retainers, and the coordination overhead of managing it all. Even before you spend a dollar on ads, your baseline cost per customer is high.</p>
+        <p>Mavek compresses those costs. One platform handles the ad manager, the content writer, the email specialist, the SEO analyst, and the reporting dashboard. One subscription covers five to ten tool licenses. One strategic marketer does the work of six.</p>
+        <p>The math is straightforward: when your operational costs drop by 60-80% while output stays the same or increases, CAC falls dramatically. Mavek clients regularly see CAC reductions of 40% or more within the first quarter.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Cut your CAC without cutting corners"
+    subtitle="Mavek consolidates your tool stack and cuts operational overhead with one autonomous platform."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="View Pricing"
+    secondaryHref="/pricing"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .formula-block {
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.08);
+    border-left: 3px solid var(--gold-mid);
+    padding: var(--space-lg);
+    margin: var(--space-lg) 0;
+  }
+
+  .formula-block__label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold-dark);
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .formula-block__formula {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: var(--space-xs);
+  }
+
+  .formula-block__example {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    opacity: 0.5;
+  }
+
+  .strategies-section {
+    padding-top: 0;
+  }
+
+  .strategies-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .strategy-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .strategy-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .strategies-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .strategies-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

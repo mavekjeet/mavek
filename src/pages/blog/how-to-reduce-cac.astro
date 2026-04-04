@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="How to Reduce Customer Acquisition Cost in 2026" description="Proven strategies to lower your CAC while scaling revenue. Learn the levers that actually move the needle on acquisition efficiency.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">Strategy</span>
+          <span class="post__date">February 3, 2026</span>
+          <span class="post__read">7 min read</span>
+        </div>
+        <h1>How to Reduce Customer Acquisition Cost in 2026</h1>
+        <p class="post__lead">CAC has increased 60% across most B2B verticals in the last three years. Here are the levers that actually bring it back down without sacrificing growth.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>Why CAC <em>Keeps Climbing</em></h2>
+        <p>Rising ad costs, increased competition for attention, and longer sales cycles have all contributed to ballooning acquisition costs. Most companies respond by spending more, which only accelerates the problem. The real fix requires rethinking how you build your acquisition engine from the ground up.</p>
+        <p>The companies winning on CAC efficiency in 2026 share a common trait: they treat acquisition as a system, not a collection of isolated campaigns. Every touchpoint, from first impression to closed deal, is measured and optimized as a connected whole.</p>
+
+        <h2>Fix Your Funnel <em>Before</em> You Fix Your Ads</h2>
+        <p>Before increasing top-of-funnel spend, audit your conversion rates at every stage. A 10% improvement in landing page conversion has the same effect as a 10% reduction in cost-per-click, but it compounds across every channel. Most companies leave significant gains on the table in their mid-funnel experience.</p>
+        <p>Start with your highest-traffic pages and work backward. Heatmaps, session recordings, and form analytics will reveal where prospects drop off. Fix these leaks before pouring more budget into the top of the funnel.</p>
+
+        <h2>Channel Diversification Is <em>Not Optional</em></h2>
+        <p>Over-reliance on a single channel is the fastest path to unsustainable CAC. When you depend on Google Ads for 80% of your pipeline, you are at the mercy of auction dynamics you cannot control. The most efficient acquisition strategies blend paid, organic, referral, and partnership channels so that no single source represents more than 40% of new customers.</p>
+
+        <h2>The <em>Compounding Power</em> of Content and SEO</h2>
+        <p>Paid channels deliver immediate results but their costs are linear. Content and SEO require upfront investment but deliver compounding returns over time. A well-ranking blog post continues generating leads for years at zero marginal cost. Companies that invest in organic acquisition early build a structural CAC advantage that paid-only competitors cannot match.</p>
+
+        <h2>Automate Where It <em>Matters</em></h2>
+        <p>Marketing automation reduces CAC by eliminating manual touchpoints that slow down the funnel. Automated lead scoring, personalized nurture sequences, and AI-driven ad optimization can cut your cost per qualified lead by 30-50% when implemented correctly. The key is automating the repetitive work while keeping human judgment on strategy and creative.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Lower your CAC with smarter systems." subtitle="Mavek builds acquisition engines that get more efficient over time, not more expensive." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

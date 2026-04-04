@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Agency vs In-House Marketing: The Real Cost Comparison" description="A transparent breakdown of agency vs in-house marketing costs. The numbers most comparisons leave out and why the answer is rarely either/or.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">For Brands</span>
+          <span class="post__date">February 12, 2026</span>
+          <span class="post__read">6 min read</span>
+        </div>
+        <h1>Agency vs In-House Marketing: The Real Cost Comparison</h1>
+        <p class="post__lead">Everyone compares agency retainers to employee salaries. Almost no one accounts for the hidden costs that actually determine which model wins.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>The Numbers Everyone <em>Gets Wrong</em></h2>
+        <p>The typical comparison goes like this: a marketing manager costs $90K in salary, so an agency at $8K per month is more expensive. This analysis ignores benefits, payroll taxes, equipment, software licenses, training, management overhead, and the cost of a bad hire. When you add the fully loaded cost of an employee, the gap narrows significantly. In many cases, the in-house option is actually more expensive for the first 18 months.</p>
+
+        <h2>The <em>Hidden Costs</em> of In-House</h2>
+        <p>Recruiting a senior marketer takes 3-6 months and costs $15-30K in recruiter fees or internal hiring time. Onboarding takes another 2-3 months before they are fully productive. If the hire does not work out, you are back to square one with 6-9 months of lost time. In-house teams also require management bandwidth from founders or executives, which has an enormous opportunity cost that never appears on a spreadsheet.</p>
+        <p>Then there is the capability gap. A single hire cannot be an expert in SEO, paid ads, content, email, and analytics. You either hire a generalist who is mediocre at everything or a specialist who only covers one channel, which means you need multiple hires to cover the full marketing function.</p>
+
+        <h2>The <em>Hidden Costs</em> of Agencies</h2>
+        <p>Agencies come with their own set of hidden costs. Communication overhead, context-switching between clients, and the ramp-up period to understand your business all reduce effective output. Many agencies also optimize for deliverables rather than outcomes, producing impressive-looking reports while the metrics that matter stay flat. The best agencies are transparent about these limitations and build systems to mitigate them.</p>
+
+        <h2>The Hybrid Model That <em>Works</em></h2>
+        <p>The most effective setup for companies between $2M and $50M in revenue is a hybrid model. Keep strategic direction and brand voice in-house with one senior marketing leader. Outsource execution, specialized skills, and scale to an agency or platform partner. This gives you the strategic continuity of an in-house team with the execution breadth of an agency, at a lower total cost than building a full team.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Full marketing execution without the full team." subtitle="Mavek gives you agency-level output with in-house-level context. See how the model works." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

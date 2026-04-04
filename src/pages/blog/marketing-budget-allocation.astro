@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="How to Allocate Your Marketing Budget for Maximum ROI" description="A data-driven framework for marketing budget allocation. How to distribute spend across channels, campaigns, and funnel stages for maximum return.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">Strategy</span>
+          <span class="post__date">March 24, 2026</span>
+          <span class="post__read">7 min read</span>
+        </div>
+        <h1>How to Allocate Your Marketing Budget for Maximum ROI</h1>
+        <p class="post__lead">Most marketing budgets are set by gut feeling and last year's numbers. Here is a framework for allocating spend based on where each dollar generates the highest return.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>The Problem with <em>Historical Budgeting</em></h2>
+        <p>Most companies set next year's marketing budget by taking this year's budget and adjusting it by 10-20%. This approach assumes that last year's allocation was optimal, which it almost certainly was not. It also fails to account for changes in channel economics, competitive dynamics, and business priorities. The result is persistent misallocation where underperforming channels continue receiving budget they do not deserve while high-potential channels are starved of the resources they need to scale.</p>
+
+        <h2>The <em>70-20-10 Framework</em></h2>
+        <p>A practical starting point for budget allocation is the 70-20-10 framework. Allocate 70% of your budget to proven channels that reliably generate pipeline and revenue. These are your workhorses: the channels where you have established playbooks, reliable data, and consistent returns. Allocate 20% to emerging channels or strategies that show early promise but need more investment to prove out. Allocate 10% to experimental bets where the outcome is uncertain but the potential payoff is high.</p>
+        <p>This framework ensures you are funding your core growth engine while maintaining optionality. The 10% experimental budget is particularly important because the channel that drives your growth three years from now is probably something you are not doing today.</p>
+
+        <h2>Allocating Across the <em>Funnel</em></h2>
+        <p>Beyond channel allocation, consider how your budget is distributed across funnel stages. Companies that over-invest in top-of-funnel awareness while under-investing in mid-funnel nurture and bottom-of-funnel conversion end up generating leads that never convert. A healthy allocation typically puts 40% into acquisition activities, 30% into engagement and nurture, and 30% into conversion and retention. The exact split depends on your sales cycle length and average deal size, but most companies are underweight on the post-awareness stages.</p>
+
+        <h2><em>Dynamic Reallocation</em></h2>
+        <p>Setting a budget at the start of the year and never adjusting it is a recipe for wasted spend. Build in quarterly reallocation reviews where you shift budget from underperforming initiatives to outperforming ones. Some companies go further with monthly or even weekly reallocation at the campaign level, using marginal return analysis to identify where the next dollar will generate the highest incremental value. The more frequently you reallocate, the less time budget spends in low-performing areas.</p>
+
+        <h2>Measuring What Allocation <em>Gets You</em></h2>
+        <p>The ultimate measure of budget allocation effectiveness is blended CAC relative to customer lifetime value. If your blended CAC is declining while revenue grows, your allocation is improving. If CAC is rising despite budget increases, you have an allocation problem. Track the marginal cost of acquisition in each channel separately and compare it to the average. When a channel's marginal CAC exceeds the average, it is receiving too much budget. When it is below average, it deserves more. This continuous feedback loop is what transforms budget allocation from guesswork into a systematic optimization process.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Every marketing dollar optimized." subtitle="Mavek uses performance data to continuously optimize your budget allocation for maximum ROI." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

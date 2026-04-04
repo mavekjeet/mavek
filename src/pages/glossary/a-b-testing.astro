@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Hypothesis Formation",
+    description: "Starting with a data-informed guess about what change will improve performance -- for example, a shorter form will increase completions by reducing friction.",
+  },
+  {
+    title: "Variable Isolation",
+    description: "Changing only one element at a time so you can attribute any difference in performance to that specific change rather than confounding factors.",
+  },
+  {
+    title: "Traffic Splitting",
+    description: "Randomly dividing your audience into equal groups so each variant gets a fair, unbiased sample of visitors to measure against.",
+  },
+  {
+    title: "Statistical Significance",
+    description: "Running tests long enough to collect sufficient data so the results reflect real differences in performance, not random chance.",
+  },
+  {
+    title: "Result Analysis",
+    description: "Interpreting test outcomes to determine a clear winner, understanding why one variant outperformed, and applying those learnings to future experiments.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Conversion Rate Optimization (CRO)", slug: "conversion-rate-optimization" },
+  { term: "Marketing ROI", slug: "marketing-roi" },
+  { term: "Marketing Funnel", slug: "marketing-funnel" },
+  { term: "Email Marketing", slug: "email-marketing" },
+];
+---
+
+<Layout title="What Is A/B Testing? Definition & Guide" description="A/B testing compares two versions of a page or element to determine which performs better. Learn what it is, its key components, and how Mavek automates testing at scale.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>A/B Testing</h1>
+        <p class="article__lead">A controlled experiment that compares two versions of a marketing asset -- a landing page, email subject line, ad creative, or CTA button -- to determine which one drives better results.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>A/B testing</em>?</h2>
+        <p>A/B testing, also called split testing, is the practice of comparing two versions of something to see which one performs better. You show Version A to one group of people and Version B to another, then measure which version produces more conversions, clicks, sign-ups, or whatever metric matters to your goal.</p>
+        <p>The power of A/B testing lies in replacing opinions with data. Instead of debating whether a green or blue button will get more clicks, you test both and let the numbers decide. This removes guesswork from marketing decisions and builds a culture of continuous, evidence-based improvement.</p>
+        <p>A/B testing applies to virtually every element of your marketing: email subject lines, landing page headlines, ad copy, CTA button text, form fields, images, pricing presentation, and page layouts. Each test produces a small improvement, but those improvements compound over time into significant performance gains.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>A/B testing</em></h2>
+        <p>Running meaningful tests requires discipline in both design and analysis.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Testing at the speed of <em>autonomous execution</em></h2>
+        <p>Most teams know they should test more but rarely do. Setting up experiments takes time, waiting for statistical significance takes patience, and analyzing results takes expertise. The result is that most companies run a handful of tests per year instead of per week.</p>
+        <p>Mavek runs A/B tests continuously and automatically. It generates test variations for ad copy, email subject lines, landing page elements, and CTAs, then monitors results and implements winners without waiting for a human to review statistical significance charts.</p>
+        <p>The difference is speed and volume. Where a human team might run five tests per quarter, Mavek can run dozens simultaneously across every channel. Each winning variation becomes the new baseline, and the next round of tests begins immediately. This relentless cycle of testing and improvement is how small gains compound into transformative results.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Test everything, automatically"
+    subtitle="Mavek runs continuous A/B tests across every channel so your marketing keeps improving."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

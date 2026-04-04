@@ -1,0 +1,142 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import PricingTable from '../components/PricingTable.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+  {
+    q: "How does Mavek compare to hiring a marketing team?",
+    a: "A full marketing team (ads manager, SEO specialist, content writer, outreach manager, analyst) costs Rs.3L+ per month minimum. Mavek delivers comparable execution across all these functions for under $500/month.",
+  },
+  {
+    q: "What if I need to cancel?",
+    a: "Cancel anytime. No lock-in contracts. Your data and campaign history remain accessible for 30 days after cancellation.",
+  },
+  {
+    q: "Do I need technical knowledge to use Mavek?",
+    a: "No. If you can write a brief, you can use Mavek. OAuth integrations are one-click, and the platform operates autonomously after initial setup.",
+  },
+  {
+    q: "How long until I see results?",
+    a: "Most users see initial campaign activity within 48 hours of setup. Meaningful performance improvements typically appear within 2-4 weeks as the memory layer learns your data.",
+  },
+  {
+    q: "Can Mavek handle multiple brands or clients?",
+    a: "Yes. The Growth plan supports multi-brand management, and the Enterprise plan offers unlimited brands with white-label capabilities.",
+  },
+  {
+    q: "What happens if Mavek makes a mistake?",
+    a: "Nothing goes live without approval gates. You review and approve everything before it reaches your audience. For trusted workflows, you can enable auto-approve.",
+  },
+  {
+    q: "What marketing channels does Mavek support?",
+    a: "Mavek supports full-funnel marketing across paid ads (Google Ads, Meta Ads), SEO content creation, email outreach, lead generation (Apollo.io), CRM management (HubSpot), analytics (Google Analytics, Search Console), and social media (LinkedIn). All channels run simultaneously from one unified platform.",
+  },
+  {
+    q: "Is Mavek suitable for startups and small businesses?",
+    a: "Yes. Mavek was designed to give startups and small businesses access to enterprise-grade marketing execution without enterprise budgets. The Starter plan at $299/month covers essential channels, and most small businesses see ROI within the first month of use.",
+  },
+];
+---
+
+<Layout title="Pricing" description="Enterprise marketing execution at a fraction of the cost. Plans starting at $299/month.">
+  <Nav />
+
+  <section class="light pricing-hero">
+    <div class="container" style="padding-top: calc(var(--nav-height) + var(--space-xl));">
+      <div class="pricing__header reveal">
+        <span class="sec-label">Pricing</span>
+        <h1>One platform. <em>No hidden fees.</em></h1>
+        <p>Enterprise marketing execution at a fraction of the cost of a team.</p>
+      </div>
+      <PricingTable />
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="faq__header reveal">
+        <span class="sec-label">FAQ</span>
+        <h2><em>Common questions</em></h2>
+      </div>
+      <div class="faq__list">
+        {faqs.map((faq, i) => (
+          <details class="faq__item reveal" style={`transition-delay: ${i * 0.05}s`}>
+            <summary class="faq__question">{faq.q}</summary>
+            <p class="faq__answer">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Still have questions?"
+    subtitle="Book a demo and we'll walk you through everything."
+    primaryCta="Book a Demo"
+    secondaryCta=""
+    secondaryHref=""
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .pricing__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .pricing__header h1 { margin-top: var(--space-xs); margin-bottom: var(--space-xs); }
+
+  .faq__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .faq__header h2 { margin-top: var(--space-xs); }
+
+  .faq__list {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--dark-border);
+    padding: var(--space-md) 0;
+  }
+
+  .faq__question {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #F5F5F7;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq__question::-webkit-details-marker { display: none; }
+
+  .faq__question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--gold-mid);
+    font-weight: 300;
+    transition: transform 0.2s ease;
+  }
+
+  details[open] .faq__question::after {
+    content: '-';
+  }
+
+  .faq__answer {
+    margin-top: var(--space-sm);
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    max-width: 640px;
+  }
+</style>

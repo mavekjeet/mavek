@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="The Agency Efficiency Playbook" description="How to 10x output without 10x headcount.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">For Agencies</span>
+          <span class="post__date">March 21, 2026</span>
+          <span class="post__read">8 min read</span>
+        </div>
+        <h1>The Agency Efficiency Playbook: How to 10x Output Without 10x Headcount</h1>
+        <p class="post__lead">The agencies winning right now aren't the ones hiring fastest. They're the ones who've figured out how to multiply what each team member can deliver.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>The Agency <em>Growth Trap</em></h2>
+        <p>Every agency hits the same ceiling: more clients means more people, which means more overhead, which eats into the margins that attracted you to the business in the first place. It's a linear scaling model in a world that rewards exponential thinking.</p>
+
+        <h2>The <em>10x Framework</em></h2>
+        <p>The agencies breaking through this ceiling share a common approach: they've separated strategy from execution and automated the execution layer. Senior talent focuses on client relationships and strategic direction. AI-powered systems handle campaign management, content production, and reporting.</p>
+
+        <h2>What Gets <em>Automated</em> (And What Doesn't)</h2>
+        <p>The key is knowing what to automate. Campaign execution, bid optimization, content generation, performance reporting — these are high-volume, process-driven tasks perfect for autonomous systems. Client strategy, creative direction, and relationship management remain firmly human.</p>
+
+        <h2>The <em>Results</em></h2>
+        <p>Agencies using autonomous execution layers typically see 3-4x increases in campaign output per team member, 60-70% reduction in reporting time, and the ability to take on 2-3x more clients without hiring.</p>
+
+        <h2><em>Getting Started</em></h2>
+        <p>Start with one client's campaigns. Connect your tools, set up approval workflows, and let the system execute for two weeks while your team monitors quality. Once you trust the output, expand to more clients and enable auto-approve for routine tasks.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Ready to 10x your agency?" subtitle="See how Mavek becomes your execution layer." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

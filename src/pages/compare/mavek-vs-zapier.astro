@@ -1,0 +1,255 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const rows = [
+  {
+    category: "Approach",
+    them: "Connect and automate tools yourself",
+    mavek: "Integrated platform, nothing to connect",
+  },
+  {
+    category: "Intelligence",
+    them: "Automates predefined steps",
+    mavek: "Thinks, decides, and adapts autonomously",
+  },
+  {
+    category: "Setup",
+    them: "Build complex multi-step workflows",
+    mavek: "Describe your goals, Mavek executes",
+  },
+  {
+    category: "Maintenance",
+    them: "Breaks when APIs change or tools update",
+    mavek: "Maintained and updated by Mavek automatically",
+  },
+  {
+    category: "Strategy",
+    them: "No strategic or decision-making layer",
+    mavek: "Data-driven decisions across every channel",
+  },
+  {
+    category: "Cost",
+    them: "Zapier $50+ plus each AI tool subscription",
+    mavek: "$499 / month, all-in",
+  },
+];
+
+const benefits = [
+  {
+    title: "One platform, not a stack of duct tape",
+    desc: "Zapier plus ChatGPT plus a dozen other tools creates a fragile stack. Mavek is a single integrated system where everything works together natively.",
+  },
+  {
+    title: "Intelligence, not just automation",
+    desc: "Zapier automates steps you define. Mavek understands your goals, analyzes data, and makes strategic decisions -- the difference between a conveyor belt and a strategist.",
+  },
+  {
+    title: "Zero maintenance, zero breakage",
+    desc: "DIY AI stacks break when APIs change, tokens expire, or tools update. Mavek maintains itself so you never spend a Saturday debugging a broken Zap.",
+  },
+];
+---
+
+<Layout title="Mavek vs Zapier + AI Stack" description="Compare Mavek and a Zapier plus AI tool stack. See why teams choose an integrated marketing platform over DIY automation.">
+  <Nav />
+
+  <!-- Hero -->
+  <section class="light cmp-hero">
+    <div class="container" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+      <div class="cmp-hero__inner reveal">
+        <span class="sec-label">Compare</span>
+        <h1>Mavek vs Zapier + AI Stack</h1>
+        <p class="cmp-hero__summary">Building a marketing stack from Zapier, ChatGPT, and a dozen tools sounds clever until it breaks. Mavek upgrades the duct tape to a single intelligent platform.</p>
+        <div class="cmp-hero__actions">
+          <a href="/contact" class="btn btn--primary">Try Mavek free <span>&rarr;</span></a>
+          <a href="/pricing" class="btn btn--secondary">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="dark">
+    <div class="container">
+      <div class="cmp-table__header reveal">
+        <span class="sec-label">Feature Comparison</span>
+        <h2>DIY automation stack vs <em>integrated platform</em></h2>
+      </div>
+      <div class="cmp-table__wrap reveal">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Zapier + AI Stack</th>
+              <th class="cmp-table__mavek-col">Mavek</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(row => (
+              <tr>
+                <td><strong>{row.category}</strong></td>
+                <td class="cmp-table__them">{row.them}</td>
+                <td class="cmp-table__mavek">
+                  <span class="cmp-check" aria-hidden="true">&#10003;</span>
+                  {row.mavek}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Teams Switch -->
+  <section class="light">
+    <div class="container">
+      <div class="cmp-benefits__header reveal">
+        <span class="sec-label">Why Teams Switch</span>
+        <h2>Why teams <em>switch to Mavek</em></h2>
+      </div>
+      <div class="grid-3">
+        {benefits.map((b, i) => (
+          <div class="card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4 style="font-family: var(--font-body); font-weight: 600; margin-bottom: var(--space-xs);">{b.title}</h4>
+            <p style="font-size: 0.92rem;">{b.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Upgrade from duct tape to a real platform."
+    subtitle="Stop debugging automations. Start running marketing that thinks for itself."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="View Pricing"
+    secondaryHref="/pricing"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero */
+  .cmp-hero__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cmp-hero__inner h1 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .cmp-hero__summary {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-lg);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cmp-hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  /* Comparison Table */
+  .cmp-table__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cmp-table__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .cmp-table__wrap {
+    overflow-x: auto;
+  }
+
+  .cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .cmp-table th {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 2px solid var(--dark-border);
+    color: rgba(255,255,255,0.4);
+  }
+
+  .cmp-table__mavek-col {
+    color: var(--gold-mid) !important;
+    opacity: 1 !important;
+  }
+
+  .cmp-table td {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--dark-border);
+    vertical-align: top;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .cmp-table td strong {
+    display: block;
+    color: #F5F5F7;
+    margin-bottom: 0.1rem;
+  }
+
+  .cmp-table__them {
+    opacity: 0.5;
+  }
+
+  .cmp-table__mavek {
+    color: var(--gold-mid) !important;
+    font-weight: 500;
+  }
+
+  .cmp-check {
+    color: var(--gold-mid);
+    font-weight: 700;
+    margin-right: 0.4rem;
+  }
+
+  /* Benefits */
+  .cmp-benefits__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cmp-benefits__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .cmp-hero__actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cmp-table {
+      font-size: 0.82rem;
+    }
+
+    .cmp-table td,
+    .cmp-table th {
+      padding: var(--space-sm);
+    }
+  }
+</style>

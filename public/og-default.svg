@@ -1,0 +1,11 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F6F3E8"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#8EFF00"/>
+  <text x="80" y="260" font-family="Georgia, serif" font-size="72" fill="#1A1A18">Make your marketing</text>
+  <text x="80" y="350" font-family="Georgia, serif" font-size="72" fill="#1A1A18">
+    <tspan fill="#1A1A18">10x</tspan> more efficient.
+  </text>
+  <rect x="80" y="282" width="135" height="80" fill="#8EFF00" opacity="0.3" rx="4"/>
+  <text x="80" y="420" font-family="sans-serif" font-size="24" fill="#8A8A7A">The AI Marketing Department — mavek.io</text>
+  <text x="80" y="560" font-family="monospace" font-size="18" fill="#1A1A18" letter-spacing="0.15em">MAVEK</text>
+</svg>

@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Full-Funnel Marketing: The Complete Framework" description="A complete framework for building a full-funnel marketing strategy. From awareness to retention, how to connect every stage into a cohesive system.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">Strategy</span>
+          <span class="post__date">March 20, 2026</span>
+          <span class="post__read">9 min read</span>
+        </div>
+        <h1>Full-Funnel Marketing: The Complete Framework</h1>
+        <p class="post__lead">Most marketing teams optimize individual channels in isolation. The companies that win build a connected system where every stage of the funnel reinforces the others.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>Why Funnel Stages Are <em>Not Channels</em></h2>
+        <p>A common mistake is equating funnel stages with channels. Social media is not your awareness layer, email is not your nurture layer, and your sales team is not your conversion layer. Every channel can and should operate across multiple funnel stages. A LinkedIn post can drive awareness for new audiences and deepen consideration for existing leads. An email can introduce your brand to a cold prospect or close a deal with a warm one. Full-funnel marketing means designing each channel's content strategy around the buyer's journey, not the other way around.</p>
+
+        <h2>Top of Funnel: Building Awareness That <em>Converts</em></h2>
+        <p>The purpose of top-of-funnel marketing is not just visibility. It is building awareness with the right audience in a way that naturally leads them deeper into your funnel. This means creating content that educates your target buyer about problems they care about, positions your company as a credible authority, and captures enough information to continue the conversation. Broad awareness campaigns that reach millions of irrelevant people are a waste of budget. Targeted awareness campaigns that reach thousands of potential buyers are a growth engine.</p>
+        <p>Measure top-of-funnel success by the quality of attention you attract, not the quantity. A smaller audience that engages deeply is more valuable than a large audience that scrolls past.</p>
+
+        <h2>Middle of Funnel: The <em>Consideration Gap</em></h2>
+        <p>The middle of the funnel is where most marketing strategies break down. There is a gap between "I know this company exists" and "I am ready to talk to sales" that most companies fill with generic nurture emails that nobody reads. Effective mid-funnel marketing provides the specific evidence prospects need to move forward: case studies that match their situation, comparison content that addresses their alternatives, and educational content that helps them build an internal case for change. The goal is to answer every question a prospect has before they ever talk to your sales team.</p>
+
+        <h2>Bottom of Funnel: <em>Conversion Optimization</em></h2>
+        <p>Bottom-of-funnel marketing is about removing friction from the buying process. This includes clear pricing information, transparent buying processes, compelling demos or trials, and social proof from similar customers. The mistake most companies make is treating the bottom of the funnel as a sales-only zone. Marketing can dramatically impact conversion rates by providing prospects with the materials they need to convince internal stakeholders, by optimizing the demo request and trial signup experience, and by ensuring the handoff from marketing to sales is seamless.</p>
+
+        <h2>Post-Purchase: The Funnel Does Not End at <em>Revenue</em></h2>
+        <p>The most capital-efficient growth strategy is expanding revenue from existing customers. Post-purchase marketing includes onboarding programs that drive product adoption, educational content that helps customers get more value, cross-sell and upsell campaigns triggered by usage data, and advocacy programs that turn happy customers into referral sources. Companies with strong post-purchase marketing grow faster and more efficiently because they are not solely dependent on new customer acquisition to hit their targets.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Build a marketing engine that covers every stage." subtitle="Mavek designs and executes full-funnel strategies that connect awareness to revenue to retention." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

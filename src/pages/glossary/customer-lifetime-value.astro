@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Average Order Value",
+    description: "The average amount a customer spends per transaction -- a key input in calculating lifetime value and a lever for increasing revenue without acquiring new customers.",
+  },
+  {
+    title: "Purchase Frequency",
+    description: "How often a customer buys from you over a given period. Higher frequency means faster value accumulation and stronger customer relationships.",
+  },
+  {
+    title: "Customer Retention Rate",
+    description: "The percentage of customers who continue buying over time. Even small improvements in retention can dramatically increase lifetime value.",
+  },
+  {
+    title: "Gross Margin",
+    description: "The profit margin on what you sell, which determines how much of each customer dollar actually contributes to your bottom line.",
+  },
+  {
+    title: "Churn Rate",
+    description: "The rate at which customers stop buying from you. Reducing churn is often the fastest path to increasing LTV because keeping a customer costs far less than acquiring a new one.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Customer Acquisition Cost (CAC)", slug: "customer-acquisition-cost" },
+  { term: "Marketing ROI", slug: "marketing-roi" },
+  { term: "Marketing Funnel", slug: "marketing-funnel" },
+  { term: "Retargeting", slug: "retargeting" },
+];
+---
+
+<Layout title="What Is Customer Lifetime Value (CLV/LTV)? Definition & Guide" description="CLV is the total revenue a business can expect from a single customer over the entire relationship. Learn what it is, how to calculate it, and how Mavek helps maximize it.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Customer Lifetime Value (CLV/LTV)</h1>
+        <p class="article__lead">The total revenue a business can expect from a single customer account over the entire duration of their relationship -- the metric that tells you how much a customer is really worth.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>customer lifetime value</em>?</h2>
+        <p>Customer lifetime value is a prediction of the net profit attributed to the entire future relationship with a customer. It answers a deceptively simple question: how much is a customer worth to your business, not just on their first purchase, but across every transaction over months or years?</p>
+        <p>The basic formula is straightforward: average purchase value multiplied by average purchase frequency multiplied by average customer lifespan. But the real power of CLV lies in how you use it. When you know the lifetime value of a customer, you can make smarter decisions about how much to spend acquiring them, which segments to prioritize, and where to invest in retention.</p>
+        <p>CLV reframes your entire marketing strategy. Instead of optimizing for the cheapest acquisition cost, you optimize for the most profitable long-term relationships. A customer who costs more to acquire but stays for three years and refers others is far more valuable than a bargain-bin lead who churns after one month.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>CLV</em></h2>
+        <p>Understanding and improving customer lifetime value requires tracking several interconnected metrics.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Maximize lifetime value across <em>every touchpoint</em></h2>
+        <p>Most marketing tools focus on acquisition -- getting the first conversion. But the most profitable growth comes from increasing what each customer is worth over time. The challenge is that improving CLV requires coordinating retention emails, re-engagement campaigns, upsell offers, and loyalty programs across multiple channels simultaneously.</p>
+        <p>Mavek treats CLV as a core optimization metric, not an afterthought. It tracks customer behavior across channels, identifies patterns that predict churn, and automatically deploys retention campaigns before customers disengage. When a high-value customer goes quiet, Mavek triggers a re-engagement sequence. When purchase frequency drops, it tests targeted offers to bring them back.</p>
+        <p>Because Mavek manages acquisition and retention in the same system, it can also optimize your acquisition spend toward the customer segments with the highest predicted lifetime value. Instead of chasing the cheapest leads, Mavek targets the most profitable long-term relationships -- where the real growth is.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Turn one-time buyers into lifetime customers"
+    subtitle="Mavek optimizes for long-term value, not just first conversions."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

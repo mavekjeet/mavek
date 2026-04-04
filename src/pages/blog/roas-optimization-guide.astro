@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="ROAS Optimization: A Practical Guide for 2026" description="How to improve your return on ad spend systematically. Practical frameworks for optimizing ROAS across Google, Meta, and LinkedIn campaigns.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">Paid Ads</span>
+          <span class="post__date">March 14, 2026</span>
+          <span class="post__read">8 min read</span>
+        </div>
+        <h1>ROAS Optimization: A Practical Guide for 2026</h1>
+        <p class="post__lead">Most ROAS optimization advice focuses on bid strategies and audience targeting. The biggest gains come from places most advertisers never look.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>Why ROAS Is More <em>Complex</em> Than It Appears</h2>
+        <p>Return on ad spend seems straightforward: revenue divided by ad spend. But the way you calculate revenue dramatically changes the picture. Are you measuring first-purchase revenue or lifetime value? Are you attributing revenue with last-click, multi-touch, or incrementality-based models? A campaign with a 2x ROAS on first purchase might deliver 8x when measured against customer lifetime value. The first step in ROAS optimization is ensuring you are measuring the right thing.</p>
+
+        <h2>The Creative <em>Leverage Point</em></h2>
+        <p>Most advertisers spend 90% of their optimization time on targeting and bidding and 10% on creative. The data suggests the opposite allocation would be more effective. In 2026, platform algorithms handle targeting and bidding increasingly well on their own. The variable that most determines performance is the ad creative itself. A fresh, compelling creative can improve ROAS by 2-5x without changing anything else about the campaign.</p>
+        <p>Build a systematic creative testing process. Generate multiple variations of each ad concept, test them in small budget pools, and scale the winners. Refresh creative every 2-4 weeks to combat fatigue. The companies with the best ROAS are not better at targeting. They are better at creative iteration.</p>
+
+        <h2><em>Landing Page</em> Optimization</h2>
+        <p>Your ROAS does not end at the click. A 50% improvement in landing page conversion rate has the same effect as cutting your cost per click in half. Yet most advertisers send paid traffic to generic pages that were designed for organic visitors. Build dedicated landing pages for your highest-spend campaigns with messaging that continues the conversation started in the ad. Match the headline, mirror the value proposition, and remove every element that does not serve the conversion goal.</p>
+
+        <h2>Budget Allocation and <em>Diminishing Returns</em></h2>
+        <p>Every campaign has a point of diminishing returns where additional spend generates decreasing incremental value. Most advertisers hit this point long before they realize it because they are looking at average ROAS instead of marginal ROAS. If your campaign has a 4x average ROAS but the last dollar spent only returned 1.5x, you are overspending on that campaign. Implement marginal ROAS analysis to identify the optimal budget level for each campaign and reallocate excess spend to campaigns that still have headroom.</p>
+
+        <h2>Cross-Channel <em>ROAS Optimization</em></h2>
+        <p>The biggest ROAS optimization opportunity for most companies is at the portfolio level, not the campaign level. Allocating budget across channels based on where the next dollar will generate the highest return is more impactful than optimizing any single channel. This requires a unified view of performance across Google, Meta, LinkedIn, and any other channels you run. Build a weekly budget reallocation process that shifts spend from underperforming channels to outperforming ones, and watch your blended ROAS climb.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Maximize every dollar of ad spend." subtitle="Mavek optimizes your paid campaigns with AI-driven creative testing and cross-channel budget allocation." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

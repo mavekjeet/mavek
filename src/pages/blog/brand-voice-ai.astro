@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="How to Maintain Brand Voice When Using AI for Marketing" description="AI can produce content fast, but can it sound like your brand? Practical strategies for keeping your brand voice consistent when using AI tools.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">Content</span>
+          <span class="post__date">March 17, 2026</span>
+          <span class="post__read">5 min read</span>
+        </div>
+        <h1>How to Maintain Brand Voice When Using AI for Marketing</h1>
+        <p class="post__lead">AI makes content production faster. But speed without brand consistency erodes the trust you have spent years building. Here is how to get both.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>The <em>Brand Voice Problem</em> with AI</h2>
+        <p>Out of the box, AI writes in a generic, vaguely professional tone that sounds like every other AI-generated piece of content. This is fine for internal documents and first drafts, but it is a problem for customer-facing content. Your brand voice is a competitive moat. It is the reason customers feel connected to your company rather than your competitor's. When AI content strips away that voice, you lose one of the few things that cannot be easily replicated.</p>
+
+        <h2>Document Your Voice <em>Before</em> You Automate It</h2>
+        <p>Most companies cannot articulate their brand voice clearly enough for a human writer to replicate it, let alone an AI system. Before introducing AI into your content workflow, create a brand voice document that goes beyond vague descriptors like "professional but friendly." Include specific examples of how your brand would and would not say something. Define vocabulary preferences, sentence structure patterns, and the level of formality for each content type. The more specific your voice guide, the better AI can approximate it.</p>
+
+        <h2>Build <em>Brand Voice</em> into Your Prompts</h2>
+        <p>Generic prompts produce generic output. The most effective approach is to include voice specifications directly in your AI prompts along with examples of on-brand content. Show the AI three to five examples of content that perfectly captures your voice and instruct it to match the tone, vocabulary, and structure. Some teams build prompt templates that include their brand voice guidelines as a system instruction, so every piece of content starts from the right foundation.</p>
+        <p>Fine-tuning models on your existing content library takes this further, creating a version of the AI that defaults to your voice without extensive prompting. This is especially effective for companies with large content libraries that provide ample training data.</p>
+
+        <h2>The Human <em>Editing Layer</em></h2>
+        <p>Even with excellent prompting, AI output needs human editing for brand consistency. The difference between AI-assisted content and AI-generated content is the human editing pass. A skilled editor who knows your brand voice can transform a generic AI draft into something that sounds authentically yours in a fraction of the time it would take to write from scratch. This editing layer is not optional. It is the difference between content that builds your brand and content that dilutes it.</p>
+
+        <h2>Quality Gates That <em>Protect Your Brand</em></h2>
+        <p>Set up systematic quality checks for all AI-generated content before it reaches your audience. This means a checklist of brand voice criteria that every piece must pass, a review process with clear ownership, and a feedback loop that captures voice deviations so they can be prevented in future prompts. The goal is not to slow down production. It is to build guardrails that let you move fast without compromising the consistency that makes your brand recognizable.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="AI-powered content that sounds like you." subtitle="Mavek learns your brand voice and maintains it across every piece of content it produces." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

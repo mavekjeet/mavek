@@ -1,0 +1,208 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="nav" id="mainNav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo">
+      <!-- Stone logo -->
+      <svg width="20" height="28" viewBox="0 0 20 28" class="nav__stone">
+        <ellipse cx="10" cy="21.1" rx="6.8" ry="1.5" fill="#1A1A18" opacity="0.18"/>
+        <g transform="translate(10, 8)">
+          <path d="M-8 0 L-3.6 -6.4 L0 -6.4 L0 0 Z" fill="#E8C95A"/>
+          <path d="M0 -6.4 L3.6 -6.4 L8 0 L0 0 Z" fill="#8A7028"/>
+          <path d="M-8 0 L0 0 L0 9.6 Z" fill="#33302A"/>
+          <path d="M0 0 L8 0 L0 9.6 Z" fill="#0A0A08"/>
+        </g>
+      </svg>
+      <span class="nav__wordmark">MA<span class="nav__v">V</span>EK</span>
+    </a>
+
+    <div class="nav__links" id="navLinks">
+      <a href="/for-agencies" class:list={["nav__link", { active: currentPath === '/for-agencies' || currentPath === '/for-agencies/' }]} aria-current={currentPath === '/for-agencies' || currentPath === '/for-agencies/' ? 'page' : undefined}>For Agencies</a>
+      <a href="/for-brands" class:list={["nav__link", { active: currentPath === '/for-brands' || currentPath === '/for-brands/' }]} aria-current={currentPath === '/for-brands' || currentPath === '/for-brands/' ? 'page' : undefined}>For Brands</a>
+      <a href="/how-it-works" class:list={["nav__link", { active: currentPath === '/how-it-works' || currentPath === '/how-it-works/' }]} aria-current={currentPath === '/how-it-works' || currentPath === '/how-it-works/' ? 'page' : undefined}>How it works</a>
+      <a href="/pricing" class:list={["nav__link", { active: currentPath === '/pricing' || currentPath === '/pricing/' }]} aria-current={currentPath === '/pricing' || currentPath === '/pricing/' ? 'page' : undefined}>Pricing</a>
+      <a href="/tools" class:list={["nav__link", { active: currentPath.startsWith('/tools') }]} aria-current={currentPath.startsWith('/tools') ? 'page' : undefined}>Free Tools</a>
+      <a href="/blog" class:list={["nav__link", { active: currentPath.startsWith('/blog') }]} aria-current={currentPath.startsWith('/blog') ? 'page' : undefined}>Blog</a>
+    </div>
+
+    <div class="nav__actions">
+      <a href="/contact" class="btn btn--primary btn--sm">Book a Demo</a>
+    </div>
+
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<style>
+  .skip-link {
+    position: fixed;
+    top: -100%;
+    left: 16px;
+    z-index: 200;
+    padding: 12px 24px;
+    background: var(--gold-mid);
+    color: var(--night);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 0 0 10px 10px;
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .nav.scrolled {
+    background: rgba(246, 243, 232, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(26, 26, 24, 0.06);
+    box-shadow: 0 1px 8px rgba(26, 26, 24, 0.04);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav__wordmark {
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--ink);
+  }
+
+  .nav__v {
+    color: var(--gold-mid);
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav__link {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: var(--ink-muted);
+    transition: color 0.2s ease;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .nav__link:hover {
+    color: var(--ink);
+  }
+
+  .nav__link.active {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .nav__link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold-mid);
+    border-radius: 1px;
+  }
+
+  .nav__actions { display: flex; align-items: center; }
+
+  .nav__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav__toggle span {
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .nav { padding: 16px 24px; }
+    .nav__links {
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--parchment);
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      transform: translateX(100%);
+      transition: transform 0.4s ease;
+    }
+    .nav__links.open { transform: translateX(0); }
+    .nav__links .nav__link { font-size: 18px; }
+    .nav__links .nav__link.active::after { display: none; }
+    .nav__toggle { display: flex; }
+    .nav__actions { margin-right: 1rem; }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 30) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    if (toggle) {
+      toggle.addEventListener('click', function() {
+        links.classList.toggle('open');
+      });
+    }
+  })();
+</script>

@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Tone",
+    description: "The emotional inflection of your communication -- whether your brand sounds friendly, authoritative, playful, or serious, and how that shifts across contexts.",
+  },
+  {
+    title: "Vocabulary",
+    description: "The specific words and phrases your brand uses and avoids. This includes industry jargon, branded terms, and the reading level that matches your audience.",
+  },
+  {
+    title: "Personality Traits",
+    description: "The human characteristics your brand embodies -- bold or cautious, witty or straightforward, rebellious or trustworthy -- that make it feel like a real entity.",
+  },
+  {
+    title: "Style Guidelines",
+    description: "The structural rules for your content: sentence length, punctuation preferences, formatting conventions, and grammar standards that create consistency.",
+  },
+  {
+    title: "Channel Adaptation",
+    description: "How your core voice adapts to different platforms -- more casual on social media, more detailed in emails, more concise in ads -- while remaining recognizably yours.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Content Marketing", slug: "content-marketing" },
+  { term: "Email Marketing", slug: "email-marketing" },
+  { term: "Marketing Funnel", slug: "marketing-funnel" },
+  { term: "Demand Generation", slug: "demand-generation" },
+];
+---
+
+<Layout title="What Is Brand Voice? Definition & Guide" description="Brand voice is the consistent personality and tone a brand uses across all communications. Learn what it is, its key components, and how Mavek maintains your brand voice at scale.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Brand Voice</h1>
+        <p class="article__lead">The distinct personality, tone, and style that a brand uses consistently across all communications -- what makes your audience recognize you before they even see the logo.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>brand voice</em>?</h2>
+        <p>Brand voice is the consistent expression of your brand through words and communication style. It encompasses the tone, vocabulary, personality, and values that come through in every piece of content you create -- from website copy and emails to social media posts and customer support replies.</p>
+        <p>Think of brand voice as the written equivalent of a person's speaking style. Just as you can recognize a friend's voice on the phone, customers should be able to recognize your brand's voice in a blog post, an ad, or an email without seeing the logo. That consistency builds familiarity, and familiarity builds trust.</p>
+        <p>Brand voice is not the same as brand messaging. Messaging is what you say -- your value propositions, key benefits, and positioning. Voice is how you say it. Two companies can communicate the same message -- that their product saves time -- but one might say it with humor and irreverence while the other says it with data and authority. The voice is what makes each version distinct.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>brand voice</em></h2>
+        <p>A well-defined brand voice is built from several interconnected elements.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Your voice, at scale, <em>without the drift</em></h2>
+        <p>The hardest part of maintaining brand voice is consistency at scale. When multiple people write content, run ads, and send emails, voice drift is inevitable. Style guides help but are only as good as the people reading them -- and most people stop reading them after the first week.</p>
+        <p>Mavek solves this by learning your brand voice once and applying it to everything it creates. During onboarding, Mavek ingests your existing content, style guidelines, and brand documentation into its memory layer. Every piece of content it produces -- ads, blog posts, emails, social copy -- is filtered through that voice profile.</p>
+        <p>The result is consistent brand expression across every channel and every piece of content, without relying on a human to enforce style guidelines. And because Mavek's memory layer evolves as your brand evolves, the voice stays current without manual updates to a static document that nobody reads.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Scale your voice without losing it"
+    subtitle="Mavek learns your brand voice and applies it consistently across every channel."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

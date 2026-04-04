@@ -1,0 +1,164 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const industries = [
+  {
+    title: "SaaS Companies",
+    desc: "Scale your SaaS marketing without scaling your team. Content for every funnel stage, targeted outreach, and product-led growth support.",
+    href: "/industries/saas",
+  },
+  {
+    title: "Ecommerce & D2C",
+    desc: "Sell more with less spend. Dynamic ad optimization, product-focused content, email sequences, and multi-channel retargeting.",
+    href: "/industries/ecommerce",
+  },
+  {
+    title: "Real Estate",
+    desc: "Fill your pipeline with qualified leads. Local SEO, targeted Google Ads, listing content, and automated lead nurturing sequences.",
+    href: "/industries/real-estate",
+  },
+];
+---
+
+<Layout title="Industries" description="Mavek is built for your industry. AI-powered marketing for SaaS, Ecommerce, Real Estate, and more.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">INDUSTRIES</span>
+        <h1>Built for your industry.</h1>
+        <p class="hero__subtitle">Every industry has unique marketing challenges. Mavek adapts its strategy, content, and targeting to match your market — not the other way around.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="grid-3">
+        {industries.map((ind, i) => (
+          <a href={ind.href} class="card card--dark industry-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h3>{ind.title}</h3>
+            <p>{ind.desc}</p>
+            <span class="industry-card__link">Learn more &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="adapt__inner reveal">
+        <span class="sec-label">Industry-Specific AI</span>
+        <h2>Same platform. <em>Different playbook</em>.</h2>
+        <p class="adapt__subtitle">Mavek doesn't run the same strategy for a SaaS startup and a real estate brokerage. The platform adapts its approach based on your industry's buying cycle, audience behavior, and competitive landscape.</p>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card reveal">
+            <h4>Tailored Content</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Topics, formats, and tone are calibrated for your audience. Technical docs for SaaS, product descriptions for ecommerce, local guides for real estate.</p>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.1s">
+            <h4>Channel Strategy</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Budget and effort flow to the channels that matter for your industry. No wasted spend on channels your buyers don't use.</p>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.2s">
+            <h4>Competitive Intel</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Mavek monitors your industry competitors and adapts strategy in real time. Stay ahead without constant manual research.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="other reveal">
+        <span class="sec-label">Don't See Your Industry?</span>
+        <h2>Mavek works for <em>any B2B or B2C</em> business</h2>
+        <p>The industries above are where we've built deep playbooks, but Mavek's AI adapts to any market. If you sell a product or service, Mavek can market it.</p>
+        <a href="/contact" class="btn btn-gold" style="margin-top: var(--space-lg);">Talk to Us <span>&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Marketing built for your market."
+    subtitle="Tell us your industry and see how Mavek adapts."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section {
+    padding-top: calc(var(--nav-height) + var(--space-3xl));
+    text-align: center;
+  }
+
+  .hero__inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .hero__inner h1 {
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__subtitle {
+    font-size: 1.15rem;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .industry-card {
+    display: block;
+    text-decoration: none;
+  }
+
+  .industry-card h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .industry-card__link {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--gold-mid);
+  }
+
+  .industry-card:hover .industry-card__link {
+    text-decoration: underline;
+  }
+
+  .adapt__inner {
+    text-align: center;
+  }
+
+  .adapt__inner h2 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .adapt__subtitle {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .other {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .other h2 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+</style>

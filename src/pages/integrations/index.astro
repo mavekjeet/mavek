@@ -1,0 +1,251 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const integrations = [
+  {
+    name: "Google Ads",
+    desc: "Campaign management, bid optimization, and budget reallocation — all autonomous.",
+    href: "/integrations/google-ads",
+    status: "live",
+  },
+  {
+    name: "Meta Ads",
+    desc: "Facebook and Instagram ad automation, creative testing, and audience optimization.",
+    href: "/integrations/meta-ads",
+    status: "live",
+  },
+  {
+    name: "HubSpot",
+    desc: "CRM sync, lead scoring, pipeline management, and automated outreach sequences.",
+    href: "/integrations/hubspot",
+    status: "live",
+  },
+  {
+    name: "Google Analytics",
+    desc: "Traffic analysis, conversion attribution, and audience insights piped directly into Mavek.",
+    href: "#",
+    status: "soon",
+  },
+  {
+    name: "Search Console",
+    desc: "SEO performance monitoring, indexing status, and keyword opportunity detection.",
+    href: "#",
+    status: "soon",
+  },
+  {
+    name: "Apollo.io",
+    desc: "Lead database enrichment, contact discovery, and automated outreach triggers.",
+    href: "#",
+    status: "soon",
+  },
+  {
+    name: "Ahrefs",
+    desc: "Keyword research, backlink analysis, and competitive intelligence on autopilot.",
+    href: "#",
+    status: "soon",
+  },
+  {
+    name: "LinkedIn",
+    desc: "Professional audience targeting, sponsored content, and lead gen forms integration.",
+    href: "#",
+    status: "soon",
+  },
+];
+---
+
+<Layout title="Integrations" description="Mavek connects to your entire marketing stack with one-click OAuth. Google Ads, Meta Ads, HubSpot, and more.">
+  <Nav />
+
+  <section class="section light integrations-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="integrations__header reveal">
+        <span class="sec-label">Integrations</span>
+        <h1>Connects to your entire<br/>marketing stack.</h1>
+        <p class="integrations__lead">One-click OAuth. No engineering required. No CSV exports. Mavek plugs directly into the platforms you already use and starts working in minutes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="hub__header reveal">
+        <span class="sec-label">Platforms</span>
+        <h2>Everything you run, <em>connected</em></h2>
+        <p>Mavek reads your data, learns your patterns, and takes action across every channel.</p>
+      </div>
+      <div class="integrations__grid grid-4">
+        {integrations.map((int, i) => (
+          <div class="card card--dark integration-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <div class="integration-card__top">
+              <h4 class="integration-card__name">{int.name}</h4>
+              {int.status === "soon" && (
+                <span class="badge badge--soon">Coming soon</span>
+              )}
+            </div>
+            <p class="integration-card__desc">{int.desc}</p>
+            {int.status === "live" ? (
+              <a href={int.href} class="integration-card__link">Learn more <span>&rarr;</span></a>
+            ) : (
+              <span class="integration-card__link integration-card__link--disabled">Details coming</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="how-connect reveal">
+        <div class="how-connect__content">
+          <span class="sec-label">How It Works</span>
+          <h2>Connected in <em>60 seconds</em></h2>
+          <p>Every integration follows the same pattern: click, authorize, done. Mavek handles the rest.</p>
+        </div>
+        <div class="how-connect__steps grid-3">
+          {[
+            { step: "01", title: "Click connect", desc: "Pick your platform from the dashboard. One button." },
+            { step: "02", title: "Authorize via OAuth", desc: "Standard OAuth flow. Your credentials never touch our servers." },
+            { step: "03", title: "Mavek takes over", desc: "Data syncs immediately. Mavek starts analyzing and acting within hours." },
+          ].map((s, i) => (
+            <div class="step-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+              <span class="step-card__number">{s.step}</span>
+              <h4>{s.title}</h4>
+              <p>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="security reveal" style="max-width: 640px; margin: 0 auto; text-align: center;">
+        <span class="sec-label">Security</span>
+        <h2>Your data stays <em>yours</em></h2>
+        <p>All connections use OAuth 2.0 with read/write scopes you control. Data is encrypted in transit and at rest. We never store your credentials and you can revoke access at any time from your dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to connect your stack?"
+    subtitle="Set up all your integrations in under five minutes."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="View Pricing"
+    secondaryHref="/pricing"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .integrations__header {
+    max-width: 680px;
+  }
+  .integrations__header h1 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+  .integrations__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+    max-width: 560px;
+  }
+
+  .hub__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hub__header h2 { margin-top: var(--space-xs); margin-bottom: var(--space-xs); }
+
+  .integration-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-md);
+  }
+  .integration-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-xs);
+    gap: var(--space-xs);
+  }
+  .integration-card__name {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: #F5F5F7;
+    margin: 0;
+  }
+  .integration-card__desc {
+    font-size: 0.85rem;
+    flex: 1;
+    margin-bottom: var(--space-sm);
+  }
+  .integration-card__link {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--gold-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: opacity var(--duration) var(--ease);
+  }
+  .integration-card__link:hover { opacity: 0.7; }
+  .integration-card__link--disabled {
+    color: var(--muted);
+    cursor: default;
+  }
+  .integration-card__link--disabled:hover { opacity: 1; }
+
+  .badge--soon {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--dark-border);
+    border-radius: 10px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .how-connect__content {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto var(--space-xl);
+  }
+  .how-connect__content h2 { margin-top: var(--space-xs); margin-bottom: var(--space-xs); }
+
+  .step-card {
+    padding: var(--space-lg);
+    border: 1px solid rgba(26,26,24,0.06);
+    background: var(--parchment-dark);
+  }
+  .step-card__number {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--gold-dark);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+  .step-card h4 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xs);
+  }
+  .step-card p { font-size: 0.9rem; }
+
+  .security h2 { margin-top: var(--space-xs); margin-bottom: var(--space-sm); }
+</style>

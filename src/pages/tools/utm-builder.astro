@@ -1,0 +1,442 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="UTM Link Builder" description="Build perfectly formatted UTM tracking URLs in seconds. Free UTM builder tool from Mavek, no signup required.">
+  <Nav />
+
+  <section class="light utm-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="utm-hero__content reveal">
+        <span class="sec-label">UTM Builder</span>
+        <h1>Build <em>trackable URLs</em> in seconds.</h1>
+        <p class="utm-hero__lead">Generate clean, properly formatted UTM links for every campaign. Paste your URL, fill in the parameters, and copy your tracking link.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light utm-builder-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="utm-builder reveal">
+        <div class="utm-form">
+          <div class="utm-field">
+            <label for="utmUrl">Website URL <span class="utm-required">*</span></label>
+            <input type="url" id="utmUrl" placeholder="https://yourdomain.com/landing-page" />
+          </div>
+
+          <div class="utm-form__grid">
+            <div class="utm-field">
+              <label for="utmSource">Campaign Source <span class="utm-required">*</span></label>
+              <input type="text" id="utmSource" placeholder="e.g. google, newsletter, facebook" />
+              <span class="utm-hint">Where the traffic comes from</span>
+            </div>
+
+            <div class="utm-field">
+              <label for="utmMedium">Campaign Medium <span class="utm-required">*</span></label>
+              <input type="text" id="utmMedium" placeholder="e.g. cpc, email, social" />
+              <span class="utm-hint">Marketing channel type</span>
+            </div>
+
+            <div class="utm-field">
+              <label for="utmCampaign">Campaign Name <span class="utm-required">*</span></label>
+              <input type="text" id="utmCampaign" placeholder="e.g. spring-sale, product-launch" />
+              <span class="utm-hint">The specific campaign name</span>
+            </div>
+
+            <div class="utm-field">
+              <label for="utmTerm">Campaign Term</label>
+              <input type="text" id="utmTerm" placeholder="e.g. running+shoes" />
+              <span class="utm-hint">Paid search keywords (optional)</span>
+            </div>
+
+            <div class="utm-field">
+              <label for="utmContent">Campaign Content</label>
+              <input type="text" id="utmContent" placeholder="e.g. logo-link, text-ad" />
+              <span class="utm-hint">Differentiate ad variations (optional)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="utm-output dark" id="utmOutput">
+          <div class="utm-output__header">
+            <span class="sec-label">Generated URL</span>
+            <h3>Your tracking link</h3>
+          </div>
+
+          <div class="utm-preview" id="utmPreview">
+            <span class="utm-preview__placeholder">Fill in the fields above to generate your UTM link</span>
+          </div>
+
+          <div class="utm-actions">
+            <button class="btn btn--primary" id="utmCopy" disabled>Copy URL <span>&rarr;</span></button>
+            <span class="utm-copied" id="utmCopied">Copied!</span>
+          </div>
+
+          <div class="utm-breakdown" id="utmBreakdown" style="display: none;">
+            <span class="utm-breakdown__title">Parameter Breakdown</span>
+            <div class="utm-breakdown__list" id="utmBreakdownList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="container">
+      <div class="utm-tips reveal">
+        <h2>UTM <em>Best Practices</em></h2>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card">
+            <h4>Be consistent</h4>
+            <p>Use lowercase and hyphens. "google" not "Google", "spring-sale" not "Spring Sale".</p>
+          </div>
+          <div class="card">
+            <h4>Keep it readable</h4>
+            <p>Your future self will thank you. Use descriptive names that make reports easy to scan.</p>
+          </div>
+          <div class="card">
+            <h4>Document your conventions</h4>
+            <p>Create a shared naming guide so your whole team tags campaigns the same way.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Automate your campaign tracking"
+    subtitle="Mavek auto-tags and tracks every campaign across every channel. No more manual UTM management."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="Learn More"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .utm-hero__content {
+    max-width: 640px;
+  }
+
+  .utm-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .utm-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .utm-builder {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .utm-form {
+    margin-bottom: var(--space-xl);
+  }
+
+  .utm-form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .utm-field label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+    opacity: 0.6;
+  }
+
+  .utm-required {
+    color: var(--gold-dark);
+  }
+
+  .utm-field input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .utm-field input:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .utm-field input::placeholder {
+    color: var(--muted);
+  }
+
+  .utm-hint {
+    display: block;
+    font-size: 0.72rem;
+    opacity: 0.4;
+    margin-top: 0.3rem;
+  }
+
+  /* Output Section */
+  .utm-output {
+    background: var(--dark);
+    padding: var(--space-xl);
+    color: #F5F5F7;
+  }
+
+  .utm-output__header {
+    margin-bottom: var(--space-md);
+  }
+
+  .utm-output__header .sec-label {
+    color: var(--gold-mid);
+  }
+
+  .utm-output__header h3 {
+    color: #F5F5F7;
+    margin-top: var(--space-xs);
+  }
+
+  .utm-preview {
+    background: var(--night-3);
+    border: 1px solid var(--dark-border);
+    border-radius: 10px;
+    padding: var(--space-md);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    line-height: 1.8;
+    word-break: break-all;
+    color: #F5F5F7;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+  }
+
+  .utm-preview__placeholder {
+    opacity: 0.3;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+  }
+
+  .utm-preview__base {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .utm-preview__param {
+    color: var(--gold-mid);
+  }
+
+  .utm-preview__value {
+    color: #F5F5F7;
+  }
+
+  .utm-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .utm-actions .btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .utm-copied {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--gold-mid);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .utm-copied.show {
+    opacity: 1;
+  }
+
+  /* Breakdown */
+  .utm-breakdown {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--dark-border);
+  }
+
+  .utm-breakdown__title {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold-mid);
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .utm-breakdown__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .utm-breakdown__item {
+    display: flex;
+    gap: var(--space-sm);
+    font-size: 0.82rem;
+  }
+
+  .utm-breakdown__key {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--gold-mid);
+    min-width: 120px;
+    opacity: 0.7;
+  }
+
+  .utm-breakdown__val {
+    color: #F5F5F7;
+    opacity: 0.8;
+  }
+
+  .utm-tips h2 {
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .utm-form__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .utm-output {
+      padding: var(--space-lg);
+    }
+
+    .utm-actions {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<script is:inline>
+  const fields = {
+    url: document.getElementById('utmUrl'),
+    source: document.getElementById('utmSource'),
+    medium: document.getElementById('utmMedium'),
+    campaign: document.getElementById('utmCampaign'),
+    term: document.getElementById('utmTerm'),
+    content: document.getElementById('utmContent'),
+  };
+
+  const preview = document.getElementById('utmPreview');
+  const copyBtn = document.getElementById('utmCopy');
+  const copiedMsg = document.getElementById('utmCopied');
+  const breakdown = document.getElementById('utmBreakdown');
+  const breakdownList = document.getElementById('utmBreakdownList');
+
+  let generatedUrl = '';
+
+  function buildUrl() {
+    const url = fields.url.value.trim();
+    const source = fields.source.value.trim();
+    const medium = fields.medium.value.trim();
+    const campaign = fields.campaign.value.trim();
+    const term = fields.term.value.trim();
+    const content = fields.content.value.trim();
+
+    if (!url || !source || !medium || !campaign) {
+      preview.innerHTML = '<span class="utm-preview__placeholder">Fill in the required fields above to generate your UTM link</span>';
+      copyBtn.disabled = true;
+      breakdown.style.display = 'none';
+      generatedUrl = '';
+      return;
+    }
+
+    const params = [];
+    params.push('utm_source=' + encodeURIComponent(source));
+    params.push('utm_medium=' + encodeURIComponent(medium));
+    params.push('utm_campaign=' + encodeURIComponent(campaign));
+    if (term) params.push('utm_term=' + encodeURIComponent(term));
+    if (content) params.push('utm_content=' + encodeURIComponent(content));
+
+    const separator = url.includes('?') ? '&' : '?';
+    generatedUrl = url + separator + params.join('&');
+
+    // Render preview with color coding
+    let html = '<span class="utm-preview__base">' + escapeHtml(url) + separator + '</span>';
+    const paramParts = params.map(function(p) {
+      const parts = p.split('=');
+      return '<span class="utm-preview__param">' + escapeHtml(parts[0]) + '</span>=<span class="utm-preview__value">' + escapeHtml(decodeURIComponent(parts[1])) + '</span>';
+    });
+    html += paramParts.join('<span class="utm-preview__base">&amp;</span>');
+
+    preview.innerHTML = html;
+    copyBtn.disabled = false;
+
+    // Build breakdown
+    const breakdownItems = [
+      { key: 'utm_source', val: source },
+      { key: 'utm_medium', val: medium },
+      { key: 'utm_campaign', val: campaign },
+    ];
+    if (term) breakdownItems.push({ key: 'utm_term', val: term });
+    if (content) breakdownItems.push({ key: 'utm_content', val: content });
+
+    breakdownList.innerHTML = breakdownItems.map(function(item) {
+      return '<div class="utm-breakdown__item"><span class="utm-breakdown__key">' + item.key + '</span><span class="utm-breakdown__val">' + escapeHtml(item.val) + '</span></div>';
+    }).join('');
+    breakdown.style.display = 'block';
+  }
+
+  function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(text));
+    return div.innerHTML;
+  }
+
+  // Listen to all inputs
+  Object.values(fields).forEach(function(input) {
+    input.addEventListener('input', buildUrl);
+  });
+
+  // Copy button
+  copyBtn.addEventListener('click', function() {
+    if (!generatedUrl) return;
+    navigator.clipboard.writeText(generatedUrl).then(function() {
+      copiedMsg.classList.add('show');
+      setTimeout(function() {
+        copiedMsg.classList.remove('show');
+      }, 2000);
+    });
+  });
+</script>

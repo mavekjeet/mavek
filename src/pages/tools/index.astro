@@ -1,0 +1,158 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const tools = [
+  {
+    title: "Marketing ROI Calculator",
+    description: "See exactly how much you could save by switching from a traditional marketing team to Mavek. Input your budget and team size to get instant results.",
+    href: "/tools/marketing-roi-calculator",
+    icon: "chart",
+  },
+  {
+    title: "UTM Link Builder",
+    description: "Build perfectly formatted UTM tracking URLs in seconds. Never mess up campaign attribution again with our simple, copy-ready URL generator.",
+    href: "/tools/utm-builder",
+    icon: "link",
+  },
+  {
+    title: "Headline Analyzer",
+    description: "Score your headlines before you publish. Get data-driven feedback on character count, word balance, power words, and emotional impact.",
+    href: "/tools/headline-analyzer",
+    icon: "pen",
+  },
+];
+---
+
+<Layout title="Free Marketing Tools" description="Free marketing tools from Mavek. ROI calculator, UTM builder, headline analyzer, and more. No signup required.">
+  <Nav />
+
+  <section class="light tools-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="tools-hero__content reveal">
+        <span class="sec-label">Free Tools</span>
+        <h1>Free <em>marketing tools</em>.<br />No signup required.</h1>
+        <p class="tools-hero__lead">Use these tools to sharpen your campaigns, track your ROI, and write better content. Built by marketers, for marketers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light tools-grid-section">
+    <div class="container">
+      <div class="grid-3">
+        {tools.map((tool, i) => (
+          <a href={tool.href} class="card tool-card reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <div class="tool-card__icon">
+              {tool.icon === "chart" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="20" width="6" height="8" fill="var(--gold-dark)" />
+                  <rect x="13" y="12" width="6" height="16" fill="var(--gold-dark)" opacity="0.7" />
+                  <rect x="22" y="4" width="6" height="24" fill="var(--gold-dark)" opacity="0.5" />
+                </svg>
+              )}
+              {tool.icon === "link" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13 19l6-6" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M17 21l2.5-2.5a4.95 4.95 0 000-7l-.5-.5a4.95 4.95 0 00-7 0L9.5 13.5" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M15 11l-2.5 2.5a4.95 4.95 0 000 7l.5.5a4.95 4.95 0 007 0l2.5-2.5" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              )}
+              {tool.icon === "pen" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 6l6 6-14 14H6v-6L20 6z" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M17 9l6 6" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              )}
+            </div>
+            <h3 class="tool-card__title">{tool.title}</h3>
+            <p class="tool-card__desc">{tool.description}</p>
+            <span class="tool-card__link">Use tool <span>&rarr;</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Need more than free tools?"
+    subtitle="Mavek gives you an entire marketing team powered by AI. Strategy, content, ads, analytics -- all in one platform."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="View Pricing"
+    secondaryHref="/pricing"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .tools-hero__content {
+    max-width: 680px;
+  }
+
+  .tools-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .tools-hero__lead {
+    font-size: 1.15rem;
+    max-width: 540px;
+  }
+
+  .tools-grid-section {
+    padding-top: 0;
+  }
+
+  .tool-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .tool-card__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background: rgba(138, 112, 40, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .tool-card__title {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+    color: var(--ink);
+  }
+
+  .tool-card__desc {
+    font-size: 0.92rem;
+    flex: 1;
+    margin-bottom: var(--space-md);
+  }
+
+  .tool-card__link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.3s var(--ease);
+  }
+
+  .tool-card:hover .tool-card__link {
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 900px) {
+    .tools-hero__content h1 br {
+      display: none;
+    }
+  }
+</style>

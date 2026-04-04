@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+const values = [
+  {
+    title: "No spam",
+    description: "Quality over volume. Every campaign, every piece of content, every outreach message is deliberate and valuable.",
+  },
+  {
+    title: "No AI slop",
+    description: "Everything Mavek produces feels human-crafted. We'd rather publish one great piece than ten mediocre ones.",
+  },
+  {
+    title: "Minimal things that work",
+    description: "Fewer features, better outcomes. We build what matters and cut everything that doesn't move the needle.",
+  },
+  {
+    title: "Your data, your advantage",
+    description: "We don't believe in generic playbooks. Every decision is grounded in your analytics, your audience, your market.",
+  },
+  {
+    title: "Autonomous by default",
+    description: "Mavek doesn't wait for hand-holding. It operates independently, learns continuously, and compounds your results.",
+  },
+];
+
+const timeline = [
+  { year: "The Problem", desc: "Marketing teams are expensive, slow, and hard to scale. AI tools create more noise, not better results." },
+  { year: "The Insight", desc: "The future isn't more tools or more people. It's one intelligent system that orchestrates everything — with your data as the foundation." },
+  { year: "Mavek", desc: "Maverick thinking. Precise execution. One platform that gives a single marketer the power of ten." },
+];
+---
+
+<Layout title="About" description="The story behind Mavek. Maverick thinking meets precise execution.">
+  <Nav />
+
+  <section class="light about-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="about__header reveal">
+        <span class="sec-label">Our Story</span>
+        <h1>Maverick thinking.<br/><em>Precise execution.</em></h1>
+        <p class="about__lead">Mavek was born from a simple observation: marketing teams are either too expensive, too slow, or too dependent on tools that create more work than they solve. We built the platform we wished existed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="container">
+      <div class="name-origin reveal">
+        <div class="name-origin__content">
+          <span class="sec-label">The Name</span>
+          <h2>Maverick &rarr; Mavek</h2>
+          <p>A maverick operates outside convention. They see what others miss. They move when others deliberate. We took that spirit and distilled it — Maverick became Mavek. Sharp. Fast. Precise.</p>
+          <p>The name carries intent: this isn't another safe, forgettable SaaS name. It's a declaration of how we think about marketing — bold moves, grounded in data, executed with precision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="timeline__header reveal">
+        <span class="sec-label">The Journey</span>
+        <h2>How <em>we got here</em></h2>
+      </div>
+      <div class="timeline">
+        {timeline.map((t, i) => (
+          <div class="timeline__item reveal" style={`transition-delay: ${i * 0.15}s`}>
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <h3>{t.year}</h3>
+              <p>{t.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="container">
+      <div class="values__header reveal">
+        <span class="sec-label">What We Believe</span>
+        <h2><em>Our principles</em></h2>
+      </div>
+      <div class="values__grid">
+        {values.map((v, i) => (
+          <div class="value-card reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h3>{v.title}</h3>
+            <p>{v.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="team__header reveal">
+        <span class="sec-label">The Team</span>
+        <h2>Built by marketers, <em>for marketers</em></h2>
+      </div>
+      <div class="team__grid grid-3">
+        {[
+          { name: "Jeet", role: "Co-Founder", desc: "Brand, design, and product. Obsessed with the intersection of aesthetics and function." },
+          { name: "Abhishek Sagar", role: "Co-Founder", desc: "Strategy and operations. Turns ambitious vision into executable plans." },
+          { name: "Hiring", role: "Engineering Lead", desc: "We're looking for engineers who believe marketing can be fundamentally better." },
+        ].map((member, i) => (
+          <div class="team-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <div class="photo-placeholder" style="aspect-ratio: 1; border-radius: 0;">
+              <span>{member.name === "Hiring" ? "Your photo here" : `Photo of ${member.name}`}</span>
+            </div>
+            <div class="team-card__info">
+              <h4>{member.name}</h4>
+              <span class="team-card__role">{member.role}</span>
+              <p>{member.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Join the movement."
+    subtitle="Be part of the future of marketing execution."
+    primaryCta="Get Started"
+    secondaryCta="View Open Roles"
+    secondaryHref="/contact"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .about__header {
+    max-width: 680px;
+  }
+  .about__header h1 { margin-top: var(--space-xs); margin-bottom: var(--space-md); }
+  .about__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+
+  .name-origin { max-width: 640px; }
+  .name-origin h2 { margin: var(--space-xs) 0 var(--space-md); }
+  .name-origin p { margin-bottom: var(--space-sm); }
+
+  .timeline__header { text-align: center; margin-bottom: var(--space-xl); }
+  .timeline__header h2 { margin-top: var(--space-xs); }
+
+  .timeline {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--dark-border);
+  }
+  .timeline__item {
+    position: relative;
+    margin-bottom: var(--space-xl);
+  }
+  .timeline__marker {
+    position: absolute;
+    left: -2rem;
+    top: 0.4rem;
+    width: 12px;
+    height: 12px;
+    background: var(--gold-mid);
+    margin-left: -5px;
+  }
+  .timeline__content h3 { color: #F5F5F7; margin-bottom: var(--space-xs); font-size: 1.3rem; }
+
+  .values__header { text-align: center; margin-bottom: var(--space-xl); }
+  .values__header h2 { margin-top: var(--space-xs); }
+  .values__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+  .value-card {
+    padding: var(--space-lg);
+    border: 1px solid rgba(26,26,24,0.06);
+    background: var(--parchment-dark);
+  }
+  .value-card h3 { margin-bottom: var(--space-xs); font-size: 1.2rem; }
+  .value-card p { font-size: 0.9rem; }
+
+  .team__header { text-align: center; margin-bottom: var(--space-xl); }
+  .team__header h2 { margin-top: var(--space-xs); }
+  .team-card__info { padding: var(--space-md) 0; }
+  .team-card__info h4 { font-family: var(--font-body); font-weight: 600; color: #F5F5F7; margin-bottom: 0.2rem; }
+  .team-card__role {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    color: var(--gold-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+  .team-card__info p { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+  @media (max-width: 900px) {
+    .values__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .values__grid { grid-template-columns: 1fr; }
+  }
+</style>

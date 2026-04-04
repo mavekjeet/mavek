@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import LogoBar from '../components/LogoBar.astro';
+import ProblemCards from '../components/ProblemCards.astro';
+import BenefitCards from '../components/BenefitCards.astro';
+import DualAudience from '../components/DualAudience.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Differentiator from '../components/Differentiator.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Your Entire Marketing Team. One Platform." schema={{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Mavek",
+  "url": "https://mavek.io",
+  "description": "AI-powered marketing platform. One person with Mavek does the work of ten.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://mavek.io/blog?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}}>
+  <Nav />
+
+  <Hero
+    eyebrow="THE 10x MARKETING ENGINE"
+    title="Make your marketing <em>10x more efficient.</em>"
+    highlight="10x"
+    subtitle="No spam. No AI slop. Just the minimal things that work — powered by your data, running autonomously, 24/7."
+    primaryCta="Book a Demo"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <LogoBar />
+
+  <ProblemCards dark={true} />
+
+  <BenefitCards />
+
+  <DualAudience dark={true} />
+
+  <section class="dark stat-section">
+    <div class="container">
+      <div class="stat__inner reveal">
+        <div class="stat__number"><span class="stat__counter" data-target="500" data-prefix="$">$0</span><span>/mo</span></div>
+        <div class="stat__vs">vs</div>
+        <div class="stat__compare"><span class="stat__counter" data-target="3" data-prefix="Rs." data-suffix="L+">Rs.0L+</span><span>/mo for a team</span></div>
+      </div>
+      <p class="stat__caption reveal">Enterprise marketing execution at a fraction of the cost. No hires. No overhead. No compromises.</p>
+    </div>
+  </section>
+
+  <HowItWorks />
+
+  <Differentiator />
+
+  <Testimonials />
+
+  <CTASection />
+
+  <Footer />
+</Layout>
+
+<style>
+  .stat-section {
+    text-align: center;
+  }
+
+  .stat__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  .stat__number {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--gold-bright);
+  }
+
+  .stat__number span:not(.stat__counter) {
+    font-size: 0.4em;
+    opacity: 0.6;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .stat__vs {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .stat__compare {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: rgba(255,255,255,0.3);
+    text-decoration: line-through;
+    text-decoration-color: rgba(255,255,255,0.15);
+  }
+
+  .stat__compare span:not(.stat__counter) {
+    font-family: var(--font-body);
+    font-size: 0.35em;
+    display: block;
+    text-decoration: none;
+  }
+
+  .stat__caption {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5) !important;
+  }
+
+  @media (max-width: 600px) {
+    .stat__inner { flex-direction: column; gap: var(--space-sm); }
+  }
+</style>
+
+<script is:inline>
+  // Counter animation for stat section
+  (function() {
+    var animated = false;
+    var counters = document.querySelectorAll('.stat__counter');
+    if (!counters.length) return;
+
+    function animateCounter(el) {
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      var prefix = el.getAttribute('data-prefix') || '';
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = 1500;
+      var start = performance.now();
+
+      function tick(now) {
+        var elapsed = now - start;
+        var progress = Math.min(elapsed / duration, 1);
+        // ease-out cubic
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(eased * target);
+        el.textContent = prefix + current + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          counters.forEach(animateCounter);
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+
+    var section = document.querySelector('.stat-section');
+    if (section) observer.observe(section);
+  })();
+</script>

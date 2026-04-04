@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Landing Page Optimization",
+    description: "Testing and refining page layouts, headlines, copy, and calls-to-action to increase the percentage of visitors who take the desired action.",
+  },
+  {
+    title: "A/B and Multivariate Testing",
+    description: "Running controlled experiments that compare two or more versions of a page element to determine which variant drives more conversions.",
+  },
+  {
+    title: "User Behavior Analysis",
+    description: "Using heatmaps, session recordings, and click tracking to understand how visitors interact with your pages and where they drop off.",
+  },
+  {
+    title: "Form Optimization",
+    description: "Reducing friction in lead capture forms by testing field count, layout, microcopy, and progressive profiling to improve completion rates.",
+  },
+  {
+    title: "Funnel Analysis",
+    description: "Mapping the entire conversion path from first visit to purchase, identifying bottlenecks, and systematically removing barriers at each stage.",
+  },
+];
+
+const relatedTerms = [
+  { term: "A/B Testing", slug: "a-b-testing" },
+  { term: "Marketing Funnel", slug: "marketing-funnel" },
+  { term: "Lead Generation", slug: "lead-generation" },
+  { term: "Marketing ROI", slug: "marketing-roi" },
+];
+---
+
+<Layout title="What Is Conversion Rate Optimization (CRO)? Definition & Guide" description="CRO is the process of increasing the percentage of visitors who take a desired action. Learn what it is, its key components, and how Mavek automates optimization.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Conversion Rate Optimization (CRO)</h1>
+        <p class="article__lead">The systematic process of increasing the percentage of website visitors who take a desired action -- whether that is filling out a form, making a purchase, or signing up for a trial.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>conversion rate optimization</em>?</h2>
+        <p>Conversion rate optimization is the practice of improving your website or landing pages so a higher percentage of visitors complete a goal. Instead of driving more traffic to a page that converts at two percent, CRO focuses on turning that two percent into four -- effectively doubling your results without increasing your ad spend.</p>
+        <p>CRO is grounded in data, not guesswork. It combines quantitative analysis (analytics, funnel data, conversion metrics) with qualitative research (user surveys, session recordings, heatmaps) to form hypotheses about what is preventing visitors from converting, then tests those hypotheses through controlled experiments.</p>
+        <p>The discipline matters because small improvements in conversion rate compound dramatically. A half-percent increase on a high-traffic page can mean thousands of additional leads or hundreds of thousands in additional revenue over a year -- all from the traffic you are already paying for.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>CRO</em></h2>
+        <p>Effective conversion optimization combines research, experimentation, and continuous iteration.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Optimization that <em>runs itself</em></h2>
+        <p>Traditional CRO is slow. A team identifies a problem, designs a test, waits for statistical significance, analyzes results, and then starts the next test. Most companies run only a handful of experiments per quarter because the process demands so much human time.</p>
+        <p>Mavek accelerates the entire cycle. It monitors conversion performance across all your landing pages and campaigns in real time, identifies underperforming elements, generates test variations, and runs experiments automatically. When a winning variant emerges, Mavek implements it and moves on to the next opportunity.</p>
+        <p>Because Mavek manages your ads, content, and landing pages as a single system, it can optimize across the full funnel -- not just individual page elements. If a high-converting landing page is getting low-quality traffic from an ad campaign, Mavek adjusts both the ad targeting and the page simultaneously. That cross-channel view is what separates systemic optimization from isolated tweaks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Optimize every page, automatically"
+    subtitle="Mavek tests, learns, and improves your conversion rates across every channel."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

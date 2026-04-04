@@ -1,0 +1,224 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const terms = [
+  {
+    letter: "A",
+    items: [
+      { term: "A/B Testing", slug: "a-b-testing", definition: "A method of comparing two versions of a page or element to determine which performs better, using controlled experiments with real traffic." },
+    ],
+  },
+  {
+    letter: "B",
+    items: [
+      { term: "Brand Voice", slug: "brand-voice", definition: "The consistent personality and tone a brand uses across all communications to build recognition and trust with its audience." },
+    ],
+  },
+  {
+    letter: "C",
+    items: [
+      { term: "Content Marketing", slug: "content-marketing", definition: "A strategy focused on creating and distributing valuable content to attract, engage, and retain a target audience." },
+      { term: "Conversion Rate Optimization (CRO)", slug: "conversion-rate-optimization", definition: "The process of increasing the percentage of website visitors who take a desired action, such as purchasing or signing up." },
+      { term: "Customer Acquisition Cost (CAC)", slug: "customer-acquisition-cost", definition: "The total cost of acquiring a new customer, calculated by dividing marketing spend by the number of new customers gained." },
+      { term: "Customer Lifetime Value (CLV/LTV)", slug: "customer-lifetime-value", definition: "The total revenue a business can expect from a single customer over the entire duration of their relationship." },
+    ],
+  },
+  {
+    letter: "D",
+    items: [
+      { term: "Demand Generation", slug: "demand-generation", definition: "Marketing programs that create awareness and interest in your products or services to build a qualified pipeline." },
+    ],
+  },
+  {
+    letter: "E",
+    items: [
+      { term: "Email Marketing", slug: "email-marketing", definition: "The use of email to promote products, nurture leads, and build customer relationships through targeted campaigns and sequences." },
+    ],
+  },
+  {
+    letter: "F",
+    items: [
+      { term: "Full-Funnel Marketing", slug: "full-funnel-marketing", definition: "A strategy that addresses every stage of the buyer journey, from initial awareness through conversion and retention." },
+    ],
+  },
+  {
+    letter: "L",
+    items: [
+      { term: "Lead Generation", slug: "lead-generation", definition: "The process of attracting and converting strangers and prospects into potential customers who have shown interest in your product or service." },
+    ],
+  },
+  {
+    letter: "M",
+    items: [
+      { term: "Marketing Attribution", slug: "marketing-attribution", definition: "The process of identifying which marketing channels and touchpoints contribute to conversions and revenue." },
+      { term: "Marketing Automation", slug: "marketing-automation", definition: "Technology that automates repetitive marketing tasks like email, social posting, and ad management across channels." },
+      { term: "Marketing Funnel", slug: "marketing-funnel", definition: "A model that maps the customer journey from first awareness of your brand through to purchase and beyond." },
+      { term: "Marketing Qualified Lead (MQL)", slug: "marketing-qualified-lead", definition: "A lead that marketing has identified as more likely to become a customer based on engagement, fit, and behavioral signals." },
+      { term: "Marketing ROI", slug: "marketing-roi", definition: "A metric that measures the return generated from marketing investments relative to their cost." },
+    ],
+  },
+  {
+    letter: "P",
+    items: [
+      { term: "Pay-Per-Click (PPC) Advertising", slug: "pay-per-click", definition: "A digital advertising model where advertisers pay a fee each time someone clicks on one of their ads." },
+      { term: "Programmatic Advertising", slug: "programmatic-advertising", definition: "The automated buying and selling of digital ad space using technology and data to target specific audiences in real time." },
+    ],
+  },
+  {
+    letter: "R",
+    items: [
+      { term: "Retargeting", slug: "retargeting", definition: "A strategy that shows ads to people who have already visited your website or engaged with your brand to bring them back." },
+      { term: "ROAS (Return on Ad Spend)", slug: "roas", definition: "A metric that measures the revenue earned for every dollar spent on advertising." },
+    ],
+  },
+  {
+    letter: "S",
+    items: [
+      { term: "Search Engine Optimization (SEO)", slug: "search-engine-optimization", definition: "The practice of optimizing your website and content to rank higher in search engine results and drive organic traffic." },
+    ],
+  },
+];
+---
+
+<Layout title="Marketing Glossary" description="Plain-language definitions of key marketing terms. ROAS, CAC, attribution, automation, and more -- explained by the team at Mavek.">
+  <Nav />
+
+  <section class="section light glossary-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="glossary-hero__content reveal">
+        <span class="sec-label">Glossary</span>
+        <h1>Marketing terms, explained.</h1>
+        <p class="glossary-hero__lead">No jargon walls, no fluff. Just clear definitions of the concepts that matter to modern marketers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light glossary-list">
+    <div class="container">
+      {terms.map(group => (
+        <div class="glossary-group reveal">
+          <div class="glossary-group__letter">{group.letter}</div>
+          <div class="glossary-group__items">
+            {group.items.map((item, i) => (
+              <a href={`/glossary/${item.slug}`} class="glossary-card" style={`transition-delay: ${i * 0.06}s`}>
+                <h3 class="glossary-card__term">{item.term}</h3>
+                <p class="glossary-card__def">{item.definition}</p>
+                <span class="glossary-card__link">Read more <span>&rarr;</span></span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    title="Skip the theory. See it in action."
+    subtitle="Mavek turns marketing concepts into autonomous execution."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .glossary-hero__content {
+    max-width: 640px;
+  }
+
+  .glossary-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .glossary-hero__lead {
+    font-size: 1.15rem;
+    max-width: 520px;
+  }
+
+  .glossary-list {
+    padding-top: 0;
+  }
+
+  .glossary-group {
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .glossary-group__letter {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--gold-dark);
+    opacity: 0.3;
+    min-width: 48px;
+    line-height: 1;
+    padding-top: var(--space-sm);
+  }
+
+  .glossary-group__items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .glossary-card {
+    display: block;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.08);
+    padding: var(--space-lg);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all var(--duration) var(--ease);
+  }
+
+  .glossary-card:hover {
+    border-color: var(--gold-mid);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(26, 26, 24, 0.06);
+  }
+
+  .glossary-card__term {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+    color: var(--ink);
+  }
+
+  .glossary-card__def {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .glossary-card__link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.3s var(--ease);
+  }
+
+  .glossary-card:hover .glossary-card__link {
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 600px) {
+    .glossary-group {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .glossary-group__letter {
+      font-size: 2rem;
+      padding-top: 0;
+    }
+  }
+</style>

@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Search Ads",
+    description: "Text-based ads that appear at the top of search engine results pages when users search for specific keywords -- the most direct form of intent-based advertising.",
+  },
+  {
+    title: "Display & Social Ads",
+    description: "Visual banner ads on websites and sponsored posts on social platforms that build awareness and drive traffic through audience targeting rather than search intent.",
+  },
+  {
+    title: "Keyword Strategy",
+    description: "Researching and selecting the right keywords to bid on, including match types, negative keywords, and long-tail variations that balance volume with intent.",
+  },
+  {
+    title: "Bid Management",
+    description: "Setting and adjusting how much you pay per click based on keyword competition, ad position goals, time of day, device, and audience segments.",
+  },
+  {
+    title: "Landing Page Alignment",
+    description: "Ensuring the page a user lands on after clicking matches the ad promise, delivering a seamless experience that converts clicks into customers.",
+  },
+];
+
+const relatedTerms = [
+  { term: "ROAS (Return on Ad Spend)", slug: "roas" },
+  { term: "Conversion Rate Optimization (CRO)", slug: "conversion-rate-optimization" },
+  { term: "Retargeting", slug: "retargeting" },
+  { term: "Programmatic Advertising", slug: "programmatic-advertising" },
+];
+---
+
+<Layout title="What Is Pay-Per-Click (PPC) Advertising? Definition & Guide" description="PPC is a digital advertising model where you pay each time someone clicks your ad. Learn what it is, its key components, and how Mavek manages PPC campaigns autonomously.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Pay-Per-Click (PPC) Advertising</h1>
+        <p class="article__lead">A digital advertising model where advertisers pay a fee each time their ad is clicked -- essentially buying visits to your site rather than earning them organically.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>PPC advertising</em>?</h2>
+        <p>Pay-per-click advertising is a model where you bid on ad placements and pay only when someone clicks your ad. The most common form is search advertising on platforms like Google Ads, where your ad appears at the top of search results for specific keywords. Social media platforms like Meta, LinkedIn, and Twitter also operate on PPC models.</p>
+        <p>PPC works as a real-time auction. When a user searches for a keyword you are bidding on, the ad platform runs an instant auction considering your bid amount, ad quality, and expected click-through rate. The winners appear in the paid positions, and the advertiser pays only when a user actually clicks.</p>
+        <p>The power of PPC lies in its precision and immediacy. Unlike SEO, which takes months to build momentum, PPC can drive targeted traffic within hours of launching a campaign. And because you can target specific keywords, demographics, and behaviors, every dollar goes toward reaching people who are actively looking for what you sell.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>PPC</em></h2>
+        <p>Successful PPC campaigns require strategy, execution, and ongoing optimization across several areas.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>PPC management <em>without the PPC manager</em></h2>
+        <p>Running PPC campaigns well is a full-time job. You need to research keywords, write ad copy, set bids, monitor performance, test variations, adjust budgets, and optimize landing pages -- every day, across multiple platforms.</p>
+        <p>Mavek manages the entire PPC workflow autonomously. It researches high-intent keywords, writes and tests ad copy variations, sets and adjusts bids in real time, monitors performance metrics, and reallocates budget toward what is working -- across both Google and Meta from a single system.</p>
+        <p>What makes Mavek different from basic bid management tools is that it connects PPC to your full marketing picture. When an ad campaign discovers a high-converting keyword, Mavek can automatically create organic content targeting that term. When a landing page underperforms, Mavek tests new variations. Every insight from paid feeds into organic and vice versa, so your marketing budget works harder across the board.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Run better ads without the ad manager"
+    subtitle="Mavek manages your PPC campaigns across Google and Meta, autonomously."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

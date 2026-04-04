@@ -1,0 +1,399 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Marketing ROI Calculator" description="Calculate how much you could save by replacing your traditional marketing team with Mavek. Free ROI calculator, no signup required.">
+  <Nav />
+
+  <section class="light roi-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="roi-hero__content reveal">
+        <span class="sec-label">ROI Calculator</span>
+        <h1>See how much <em>Mavek saves</em> you.</h1>
+        <p class="roi-hero__lead">Compare the cost of a traditional marketing team against Mavek. Adjust the sliders to match your situation and see real-time savings.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light roi-calculator-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="roi-calculator reveal">
+        <div class="roi-inputs">
+          <div class="roi-input-group">
+            <div class="roi-input-header">
+              <label for="budget">Monthly Marketing Budget</label>
+              <span class="roi-input-value" id="budgetValue">$5,000</span>
+            </div>
+            <input type="range" id="budget" min="1000" max="50000" step="1000" value="5000" class="roi-slider" />
+            <div class="roi-input-range">
+              <span>$1K</span>
+              <span>$50K</span>
+            </div>
+          </div>
+
+          <div class="roi-input-group">
+            <div class="roi-input-header">
+              <label for="teamSize">Team Size Needed</label>
+              <span class="roi-input-value" id="teamSizeValue">5 people</span>
+            </div>
+            <input type="range" id="teamSize" min="1" max="15" step="1" value="5" class="roi-slider" />
+            <div class="roi-input-range">
+              <span>1</span>
+              <span>15</span>
+            </div>
+          </div>
+
+          <div class="roi-input-group">
+            <div class="roi-input-header">
+              <label for="salary">Avg. Salary per Marketer</label>
+              <span class="roi-input-value" id="salaryValue">$5,000/mo</span>
+            </div>
+            <input type="range" id="salary" min="2000" max="10000" step="500" value="5000" class="roi-slider" />
+            <div class="roi-input-range">
+              <span>$2K/mo</span>
+              <span>$10K/mo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="roi-results dark" id="roiResults">
+          <div class="roi-results__header">
+            <span class="sec-label">Your Savings</span>
+            <h2>The numbers <em>speak for themselves</em>.</h2>
+          </div>
+
+          <div class="roi-results__grid">
+            <div class="roi-result-card">
+              <span class="roi-result-label">Traditional Team Cost</span>
+              <span class="roi-result-number" id="traditionalCost">$25,000</span>
+              <span class="roi-result-sub">per month</span>
+            </div>
+
+            <div class="roi-result-card roi-result-card--accent">
+              <span class="roi-result-label">Mavek Cost</span>
+              <span class="roi-result-number">$499</span>
+              <span class="roi-result-sub">per month</span>
+            </div>
+
+            <div class="roi-result-card">
+              <span class="roi-result-label">Monthly Savings</span>
+              <span class="roi-result-number roi-result-number--green" id="monthlySavings">$24,501</span>
+              <span class="roi-result-sub">saved each month</span>
+            </div>
+
+            <div class="roi-result-card">
+              <span class="roi-result-label">Annual Savings</span>
+              <span class="roi-result-number roi-result-number--green" id="annualSavings">$294,012</span>
+              <span class="roi-result-sub">saved per year</span>
+            </div>
+          </div>
+
+          <div class="roi-multiplier reveal">
+            <span class="roi-multiplier__label">ROI Multiplier</span>
+            <span class="roi-multiplier__value" id="roiMultiplier">50x</span>
+            <span class="roi-multiplier__sub">more cost-effective than a traditional team</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to see these savings in action?"
+    subtitle="Start your 14-day free trial. No credit card required."
+    primaryCta="Start Free Trial"
+    primaryHref="/contact"
+    secondaryCta="View Pricing"
+    secondaryHref="/pricing"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .roi-hero__content {
+    max-width: 640px;
+  }
+
+  .roi-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .roi-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .roi-calculator {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .roi-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .roi-input-group {
+    max-width: 100%;
+  }
+
+  .roi-input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-sm);
+  }
+
+  .roi-input-header label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .roi-input-value {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--gold-dark);
+  }
+
+  .roi-input-range {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.4;
+  }
+
+  /* Slider Styling */
+  .roi-slider {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    outline: none;
+    cursor: pointer;
+  }
+
+  .roi-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--gold-mid);
+    border: 3px solid var(--ink);
+    cursor: pointer;
+    transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+
+  .roi-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 16px rgba(201, 168, 76, 0.4);
+  }
+
+  .roi-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: var(--gold-mid);
+    border: 3px solid var(--ink);
+    border-radius: 0;
+    cursor: pointer;
+  }
+
+  /* Results */
+  .roi-results {
+    background: var(--dark);
+    padding: var(--space-2xl);
+    color: #F5F5F7;
+  }
+
+  .roi-results__header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .roi-results__header .sec-label {
+    color: var(--gold-mid);
+  }
+
+  .roi-results__header h2 {
+    color: #F5F5F7;
+    margin-top: var(--space-xs);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .roi-results__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  .roi-result-card {
+    background: var(--night-3);
+    border: 1px solid var(--dark-border);
+    border-radius: 10px;
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .roi-result-card--accent {
+    border-color: var(--gold-mid);
+    background: rgba(201, 168, 76, 0.05);
+  }
+
+  .roi-result-label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    color: #F5F5F7;
+  }
+
+  .roi-result-number {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 400;
+    color: #F5F5F7;
+    line-height: 1.2;
+  }
+
+  .roi-result-number--green {
+    color: var(--gold-bright);
+  }
+
+  .roi-result-sub {
+    font-size: 0.8rem;
+    opacity: 0.4;
+    color: #F5F5F7;
+  }
+
+  .roi-multiplier {
+    text-align: center;
+    padding: var(--space-xl) 0 0;
+    border-top: 1px solid var(--dark-border);
+  }
+
+  .roi-multiplier__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold-mid);
+    margin-bottom: var(--space-xs);
+  }
+
+  .roi-multiplier__value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--gold-bright);
+    line-height: 1.1;
+    margin-bottom: var(--space-xs);
+  }
+
+  .roi-multiplier__sub {
+    font-size: 0.9rem;
+    opacity: 0.5;
+    color: #F5F5F7;
+  }
+
+  @media (max-width: 900px) {
+    .roi-results {
+      padding: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .roi-results__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .roi-results {
+      padding: var(--space-lg);
+    }
+  }
+</style>
+
+<script is:inline>
+  const budgetSlider = document.getElementById('budget');
+  const teamSizeSlider = document.getElementById('teamSize');
+  const salarySlider = document.getElementById('salary');
+
+  const budgetValue = document.getElementById('budgetValue');
+  const teamSizeValue = document.getElementById('teamSizeValue');
+  const salaryValue = document.getElementById('salaryValue');
+
+  const traditionalCost = document.getElementById('traditionalCost');
+  const monthlySavings = document.getElementById('monthlySavings');
+  const annualSavings = document.getElementById('annualSavings');
+  const roiMultiplier = document.getElementById('roiMultiplier');
+
+  const MAVEK_COST = 499;
+
+  function formatMoney(num) {
+    return '$' + num.toLocaleString('en-US');
+  }
+
+  function calculate() {
+    const budget = parseInt(budgetSlider.value);
+    const teamSize = parseInt(teamSizeSlider.value);
+    const salary = parseInt(salarySlider.value);
+
+    // Update display values
+    budgetValue.textContent = formatMoney(budget);
+    teamSizeValue.textContent = teamSize + (teamSize === 1 ? ' person' : ' people');
+    salaryValue.textContent = formatMoney(salary) + '/mo';
+
+    // Calculate
+    const traditional = teamSize * salary;
+    const monthly = traditional - MAVEK_COST;
+    const annual = monthly * 12;
+    const multiplier = Math.round(traditional / MAVEK_COST);
+
+    // Update results
+    traditionalCost.textContent = formatMoney(traditional);
+    monthlySavings.textContent = formatMoney(monthly);
+    annualSavings.textContent = formatMoney(annual);
+    roiMultiplier.textContent = multiplier + 'x';
+  }
+
+  budgetSlider.addEventListener('input', calculate);
+  teamSizeSlider.addEventListener('input', calculate);
+  salarySlider.addEventListener('input', calculate);
+
+  // Initial calculation
+  calculate();
+</script>

@@ -1,0 +1,215 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+const entries = [
+  {
+    date: "April 2, 2026",
+    version: "v1.4",
+    title: "Headline Analyzer & UTM Builder tools launched",
+    type: "New",
+    items: [
+      "Free headline analyzer tool — score your headlines on readability, power words, and length",
+      "Free UTM builder — generate campaign-tagged URLs instantly",
+      "Marketing ROI calculator — compare Mavek cost vs traditional team",
+    ],
+  },
+  {
+    date: "March 25, 2026",
+    version: "v1.3",
+    title: "Memory Layer improvements",
+    type: "Improved",
+    items: [
+      "Memory Layer now retains brand voice patterns across campaigns",
+      "Improved content tone matching — 40% better brand consistency",
+      "Faster context retrieval for multi-brand agency accounts",
+    ],
+  },
+  {
+    date: "March 18, 2026",
+    version: "v1.2",
+    title: "Meta Ads integration & approval gates v2",
+    type: "New",
+    items: [
+      "Meta Ads (Facebook + Instagram) full integration — campaign management, creative testing, audience optimization",
+      "Approval gates v2 — set auto-approve rules by campaign type or spend threshold",
+      "Bulk content approval view for agencies managing multiple clients",
+    ],
+  },
+  {
+    date: "March 10, 2026",
+    version: "v1.1",
+    title: "SEO content engine & outreach improvements",
+    type: "Improved",
+    items: [
+      "SEO content engine now generates topic clusters, not just individual articles",
+      "Internal linking suggestions powered by your site structure",
+      "Outreach personalization uses LinkedIn and company data for richer context",
+      "Email sequence A/B testing with statistical significance tracking",
+    ],
+  },
+  {
+    date: "March 1, 2026",
+    version: "v1.0",
+    title: "Mavek launches",
+    type: "Launch",
+    items: [
+      "Full-funnel marketing platform — paid ads, SEO, content, outreach, analytics",
+      "Google Ads integration with autonomous bid optimization",
+      "HubSpot CRM integration for lead management",
+      "Approval gates for human-in-the-loop control",
+      "Memory Layer for brand voice and data learning",
+      "Analytics dashboard with cross-channel attribution",
+    ],
+  },
+];
+---
+
+<Layout title="Changelog" description="See what's new in Mavek. Product updates, new features, and improvements.">
+  <Nav />
+
+  <section class="light changelog-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="changelog__header reveal">
+        <span class="sec-label">Changelog</span>
+        <h1>What's new in <em>Mavek</em></h1>
+        <p>Product updates, new features, and improvements. We ship fast.</p>
+      </div>
+
+      <div class="changelog__feed">
+        {entries.map((entry, i) => (
+          <div class="changelog__entry reveal" style={`transition-delay: ${i * 0.05}s`}>
+            <div class="changelog__meta">
+              <span class="changelog__date">{entry.date}</span>
+              <span class="changelog__version">{entry.version}</span>
+              <span class:list={["changelog__type", `changelog__type--${entry.type.toLowerCase()}`]}>{entry.type}</span>
+            </div>
+            <div class="changelog__content">
+              <h3>{entry.title}</h3>
+              <ul>
+                {entry.items.map(item => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Want to see these features in action?"
+    subtitle="Book a demo and we'll walk you through the latest updates."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .changelog__header {
+    max-width: 560px;
+    margin-bottom: var(--space-xl);
+  }
+  .changelog__header h1 { margin-top: var(--space-xs); margin-bottom: var(--space-xs); }
+
+  .changelog__feed {
+    max-width: 720px;
+  }
+
+  .changelog__entry {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid rgba(26,26,24,0.08);
+  }
+
+  .changelog__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .changelog__date {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+  }
+
+  .changelog__version {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .changelog__type {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.15rem 0.5rem;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .changelog__type--new {
+    color: var(--gold-dark);
+    background: rgba(138, 112, 40, 0.1);
+  }
+
+  .changelog__type--improved {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.08);
+  }
+
+  .changelog__type--launch {
+    color: var(--ink);
+    background: var(--gold-mid);
+  }
+
+  .changelog__content h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .changelog__content ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .changelog__content li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+
+  .changelog__content li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    background: var(--gold-mid);
+    border-radius: 1px;
+  }
+
+  @media (max-width: 600px) {
+    .changelog__entry {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+    .changelog__meta {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
+    }
+  }
+</style>

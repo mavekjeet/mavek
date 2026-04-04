@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const components = [
+  {
+    title: "Inbound Lead Generation",
+    description: "Attract prospects through valuable content, SEO, and social media so they come to you -- blog posts, gated resources, webinars, and organic search.",
+  },
+  {
+    title: "Outbound Lead Generation",
+    description: "Proactively reach prospects through cold email, paid ads, LinkedIn outreach, and direct messaging to create awareness and interest.",
+  },
+  {
+    title: "Lead Capture",
+    description: "Forms, landing pages, chatbots, and pop-ups that convert anonymous visitors into identified contacts with name, email, and intent data.",
+  },
+  {
+    title: "Lead Qualification",
+    description: "Scoring and filtering leads based on demographics, firmographics, and behavior to separate high-intent buyers from casual browsers.",
+  },
+  {
+    title: "Lead Nurturing",
+    description: "Automated email sequences, retargeting ads, and content drips that keep leads engaged until they are ready to buy.",
+  },
+];
+
+const relatedTerms = [
+  { term: "Marketing Funnel", slug: "marketing-funnel" },
+  { term: "Marketing Qualified Lead (MQL)", slug: "marketing-qualified-lead" },
+  { term: "Conversion Rate Optimization (CRO)", slug: "conversion-rate-optimization" },
+  { term: "Customer Acquisition Cost (CAC)", slug: "customer-acquisition-cost" },
+];
+---
+
+<Layout title="What Is Lead Generation? Definition & Guide" description="Lead generation is the process of attracting and converting prospects into potential customers. Learn what it is, key components, and how Mavek automates the entire process.">
+  <Nav />
+
+  <article class="section light glossary-article" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="article__header reveal">
+        <a href="/glossary" class="article__back">&larr; Back to Glossary</a>
+        <span class="sec-label">Glossary</span>
+        <h1>Lead Generation</h1>
+        <p class="article__lead">The process of attracting and converting strangers and prospects into people who have expressed interest in your product or service -- the lifeblood of any growing business.</p>
+      </div>
+
+      <div class="article__body reveal">
+        <h2>What is <em>lead generation</em>?</h2>
+        <p>Lead generation is the process of identifying, attracting, and capturing potential customers for your business. It spans every tactic that moves someone from being unaware of your brand to raising their hand and saying they want to learn more.</p>
+        <p>In practice, lead generation combines multiple channels: content marketing draws organic traffic, paid ads target specific audiences, landing pages capture contact information, and nurture sequences keep prospects engaged until they are ready to convert.</p>
+        <p>The best lead generation systems are not just about volume. They focus on attracting the right prospects -- people who match your ideal customer profile and have genuine buying intent -- so your sales team spends time on conversations that close.</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="section light components-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Key components of <em>lead generation</em></h2>
+        <p>Effective lead generation is a system, not a single tactic. These are the building blocks.</p>
+      </div>
+      <div class="grid-3 components-grid">
+        {components.map((item, i) => (
+          <div class="card component-card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark mavek-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <span class="sec-label">How Mavek Approaches It</span>
+        <h2>Lead generation on <em>autopilot</em></h2>
+        <p>Most teams cobble together a lead generation engine from five or six disconnected tools -- a CMS for content, an ad platform for paid, an email tool for nurture, a CRM for tracking. Each tool needs its own operator and none of them talk to each other natively.</p>
+        <p>Mavek handles lead generation as a single coordinated system. It creates SEO-optimized content to drive organic traffic, manages paid campaigns across Google and Meta, builds and tests landing pages, and runs nurture sequences -- all informed by real-time performance data.</p>
+        <p>The result is a lead generation engine that learns and improves autonomously. When a blog post drives high-intent traffic, Mavek can automatically create a related ad campaign to amplify it. When a landing page underperforms, it tests variations without waiting for a human to notice. Every channel feeds data back into the system, making the next campaign smarter than the last.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light related-section">
+    <div class="container">
+      <div class="article__body reveal">
+        <h2>Related terms</h2>
+        <div class="related-grid">
+          {relatedTerms.map(item => (
+            <a href={`/glossary/${item.slug}`} class="related-link">
+              {item.term} <span>&rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Generate leads while you sleep"
+    subtitle="Mavek runs your lead generation engine across every channel, autonomously."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .article__header {
+    max-width: 720px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .article__back {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    transition: opacity 0.2s ease;
+  }
+
+  .article__back:hover {
+    opacity: 1;
+    color: var(--gold-dark);
+  }
+
+  .article__header .sec-label {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .article__header h1 {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .article__lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.8;
+  }
+
+  .article__body {
+    max-width: 720px;
+  }
+
+  .article__body h2 {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    font-size: 1.6rem;
+  }
+
+  .article__body h2:first-child {
+    margin-top: 0;
+  }
+
+  .article__body p {
+    margin-bottom: var(--space-md);
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .components-section {
+    padding-top: 0;
+  }
+
+  .components-grid {
+    margin-top: var(--space-lg);
+  }
+
+  .component-card h4 {
+    margin-bottom: var(--space-xs);
+    font-size: 1.1rem;
+  }
+
+  .component-card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .mavek-section .article__body h2 {
+    margin-top: var(--space-sm);
+  }
+
+  .related-section {
+    padding-bottom: 0;
+  }
+
+  .related-section .article__body h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .related-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.08);
+    transition: all 0.2s ease;
+  }
+
+  .related-link:hover {
+    gap: 0.9rem;
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .related-link:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 900px) {
+    .components-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .components-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

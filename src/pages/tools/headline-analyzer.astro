@@ -1,0 +1,581 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Headline Analyzer" description="Score your headlines before you publish. Free headline analyzer that checks character count, word balance, power words, and emotional impact.">
+  <Nav />
+
+  <section class="light headline-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="headline-hero__content reveal">
+        <span class="sec-label">Headline Analyzer</span>
+        <h1>Score your headline <em>before you publish</em>.</h1>
+        <p class="headline-hero__lead">Get instant, data-driven feedback on character count, word balance, power words, and emotional triggers. Write headlines that convert.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light headline-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="headline-tool reveal">
+        <div class="headline-input-wrap">
+          <input
+            type="text"
+            id="headlineInput"
+            class="headline-input"
+            placeholder="Type your headline here..."
+            maxlength="200"
+          />
+          <button class="btn btn--primary headline-submit" id="headlineSubmit">Analyze <span>&rarr;</span></button>
+        </div>
+
+        <div class="headline-results" id="headlineResults" style="display: none;">
+          <div class="headline-score-section dark">
+            <div class="headline-score-wrap">
+              <div class="headline-score-ring" id="scoreRing">
+                <svg viewBox="0 0 160 160" class="headline-score-svg">
+                  <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8" />
+                  <circle
+                    cx="80" cy="80" r="70"
+                    fill="none"
+                    stroke="var(--gold-mid)"
+                    stroke-width="8"
+                    stroke-linecap="square"
+                    stroke-dasharray="440"
+                    stroke-dashoffset="440"
+                    id="scoreCircle"
+                    transform="rotate(-90 80 80)"
+                  />
+                </svg>
+                <div class="headline-score-inner">
+                  <span class="headline-score-number" id="scoreNumber">0</span>
+                  <span class="headline-score-label">out of 100</span>
+                </div>
+              </div>
+
+              <div class="headline-score-meta">
+                <span class="headline-score-grade" id="scoreGrade">--</span>
+                <p class="headline-score-feedback" id="scoreFeedback">Enter a headline to get started.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="headline-breakdown">
+            <h3>Breakdown</h3>
+            <div class="headline-cards grid-2" style="margin-top: var(--space-lg);">
+              <div class="card headline-card" id="cardCharCount">
+                <div class="headline-card__header">
+                  <span class="headline-card__title">Character Count</span>
+                  <span class="headline-card__badge" id="badgeCharCount">--</span>
+                </div>
+                <p class="headline-card__value" id="valueCharCount">--</p>
+                <p class="headline-card__hint">Ideal: 50-60 characters for SEO and social sharing</p>
+              </div>
+
+              <div class="card headline-card" id="cardWordCount">
+                <div class="headline-card__header">
+                  <span class="headline-card__title">Word Count</span>
+                  <span class="headline-card__badge" id="badgeWordCount">--</span>
+                </div>
+                <p class="headline-card__value" id="valueWordCount">--</p>
+                <p class="headline-card__hint">Ideal: 6-12 words for readability and engagement</p>
+              </div>
+
+              <div class="card headline-card" id="cardPowerWords">
+                <div class="headline-card__header">
+                  <span class="headline-card__title">Power Words</span>
+                  <span class="headline-card__badge" id="badgePowerWords">--</span>
+                </div>
+                <p class="headline-card__value" id="valuePowerWords">--</p>
+                <p class="headline-card__hint">Power words drive clicks and emotional response</p>
+              </div>
+
+              <div class="card headline-card" id="cardBonuses">
+                <div class="headline-card__header">
+                  <span class="headline-card__title">Bonus Signals</span>
+                  <span class="headline-card__badge" id="badgeBonuses">--</span>
+                </div>
+                <p class="headline-card__value" id="valueBonuses">--</p>
+                <p class="headline-card__hint">Numbers and emotional triggers boost engagement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="headline-tips reveal">
+        <div class="headline-tips__header">
+          <span class="sec-label">Writing Tips</span>
+          <h2>How to write headlines <em>that convert</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Lead with numbers</h4>
+            <p>Headlines starting with numbers get 36% more clicks. "7 Ways to..." always outperforms "Ways to..."</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Use power words</h4>
+            <p>Words like "proven", "essential", and "ultimate" trigger emotional responses that drive engagement.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Keep it tight</h4>
+            <p>6-12 words is the sweet spot. Long enough to be descriptive, short enough to be scannable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek write headlines for you"
+    subtitle="Our AI generates high-performing headlines, ad copy, and content -- all trained on what actually converts."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .headline-hero__content {
+    max-width: 640px;
+  }
+
+  .headline-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .headline-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .headline-tool {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Input */
+  .headline-input-wrap {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  .headline-input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .headline-input:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .headline-input::placeholder {
+    color: var(--muted);
+  }
+
+  .headline-submit {
+    white-space: nowrap;
+  }
+
+  /* Score Section */
+  .headline-score-section {
+    background: var(--dark);
+    padding: var(--space-2xl);
+    color: #F5F5F7;
+    margin-bottom: var(--space-xl);
+  }
+
+  .headline-score-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+  }
+
+  .headline-score-ring {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+  }
+
+  .headline-score-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #scoreCircle {
+    transition: stroke-dashoffset 0.8s var(--ease);
+  }
+
+  .headline-score-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .headline-score-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--gold-bright);
+    line-height: 1;
+  }
+
+  .headline-score-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    color: #F5F5F7;
+    margin-top: 0.25rem;
+  }
+
+  .headline-score-meta {
+    flex: 1;
+  }
+
+  .headline-score-grade {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.35rem 0.8rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .headline-score-grade.grade-excellent {
+    background: var(--gold-mid);
+    color: var(--ink);
+  }
+
+  .headline-score-grade.grade-good {
+    background: rgba(201, 168, 76, 0.2);
+    color: var(--gold-mid);
+  }
+
+  .headline-score-grade.grade-average {
+    background: rgba(255, 200, 0, 0.2);
+    color: #FFC800;
+  }
+
+  .headline-score-grade.grade-weak {
+    background: rgba(255, 80, 60, 0.2);
+    color: #FF503C;
+  }
+
+  .headline-score-feedback {
+    font-size: 1rem;
+    opacity: 0.7;
+    color: #F5F5F7;
+  }
+
+  /* Breakdown Cards */
+  .headline-breakdown h3 {
+    margin-bottom: 0;
+  }
+
+  .headline-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .headline-card__title {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+  }
+
+  .headline-card__badge {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .headline-card__badge.badge-good {
+    background: rgba(138, 112, 40, 0.12);
+    color: var(--gold-dark);
+  }
+
+  .headline-card__badge.badge-ok {
+    background: rgba(255, 200, 0, 0.12);
+    color: #B89200;
+  }
+
+  .headline-card__badge.badge-weak {
+    background: rgba(255, 80, 60, 0.1);
+    color: #CC4030;
+  }
+
+  .headline-card__value {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    opacity: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .headline-card__hint {
+    font-size: 0.78rem;
+    opacity: 0.45;
+  }
+
+  .headline-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .headline-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 900px) {
+    .headline-score-wrap {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .headline-score-section {
+      padding: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .headline-input-wrap {
+      flex-direction: column;
+    }
+
+    .headline-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .headline-score-section {
+      padding: var(--space-lg);
+    }
+  }
+</style>
+
+<script is:inline>
+  var POWER_WORDS = [
+    'free', 'proven', 'ultimate', 'exclusive', 'guaranteed',
+    'instant', 'secret', 'new', 'best', 'top',
+    'how to', 'why', 'boost', 'increase', 'grow',
+    'master', 'complete', 'essential', 'powerful', 'simple'
+  ];
+
+  var EMOTIONAL_TRIGGERS = [
+    'amazing', 'incredible', 'unbelievable', 'shocking', 'surprising',
+    'stunning', 'remarkable', 'extraordinary', 'brilliant', 'insane',
+    'mind-blowing', 'jaw-dropping', 'life-changing', 'game-changing',
+    'breakthrough', 'revolutionary', 'transform', 'crush', 'dominate',
+    'skyrocket', 'explode', 'unleash', 'unlock', 'discover',
+    'never', 'always', 'worst', 'dangerous', 'warning',
+    'urgent', 'critical', 'must', 'need', 'now'
+  ];
+
+  var headlineInput = document.getElementById('headlineInput');
+  var headlineSubmit = document.getElementById('headlineSubmit');
+  var headlineResults = document.getElementById('headlineResults');
+  var scoreNumber = document.getElementById('scoreNumber');
+  var scoreCircle = document.getElementById('scoreCircle');
+  var scoreGrade = document.getElementById('scoreGrade');
+  var scoreFeedback = document.getElementById('scoreFeedback');
+
+  function analyzeHeadline(headline) {
+    headline = headline.trim();
+    if (!headline) return;
+
+    headlineResults.style.display = 'block';
+
+    var words = headline.split(/\s+/).filter(function(w) { return w.length > 0; });
+    var charCount = headline.length;
+    var wordCount = words.length;
+    var lowerHeadline = headline.toLowerCase();
+
+    // Score components
+    var charScore = 0;
+    var charBadge = 'weak';
+    var charText = charCount + ' characters';
+    if (charCount >= 50 && charCount <= 60) {
+      charScore = 25;
+      charBadge = 'good';
+      charText += ' (perfect range)';
+    } else if (charCount >= 40 && charCount <= 70) {
+      charScore = 18;
+      charBadge = 'ok';
+      charText += ' (close to ideal)';
+    } else if (charCount >= 30 && charCount <= 80) {
+      charScore = 10;
+      charBadge = 'ok';
+      charText += ' (could be adjusted)';
+    } else {
+      charScore = 5;
+      charBadge = 'weak';
+      charText += charCount < 30 ? ' (too short)' : ' (too long)';
+    }
+
+    var wordScore = 0;
+    var wordBadge = 'weak';
+    var wordText = wordCount + ' words';
+    if (wordCount >= 6 && wordCount <= 12) {
+      wordScore = 25;
+      wordBadge = 'good';
+      wordText += ' (perfect range)';
+    } else if (wordCount >= 4 && wordCount <= 15) {
+      wordScore = 16;
+      wordBadge = 'ok';
+      wordText += ' (acceptable)';
+    } else {
+      wordScore = 5;
+      wordBadge = 'weak';
+      wordText += wordCount < 4 ? ' (too few)' : ' (too many)';
+    }
+
+    // Power words
+    var foundPower = [];
+    POWER_WORDS.forEach(function(pw) {
+      if (lowerHeadline.indexOf(pw) !== -1) {
+        foundPower.push(pw);
+      }
+    });
+    var powerScore = Math.min(foundPower.length * 8, 25);
+    var powerBadge = foundPower.length >= 2 ? 'good' : (foundPower.length === 1 ? 'ok' : 'weak');
+    var powerText = foundPower.length > 0
+      ? foundPower.length + ' found: ' + foundPower.join(', ')
+      : 'None detected. Try adding words like "proven", "essential", or "how to"';
+
+    // Bonuses
+    var bonusScore = 0;
+    var bonusDetails = [];
+    var startsWithNumber = /^\d/.test(headline);
+    if (startsWithNumber) {
+      bonusScore += 13;
+      bonusDetails.push('Starts with a number (+13)');
+    }
+
+    var hasEmotional = false;
+    EMOTIONAL_TRIGGERS.forEach(function(et) {
+      if (lowerHeadline.indexOf(et) !== -1) {
+        hasEmotional = true;
+      }
+    });
+    if (hasEmotional) {
+      bonusScore += 12;
+      bonusDetails.push('Emotional trigger detected (+12)');
+    }
+
+    var bonusBadge = bonusScore >= 20 ? 'good' : (bonusScore > 0 ? 'ok' : 'weak');
+    var bonusText = bonusDetails.length > 0
+      ? bonusDetails.join(' | ')
+      : 'No bonus signals. Try starting with a number or adding an emotional word.';
+
+    // Total score
+    var totalScore = Math.min(charScore + wordScore + powerScore + bonusScore, 100);
+
+    // Grade
+    var grade, gradeClass, feedback;
+    if (totalScore >= 80) {
+      grade = 'Excellent';
+      gradeClass = 'grade-excellent';
+      feedback = 'This headline is well-optimized. Strong word choice, good length, and compelling structure.';
+    } else if (totalScore >= 60) {
+      grade = 'Good';
+      gradeClass = 'grade-good';
+      feedback = 'Solid headline with room for improvement. Consider adding power words or adjusting the length.';
+    } else if (totalScore >= 40) {
+      grade = 'Average';
+      gradeClass = 'grade-average';
+      feedback = 'This headline needs work. Try adding power words, starting with a number, or adjusting the length.';
+    } else {
+      grade = 'Needs Work';
+      gradeClass = 'grade-weak';
+      feedback = 'This headline could be much stronger. Focus on the ideal word count (6-12), add power words, and consider starting with a number.';
+    }
+
+    // Animate score
+    scoreNumber.textContent = totalScore;
+    var circumference = 2 * Math.PI * 70; // r=70
+    var offset = circumference - (totalScore / 100) * circumference;
+    scoreCircle.style.strokeDashoffset = offset;
+
+    scoreGrade.textContent = grade;
+    scoreGrade.className = 'headline-score-grade ' + gradeClass;
+    scoreFeedback.textContent = feedback;
+
+    // Update cards
+    updateCard('CharCount', charText, charBadge);
+    updateCard('WordCount', wordText, wordBadge);
+    updateCard('PowerWords', powerText, powerBadge);
+    updateCard('Bonuses', bonusText, bonusBadge);
+
+    // Scroll results into view
+    headlineResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function updateCard(name, value, badge) {
+    var badgeLabel = badge === 'good' ? 'Good' : (badge === 'ok' ? 'OK' : 'Weak');
+    document.getElementById('value' + name).textContent = value;
+    var badgeEl = document.getElementById('badge' + name);
+    badgeEl.textContent = badgeLabel;
+    badgeEl.className = 'headline-card__badge badge-' + badge;
+  }
+
+  headlineSubmit.addEventListener('click', function() {
+    analyzeHeadline(headlineInput.value);
+  });
+
+  headlineInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      analyzeHeadline(headlineInput.value);
+    }
+  });
+</script>

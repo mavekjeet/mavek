@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+const caseStudies = [
+  {
+    tag: "Agency",
+    company: "Pixel & Pulse Agency",
+    industry: "Digital Marketing Agency",
+    headline: "From 8 clients to 22 — without a single new hire.",
+    metrics: [
+      { label: "Campaign Output", before: "32/mo", after: "120/mo" },
+      { label: "Client Capacity", before: "8", after: "22" },
+      { label: "Team Size", before: "12", after: "12" },
+      { label: "Monthly Revenue", before: "Rs.18L", after: "Rs.52L" },
+    ],
+    quote: "Mavek didn't just automate our workflows — it fundamentally changed what our team of 12 could deliver. We tripled our client base without a single new hire.",
+    author: "Vikram Singh",
+    role: "Founder, Pixel & Pulse",
+  },
+  {
+    tag: "D2C Brand",
+    company: "Bloom & Co",
+    industry: "Direct-to-Consumer Beauty",
+    headline: "Enterprise marketing on a startup budget.",
+    metrics: [
+      { label: "Monthly Ad Spend", before: "Rs.2L", after: "Rs.2L" },
+      { label: "ROAS", before: "2.1x", after: "5.8x" },
+      { label: "Organic Traffic", before: "4K/mo", after: "28K/mo" },
+      { label: "Marketing Cost", before: "Rs.3.5L/mo", after: "$499/mo" },
+    ],
+    quote: "We were spending more on our agency than on ads. Mavek gave us better execution at a tenth of the cost — and the content actually sounds like us.",
+    author: "Neha Kapoor",
+    role: "Founder, Bloom & Co",
+  },
+  {
+    tag: "SaaS",
+    company: "ScaleUp Technologies",
+    industry: "B2B SaaS",
+    headline: "Pipeline grew 4x while the marketing team stayed at two.",
+    metrics: [
+      { label: "Pipeline Generated", before: "Rs.40L/qtr", after: "Rs.1.6Cr/qtr" },
+      { label: "Content Published", before: "4/mo", after: "24/mo" },
+      { label: "Lead Response Time", before: "6 hours", after: "12 min" },
+      { label: "Marketing Team", before: "2 people", after: "2 people" },
+    ],
+    quote: "The memory layer is what makes this different from every other tool we tried. Mavek actually learns our ICP and the outreach gets better every week.",
+    author: "Arjun Mehta",
+    role: "CMO, ScaleUp Technologies",
+  },
+];
+---
+
+<Layout title="Case Studies" description="See how agencies and brands use Mavek to 10x their marketing output.">
+  <Nav />
+
+  <section class="light cases-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="cases__header reveal">
+        <span class="sec-label">Case Studies</span>
+        <h1>Real results. <em>Real businesses.</em></h1>
+        <p>See how agencies and brands use Mavek to deliver 10x more with the same team.</p>
+      </div>
+    </div>
+  </section>
+
+  {caseStudies.map((cs, idx) => (
+    <section class:list={[{ "dark": idx % 2 === 0, "light": idx % 2 !== 0 }]}>
+      <div class="container">
+        <div class="case reveal">
+          <div class="case__header">
+            <span class="case__tag">{cs.tag}</span>
+            <h2>{cs.headline}</h2>
+            <p class="case__company">{cs.company} — {cs.industry}</p>
+          </div>
+
+          <div class="case__metrics grid-4">
+            {cs.metrics.map(m => (
+              <div class:list={["case__metric", { "case__metric--on-dark": idx % 2 === 0 }]}>
+                <span class="case__metric-label">{m.label}</span>
+                <div class="case__metric-values">
+                  <span class="case__before">{m.before}</span>
+                  <span class="case__arrow">&rarr;</span>
+                  <span class="case__after">{m.after}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <blockquote class="case__quote">
+            <p>"{cs.quote}"</p>
+            <footer>
+              <strong>{cs.author}</strong>
+              <span>{cs.role}</span>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <CTASection
+    title="Ready to write your own case study?"
+    subtitle="Join the companies delivering 10x more with Mavek."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .cases__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .cases__header h1 { margin-top: var(--space-xs); margin-bottom: var(--space-xs); }
+
+  .case__header { margin-bottom: var(--space-xl); }
+  .case__tag {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    background: rgba(138, 112, 40, 0.1);
+    padding: 0.25rem 0.75rem;
+    display: inline-block;
+    margin-bottom: var(--space-sm);
+  }
+  .case__header h2 { margin-bottom: var(--space-xs); }
+  .case__company { font-size: 0.9rem; opacity: 0.6; }
+
+  .case__metric {
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26,26,24,0.06);
+    padding: var(--space-md);
+    text-align: center;
+  }
+  .case__metric--on-dark {
+    background: var(--dark-card);
+    border-color: var(--dark-border);
+  }
+  .case__metric-label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+  .case__metric-values {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .case__before {
+    font-size: 1rem;
+    opacity: 0.4;
+    text-decoration: line-through;
+  }
+  .case__arrow { color: var(--gold-dark); font-size: 0.8rem; }
+  .dark .case__arrow { color: var(--gold-mid); }
+  .case__after {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--gold-dark);
+  }
+  .dark .case__after { color: var(--gold-mid); }
+
+  .case__quote {
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    border-left: 3px solid var(--gold-mid);
+    max-width: 640px;
+  }
+  .case__quote p {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
+  }
+  .dark .case__quote p { color: rgba(255,255,255,0.85); }
+  .case__quote footer { font-size: 0.85rem; }
+  .case__quote footer strong { display: block; }
+  .dark .case__quote footer strong { color: #F5F5F7; }
+  .case__quote footer span {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    opacity: 0.5;
+  }
+</style>

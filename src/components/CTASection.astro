@@ -1,0 +1,55 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  primaryCta?: string;
+  primaryHref?: string;
+  secondaryCta?: string;
+  secondaryHref?: string;
+  dark?: boolean;
+}
+
+const {
+  title = "Stop drowning in busywork. Start delivering <em>10x.</em>",
+  subtitle = "Join the marketers who've made one person as powerful as ten.",
+  primaryCta = "Get Started",
+  primaryHref = "/contact",
+  secondaryCta = "View Pricing",
+  secondaryHref = "/pricing",
+  dark = true,
+} = Astro.props;
+---
+
+<section class:list={[dark ? "dark" : "light", "cta-section"]}>
+  <div class="container">
+    <div class="cta__inner reveal">
+      <h2 set:html={title} />
+      <p class="sub" style="margin-left:auto;margin-right:auto;text-align:center;">{subtitle}</p>
+      <div class="cta__actions">
+        <a href={primaryHref} class:list={["btn", dark ? "btn-gold" : "btn--primary"]}>{primaryCta} <span>&rarr;</span></a>
+        {secondaryCta && secondaryHref && (
+          <a href={secondaryHref} class:list={["btn", dark ? "btn-outline-gold" : "btn--secondary"]}>{secondaryCta}</a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta__inner {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta__actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .cta__actions { flex-direction: column; align-items: center; }
+  }
+</style>

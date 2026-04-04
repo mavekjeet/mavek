@@ -1,0 +1,100 @@
+---
+interface Props {
+  dark?: boolean;
+}
+const { dark = false } = Astro.props;
+
+const logos = [
+  { name: "Google Ads", file: "/images/logos/google-ads.svg" },
+  { name: "Meta", file: "/images/logos/meta.svg" },
+  { name: "Google Analytics", file: "/images/logos/google-analytics.svg" },
+  { name: "Apollo.io", file: "/images/logos/apollo.svg" },
+  { name: "Search Console", file: "/images/logos/search-console.svg" },
+  { name: "Ahrefs", file: "/images/logos/ahrefs.svg" },
+  { name: "LinkedIn", file: "/images/logos/linkedin.svg" },
+  { name: "HubSpot", file: "/images/logos/hubspot.svg" },
+];
+---
+
+<section class:list={["logobar", dark ? "dark" : "light"]}>
+  <div class="container">
+    <p class="logobar__label">Integrates with your stack</p>
+    <div class="logobar__track">
+      {logos.map(logo => (
+        <div class="logobar__item">
+          <img src={logo.file} alt={logo.name} width="20" height="20" loading="lazy" />
+          <span>{logo.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logobar {
+    padding: var(--space-lg) 0;
+    border-top: 1px solid rgba(26,26,24,0.06);
+    border-bottom: 1px solid rgba(26,26,24,0.06);
+  }
+
+  .logobar.dark {
+    border-color: rgba(255,255,255,0.06);
+  }
+
+  .logobar__label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .light .logobar__label {
+    color: var(--ink-muted);
+  }
+
+  .dark .logobar__label {
+    color: var(--cream-40);
+  }
+
+  .logobar__track {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .logobar__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+  }
+
+  .dark .logobar__item {
+    color: var(--cream-40);
+  }
+
+  .logobar__item:hover { opacity: 1; }
+
+  .logobar__item img {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 600px) {
+    .logobar__track { gap: var(--space-md); }
+    .logobar__item { font-size: 0.75rem; }
+    .logobar__item img { width: 16px; height: 16px; }
+  }
+</style>

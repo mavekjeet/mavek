@@ -1,0 +1,138 @@
+---
+interface Props {
+  dark?: boolean;
+}
+const { dark = true } = Astro.props;
+
+const problems = [
+  {
+    icon: "01",
+    title: "My team is stretched too thin",
+    description: "You need SEO, paid ads, content, outreach, and analytics. That's five hires minimum. Or one Mavek.",
+  },
+  {
+    icon: "02",
+    title: "AI tools just create more junk",
+    description: "Most AI spits out generic content at volume. Mavek produces fewer, better assets that actually convert.",
+  },
+  {
+    icon: "03",
+    title: "I still have to spoon-feed every tool",
+    description: "Other platforms need constant hand-holding. Mavek learns your brand, your data, and operates autonomously.",
+  },
+  {
+    icon: "04",
+    title: "Too many human errors, too slow",
+    description: "Manual processes break at scale. Mavek executes with precision, 24/7, with approval gates you control.",
+  },
+];
+---
+
+<section class:list={["problems", dark ? "dark" : "light"]}>
+  <div class="container">
+    <div class="problems__header reveal">
+      <span class="sec-label">The Problem</span>
+      <h2>Sound familiar?</h2>
+    </div>
+    <div class="problems__grid grid-4">
+      {problems.map((p, i) => (
+        <div class:list={["problem-card", "reveal", dark && "problem-card--dark"]} style={`transition-delay: ${i * 0.1}s`}>
+          <span class="card__number">{p.icon}</span>
+          <h4 class="card__title">{p.title}</h4>
+          <p class="card__desc">{p.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .problems__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .problems__header h2 {
+    margin-top: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+
+  .sec-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .light .sec-label {
+    color: var(--gold-dark);
+  }
+
+  .dark .sec-label {
+    color: var(--gold-mid);
+  }
+
+  .problem-card {
+    border-radius: 10px;
+    padding: 32px;
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.06);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+
+  .problem-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .problem-card--dark {
+    background: var(--night-3) !important;
+    border-color: rgba(201, 168, 76, 0.1);
+  }
+
+  .problem-card--dark:hover {
+    border-color: rgba(201, 168, 76, 0.2);
+  }
+
+  .card__number {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .light .card__number {
+    color: var(--gold-dark);
+  }
+
+  .dark .card__number {
+    color: var(--gold-mid);
+  }
+
+  .card__title {
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.15rem;
+  }
+
+  .dark .card__title {
+    color: var(--cream);
+  }
+
+  .card__desc {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .light .card__desc {
+    color: var(--ink-muted);
+  }
+
+  .dark .card__desc {
+    color: var(--cream-60);
+  }
+</style>

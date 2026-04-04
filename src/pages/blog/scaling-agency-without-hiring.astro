@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="How to Scale Your Agency Without Hiring" description="Grow your agency revenue without growing headcount. The systems, tools, and partnerships that let you serve more clients without more employees.">
+  <Nav />
+
+  <article class="section light blog-post" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="post__header reveal">
+        <a href="/blog" class="post__back">&larr; Back to Blog</a>
+        <div class="post__meta">
+          <span class="post__category">For Agencies</span>
+          <span class="post__date">March 12, 2026</span>
+          <span class="post__read">7 min read</span>
+        </div>
+        <h1>How to Scale Your Agency Without Hiring</h1>
+        <p class="post__lead">The traditional agency model ties revenue directly to headcount. Here is how forward-thinking agencies are breaking that link and growing margins while growing revenue.</p>
+      </div>
+
+      <div class="post__body reveal">
+        <div class="photo-placeholder" style="aspect-ratio: 21/9; margin-bottom: 2rem;">
+          <svg width="40" height="52" viewBox="0 0 200 280" opacity="0.15"><g transform="translate(100, 115)"><path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="currentColor"/><path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="currentColor" opacity="0.6"/><path d="M-68 0 L0 0 L0 81.6 Z" fill="currentColor" opacity="0.4"/><path d="M0 0 L68 0 L0 81.6 Z" fill="currentColor" opacity="0.2"/></g></svg>
+        </div>
+
+        <h2>The <em>Headcount Trap</em></h2>
+        <p>Most agencies operate on a simple formula: more clients means more work means more hires. Revenue scales linearly with headcount, and margins stay flat or shrink as management overhead grows. Hiring is slow, expensive, and risky. Every new employee increases your fixed costs and your break-even point. The agencies breaking out of this cycle are doing it by decoupling revenue from hours worked.</p>
+
+        <h2><em>Productize</em> Your Services</h2>
+        <p>The first step is turning custom projects into repeatable packages. Instead of scoping every engagement from scratch, define standard deliverables with fixed pricing. A productized SEO audit, a standard ad campaign setup, or a templated brand strategy package can be delivered in a fraction of the time a custom project takes, because your team has done it dozens of times before. Productization also makes sales easier, fulfillment faster, and quality more consistent.</p>
+        <p>The key is identifying which 20% of your services generate 80% of your revenue and standardizing those first. Custom work can still be offered at premium pricing, but it should not be your default.</p>
+
+        <h2>Automate <em>Client Operations</em></h2>
+        <p>Agencies hemorrhage time on operations: client onboarding, status updates, report generation, asset approvals, and project management. Each of these can be partially or fully automated. Automated onboarding questionnaires, self-service reporting dashboards, and approval workflows eliminate hours of manual work per client per month. At scale, this adds up to the equivalent of several full-time employees.</p>
+
+        <h2>Leverage AI for <em>Execution</em></h2>
+        <p>AI tools can handle a growing share of execution work that previously required junior employees. First-draft copywriting, ad creative variations, data analysis, competitive research, and reporting can all be accelerated with AI. This does not mean replacing your team. It means enabling each team member to handle more clients without working more hours. An account manager who used to handle 5 clients can handle 8 when AI handles the routine execution work.</p>
+
+        <h2>Build <em>Strategic Partnerships</em></h2>
+        <p>Instead of hiring specialists for every capability, build partnerships with specialized providers. Need design work? Partner with a design studio rather than hiring designers. Need development? Maintain a relationship with a trusted dev shop. Partnerships give you access to specialized talent on demand without the fixed cost of full-time employees. Structure these relationships with clear SLAs and preferred pricing to ensure reliability without the overhead of employment.</p>
+      </div>
+    </div>
+  </article>
+
+  <CTASection title="Scale your agency with smarter systems." subtitle="Mavek helps agencies deliver more to clients without adding headcount. See how it works." dark={true} />
+  <Footer />
+</Layout>
+
+<style>
+  .post__header { max-width: 720px; margin-bottom: var(--space-xl); }
+  .post__back { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; margin-bottom: var(--space-md); display: inline-block; transition: opacity 0.2s ease; }
+  .post__back:hover { opacity: 1; color: var(--gold-dark); }
+  .post__meta { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+  .post__category { font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); background: rgba(138, 112, 40, 0.08); padding: 0.2rem 0.5rem; }
+  .post__date, .post__read { font-family: var(--font-body); font-size: 0.7rem; opacity: 0.4; }
+  .post__header h1 { margin-bottom: var(--space-md); font-size: clamp(2rem, 4vw, 3rem); }
+  .post__lead { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
+  .post__body { max-width: 720px; }
+  .post__body h2 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); font-size: 1.6rem; }
+  .post__body p { margin-bottom: var(--space-md); font-size: 1.05rem; line-height: 1.8; }
+</style>

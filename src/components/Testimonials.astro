@@ -1,0 +1,200 @@
+---
+interface Props {
+  dark?: boolean;
+}
+const { dark = false } = Astro.props;
+
+const testimonials = [
+  {
+    quote: "We went from drowning in campaign management to running 4x the campaigns with the same team. Mavek didn't just save us time — it changed what's possible.",
+    name: "Priya Sharma",
+    role: "Head of Growth, Nexus Digital Agency",
+    initials: "PS",
+    color: "#8A7028",
+  },
+  {
+    quote: "I was skeptical about AI marketing tools after trying three others. Mavek is different — it actually learns our brand voice and the content doesn't feel like AI slop.",
+    name: "Arjun Mehta",
+    role: "CMO, ScaleUp Technologies",
+    initials: "AM",
+    color: "#5A8EC9",
+  },
+  {
+    quote: "The approval gates are what sold me. Nothing goes live without my sign-off, but I'm not bottlenecking the team anymore. It's the autonomy I wanted with the control I needed.",
+    name: "Neha Kapoor",
+    role: "Founder, Bloom & Co",
+    initials: "NK",
+    color: "#5A9E3E",
+  },
+];
+---
+
+<section class:list={["testimonials", dark ? "dark" : "light"]}>
+  <div class="container">
+    <div class="testimonials__header reveal">
+      <span class="sec-label">What People Say</span>
+      <h2>Trusted by marketers who <em>demand results</em></h2>
+    </div>
+    <div class="testimonials__grid grid-3">
+      {testimonials.map((t, i) => (
+        <div class="testimonial-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+          <div class="testimonial__stars" aria-label="5 out of 5 stars">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--gold-mid)"><path d="M8 0l2.47 4.99L16 5.8l-4 3.9.94 5.49L8 12.73l-4.94 2.46L4 9.7 0 5.8l5.53-.81z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--gold-mid)"><path d="M8 0l2.47 4.99L16 5.8l-4 3.9.94 5.49L8 12.73l-4.94 2.46L4 9.7 0 5.8l5.53-.81z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--gold-mid)"><path d="M8 0l2.47 4.99L16 5.8l-4 3.9.94 5.49L8 12.73l-4.94 2.46L4 9.7 0 5.8l5.53-.81z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--gold-mid)"><path d="M8 0l2.47 4.99L16 5.8l-4 3.9.94 5.49L8 12.73l-4.94 2.46L4 9.7 0 5.8l5.53-.81z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--gold-mid)"><path d="M8 0l2.47 4.99L16 5.8l-4 3.9.94 5.49L8 12.73l-4.94 2.46L4 9.7 0 5.8l5.53-.81z"/></svg>
+          </div>
+          <blockquote class="testimonial__quote">&ldquo;{t.quote}&rdquo;</blockquote>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar" style={`background: ${t.color}`} role="presentation">
+              <span>{t.initials}</span>
+            </div>
+            <div>
+              <div class="testimonial__name">{t.name}</div>
+              <div class="testimonial__role">{t.role}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .testimonials__header h2 {
+    margin-top: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+
+  .testimonials__header h2 em {
+    font-style: italic;
+  }
+
+  .light .testimonials__header h2 em {
+    color: var(--gold-dark);
+  }
+
+  .dark .testimonials__header h2 em {
+    color: var(--gold-bright);
+  }
+
+  .sec-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .light .sec-label {
+    color: var(--gold-dark);
+  }
+
+  .dark .sec-label {
+    color: var(--gold-mid);
+  }
+
+  .testimonial-card {
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.08);
+    border-radius: 10px;
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all var(--duration) var(--ease);
+  }
+
+  .testimonial-card:hover {
+    border-color: var(--gold-dark);
+    transform: translateY(-4px);
+  }
+
+  .dark .testimonial-card {
+    background: var(--night-3);
+    border-color: rgba(255,255,255,0.08);
+  }
+
+  .dark .testimonial-card:hover {
+    border-color: var(--gold-mid);
+  }
+
+  .testimonial__stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .testimonial__quote {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: var(--space-lg);
+    border: none;
+    padding: 0;
+  }
+
+  .light .testimonial__quote {
+    color: var(--ink-soft);
+  }
+
+  .dark .testimonial__quote {
+    color: var(--cream-60);
+  }
+
+  .testimonial__author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .testimonial__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .testimonial__avatar span {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.5px;
+  }
+
+  .testimonial__name {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .dark .testimonial__name {
+    color: var(--cream);
+  }
+
+  .testimonial__role {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+  }
+
+  .light .testimonial__role {
+    color: var(--ink-muted);
+  }
+
+  .dark .testimonial__role {
+    color: var(--cream-40);
+  }
+</style>

@@ -1,0 +1,255 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const rows = [
+  {
+    category: "Approach",
+    them: "CRM + tools you operate yourself",
+    mavek: "Autonomous execution across every channel",
+  },
+  {
+    category: "Setup",
+    them: "Months of configuration",
+    mavek: "Days from signup to live campaigns",
+  },
+  {
+    category: "Staffing",
+    them: "Needs a team to operate the platform",
+    mavek: "Operates independently with approval gates",
+  },
+  {
+    category: "Cost",
+    them: "Marketing Hub $800+ / month + team salaries",
+    mavek: "$499 / month, all-in",
+  },
+  {
+    category: "Content",
+    them: "Templates you customise manually",
+    mavek: "Creates original content from your brand data",
+  },
+  {
+    category: "Learning Curve",
+    them: "Extensive training and certifications",
+    mavek: "Minimal onboarding, intuitive from day one",
+  },
+];
+
+const benefits = [
+  {
+    title: "Execution, not just tooling",
+    desc: "HubSpot gives you the controls. Mavek flies the plane. Stop spending hours inside a platform and let autonomous agents handle the work.",
+  },
+  {
+    title: "Live in days, not months",
+    desc: "HubSpot implementations routinely take 3-6 months. Mavek connects via OAuth, learns your brand, and starts executing within days.",
+  },
+  {
+    title: "No platform tax",
+    desc: "HubSpot's Marketing Hub starts at $800/month before you factor in the team needed to run it. Mavek includes the execution for $499 flat.",
+  },
+];
+---
+
+<Layout title="Mavek vs HubSpot" description="Compare Mavek and HubSpot side by side. See why teams choose autonomous execution over a toolbox that still requires a team to operate.">
+  <Nav />
+
+  <!-- Hero -->
+  <section class="light cmp-hero">
+    <div class="container" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+      <div class="cmp-hero__inner reveal">
+        <span class="sec-label">Compare</span>
+        <h1>Mavek vs HubSpot</h1>
+        <p class="cmp-hero__summary">HubSpot gives you a powerful CRM and marketing toolkit. But you still need a team to operate it. Mavek handles both the toolkit and the execution.</p>
+        <div class="cmp-hero__actions">
+          <a href="/contact" class="btn btn--primary">Try Mavek free <span>&rarr;</span></a>
+          <a href="/pricing" class="btn btn--secondary">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="dark">
+    <div class="container">
+      <div class="cmp-table__header reveal">
+        <span class="sec-label">Feature Comparison</span>
+        <h2>Marketing toolkit vs <em>marketing autopilot</em></h2>
+      </div>
+      <div class="cmp-table__wrap reveal">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>HubSpot</th>
+              <th class="cmp-table__mavek-col">Mavek</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(row => (
+              <tr>
+                <td><strong>{row.category}</strong></td>
+                <td class="cmp-table__them">{row.them}</td>
+                <td class="cmp-table__mavek">
+                  <span class="cmp-check" aria-hidden="true">&#10003;</span>
+                  {row.mavek}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Teams Switch -->
+  <section class="light">
+    <div class="container">
+      <div class="cmp-benefits__header reveal">
+        <span class="sec-label">Why Teams Switch</span>
+        <h2>Why teams <em>switch to Mavek</em></h2>
+      </div>
+      <div class="grid-3">
+        {benefits.map((b, i) => (
+          <div class="card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4 style="font-family: var(--font-body); font-weight: 600; margin-bottom: var(--space-xs);">{b.title}</h4>
+            <p style="font-size: 0.92rem;">{b.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Stop configuring. Start executing."
+    subtitle="Skip months of setup. A platform that works from day one."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="View Pricing"
+    secondaryHref="/pricing"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero */
+  .cmp-hero__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cmp-hero__inner h1 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .cmp-hero__summary {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-lg);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cmp-hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  /* Comparison Table */
+  .cmp-table__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cmp-table__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .cmp-table__wrap {
+    overflow-x: auto;
+  }
+
+  .cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .cmp-table th {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 2px solid var(--dark-border);
+    color: rgba(255,255,255,0.4);
+  }
+
+  .cmp-table__mavek-col {
+    color: var(--gold-mid) !important;
+    opacity: 1 !important;
+  }
+
+  .cmp-table td {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--dark-border);
+    vertical-align: top;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .cmp-table td strong {
+    display: block;
+    color: #F5F5F7;
+    margin-bottom: 0.1rem;
+  }
+
+  .cmp-table__them {
+    opacity: 0.5;
+  }
+
+  .cmp-table__mavek {
+    color: var(--gold-mid) !important;
+    font-weight: 500;
+  }
+
+  .cmp-check {
+    color: var(--gold-mid);
+    font-weight: 700;
+    margin-right: 0.4rem;
+  }
+
+  /* Benefits */
+  .cmp-benefits__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cmp-benefits__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .cmp-hero__actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cmp-table {
+      font-size: 0.82rem;
+    }
+
+    .cmp-table td,
+    .cmp-table th {
+      padding: var(--space-sm);
+    }
+  }
+</style>

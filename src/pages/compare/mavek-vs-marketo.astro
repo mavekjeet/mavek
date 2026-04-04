@@ -1,0 +1,255 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const rows = [
+  {
+    category: "Complexity",
+    them: "Enterprise-grade configuration required",
+    mavek: "Simple setup, live in days",
+  },
+  {
+    category: "Cost",
+    them: "$1,000 - $3,000+ / month plus team salaries",
+    mavek: "$499 / month, all-in",
+  },
+  {
+    category: "Time to Value",
+    them: "Months of implementation and onboarding",
+    mavek: "Days from signup to live campaigns",
+  },
+  {
+    category: "Staffing",
+    them: "Dedicated admin or consultant needed",
+    mavek: "Operates autonomously with approval gates",
+  },
+  {
+    category: "Channel Coverage",
+    them: "Email-centric with limited ad support",
+    mavek: "Full-funnel across ads, SEO, content, email, outreach, and analytics",
+  },
+  {
+    category: "Learning Curve",
+    them: "Certification required to operate effectively",
+    mavek: "Minimal onboarding, intuitive from day one",
+  },
+];
+
+const benefits = [
+  {
+    title: "Enterprise power without enterprise complexity",
+    desc: "Marketo was built for large teams with dedicated ops. Mavek delivers the same cross-channel execution without the six-month implementation or the need for a certified admin.",
+  },
+  {
+    title: "Full-funnel, not email-first",
+    desc: "Marketo started as an email platform and it still shows. Mavek was built from the ground up to manage ads, SEO, content, outreach, and analytics as a single system.",
+  },
+  {
+    title: "Fraction of the cost, none of the overhead",
+    desc: "Between licensing, consultants, and the team to run it, Marketo can cost $5K+ per month. Mavek handles both the platform and the execution for $499 flat.",
+  },
+];
+---
+
+<Layout title="Mavek vs Marketo" description="Compare Mavek and Marketo side by side. See why teams choose autonomous full-funnel execution over enterprise complexity.">
+  <Nav />
+
+  <!-- Hero -->
+  <section class="light cmp-hero">
+    <div class="container" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+      <div class="cmp-hero__inner reveal">
+        <span class="sec-label">Compare</span>
+        <h1>Mavek vs Marketo</h1>
+        <p class="cmp-hero__summary">Marketo is an enterprise marketing automation platform that demands a team to operate. Mavek delivers full-funnel execution autonomously at a fraction of the cost.</p>
+        <div class="cmp-hero__actions">
+          <a href="/contact" class="btn btn--primary">Try Mavek free <span>&rarr;</span></a>
+          <a href="/pricing" class="btn btn--secondary">View Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="dark">
+    <div class="container">
+      <div class="cmp-table__header reveal">
+        <span class="sec-label">Feature Comparison</span>
+        <h2>Enterprise complexity vs <em>autonomous simplicity</em></h2>
+      </div>
+      <div class="cmp-table__wrap reveal">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Marketo</th>
+              <th class="cmp-table__mavek-col">Mavek</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(row => (
+              <tr>
+                <td><strong>{row.category}</strong></td>
+                <td class="cmp-table__them">{row.them}</td>
+                <td class="cmp-table__mavek">
+                  <span class="cmp-check" aria-hidden="true">&#10003;</span>
+                  {row.mavek}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Teams Switch -->
+  <section class="light">
+    <div class="container">
+      <div class="cmp-benefits__header reveal">
+        <span class="sec-label">Why Teams Switch</span>
+        <h2>Why teams <em>switch to Mavek</em></h2>
+      </div>
+      <div class="grid-3">
+        {benefits.map((b, i) => (
+          <div class="card reveal" style={`transition-delay: ${i * 0.06}s`}>
+            <h4 style="font-family: var(--font-body); font-weight: 600; margin-bottom: var(--space-xs);">{b.title}</h4>
+            <p style="font-size: 0.92rem;">{b.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ditch the complexity. Keep the results."
+    subtitle="Skip months of implementation. A platform that executes from day one."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="View Pricing"
+    secondaryHref="/pricing"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero */
+  .cmp-hero__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cmp-hero__inner h1 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+
+  .cmp-hero__summary {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-lg);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cmp-hero__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  /* Comparison Table */
+  .cmp-table__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cmp-table__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  .cmp-table__wrap {
+    overflow-x: auto;
+  }
+
+  .cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .cmp-table th {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 2px solid var(--dark-border);
+    color: rgba(255,255,255,0.4);
+  }
+
+  .cmp-table__mavek-col {
+    color: var(--gold-mid) !important;
+    opacity: 1 !important;
+  }
+
+  .cmp-table td {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--dark-border);
+    vertical-align: top;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .cmp-table td strong {
+    display: block;
+    color: #F5F5F7;
+    margin-bottom: 0.1rem;
+  }
+
+  .cmp-table__them {
+    opacity: 0.5;
+  }
+
+  .cmp-table__mavek {
+    color: var(--gold-mid) !important;
+    font-weight: 500;
+  }
+
+  .cmp-check {
+    color: var(--gold-mid);
+    font-weight: 700;
+    margin-right: 0.4rem;
+  }
+
+  /* Benefits */
+  .cmp-benefits__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .cmp-benefits__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .cmp-hero__actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cmp-table {
+      font-size: 0.82rem;
+    }
+
+    .cmp-table td,
+    .cmp-table th {
+      padding: var(--space-sm);
+    }
+  }
+</style>
