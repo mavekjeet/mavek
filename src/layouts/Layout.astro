@@ -15,7 +15,7 @@ const {
   ogImage = "/og-default.svg",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://mavek.io');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://mavek.ai');
 const fullTitle = `${title} | Mavek`;
 ---
 
@@ -35,7 +35,7 @@ const fullTitle = `${title} | Mavek`;
   <meta property="og:url" content={canonicalURL.href} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={new URL(ogImage, Astro.site || 'https://mavek.io').href} />
+  <meta property="og:image" content={new URL(ogImage, Astro.site || 'https://mavek.ai').href} />
   <meta property="og:site_name" content="Mavek" />
 
   <!-- Twitter -->
@@ -43,7 +43,7 @@ const fullTitle = `${title} | Mavek`;
   <meta name="twitter:site" content="@mavekAI" />
   <meta name="twitter:title" content={fullTitle} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={new URL(ogImage, Astro.site || 'https://mavek.io').href} />
+  <meta name="twitter:image" content={new URL(ogImage, Astro.site || 'https://mavek.ai').href} />
 
   <!-- Schema.org JSON-LD -->
   {schema && (
@@ -55,8 +55,8 @@ const fullTitle = `${title} | Mavek`;
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Mavek",
-    "url": "https://mavek.io",
-    "logo": "https://mavek.io/favicon.svg",
+    "url": "https://mavek.ai",
+    "logo": "https://mavek.ai/favicon.svg",
     "sameAs": [
       "https://instagram.com/mavek.ai",
       "https://x.com/mavekAI"
