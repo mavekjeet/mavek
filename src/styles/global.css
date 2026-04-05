@@ -53,7 +53,7 @@
 
   /* Layout */
   --max-width: 1080px;
-  --nav-height: 72px;
+  --nav-height: 84px;
 
   /* Spacing */
   --space-xs: 8px;
@@ -72,6 +72,16 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+main#main {
+  padding-top: var(--nav-height);
+}
+
+@media (max-width: 960px) {
+  main#main {
+    padding-top: 72px;
+  }
 }
 
 html {
