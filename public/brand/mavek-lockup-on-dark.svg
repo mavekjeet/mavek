@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" width="260" height="80">
+  <title>Mavek — Lockup (Dark Background)</title>
+  <desc>Mavek horizontal lockup for dark backgrounds. Stone in parchment box so pavilion facets don't blend into dark bg. Shadow on parchment = light bg rules: #1A1A18 @ 0.07, gap = stone-h × 0.22 = 9.68, width = stone-w × 0.85 = 37.4.</desc>
+  <!-- Parchment box around stone -->
+  <rect x="0" y="4" width="72" height="72" rx="14" fill="#F6F3E8"/>
+  <!-- Ground shadow (on parchment = light bg rules) -->
+  <ellipse cx="36" cy="70.08" rx="18.7" ry="2.5" fill="#1A1A18" opacity="0.07"/>
+  <!-- Stone inside box -->
+  <g transform="translate(36, 34)">
+    <path d="M-22 0 L-9.9 -17.6 L0 -17.6 L0 0 Z" fill="#E8C95A"/>
+    <path d="M0 -17.6 L9.9 -17.6 L22 0 L0 0 Z" fill="#8A7028"/>
+    <path d="M-22 0 L0 0 L0 26.4 Z" fill="#33302A"/>
+    <path d="M0 0 L22 0 L0 26.4 Z" fill="#0A0A08"/>
+  </g>
+  <!-- Wordmark in parchment, V in gold-bright for dark bg -->
+  <text x="88" y="50" font-family="Instrument Sans, system-ui, -apple-system, sans-serif" font-weight="700" font-size="36" letter-spacing="6" fill="#F6F3E8">MA<tspan fill="#E8C95A">V</tspan>EK</text>
+</svg>

@@ -1,0 +1,424 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Join the Waitlist"
+  description="Get early access to Mavek — the AI marketing engine that does the work of ten. Join the waitlist and grab your free resources."
+>
+  <Nav />
+
+  <section class="light waitlist-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl)); padding-bottom: var(--space-3xl);">
+    <div class="container">
+      <div class="waitlist__grid">
+
+        <!-- Left: value prop -->
+        <div class="waitlist__info reveal">
+          <span class="sec-label">Early Access</span>
+          <h1>Be first in line for <em>10x marketing.</em></h1>
+          <p class="waitlist__lead">Mavek is rolling out access in waves. Join the waitlist and we'll let you know the moment a spot opens up for you.</p>
+
+          <div class="waitlist__perks">
+            <div class="waitlist__perk">
+              <div class="waitlist__perk-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <strong>Priority access</strong>
+                <span>Skip the line when we open up new spots.</span>
+              </div>
+            </div>
+            <div class="waitlist__perk">
+              <div class="waitlist__perk-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
+              </div>
+              <div>
+                <strong>Founder pricing</strong>
+                <span>Waitlist members get locked-in early pricing.</span>
+              </div>
+            </div>
+            <div class="waitlist__perk">
+              <div class="waitlist__perk-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              </div>
+              <div>
+                <strong>Free resources — now</strong>
+                <span>Download the AI Marketing Playbook + Budget Template instantly.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form + downloads -->
+        <div class="waitlist__form-wrap reveal" style="transition-delay: 0.1s">
+          <div class="waitlist__card" id="waitlistCard">
+
+            <div id="waitlistFormState">
+              <h3>Reserve your spot</h3>
+              <p>Enter your work email. We'll reach out personally when your access is ready.</p>
+
+              <form class="waitlist__form" id="waitlistForm" novalidate>
+                <div class="form__field" id="emailField">
+                  <label for="wlEmail">Work Email</label>
+                  <input type="email" id="wlEmail" name="email" placeholder="you@company.com" required />
+                  <span class="form__error" id="wlEmailError">Please enter a valid email.</span>
+                </div>
+                <div class="form__field">
+                  <label for="wlCompany">Company <span style="opacity:0.4; font-weight:400;">(optional)</span></label>
+                  <input type="text" id="wlCompany" name="company" placeholder="Your company name" />
+                </div>
+                <div class="form__field">
+                  <label for="wlType">I am a...</label>
+                  <select id="wlType" name="type">
+                    <option value="">Select one</option>
+                    <option value="agency">Marketing Agency</option>
+                    <option value="brand">Brand / In-house Team</option>
+                    <option value="founder">Founder / Solo Marketer</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full" id="wlSubmit">
+                  Join the waitlist &amp; get free resources <span>&rarr;</span>
+                </button>
+                <p class="waitlist__note">No spam. Unsubscribe any time.</p>
+              </form>
+            </div>
+
+            <div class="waitlist__success" id="waitlistSuccess" hidden>
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold-mid)" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+              <h3>You're on the list.</h3>
+              <p>We'll be in touch the moment your spot opens up. In the meantime, your downloads are starting below.</p>
+              <div class="waitlist__dl-links" id="dlLinks">
+                <a href="/downloads/mavek-ai-marketing-playbook.pdf" download class="btn btn--secondary waitlist__dl-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m4-5l5 5 5-5m-5 5V3"/></svg>
+                  AI Marketing Playbook
+                </a>
+                <a href="/downloads/mavek-marketing-budget-template.pdf" download class="btn btn--secondary waitlist__dl-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m4-5l5 5 5-5m-5 5V3"/></svg>
+                  Budget Template
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof numbers -->
+  <section class="dark" style="padding: var(--space-xl) 0;">
+    <div class="container">
+      <div class="wl-stats reveal">
+        <div class="wl-stat">
+          <span class="wl-stat__num">14-day</span>
+          <span class="wl-stat__label">free trial, no card required</span>
+        </div>
+        <div class="wl-divider"></div>
+        <div class="wl-stat">
+          <span class="wl-stat__num">48h</span>
+          <span class="wl-stat__label">average onboarding time</span>
+        </div>
+        <div class="wl-divider"></div>
+        <div class="wl-stat">
+          <span class="wl-stat__num">10x</span>
+          <span class="wl-stat__label">more output, same team size</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .waitlist__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+  }
+
+  .waitlist__info h1 { margin: var(--space-xs) 0 var(--space-md); }
+
+  .waitlist__lead {
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xl);
+    color: var(--ink-soft);
+  }
+
+  .waitlist__perks {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .waitlist__perk {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+  }
+
+  .waitlist__perk-icon {
+    color: var(--gold-dark);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .waitlist__perk strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+  }
+
+  .waitlist__perk span {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+
+  /* Card */
+  .waitlist__card {
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.08);
+    border-radius: 14px;
+    padding: var(--space-xl);
+  }
+
+  #waitlistFormState h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin: 0 0 var(--space-xs);
+  }
+
+  #waitlistFormState > p {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Form fields (shared with ContactForm) */
+  .waitlist__form { display: flex; flex-direction: column; gap: var(--space-md); }
+
+  .form__field label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 0.4rem;
+    color: var(--gold-dark);
+  }
+
+  .form__field input,
+  .form__field select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background: var(--bg);
+    border: 1px solid rgba(26,26,24,0.1);
+    border-radius: 10px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .form__field input:focus,
+  .form__field select:focus { border-color: var(--gold-mid); }
+
+  .form__field input::placeholder { color: var(--ink-muted); }
+
+  .form__field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%231A1A18' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-color: var(--bg);
+    padding-right: 2.5rem;
+  }
+
+  .form__error {
+    display: none;
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 4px;
+  }
+
+  .form__field.has-error input { border-color: var(--error); }
+  .form__field.has-error .form__error { display: block; }
+
+  .btn--full { width: 100%; justify-content: center; }
+
+  .waitlist__note {
+    font-size: 0.65rem;
+    color: var(--ink-muted);
+    text-align: center;
+    margin: 0;
+  }
+
+  /* Success state */
+  .waitlist__success {
+    text-align: center;
+    padding: var(--space-md) 0;
+  }
+
+  .waitlist__success h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin: var(--space-sm) 0 var(--space-xs);
+  }
+
+  .waitlist__success > p {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-lg);
+  }
+
+  .waitlist__dl-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .waitlist__dl-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  /* Stats bar */
+  .wl-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+  }
+
+  .wl-stat { text-align: center; }
+
+  .wl-stat__num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--gold-bright);
+    display: block;
+  }
+
+  .wl-stat__label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    display: block;
+  }
+
+  .wl-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  @media (max-width: 900px) {
+    .waitlist__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+    .wl-divider { display: none; }
+    .wl-stats { gap: var(--space-lg); }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var form = document.getElementById('waitlistForm');
+    var formState = document.getElementById('waitlistFormState');
+    var successState = document.getElementById('waitlistSuccess');
+    var emailInput = document.getElementById('wlEmail');
+    var emailField = document.getElementById('emailField');
+    var submitBtn = document.getElementById('wlSubmit');
+
+    if (!form) return;
+
+    function isValidEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+
+    function triggerDownloads() {
+      var files = [
+        '/downloads/mavek-ai-marketing-playbook.pdf',
+        '/downloads/mavek-marketing-budget-template.pdf'
+      ];
+      files.forEach(function(url, i) {
+        setTimeout(function() {
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = url.split('/').pop();
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }, i * 800);
+      });
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      emailField.classList.remove('has-error');
+
+      var email = emailInput.value.trim();
+      if (!isValidEmail(email)) {
+        emailField.classList.add('has-error');
+        emailInput.focus();
+        return;
+      }
+
+      var company = document.getElementById('wlCompany').value.trim();
+      var type = document.getElementById('wlType').value;
+
+      submitBtn.textContent = 'Joining...';
+      submitBtn.disabled = true;
+
+      var cfg = window.__MAVEK_CFG || {};
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: cfg.web3formsKey,
+          subject: 'New Mavek Waitlist Signup',
+          from_name: 'Mavek Waitlist',
+          email: email,
+          company: company || '(not provided)',
+          user_type: type || '(not provided)',
+          source: 'waitlist-page',
+          botcheck: ''
+        })
+      }).then(function(r) {
+        return r.json();
+      }).then(function(data) {
+        if (data.success) {
+          triggerDownloads();
+          formState.hidden = true;
+          successState.hidden = false;
+        } else {
+          submitBtn.textContent = 'Try again';
+          submitBtn.disabled = false;
+          console.error('Waitlist submit failed:', data);
+        }
+      }).catch(function(err) {
+        submitBtn.textContent = 'Try again';
+        submitBtn.disabled = false;
+        console.error('Waitlist submit error:', err);
+      });
+    });
+
+    emailInput.addEventListener('input', function() {
+      emailField.classList.remove('has-error');
+    });
+  })();
+</script>

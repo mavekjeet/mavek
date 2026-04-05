@@ -1,0 +1,160 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const capabilities = [
+  { title: "List Segmentation", desc: "Mavek slices your list by behavior, engagement, lifecycle stage, and intent — then keeps those segments fresh as subscribers move through the funnel." },
+  { title: "Copywriting", desc: "Subject lines, preview text, body copy, and CTAs written in your voice. Mavek drafts, tests, and rewrites based on what actually opens and clicks." },
+  { title: "Lifecycle Automation", desc: "Welcome, onboarding, win-back, abandoned-cart, renewal, upsell — every flow built, triggered, and optimized without a human bottleneck." },
+  { title: "Send-Time Optimization", desc: "Per-subscriber send times based on historical open behavior. No more guessing Tuesday 10am — Mavek sends when each person actually reads." },
+  { title: "A/B & Multivariate Testing", desc: "Continuous tests on subject lines, copy angles, send times, and layouts. Winners get promoted automatically, losers get killed." },
+  { title: "Deliverability Monitoring", desc: "Sender reputation, spam placement, bounce tracking, and list hygiene. Mavek keeps your emails landing in the inbox, not the promotions tab." },
+];
+
+const steps = [
+  { num: "01", title: "Connect Your ESP", desc: "Link Mailchimp, ConvertKit, Klaviyo, HubSpot, or any major email platform. Mavek imports your list, history, and existing flows." },
+  { num: "02", title: "Define Your Goals", desc: "Tell Mavek your priorities — activation, retention, win-back, upsell. It builds segments and campaigns around your specific KPIs." },
+  { num: "03", title: "Ship & Iterate 24/7", desc: "Campaigns send on their own schedule. Mavek tracks, tests, and iterates — you approve major changes and watch the metrics climb." },
+];
+
+const metrics = [
+  { value: "Higher Open Rate", label: "Subject line testing and send-time optimization lift opens as Mavek learns each subscriber's behavior and preferences." },
+  { value: "Better Click Rate", label: "Relevance improves as segmentation tightens. Mavek sends the right message to the right segment at the right time." },
+  { value: "More Pipeline", label: "Qualified conversations grow as lifecycle flows fire consistently and re-engagement campaigns win back dormant subscribers." },
+];
+---
+
+<Layout title="Email Marketing" description="Autonomous email marketing — segmentation, copywriting, send-time optimization, and lifecycle flows that run themselves and improve over time.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">Service</span>
+        <h1>Email marketing that writes itself, <em>tests itself</em>, improves itself.</h1>
+        <p class="hero__subtitle">Lifecycle flows, lead nurture, re-engagement, win-back — Mavek runs the full email program. Copy drafted, segments built, sends timed, tests run. You approve. It ships.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Book a Demo <span>&rarr;</span></a>
+          <a href="/services" class="btn btn--secondary">All Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Capabilities</span>
+        <h2>What Mavek does for <em>your email program</em></h2>
+      </div>
+      <div class="grid-3">
+        {capabilities.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{c.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">How It Works</span>
+        <h2>Three steps to <em>autonomous email</em></h2>
+      </div>
+      <div class="steps">
+        {steps.map((s, i) => (
+          <div class="step reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <span class="step__num">{s.num}</span>
+            <div class="step__content">
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Results</span>
+        <h2>What you can <em>expect</em></h2>
+      </div>
+      <div class="grid-3">
+        {metrics.map((m, i) => (
+          <div class="card card--dark metric-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h3 class="metric-card__value">{m.value}</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{m.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="differentiator reveal">
+        <span class="sec-label">Why Mavek</span>
+        <h2>Not another email tool. An <em>autonomous email team</em>.</h2>
+        <div class="grid-2" style="margin-top: var(--space-xl);">
+          <div class="card reveal">
+            <h4>In-House Email Manager</h4>
+            <ul class="diff-list diff-list--old">
+              <li>$60K-$120K salary + benefits</li>
+              <li>Sends go out weekly, maybe</li>
+              <li>Testing happens when there's time</li>
+              <li>One person — one bandwidth</li>
+            </ul>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.1s; border-color: var(--gold-mid);">
+            <h4>Mavek AI</h4>
+            <ul class="diff-list diff-list--new">
+              <li>Under $500/month, full program</li>
+              <li>Sends and lifecycle flows run 24/7</li>
+              <li>Continuous A/B testing on every variable</li>
+              <li>Scales to as many segments as you need</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek run your email program."
+    subtitle="Lifecycle flows on autopilot. Tests that never stop. Revenue that compounds."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section { padding-top: calc(var(--nav-height) + var(--space-3xl)); text-align: center; }
+  .hero__inner { max-width: 760px; margin: 0 auto; }
+  .hero__inner h1 { margin-top: var(--space-sm); margin-bottom: var(--space-md); }
+  .hero__subtitle { font-size: 1.15rem; max-width: 640px; margin: 0 auto var(--space-lg); }
+  .hero__actions { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; }
+  .section-header { text-align: center; margin-bottom: var(--space-xl); }
+  .section-header h2 { margin-top: var(--space-xs); }
+  .steps { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-xl); }
+  .step { display: flex; gap: var(--space-lg); align-items: flex-start; }
+  .step__num { font-family: var(--font-body); font-size: 0.85rem; color: var(--gold-dark); letter-spacing: 0.1em; flex-shrink: 0; padding-top: 0.3rem; }
+  .step__content h3 { margin-bottom: var(--space-xs); }
+  .metric-card__value { color: var(--gold-mid) !important; font-size: clamp(1.5rem, 3vw, 2rem); }
+  .differentiator { text-align: center; }
+  .differentiator h2 { margin-top: var(--space-xs); }
+  .diff-list { list-style: none; margin-top: var(--space-sm); display: flex; flex-direction: column; gap: 0.6rem; }
+  .diff-list li { font-size: 0.9rem; padding-left: 1.5rem; position: relative; }
+  .diff-list--old li::before { content: "\2717"; position: absolute; left: 0; color: var(--muted); }
+  .diff-list--new li::before { content: "\2713"; position: absolute; left: 0; color: var(--gold-dark); }
+  @media (max-width: 600px) {
+    .hero__actions { flex-direction: column; align-items: center; }
+    .step { flex-direction: column; gap: var(--space-sm); }
+  }
+</style>

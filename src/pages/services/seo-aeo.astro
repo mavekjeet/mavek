@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const capabilities = [
+  { title: "Keyword & Entity Research", desc: "Mavek maps the full search landscape for your category — high-intent keywords, long-tail opportunities, and the entities LLMs cite when they answer questions." },
+  { title: "Answer Engine Optimization", desc: "Structure content so ChatGPT, Claude, Perplexity, and Gemini cite you. Mavek writes for LLM retrieval, not just Google's crawler." },
+  { title: "Technical SEO Audits", desc: "Continuous crawl monitoring, Core Web Vitals, schema markup, canonical tags, sitemap hygiene. Mavek catches issues before they tank rankings." },
+  { title: "Content Clusters", desc: "Topic clusters built around pillar pages. Mavek writes the full cluster — pillar + supporting articles — with internal linking that compounds authority." },
+  { title: "On-Page Optimization", desc: "Title tags, meta descriptions, headings, internal links, alt text, and entity markup tuned per page based on what's actually ranking for your queries." },
+  { title: "SERP & LLM Monitoring", desc: "Track rankings on Google + citations in ChatGPT / Perplexity answers. Know when you're winning and when competitors pull ahead." },
+];
+
+const steps = [
+  { num: "01", title: "Connect Your Stack", desc: "Link Search Console, GA4, and Ahrefs. Mavek audits your current footprint — rankings, traffic, indexation, LLM citations — in under an hour." },
+  { num: "02", title: "Set Growth Targets", desc: "Define target keywords, content volume, and priority topics. Mavek builds a 90-day roadmap and starts executing on day one." },
+  { num: "03", title: "Rank & Get Cited", desc: "Mavek ships content, optimizes pages, and monitors the SERP + LLM landscape 24/7. You review, approve, and watch traffic compound." },
+];
+
+const metrics = [
+  { value: "Organic Traffic", label: "Qualified visitors grow as Mavek expands keyword footprint and wins rankings for high-intent queries across your category." },
+  { value: "LLM Citations", label: "ChatGPT, Claude, and Perplexity increasingly cite your content when users ask questions in your space — a new distribution channel." },
+  { value: "Content Velocity", label: "Mavek ships publish-ready content at a pace no in-house team can match, without sacrificing depth or editorial quality." },
+];
+---
+
+<Layout title="SEO & Answer Engine Optimization" description="Rank on Google AND get cited by ChatGPT, Claude, and Perplexity. Mavek optimizes for traditional search AND the new answer-engine landscape.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">Service</span>
+        <h1>SEO that ranks you on Google <em>and</em> cites you on ChatGPT.</h1>
+        <p class="hero__subtitle">The search landscape just doubled. Mavek runs traditional SEO — keywords, technical, content clusters — plus Answer Engine Optimization for the LLMs your prospects are already asking.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Book a Demo <span>&rarr;</span></a>
+          <a href="/services" class="btn btn--secondary">All Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Capabilities</span>
+        <h2>What Mavek does for <em>your organic presence</em></h2>
+      </div>
+      <div class="grid-3">
+        {capabilities.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{c.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">How It Works</span>
+        <h2>Three steps to <em>compounding organic traffic</em></h2>
+      </div>
+      <div class="steps">
+        {steps.map((s, i) => (
+          <div class="step reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <span class="step__num">{s.num}</span>
+            <div class="step__content">
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Results</span>
+        <h2>What you can <em>expect</em></h2>
+      </div>
+      <div class="grid-3">
+        {metrics.map((m, i) => (
+          <div class="card card--dark metric-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h3 class="metric-card__value">{m.value}</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{m.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="differentiator reveal">
+        <span class="sec-label">Why Mavek</span>
+        <h2>Not just an SEO tool. An <em>autonomous SEO team</em>.</h2>
+        <div class="grid-2" style="margin-top: var(--space-xl);">
+          <div class="card reveal">
+            <h4>Traditional SEO Agency</h4>
+            <ul class="diff-list diff-list--old">
+              <li>Monthly retainer of $3,000-$15,000+</li>
+              <li>Google-only strategy, blind to LLMs</li>
+              <li>Slow publishing cadence, review bottlenecks</li>
+              <li>Static keyword lists, updated quarterly</li>
+            </ul>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.1s; border-color: var(--gold-mid);">
+            <h4>Mavek AI</h4>
+            <ul class="diff-list diff-list--new">
+              <li>Under $500/month for the full service</li>
+              <li>SEO + AEO together — Google + ChatGPT + Perplexity</li>
+              <li>Ships content in hours, approvals on your schedule</li>
+              <li>Keyword strategy updates daily from live data</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Own the search landscape — old and new."
+    subtitle="Rank on Google. Get cited on ChatGPT. One service. Always on."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section {
+    padding-top: calc(var(--nav-height) + var(--space-3xl));
+    text-align: center;
+  }
+  .hero__inner { max-width: 760px; margin: 0 auto; }
+  .hero__inner h1 { margin-top: var(--space-sm); margin-bottom: var(--space-md); }
+  .hero__subtitle { font-size: 1.15rem; max-width: 640px; margin: 0 auto var(--space-lg); }
+  .hero__actions { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; }
+  .section-header { text-align: center; margin-bottom: var(--space-xl); }
+  .section-header h2 { margin-top: var(--space-xs); }
+  .steps { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-xl); }
+  .step { display: flex; gap: var(--space-lg); align-items: flex-start; }
+  .step__num { font-family: var(--font-body); font-size: 0.85rem; color: var(--gold-dark); letter-spacing: 0.1em; flex-shrink: 0; padding-top: 0.3rem; }
+  .step__content h3 { margin-bottom: var(--space-xs); }
+  .metric-card__value { color: var(--gold-mid) !important; font-size: clamp(1.5rem, 3vw, 2rem); }
+  .differentiator { text-align: center; }
+  .differentiator h2 { margin-top: var(--space-xs); }
+  .diff-list { list-style: none; margin-top: var(--space-sm); display: flex; flex-direction: column; gap: 0.6rem; }
+  .diff-list li { font-size: 0.9rem; padding-left: 1.5rem; position: relative; }
+  .diff-list--old li::before { content: "\2717"; position: absolute; left: 0; color: var(--muted); }
+  .diff-list--new li::before { content: "\2713"; position: absolute; left: 0; color: var(--gold-dark); }
+  @media (max-width: 600px) {
+    .hero__actions { flex-direction: column; align-items: center; }
+    .step { flex-direction: column; gap: var(--space-sm); }
+  }
+</style>

@@ -17,6 +17,11 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://mavek.ai');
 const fullTitle = `${title} | Mavek`;
+
+// Form/booking config — read from env at build time, fall back to placeholders.
+// Set these in .env.local: PUBLIC_WEB3FORMS_KEY and PUBLIC_CAL_LINK
+const WEB3FORMS_KEY = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY';
+const CAL_LINK = import.meta.env.PUBLIC_CAL_LINK || 'YOUR_USERNAME/EVENT_SLUG';
 ---
 
 <!DOCTYPE html>
@@ -79,6 +84,11 @@ const fullTitle = `${title} | Mavek`;
       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/CLARITY_ID";
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window,document,"clarity","script");
+  </script>
+
+  <!-- Mavek config (form keys, Cal.com link) exposed to inline form scripts -->
+  <script is:inline define:vars={{ WEB3FORMS_KEY, CAL_LINK }}>
+    window.__MAVEK_CFG = { web3formsKey: WEB3FORMS_KEY, calLink: CAL_LINK };
   </script>
 
   <!-- Preload fonts for performance -->

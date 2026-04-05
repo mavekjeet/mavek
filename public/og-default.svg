@@ -1,11 +1,30 @@
-<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="630" fill="#F6F3E8"/>
-  <rect x="0" y="0" width="1200" height="6" fill="#8EFF00"/>
-  <text x="80" y="260" font-family="Georgia, serif" font-size="72" fill="#1A1A18">Make your marketing</text>
-  <text x="80" y="350" font-family="Georgia, serif" font-size="72" fill="#1A1A18">
-    <tspan fill="#1A1A18">10x</tspan> more efficient.
-  </text>
-  <rect x="80" y="282" width="135" height="80" fill="#8EFF00" opacity="0.3" rx="4"/>
-  <text x="80" y="420" font-family="sans-serif" font-size="24" fill="#8A8A7A">The AI Marketing Department — mavek.io</text>
-  <text x="80" y="560" font-family="monospace" font-size="18" fill="#1A1A18" letter-spacing="0.15em">MAVEK</text>
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Night background -->
+  <rect width="1200" height="630" fill="#0A0A08"/>
+  <!-- Gold accent bar at top -->
+  <rect x="0" y="0" width="1200" height="6" fill="#C9A84C"/>
+
+  <!-- Boxed stone (parchment box on dark bg) -->
+  <rect x="80" y="90" width="180" height="180" rx="30" fill="#F6F3E8"/>
+  <!-- Ground shadow on parchment = light bg rules: #1A1A18 @ 0.07 -->
+  <ellipse cx="170" cy="238.72" rx="40.8" ry="3.75" fill="#1A1A18" opacity="0.07"/>
+  <!-- Stone: S=48, T=38.4, P=57.6 -->
+  <g transform="translate(170, 160)">
+    <path d="M-48 0 L-21.6 -38.4 L0 -38.4 L0 0 Z" fill="#E8C95A"/>
+    <path d="M0 -38.4 L21.6 -38.4 L48 0 L0 0 Z" fill="#8A7028"/>
+    <path d="M-48 0 L0 0 L0 57.6 Z" fill="#33302A"/>
+    <path d="M0 0 L48 0 L0 57.6 Z" fill="#0A0A08"/>
+  </g>
+
+  <!-- Wordmark: Instrument Sans 700 (fallback), letter-spacing 14, parchment with gold-bright V -->
+  <text x="80" y="360" font-family="Instrument Sans, system-ui, -apple-system, sans-serif" font-weight="700" font-size="96" letter-spacing="14" fill="#F6F3E8">MA<tspan fill="#E8C95A">V</tspan>EK</text>
+
+  <!-- Tagline: Cormorant Garamond italic -->
+  <text x="80" y="440" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-weight="400" font-size="44" fill="#F6F3E8" opacity="0.85">Your entire marketing team. <tspan fill="#C9A84C">One platform.</tspan></text>
+
+  <!-- Subtext -->
+  <text x="80" y="490" font-family="Instrument Sans, system-ui, -apple-system, sans-serif" font-weight="400" font-size="22" fill="#F6F3E8" opacity="0.55">The 10x Marketing Engine · AI-powered · Always on</text>
+
+  <!-- Footer domain -->
+  <text x="80" y="570" font-family="Instrument Sans, system-ui, -apple-system, sans-serif" font-weight="500" font-size="18" letter-spacing="4" fill="#C9A84C">MAVEK.AI</text>
 </svg>

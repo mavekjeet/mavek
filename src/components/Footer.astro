@@ -6,15 +6,18 @@
     <div class="footer__grid">
       <div class="footer__brand">
         <div class="footer__logo">
-          <svg width="16" height="24" viewBox="0 0 20 28">
-            <ellipse cx="10" cy="21.1" rx="6.8" ry="1.5" fill="#E8C95A" opacity="0.2"/>
-            <g transform="translate(10, 8)">
-              <path d="M-8 0 L-3.6 -6.4 L0 -6.4 L0 0 Z" fill="#E8C95A"/>
-              <path d="M0 -6.4 L3.6 -6.4 L8 0 L0 0 Z" fill="#C9A84C"/>
-              <path d="M-8 0 L0 0 L0 9.6 Z" fill="#6B5A28"/>
-              <path d="M0 0 L8 0 L0 9.6 Z" fill="#4A3D1C"/>
-            </g>
-          </svg>
+          <span class="footer__logo-box" aria-hidden="true">
+            <svg width="20" height="28" viewBox="0 0 20 28">
+              <!-- Stone in parchment box (light bg rules): S=8, stone-h=16, gap=3.52, rx=6.8 -->
+              <ellipse cx="10" cy="21.12" rx="6.8" ry="1.5" fill="#1A1A18" opacity="0.07"/>
+              <g transform="translate(10, 8)">
+                <path d="M-8 0 L-3.6 -6.4 L0 -6.4 L0 0 Z" fill="#E8C95A"/>
+                <path d="M0 -6.4 L3.6 -6.4 L8 0 L0 0 Z" fill="#8A7028"/>
+                <path d="M-8 0 L0 0 L0 9.6 Z" fill="#33302A"/>
+                <path d="M0 0 L8 0 L0 9.6 Z" fill="#0A0A08"/>
+              </g>
+            </svg>
+          </span>
           <span class="footer__wordmark">MA<span class="footer__v">V</span>EK</span>
         </div>
         <p class="footer__tagline">One person with Mavek does the work of ten.</p>
@@ -35,6 +38,7 @@
         <h4>Product</h4>
         <a href="/for-agencies">For Agencies</a>
         <a href="/for-brands">For Brands</a>
+        <a href="/services">Services</a>
         <a href="/how-it-works">How It Works</a>
         <a href="/pricing">Pricing</a>
         <a href="/compare">Compare</a>
@@ -78,8 +82,24 @@
   .footer__logo {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 12px;
+  }
+
+  .footer__logo-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--parchment);
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .footer__logo-box svg {
+    width: 16px;
+    height: 22px;
   }
 
   .footer__v {

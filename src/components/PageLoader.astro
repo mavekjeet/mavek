@@ -1,0 +1,120 @@
+---
+// Full-screen loader with the Mavek stone floating + shadow animating.
+// Shows on first visit per session. Honours prefers-reduced-motion.
+// Stone proportions + shadow rules follow mavek-design-system.md.
+---
+
+<div class="page-loader" id="pageLoader" aria-hidden="true" role="presentation">
+  <svg width="120" height="160" viewBox="0 0 120 160" class="loader-svg">
+    <!-- Ground shadow (light bg: #1A1A18 @ 0.07, gap = stone-h × 0.22, width = stone-w × 0.85) -->
+    <ellipse id="loaderShadow" cx="60" cy="132" rx="34" ry="4" fill="#1A1A18" opacity="0.07"/>
+    <!-- Stone: S=40, T=32, P=48, C=18 -->
+    <g id="loaderStone" transform="translate(60, 55)">
+      <path d="M-40 0 L-18 -32 L0 -32 L0 0 Z" fill="#E8C95A"/>
+      <path d="M0 -32 L18 -32 L40 0 L0 0 Z" fill="#8A7028"/>
+      <path d="M-40 0 L0 0 L0 48 Z" fill="#33302A"/>
+      <path d="M0 0 L40 0 L0 48 Z" fill="#0A0A08"/>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .page-loader {
+    position: fixed;
+    inset: 0;
+    background: var(--parchment);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .page-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .loader-svg {
+    /* Subtle idle scale so the box has presence even at t=0 */
+    animation: loader-idle 4s ease-in-out infinite;
+  }
+
+  @keyframes loader-idle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loader-svg { animation: none; }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var loader = document.getElementById('pageLoader');
+    if (!loader) return;
+
+    var stone = document.getElementById('loaderStone');
+    var shadow = document.getElementById('loaderShadow');
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Skip loader if already shown this session (e.g. back/forward nav within site)
+    if (sessionStorage.getItem('mavekLoaderShown')) {
+      loader.classList.add('hidden');
+      // Strip it from the DOM next tick so it's not in the tab order
+      setTimeout(function() { loader.remove(); }, 50);
+      return;
+    }
+    sessionStorage.setItem('mavekLoaderShown', '1');
+
+    // Floating animation — stone translates Y, shadow rx/ry/opacity animate.
+    // Shadow Y is FIXED per brand rules. Opacity range: 0.05-0.08 (light bg).
+    if (!reducedMotion && stone && shadow) {
+      var baseY = 55;
+      var amplitude = 10;
+      var duration = 2400;
+      var rxMin = 30, rxMax = 38;
+      var ryMin = 3, ryMax = 5;
+      var opMin = 0.05, opMax = 0.08;
+      var rafId;
+
+      function animate(time) {
+        if (loader.classList.contains('hidden')) return;  // stop looping after fade out
+        var t = (time % duration) / duration;
+        var ease = (Math.sin(t * Math.PI * 2 - Math.PI / 2) + 1) / 2;
+        stone.setAttribute('transform', 'translate(60, ' + (baseY - ease * amplitude) + ')');
+        shadow.setAttribute('rx', (rxMin + ease * (rxMax - rxMin)).toFixed(1));
+        shadow.setAttribute('ry', (ryMin + ease * (ryMax - ryMin)).toFixed(1));
+        shadow.setAttribute('opacity', (opMax - ease * (opMax - opMin)).toFixed(3));
+        rafId = requestAnimationFrame(animate);
+      }
+      rafId = requestAnimationFrame(animate);
+    }
+
+    // Hide logic: minimum show time (so it doesn't flash), then hide once ready.
+    var loadStart = Date.now();
+    var MIN_SHOW_MS = 600;
+    var MAX_SHOW_MS = 2500;
+
+    function hideLoader() {
+      var elapsed = Date.now() - loadStart;
+      var wait = Math.max(0, MIN_SHOW_MS - elapsed);
+      setTimeout(function() {
+        loader.classList.add('hidden');
+        // Remove from DOM after transition completes
+        setTimeout(function() { if (loader && loader.parentNode) loader.remove(); }, 450);
+      }, wait);
+    }
+
+    if (document.readyState === 'complete') {
+      hideLoader();
+    } else {
+      window.addEventListener('load', hideLoader, { once: true });
+      // Safety net: always hide after MAX_SHOW_MS
+      setTimeout(hideLoader, MAX_SHOW_MS);
+    }
+  })();
+</script>

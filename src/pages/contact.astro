@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
-import ContactForm from '../components/ContactForm.astro';
+import CalEmbed from '../components/CalEmbed.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -14,7 +14,7 @@ import Footer from '../components/Footer.astro';
         <div class="contact__info reveal">
           <span class="sec-label">Get Started</span>
           <h1>Let's make your marketing <em>10x.</em></h1>
-          <p class="contact__lead">Book a demo and see Mavek in action. We'll walk you through how it works for your specific use case — whether you're an agency or a brand.</p>
+          <p class="contact__lead">Pick a time that works for you — we'll walk you through Mavek live for your specific use case, whether you're an agency or a brand.</p>
 
           <div class="contact__details">
             <div class="contact__detail">
@@ -22,22 +22,22 @@ import Footer from '../components/Footer.astro';
               <a href="mailto:hello@mavek.ai">hello@mavek.ai</a>
             </div>
             <div class="contact__detail">
-              <span class="contact__detail-label">Response Time</span>
-              <span>Within 24 hours</span>
+              <span class="contact__detail-label">Demo Length</span>
+              <span>30 minutes</span>
             </div>
           </div>
 
           <div class="contact__checklist">
             <h4>What happens next:</h4>
             <ul>
-              <li>We review your needs and set up a personalized demo</li>
-              <li>Walk through Mavek with your actual use case</li>
-              <li>Get started with a 14-day free trial — no credit card required</li>
+              <li>Pick a slot that works — no back-and-forth emails</li>
+              <li>We walk through Mavek with your actual use case</li>
+              <li>Start a 14-day free trial — no credit card required</li>
             </ul>
           </div>
         </div>
         <div class="contact__form reveal" style="transition-delay: 0.1s">
-          <ContactForm />
+          <CalEmbed />
         </div>
       </div>
     </div>

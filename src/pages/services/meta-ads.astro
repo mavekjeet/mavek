@@ -1,0 +1,160 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const capabilities = [
+  { title: "Campaign Structure", desc: "ABO, CBO, Advantage+ Shopping, lead gen, conversion campaigns — Mavek chooses the right structure for your goals and builds it from scratch." },
+  { title: "Audience Strategy", desc: "Lookalikes, custom audiences, retargeting pools, broad targeting with Advantage+. Mavek tests what works, retires what doesn't." },
+  { title: "Creative Production", desc: "Ad copy, headline variants, primary text, and creative briefs written for every placement. Mavek keeps your creative refresh cycle faster than fatigue." },
+  { title: "Placement Optimization", desc: "Feed, Reels, Stories, Explore, Marketplace — Mavek tunes spend across every Meta surface based on where your conversions actually happen." },
+  { title: "Pixel & Events", desc: "Conversion API setup, standard event mapping, custom conversions. Mavek ensures Meta sees every signal it needs to bid smart." },
+  { title: "Iterative Scaling", desc: "When a campaign starts winning, Mavek scales it without killing performance. Budget increases paced to what the algorithm can absorb." },
+];
+
+const steps = [
+  { num: "01", title: "Connect Meta Business Manager", desc: "Secure connection to your Facebook & Instagram ads accounts. Mavek audits existing campaigns, creative, and audiences — all in under an hour." },
+  { num: "02", title: "Define Goals & Audiences", desc: "Tell Mavek your targets — conversions, leads, sales, app installs — plus your ICP. Mavek builds the campaign structure around your specific economics." },
+  { num: "03", title: "Scale What Works", desc: "Campaigns go live. Mavek tests creative, expands audiences, and scales winners. Fatigue monitored, refresh cycles automatic, no ad account burnout." },
+];
+
+const metrics = [
+  { value: "Lower CPM", label: "Cost per thousand impressions drops as Mavek targets the right audiences, refreshes creative before fatigue, and picks winning placements." },
+  { value: "Higher CTR", label: "Click-through rate climbs as creative iterates faster. Mavek kills tired ads and scales fresh winners before your feed goes stale." },
+  { value: "Better ROAS", label: "Return on ad spend improves as budget concentrates on proven campaigns, lookalikes, and audiences that actually convert." },
+];
+---
+
+<Layout title="Meta Ads Management" description="Autonomous Meta ads management — Facebook, Instagram, Reels, Stories. Audience strategy, creative production, and scaling built into one AI service.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">Service</span>
+        <h1>Meta ads that scale themselves, <em>without the agency markup.</em></h1>
+        <p class="hero__subtitle">Facebook, Instagram, Reels, Stories, Marketplace — Mavek runs the full Meta ads surface. Audiences built, creative tested, budgets scaled, fatigue monitored. Continuously.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Book a Demo <span>&rarr;</span></a>
+          <a href="/services" class="btn btn--secondary">All Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Capabilities</span>
+        <h2>What Mavek does with <em>your Meta ads</em></h2>
+      </div>
+      <div class="grid-3">
+        {capabilities.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{c.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">How It Works</span>
+        <h2>Three steps to <em>scaled Meta ads</em></h2>
+      </div>
+      <div class="steps">
+        {steps.map((s, i) => (
+          <div class="step reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <span class="step__num">{s.num}</span>
+            <div class="step__content">
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Results</span>
+        <h2>What you can <em>expect</em></h2>
+      </div>
+      <div class="grid-3">
+        {metrics.map((m, i) => (
+          <div class="card card--dark metric-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h3 class="metric-card__value">{m.value}</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{m.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="differentiator reveal">
+        <span class="sec-label">Why Mavek</span>
+        <h2>Not another media buyer. An <em>autonomous Meta team</em>.</h2>
+        <div class="grid-2" style="margin-top: var(--space-xl);">
+          <div class="card reveal">
+            <h4>Traditional Media Buyer</h4>
+            <ul class="diff-list diff-list--old">
+              <li>$1,500-$8,000/month retainer or % of spend</li>
+              <li>Weekly creative refresh, at best</li>
+              <li>Limited audience testing bandwidth</li>
+              <li>Dashboards checked during office hours</li>
+            </ul>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.1s; border-color: var(--gold-mid);">
+            <h4>Mavek AI</h4>
+            <ul class="diff-list diff-list--new">
+              <li>Under $500/month, no percentage-of-spend games</li>
+              <li>Creative refresh paced to fatigue signals</li>
+              <li>Unlimited audience and creative testing</li>
+              <li>24/7 monitoring, night-and-weekend coverage</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek run your Meta ads."
+    subtitle="Test more. Scale faster. Pay less. Zero percentage-of-spend games."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section { padding-top: calc(var(--nav-height) + var(--space-3xl)); text-align: center; }
+  .hero__inner { max-width: 760px; margin: 0 auto; }
+  .hero__inner h1 { margin-top: var(--space-sm); margin-bottom: var(--space-md); }
+  .hero__subtitle { font-size: 1.15rem; max-width: 640px; margin: 0 auto var(--space-lg); }
+  .hero__actions { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; }
+  .section-header { text-align: center; margin-bottom: var(--space-xl); }
+  .section-header h2 { margin-top: var(--space-xs); }
+  .steps { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-xl); }
+  .step { display: flex; gap: var(--space-lg); align-items: flex-start; }
+  .step__num { font-family: var(--font-body); font-size: 0.85rem; color: var(--gold-dark); letter-spacing: 0.1em; flex-shrink: 0; padding-top: 0.3rem; }
+  .step__content h3 { margin-bottom: var(--space-xs); }
+  .metric-card__value { color: var(--gold-mid) !important; font-size: clamp(1.5rem, 3vw, 2rem); }
+  .differentiator { text-align: center; }
+  .differentiator h2 { margin-top: var(--space-xs); }
+  .diff-list { list-style: none; margin-top: var(--space-sm); display: flex; flex-direction: column; gap: 0.6rem; }
+  .diff-list li { font-size: 0.9rem; padding-left: 1.5rem; position: relative; }
+  .diff-list--old li::before { content: "\2717"; position: absolute; left: 0; color: var(--muted); }
+  .diff-list--new li::before { content: "\2713"; position: absolute; left: 0; color: var(--gold-dark); }
+  @media (max-width: 600px) {
+    .hero__actions { flex-direction: column; align-items: center; }
+    .step { flex-direction: column; gap: var(--space-sm); }
+  }
+</style>

@@ -1,0 +1,160 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const capabilities = [
+  { title: "Unified Dashboards", desc: "Every channel — ads, SEO, email, social — in one live dashboard. No more switching tools, reconciling spreadsheets, or stitching reports together." },
+  { title: "Attribution Modeling", desc: "Multi-touch attribution across paid, organic, and email. Mavek shows what actually drove the revenue — not just last-click credit." },
+  { title: "Anomaly Detection", desc: "When CPA spikes, traffic dips, or a landing page breaks — Mavek catches it in minutes. No waiting for the Monday report to find out." },
+  { title: "Automated Reports", desc: "Weekly and monthly reports drafted automatically. Plain-English summaries with the numbers that matter and the actions Mavek already took." },
+  { title: "Cohort & Segment Analysis", desc: "Performance cuts by channel, campaign, geo, device, or customer cohort. Find the pockets that over-perform and the ones bleeding money." },
+  { title: "Live Action Log", desc: "Every decision Mavek makes — bid changes, budget shifts, content published — logged with the reasoning. You see the full playbook, always." },
+];
+
+const steps = [
+  { num: "01", title: "Connect Your Sources", desc: "GA4, Google Ads, Meta, Search Console, HubSpot, Apollo — Mavek plugs into your full stack via secure APIs in minutes." },
+  { num: "02", title: "Define KPIs", desc: "Tell Mavek your North Star metrics and acceptable ranges. It builds dashboards, alerts, and reports around what you actually care about." },
+  { num: "03", title: "Get Insights, Not Just Data", desc: "Mavek surfaces anomalies, explains variance, and drafts actions. No more 'we see a dip but don't know why' — you get cause and fix, together." },
+];
+
+const metrics = [
+  { value: "Faster Decisions", label: "Surface insights in minutes, not days. Mavek flags the issue, diagnoses it, and drafts the fix before your next standup." },
+  { value: "True Attribution", label: "Stop guessing which channel drove conversions. Multi-touch attribution shows exactly where revenue came from, across every touchpoint." },
+  { value: "Fewer Surprises", label: "Anomalies caught early, before they eat the budget. Campaigns never go dark, metrics never drift unnoticed." },
+];
+---
+
+<Layout title="Marketing Analytics" description="Unified dashboards, multi-touch attribution, anomaly detection, and automated reporting — turning raw marketing data into decisions you can act on today.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">Service</span>
+        <h1>Analytics that tell you <em>what to do</em>, not just what happened.</h1>
+        <p class="hero__subtitle">Every channel in one dashboard. Multi-touch attribution across paid, organic, email, and social. Anomalies caught in minutes. Reports drafted automatically. Insights, not just data.</p>
+        <div class="hero__actions">
+          <a href="/contact" class="btn btn--primary">Book a Demo <span>&rarr;</span></a>
+          <a href="/services" class="btn btn--secondary">All Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Capabilities</span>
+        <h2>What Mavek does with <em>your marketing data</em></h2>
+      </div>
+      <div class="grid-3">
+        {capabilities.map((c, i) => (
+          <div class="card card--dark reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <h4>{c.title}</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">How It Works</span>
+        <h2>Three steps to <em>live insights</em></h2>
+      </div>
+      <div class="steps">
+        {steps.map((s, i) => (
+          <div class="step reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <span class="step__num">{s.num}</span>
+            <div class="step__content">
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sec-label">Results</span>
+        <h2>What you can <em>expect</em></h2>
+      </div>
+      <div class="grid-3">
+        {metrics.map((m, i) => (
+          <div class="card card--dark metric-card reveal" style={`transition-delay: ${i * 0.1}s`}>
+            <h3 class="metric-card__value">{m.value}</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">{m.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="differentiator reveal">
+        <span class="sec-label">Why Mavek</span>
+        <h2>Not another dashboard tool. An <em>autonomous analyst</em>.</h2>
+        <div class="grid-2" style="margin-top: var(--space-xl);">
+          <div class="card reveal">
+            <h4>Traditional Analytics Stack</h4>
+            <ul class="diff-list diff-list--old">
+              <li>GA4 + Looker + 3 other tools, duct-taped together</li>
+              <li>Weekly reports, manually assembled</li>
+              <li>Dashboards that show data, not insights</li>
+              <li>Anomalies discovered days after they started</li>
+            </ul>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.1s; border-color: var(--gold-mid);">
+            <h4>Mavek AI</h4>
+            <ul class="diff-list diff-list--new">
+              <li>One platform, every channel unified</li>
+              <li>Reports drafted automatically, every week</li>
+              <li>Insights and recommended actions, not just charts</li>
+              <li>Anomalies flagged in minutes, fixed same day</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="See your marketing clearly. Act on it faster."
+    subtitle="One dashboard. Real attribution. Insights that move the needle."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section { padding-top: calc(var(--nav-height) + var(--space-3xl)); text-align: center; }
+  .hero__inner { max-width: 760px; margin: 0 auto; }
+  .hero__inner h1 { margin-top: var(--space-sm); margin-bottom: var(--space-md); }
+  .hero__subtitle { font-size: 1.15rem; max-width: 640px; margin: 0 auto var(--space-lg); }
+  .hero__actions { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; }
+  .section-header { text-align: center; margin-bottom: var(--space-xl); }
+  .section-header h2 { margin-top: var(--space-xs); }
+  .steps { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-xl); }
+  .step { display: flex; gap: var(--space-lg); align-items: flex-start; }
+  .step__num { font-family: var(--font-body); font-size: 0.85rem; color: var(--gold-dark); letter-spacing: 0.1em; flex-shrink: 0; padding-top: 0.3rem; }
+  .step__content h3 { margin-bottom: var(--space-xs); }
+  .metric-card__value { color: var(--gold-mid) !important; font-size: clamp(1.5rem, 3vw, 2rem); }
+  .differentiator { text-align: center; }
+  .differentiator h2 { margin-top: var(--space-xs); }
+  .diff-list { list-style: none; margin-top: var(--space-sm); display: flex; flex-direction: column; gap: 0.6rem; }
+  .diff-list li { font-size: 0.9rem; padding-left: 1.5rem; position: relative; }
+  .diff-list--old li::before { content: "\2717"; position: absolute; left: 0; color: var(--muted); }
+  .diff-list--new li::before { content: "\2713"; position: absolute; left: 0; color: var(--gold-dark); }
+  @media (max-width: 600px) {
+    .hero__actions { flex-direction: column; align-items: center; }
+    .step { flex-direction: column; gap: var(--space-sm); }
+  }
+</style>

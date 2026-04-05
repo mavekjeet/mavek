@@ -42,7 +42,7 @@ const {
         {showStone ? (
           <div class="hero__stone-wrap">
             <svg width="200" height="260" viewBox="0 0 200 280" id="heroStone">
-              <ellipse id="stoneShadow" cx="100" cy="226.5" rx="58" ry="8" fill={dark ? "#D4B65A" : "#1A1A18"} opacity={dark ? "0.25" : "0.18"}/>
+              <ellipse id="stoneShadow" cx="100" cy="226.52" rx="58" ry="8" fill={dark ? "#D4B65A" : "#1A1A18"} opacity={dark ? "0.12" : "0.07"} data-op-min={dark ? "0.08" : "0.05"} data-op-max={dark ? "0.15" : "0.08"}/>
               <g id="stoneGroup" transform="translate(100, 115)">
                 <path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="#E8C95A"/>
                 <path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="#8A7028"/>
@@ -230,8 +230,8 @@ const {
 
   @media (max-width: 768px) {
     .hero__inner { grid-template-columns: 1fr; }
-    .hero__visual { order: -1; }
     .hero__content { max-width: 100%; }
+    .hero__visual { margin-top: 32px; }
     .hero__visual :global(.dash__body) { grid-template-columns: 1fr; }
     .hero__visual :global(.dash__sidebar) { display: none; }
   }
@@ -252,11 +252,15 @@ const {
     }
 
     // Stone floating animation (hero only)
+    // Per brand rules: shadow cy NEVER changes. Only rx, ry, and opacity animate.
+    // Opacity range is read from data-attributes (bg-specific per brand spec).
     var stone = document.getElementById('stoneGroup');
     var shadow = document.getElementById('stoneShadow');
     if (stone && shadow) {
       var baseY = 115, amplitude = 14, duration = 4000;
-      var rxMin = 50, rxMax = 62, ryMin = 6, ryMax = 10, opMin = 0.04, opMax = 0.12;
+      var rxMin = 50, rxMax = 62, ryMin = 6, ryMax = 10;
+      var opMin = parseFloat(shadow.getAttribute('data-op-min')) || 0.05;
+      var opMax = parseFloat(shadow.getAttribute('data-op-max')) || 0.08;
 
       function animateStone(time) {
         var t = (time % duration) / duration;

@@ -1,0 +1,139 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+
+const services = [
+  {
+    num: "01",
+    title: "SEO & AEO",
+    desc: "Rank on Google and get cited by ChatGPT, Claude, and Perplexity. Technical SEO, content clusters, and Answer Engine Optimization in one service.",
+    href: "/services/seo-aeo",
+  },
+  {
+    num: "02",
+    title: "Email Marketing",
+    desc: "Lifecycle flows, segmentation, copywriting, and send-time optimization. Mavek writes, tests, and ships — your email program runs itself.",
+    href: "/services/email-marketing",
+  },
+  {
+    num: "03",
+    title: "Google Ads",
+    desc: "Search, Performance Max, Display, Shopping, YouTube. Continuous bidding, creative testing, and budget optimization — 24/7.",
+    href: "/services/google-ads",
+  },
+  {
+    num: "04",
+    title: "Meta Ads",
+    desc: "Facebook, Instagram, Reels, Stories. Audience strategy, creative production, fatigue monitoring, and scaling built into one service.",
+    href: "/services/meta-ads",
+  },
+  {
+    num: "05",
+    title: "Analytics",
+    desc: "Unified dashboards across every channel, multi-touch attribution, anomaly detection, and automated reports. Insights, not just data.",
+    href: "/services/analytics",
+  },
+];
+---
+
+<Layout title="Services" description="The full marketing stack, run autonomously. SEO & AEO, email marketing, Google Ads, Meta Ads, and analytics — one platform, under $500/month.">
+  <Nav />
+
+  <section class="section light hero-section">
+    <div class="container">
+      <div class="hero__inner reveal">
+        <span class="sec-label">Services</span>
+        <h1>The full marketing stack.<br /><em>One platform. Always on.</em></h1>
+        <p class="hero__subtitle">Every channel that matters — search, email, paid, analytics — run autonomously by one AI system. No hiring. No agencies. No babysitting.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <div class="grid-2">
+        {services.map((s, i) => (
+          <a href={s.href} class="card card--dark service-card reveal" style={`transition-delay: ${i * 0.08}s`}>
+            <span class="service-card__num">{s.num}</span>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+            <span class="service-card__link">Learn more &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="why__inner reveal">
+        <span class="sec-label">Why Full-Stack</span>
+        <h2>Channels work better <em>together</em></h2>
+        <p>Point tools don't talk. Agencies don't share data. In-house teams burn out chasing five dashboards. Mavek runs every channel from one brain — so what works in email shapes what gets tested in ads, and what ranks organically informs what gets promoted paid.</p>
+        <div class="why__grid grid-3">
+          <div class="card reveal">
+            <h4>Shared Intelligence</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Ads data informs content. Content data shapes email. Email engagement feeds retargeting. Every channel learns from every other channel.</p>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.1s">
+            <h4>Unified Reporting</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">One dashboard. Real attribution. No more stitching reports from six tools and arguing about which metric is right.</p>
+          </div>
+          <div class="card reveal" style="transition-delay: 0.2s">
+            <h4>Compounding Returns</h4>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">The longer Mavek runs, the smarter every channel gets. Cross-channel learnings compound over weeks and months.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Consolidate your marketing stack."
+    subtitle="Five services. One platform. Under $500/month."
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero-section {
+    padding-top: calc(var(--nav-height) + var(--space-3xl));
+    text-align: center;
+  }
+  .hero__inner { max-width: 720px; margin: 0 auto; }
+  .hero__inner h1 { margin-top: var(--space-sm); margin-bottom: var(--space-md); }
+  .hero__subtitle { font-size: 1.15rem; max-width: 580px; margin: 0 auto; }
+
+  .service-card {
+    display: block;
+    text-decoration: none;
+    position: relative;
+  }
+  .service-card__num {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--gold-mid);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+  .service-card h3 { margin-bottom: var(--space-xs); }
+  .service-card__link {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--gold-mid);
+    transition: gap var(--duration) var(--ease);
+  }
+  .service-card:hover .service-card__link { text-decoration: underline; }
+
+  .why__inner { text-align: center; }
+  .why__inner h2 { margin-top: var(--space-xs); margin-bottom: var(--space-sm); }
+  .why__inner > p { max-width: 640px; margin: 0 auto var(--space-xl); }
+  .why__grid { text-align: left; }
+</style>

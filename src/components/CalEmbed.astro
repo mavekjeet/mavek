@@ -1,0 +1,89 @@
+---
+// Cal.com inline embed — prospects book demo slots directly.
+// Configure CAL_LINK in .env.local (e.g. PUBLIC_CAL_LINK=jeet/demo)
+---
+
+<div class="cal-embed-wrap">
+  <div id="cal-inline-booking" class="cal-embed"></div>
+  <noscript>
+    <p>JavaScript is required to book a demo. You can also email us directly at <a href="mailto:hello@mavek.ai">hello@mavek.ai</a>.</p>
+  </noscript>
+</div>
+
+<style>
+  .cal-embed-wrap {
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.08);
+    border-radius: 14px;
+    padding: 0;
+    overflow: hidden;
+    min-height: 620px;
+  }
+
+  .cal-embed {
+    width: 100%;
+    min-height: 620px;
+  }
+
+  .cal-embed iframe {
+    border: 0 !important;
+  }
+
+  @media (max-width: 900px) {
+    .cal-embed-wrap, .cal-embed { min-height: 560px; }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var cfg = window.__MAVEK_CFG || {};
+    var calLink = cfg.calLink;
+    if (!calLink || calLink === 'YOUR_USERNAME/EVENT_SLUG') {
+      var el = document.getElementById('cal-inline-booking');
+      if (el) {
+        el.innerHTML = '<div style="padding:2rem;text-align:center;color:var(--ink-muted);font-size:0.9rem;">' +
+          '<p><strong style="color:var(--ink);">Booking not configured yet.</strong></p>' +
+          '<p style="margin-top:0.5rem;">Email us at <a href="mailto:hello@mavek.ai" style="color:var(--gold-dark);">hello@mavek.ai</a> and we\'ll set up a demo.</p>' +
+          '</div>';
+      }
+      return;
+    }
+
+    // Cal.com inline embed loader (official snippet)
+    (function (C, A, L) {
+      var p = function (a, ar) { a.q.push(ar); };
+      var d = C.document;
+      C.Cal = C.Cal || function () {
+        var cal = C.Cal, ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement('script')).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          var api = function () { p(api, arguments); };
+          var namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === 'string') { cal.ns[namespace] = api; p(api, ar); }
+          else { p(cal, ar); }
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+    Cal('init', { origin: 'https://cal.com' });
+    Cal('inline', {
+      elementOrSelector: '#cal-inline-booking',
+      calLink: calLink,
+      layout: 'month_view'
+    });
+    Cal('ui', {
+      theme: 'light',
+      styles: { branding: { brandColor: '#C9A84C' } },
+      hideEventTypeDetails: false,
+      layout: 'month_view'
+    });
+  })();
+</script>

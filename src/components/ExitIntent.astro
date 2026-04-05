@@ -7,7 +7,7 @@
     <button class="exit-popup__close" id="exitClose" aria-label="Close">&times;</button>
     <span class="sec-label">Before you go</span>
     <h3>Grab your free marketing resources</h3>
-    <p>Get our AI Marketing Playbook and Marketing Budget Template — free, no signup required.</p>
+    <p>Enter your email and we'll send both — plus you'll get instant download links right here.</p>
 
     <div class="exit-popup__resources">
       <div class="exit-popup__resource">
@@ -155,10 +155,12 @@
   .exit-popup__form {
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
   }
 
   .exit-popup__form input {
-    flex: 1;
+    flex: 1 1 100%;
+    min-width: 0;
     padding: 0.75rem 1rem;
     font-family: var(--font-body);
     font-size: 0.9rem;
@@ -167,6 +169,12 @@
     border-radius: 10px;
     color: var(--ink);
     outline: none;
+    box-sizing: border-box;
+  }
+
+  .exit-popup__form button {
+    flex: 0 0 auto;
+    width: 100%;
   }
 
   .exit-popup__form input:focus {
@@ -256,14 +264,65 @@
     overlay.addEventListener('click', hidePopup);
     closeBtn.addEventListener('click', hidePopup);
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var email = form.querySelector('input').value;
-      // Replace with actual form handler (Mailchimp, ConvertKit, etc.)
+    function triggerDownloads() {
+      var files = [
+        '/downloads/mavek-ai-marketing-playbook.pdf',
+        '/downloads/mavek-marketing-budget-template.pdf'
+      ];
+      files.forEach(function(url, i) {
+        setTimeout(function() {
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = url.split('/').pop();
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }, i * 700);
+      });
+    }
+
+    function showSuccess() {
       var successEl = document.createElement('div');
       successEl.className = 'exit-popup__success';
-      successEl.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold-mid)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg><p><strong>You\'re all set!</strong></p><p>We\'ve sent the resources to <strong>' + email + '</strong>. Check your inbox.</p>';
+      successEl.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold-mid)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg><p><strong>Downloads starting now.</strong></p><p>Check your downloads folder. Both files are on their way.</p>';
       form.parentNode.replaceChild(successEl, form);
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var emailInput = form.querySelector('input');
+      var email = emailInput.value.trim();
+      if (!email) return;
+
+      var btn = form.querySelector('button');
+      var origText = btn.innerHTML;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      var cfg = window.__MAVEK_CFG || {};
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: cfg.web3formsKey,
+          subject: 'New Mavek Exit-Intent Lead',
+          from_name: 'Mavek Exit Popup',
+          email: email,
+          source: 'exit-intent-popup',
+          botcheck: ''
+        })
+      }).then(function(r) {
+        return r.json();
+      }).then(function(data) {
+        triggerDownloads();  // Deliver PDFs regardless (we still have the email)
+        showSuccess();
+        if (!data.success) console.error('ExitIntent submit failed:', data);
+      }).catch(function(err) {
+        // Still deliver — don't punish the user for a network hiccup
+        triggerDownloads();
+        showSuccess();
+        console.error('ExitIntent submit error:', err);
+      });
     });
   })();
 </script>

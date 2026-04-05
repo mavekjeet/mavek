@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <title>Mavek — Boxed</title>
+  <desc>Mavek stone in parchment box. Use on dark backgrounds. Stone S=32 (half-girdle). Shadow follows light-bg rules (drawn on parchment): #1A1A18 @ 0.07, gap = stone-h × 0.22, width = stone-w × 0.85.</desc>
+  <!-- Parchment box -->
+  <rect width="120" height="120" rx="24" fill="#F6F3E8"/>
+  <!-- Ground shadow (on parchment = light bg rules). Gap = 64 × 0.22 = 14.08. Width = 64 × 0.85 = 54.4 (rx 27.2). -->
+  <ellipse cx="60" cy="96.48" rx="27.2" ry="2.5" fill="#1A1A18" opacity="0.07"/>
+  <!-- Stone: girdle centered so shadow fits. Crown top y=18.4, pavilion tip y=82.4. -->
+  <g transform="translate(60, 44)">
+    <path d="M-32 0 L-14.4 -25.6 L0 -25.6 L0 0 Z" fill="#E8C95A"/>
+    <path d="M0 -25.6 L14.4 -25.6 L32 0 L0 0 Z" fill="#8A7028"/>
+    <path d="M-32 0 L0 0 L0 38.4 Z" fill="#33302A"/>
+    <path d="M0 0 L32 0 L0 38.4 Z" fill="#0A0A08"/>
+  </g>
+</svg>
