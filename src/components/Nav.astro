@@ -9,7 +9,8 @@ const currentPath = Astro.url.pathname;
     <a href="/" class="nav__logo">
       <!-- Stone logo -->
       <svg width="20" height="28" viewBox="0 0 20 28" class="nav__stone">
-        <ellipse cx="10" cy="21.1" rx="6.8" ry="1.5" fill="#1A1A18" opacity="0.18"/>
+        <!-- S=8, stone-h=16, gap = 16×0.22 = 3.52, rx = 8×0.85 = 6.8. Girdle at y=8, tip at y=17.6, shadow at y=21.12. -->
+        <ellipse cx="10" cy="21.12" rx="6.8" ry="1.5" fill="#1A1A18" opacity="0.07"/>
         <g transform="translate(10, 8)">
           <path d="M-8 0 L-3.6 -6.4 L0 -6.4 L0 0 Z" fill="#E8C95A"/>
           <path d="M0 -6.4 L3.6 -6.4 L8 0 L0 0 Z" fill="#8A7028"/>
@@ -30,6 +31,7 @@ const currentPath = Astro.url.pathname;
     </div>
 
     <div class="nav__actions">
+      <a href="/waitlist" class="btn btn--secondary btn--sm nav__waitlist-btn">Join Waitlist</a>
       <a href="/contact" class="btn btn--primary btn--sm">Book a Demo</a>
     </div>
 
@@ -69,14 +71,18 @@ const currentPath = Astro.url.pathname;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    will-change: background-color;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    box-shadow: 0 1px 8px transparent;
   }
 
   .nav.scrolled {
     background: rgba(246, 243, 232, 0.92);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(26, 26, 24, 0.06);
+    border-bottom-color: rgba(26, 26, 24, 0.06);
     box-shadow: 0 1px 8px rgba(26, 26, 24, 0.04);
   }
 
@@ -144,7 +150,11 @@ const currentPath = Astro.url.pathname;
     border-radius: 1px;
   }
 
-  .nav__actions { display: flex; align-items: center; }
+  .nav__actions { display: flex; align-items: center; gap: 8px; }
+
+  @media (max-width: 1080px) {
+    .nav__waitlist-btn { display: none; }
+  }
 
   .nav__toggle {
     display: none;
@@ -163,7 +173,7 @@ const currentPath = Astro.url.pathname;
     transition: all 0.3s ease;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     .nav { padding: 16px 24px; }
     .nav__links {
       position: fixed;
@@ -182,24 +192,47 @@ const currentPath = Astro.url.pathname;
     .nav__links .nav__link { font-size: 18px; }
     .nav__links .nav__link.active::after { display: none; }
     .nav__toggle { display: flex; }
-    .nav__actions { margin-right: 1rem; }
+    .nav__actions { margin-left: auto; margin-right: 12px; }
   }
 </style>
 
 <script is:inline>
   (function() {
     var nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 30) {
+    if (!nav) return;
+
+    // Hysteresis prevents flicker at the threshold: add at 40px, remove at 10px
+    var ENTER_SCROLLED = 40;
+    var EXIT_SCROLLED = 10;
+    var isScrolled = false;
+    var ticking = false;
+
+    function updateNav() {
+      var y = window.scrollY;
+      if (!isScrolled && y > ENTER_SCROLLED) {
         nav.classList.add('scrolled');
-      } else {
+        isScrolled = true;
+      } else if (isScrolled && y < EXIT_SCROLLED) {
         nav.classList.remove('scrolled');
+        isScrolled = false;
       }
-    });
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateNav);
+        ticking = true;
+      }
+    }
+
+    // Set initial state (important for page loads that aren't at top, e.g. anchor links)
+    updateNav();
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     var toggle = document.getElementById('navToggle');
     var links = document.getElementById('navLinks');
-    if (toggle) {
+    if (toggle && links) {
       toggle.addEventListener('click', function() {
         links.classList.toggle('open');
       });
