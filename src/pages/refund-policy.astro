@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Refund and Cancellation Policy" description="Mavek's cancellation and refund terms. Cancel anytime, no lock-in contracts.">
+  <Nav />
+
+  <section class="light policy-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="policy__header reveal">
+        <span class="sec-label">Legal</span>
+        <h1>Refund &amp; <em>Cancellation Policy</em></h1>
+        <p class="policy__effective">Effective Date: April 6, 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="container">
+      <div class="policy__content">
+
+        <div class="policy__block reveal">
+          <p>At Mavek, we believe in transparency and fairness. This policy outlines how cancellations and refunds are handled for our subscription-based marketing execution platform.</p>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>1. Subscription Model</h2>
+          <p>Mavek operates on a monthly subscription basis with the following plans:</p>
+          <ul>
+            <li><strong>Starter:</strong> $299/month — 2 channels, up to 10 campaigns/month.</li>
+            <li><strong>Growth:</strong> $499/month — all 6 channels, unlimited campaigns, multi-brand support.</li>
+            <li><strong>Enterprise:</strong> Custom pricing — tailored to your organization's needs.</li>
+          </ul>
+          <p>All plans are billed monthly unless a custom billing arrangement has been agreed upon for Enterprise clients.</p>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>2. Cancellation</h2>
+          <ul>
+            <li>You may cancel your subscription at any time. There are no lock-in contracts, no penalties, and no cancellation fees.</li>
+            <li>Cancellation takes effect at the end of your current billing cycle. You will continue to have access to the platform until the cycle ends.</li>
+            <li>To cancel, contact us at <a href="mailto:hello@mavek.ai">hello@mavek.ai</a> or through your account dashboard.</li>
+          </ul>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>3. Post-Cancellation Data Access</h2>
+          <ul>
+            <li>After cancellation, your data and campaign history remain accessible for <strong>30 days</strong>.</li>
+            <li>During this 30-day window, you can export your data, review campaign performance, and retrieve any materials created through the platform.</li>
+            <li>After 30 days, your data is permanently deleted from our systems unless retention is required by law.</li>
+          </ul>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>4. Refunds</h2>
+
+          <h3>Standard Subscriptions (Starter &amp; Growth)</h3>
+          <ul>
+            <li>Since Mavek is a digital service that begins immediately upon subscription, we generally do not offer refunds for the current billing period.</li>
+            <li>If you cancel within the first 7 days of your initial subscription and have not launched any campaigns, you may request a full refund.</li>
+            <li>Refund requests after the 7-day window are evaluated on a case-by-case basis.</li>
+          </ul>
+
+          <h3>Enterprise Plans</h3>
+          <ul>
+            <li>Refund and cancellation terms for Enterprise clients are governed by the individual service agreement.</li>
+            <li>Contact your dedicated account manager or reach out to <a href="mailto:hello@mavek.ai">hello@mavek.ai</a> for details.</li>
+          </ul>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>5. Downgrading</h2>
+          <ul>
+            <li>You may downgrade from Growth to Starter at any time.</li>
+            <li>Downgrades take effect at the start of the next billing cycle.</li>
+            <li>Features exclusive to the higher plan will become unavailable upon downgrade. Campaign data is retained.</li>
+          </ul>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>6. Plan Changes &amp; Price Adjustments</h2>
+          <ul>
+            <li>Upgrades are effective immediately, with prorated billing for the remainder of the current cycle.</li>
+            <li>If we change pricing, existing subscribers will receive at least 30 days' notice before the new pricing applies to their account.</li>
+          </ul>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>7. Service Interruptions</h2>
+          <p>In the event of extended unplanned downtime (exceeding 48 consecutive hours) that materially impacts your ability to use the Service, you may be eligible for a prorated credit on your next billing cycle. Contact us to report an issue and request a credit.</p>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>8. How to Request a Refund</h2>
+          <p>To request a refund, contact us with the following details:</p>
+          <ul>
+            <li>Your account email address.</li>
+            <li>The reason for your refund request.</li>
+            <li>The billing period in question.</li>
+          </ul>
+          <p>Send your request to <a href="mailto:hello@mavek.ai">hello@mavek.ai</a>. We aim to respond within 3 business days and process approved refunds within 7-10 business days.</p>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>9. Contact</h2>
+          <p>For questions about this policy:</p>
+          <ul class="policy__contact">
+            <li><strong>Email:</strong> <a href="mailto:hello@mavek.ai">hello@mavek.ai</a></li>
+            <li><strong>Website:</strong> <a href="/contact">mavek.ai/contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .policy__header {
+    max-width: 680px;
+  }
+  .policy__header h1 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+  .policy__effective {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .policy__content {
+    max-width: 720px;
+    padding-bottom: var(--space-xl);
+  }
+
+  .policy__block {
+    margin-bottom: var(--space-xl);
+  }
+
+  .policy__block h2 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+    color: var(--ink);
+  }
+
+  .policy__block h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: var(--space-md) 0 var(--space-xs);
+    color: var(--ink-2);
+  }
+
+  .policy__block p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-sm);
+  }
+
+  .policy__block ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--space-sm);
+  }
+
+  .policy__block ul li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+
+  .policy__block ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--gold-mid);
+  }
+
+  .policy__block a {
+    color: var(--gold-mid);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .policy__block a:hover {
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .policy__contact {
+    list-style: none;
+    padding: 0;
+  }
+
+  .policy__contact li::before {
+    display: none;
+  }
+
+  .policy__contact li {
+    padding-left: 0;
+  }
+</style>
