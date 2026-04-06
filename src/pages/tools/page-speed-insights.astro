@@ -588,10 +588,18 @@ import Footer from '../../components/Footer.astro';
     margin-bottom: 0.2rem;
   }
 
+  .psi-audit-item__simple {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
   .psi-audit-item__desc {
-    font-size: 0.8rem;
-    opacity: 0.55;
+    font-size: 0.78rem;
+    opacity: 0.4;
     line-height: 1.5;
+    font-style: italic;
   }
 
   .psi-audit-item__savings {
@@ -778,11 +786,12 @@ import Footer from '../../components/Footer.astro';
 
       var html = '<div class="psi-audit-item__title">' + escapeHtml(audit.title) + '</div>';
 
-      // Use simple explanation if available, otherwise fall back to Google's description
+      // Show our simple explanation first, then Google's original description
       var simpleExplain = SIMPLE_EXPLANATIONS[audit.id];
       if (simpleExplain) {
-        html += '<div class="psi-audit-item__desc">' + escapeHtml(simpleExplain) + '</div>';
-      } else if (audit.description) {
+        html += '<div class="psi-audit-item__simple">' + escapeHtml(simpleExplain) + '</div>';
+      }
+      if (audit.description) {
         var desc = audit.description.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
         html += '<div class="psi-audit-item__desc">' + escapeHtml(desc) + '</div>';
       }
