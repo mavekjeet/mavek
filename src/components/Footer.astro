@@ -191,11 +191,18 @@
   .footer__legal a:hover { color: var(--cream-60); }
 
   @media (max-width: 768px) {
-    .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .footer__brand {
+      grid-column: 1 / -1;
+    }
   }
 
   @media (max-width: 480px) {
-    .footer__grid { grid-template-columns: 1fr; }
+    .footer__grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .footer__brand { grid-column: 1 / -1; }
     .footer__bottom { flex-direction: column; gap: 12px; text-align: center; }
   }
 </style>
