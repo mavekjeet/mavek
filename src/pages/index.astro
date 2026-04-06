@@ -73,7 +73,7 @@ import Footer from '../components/Footer.astro';
       <div class="stat__inner reveal">
         <div class="stat__number"><span class="stat__counter" data-target="500" data-prefix="$">$0</span><span>/mo</span></div>
         <div class="stat__vs">vs</div>
-        <div class="stat__compare"><span class="stat__counter" data-target="3" data-prefix="Rs." data-suffix="L+">Rs.0L+</span><span>/mo for a team</span></div>
+        <div class="stat__compare"><span class="stat__counter" data-target="3600" data-prefix="$" data-suffix="+">$0+</span><span>/mo for a team</span></div>
       </div>
       <p class="stat__caption reveal">Enterprise marketing execution at a fraction of the cost. No hires. No overhead. No compromises.</p>
     </div>
@@ -175,7 +175,7 @@ import Footer from '../components/Footer.astro';
         // ease-out cubic
         var eased = 1 - Math.pow(1 - progress, 3);
         var current = Math.round(eased * target);
-        el.textContent = prefix + current + suffix;
+        el.textContent = prefix + current.toLocaleString('en-US') + suffix;
         if (progress < 1) {
           requestAnimationFrame(tick);
         }
