@@ -1,0 +1,378 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Open Graph Preview Tool" description="Preview how your links will appear when shared on Facebook, Twitter/X, and LinkedIn. Free OG tag preview and validator.">
+  <Nav />
+
+  <section class="light og-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="og-hero__content reveal">
+        <span class="sec-label">Open Graph Preview</span>
+        <h1>See how your link looks <em>before you share</em>.</h1>
+        <p class="og-hero__lead">Preview your Open Graph and Twitter Card tags as they appear on Facebook, Twitter/X, and LinkedIn. Catch issues before your audience does.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light og-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="og-tool reveal">
+        <div class="og-form">
+          <div class="og-field">
+            <label for="ogTitleInput">og:title</label>
+            <input type="text" id="ogTitleInput" placeholder="Your Page Title" maxlength="200" />
+          </div>
+          <div class="og-field">
+            <label for="ogDescInput">og:description</label>
+            <textarea id="ogDescInput" rows="2" placeholder="A compelling description of your page content..." maxlength="400"></textarea>
+          </div>
+          <div class="og-field">
+            <label for="ogUrlInput">og:url</label>
+            <input type="text" id="ogUrlInput" placeholder="https://yourdomain.com/page" />
+          </div>
+          <div class="og-field">
+            <label for="ogImageInput">og:image URL</label>
+            <input type="text" id="ogImageInput" placeholder="https://yourdomain.com/og-image.jpg" />
+            <span class="og-hint">Recommended: 1200 x 630px for best results</span>
+          </div>
+          <div class="og-field">
+            <label for="ogSiteInput">og:site_name</label>
+            <input type="text" id="ogSiteInput" placeholder="Your Brand" />
+          </div>
+        </div>
+
+        <div class="og-previews">
+          <div class="og-preview-block">
+            <h3>Facebook</h3>
+            <div class="og-card og-card--facebook" id="fbCard">
+              <div class="og-card__image" id="fbImage">
+                <span class="og-card__image-placeholder">1200 x 630</span>
+              </div>
+              <div class="og-card__body">
+                <span class="og-card__domain" id="fbDomain">yourdomain.com</span>
+                <span class="og-card__title" id="fbTitle">Your Page Title</span>
+                <span class="og-card__desc" id="fbDesc">Your page description will appear here.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="og-preview-block">
+            <h3>Twitter / X</h3>
+            <div class="og-card og-card--twitter" id="twCard">
+              <div class="og-card__image" id="twImage">
+                <span class="og-card__image-placeholder">1200 x 630</span>
+              </div>
+              <div class="og-card__body">
+                <span class="og-card__title" id="twTitle">Your Page Title</span>
+                <span class="og-card__desc" id="twDesc">Your page description will appear here.</span>
+                <span class="og-card__domain" id="twDomain">yourdomain.com</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="og-preview-block">
+            <h3>LinkedIn</h3>
+            <div class="og-card og-card--linkedin" id="liCard">
+              <div class="og-card__image" id="liImage">
+                <span class="og-card__image-placeholder">1200 x 630</span>
+              </div>
+              <div class="og-card__body">
+                <span class="og-card__title" id="liTitle">Your Page Title</span>
+                <span class="og-card__domain" id="liDomain">yourdomain.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="og-nudge" id="ogNudge" style="display: none;">
+          <div class="og-nudge__inner">
+            <span class="og-nudge__label">Mavek Tip</span>
+            <p class="og-nudge__text" id="ogNudgeText"></p>
+            <a href="/contact" class="og-nudge__link">See how Mavek automates this &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Perfect social previews on autopilot"
+    subtitle="Mavek auto-generates optimized OG tags, images, and social previews for every page you publish."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+  .back-link:hover { gap: 0.8rem; }
+  .og-hero__content { max-width: 640px; }
+  .og-hero__content h1 { margin: var(--space-xs) 0 var(--space-md); }
+  .og-hero__lead { font-size: 1.1rem; }
+  .og-tool { max-width: 760px; margin: 0 auto; }
+
+  .og-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  .og-field label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+    opacity: 0.6;
+  }
+
+  .og-field input,
+  .og-field textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26,26,24,0.1);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+  }
+
+  .og-field input:focus,
+  .og-field textarea:focus { border-color: var(--gold-dark); }
+
+  .og-field input::placeholder,
+  .og-field textarea::placeholder { color: var(--muted); }
+
+  .og-hint {
+    display: block;
+    font-size: 0.72rem;
+    opacity: 0.4;
+    margin-top: 0.3rem;
+  }
+
+  /* Cards */
+  .og-previews {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+  }
+
+  .og-preview-block h3 {
+    margin-bottom: var(--space-md);
+  }
+
+  .og-card {
+    border: 1px solid rgba(26,26,24,0.12);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    max-width: 520px;
+  }
+
+  .og-card__image {
+    width: 100%;
+    aspect-ratio: 1.91 / 1;
+    background: var(--parchment-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .og-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .og-card__image-placeholder {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+
+  .og-card__body {
+    padding: 0.75rem 1rem;
+  }
+
+  .og-card__domain {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    color: #65676B;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .og-card__title {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1c1e21;
+    line-height: 1.3;
+    margin: 0.15rem 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .og-card__desc {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    color: #65676B;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  /* Twitter variant */
+  .og-card--twitter { border-radius: 16px; }
+  .og-card--twitter .og-card__image { border-radius: 0; }
+  .og-card--twitter .og-card__domain { text-transform: none; color: #8B98A5; font-size: 0.78rem; }
+  .og-card--twitter .og-card__title { font-size: 0.9rem; }
+
+  /* LinkedIn variant */
+  .og-card--linkedin .og-card__body { padding: 0.6rem 1rem; }
+  .og-card--linkedin .og-card__domain { font-size: 0.7rem; }
+
+  /* Nudge */
+  .og-nudge {
+    margin-top: var(--space-lg);
+  }
+
+  .og-nudge__inner {
+    background: rgba(138,112,40,0.06);
+    border: 1px solid rgba(138,112,40,0.15);
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .og-nudge__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold-dark);
+    margin-bottom: 0.35rem;
+  }
+
+  .og-nudge__text {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+
+  .og-nudge__link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--gold-dark);
+  }
+
+  @media (max-width: 600px) {
+    .og-card { max-width: 100%; }
+  }
+</style>
+
+<script is:inline>
+  var titleIn = document.getElementById('ogTitleInput');
+  var descIn = document.getElementById('ogDescInput');
+  var urlIn = document.getElementById('ogUrlInput');
+  var imageIn = document.getElementById('ogImageInput');
+  var siteIn = document.getElementById('ogSiteInput');
+  var nudge = document.getElementById('ogNudge');
+  var nudgeText = document.getElementById('ogNudgeText');
+
+  function getDomain(url) {
+    try {
+      return new URL(url.indexOf('://') === -1 ? 'https://' + url : url).hostname;
+    } catch(e) { return url || 'yourdomain.com'; }
+  }
+
+  function updateOgPreviews() {
+    var t = titleIn.value.trim() || 'Your Page Title';
+    var d = descIn.value.trim() || 'Your page description will appear here.';
+    var domain = getDomain(urlIn.value.trim());
+    var img = imageIn.value.trim();
+
+    // Facebook
+    document.getElementById('fbTitle').textContent = t;
+    document.getElementById('fbDesc').textContent = d;
+    document.getElementById('fbDomain').textContent = domain;
+    setImage('fbImage', img);
+
+    // Twitter
+    document.getElementById('twTitle').textContent = t;
+    document.getElementById('twDesc').textContent = d;
+    document.getElementById('twDomain').textContent = domain;
+    setImage('twImage', img);
+
+    // LinkedIn
+    document.getElementById('liTitle').textContent = t;
+    document.getElementById('liDomain').textContent = domain;
+    setImage('liImage', img);
+
+    // Contextual nudge
+    if (titleIn.value.trim() || descIn.value.trim()) {
+      nudge.style.display = 'block';
+      var tips = [];
+      if (!img) tips.push('You\'re missing an OG image — posts without images get up to 80% less engagement.');
+      if (t.length > 60) tips.push('Your title may get truncated on some platforms. Mavek auto-optimizes title length per platform.');
+      if (!urlIn.value.trim()) tips.push('Don\'t forget to set your canonical URL for accurate social sharing attribution.');
+      if (tips.length === 0) tips.push('Looking good. Mavek generates optimized social previews for every page automatically — no manual tag writing needed.');
+      nudgeText.textContent = tips[0];
+    } else {
+      nudge.style.display = 'none';
+    }
+  }
+
+  function setImage(containerId, src) {
+    var container = document.getElementById(containerId);
+    if (src) {
+      container.innerHTML = '<img src="' + src.replace(/"/g, '&quot;') + '" alt="OG preview" onerror="this.parentNode.innerHTML=\'<span class=og-card__image-placeholder>Image failed to load</span>\'" />';
+    } else {
+      container.innerHTML = '<span class="og-card__image-placeholder">1200 x 630</span>';
+    }
+  }
+
+  [titleIn, descIn, urlIn, imageIn, siteIn].forEach(function(el) {
+    el.addEventListener('input', updateOgPreviews);
+  });
+</script>

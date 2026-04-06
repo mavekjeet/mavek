@@ -1,0 +1,348 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Meta Tag Generator" description="Generate perfect HTML meta tags for your web pages. Free meta tag generator for title, description, Open Graph, Twitter Cards, and more.">
+  <Nav />
+
+  <section class="light meta-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="meta-hero__content reveal">
+        <span class="sec-label">Meta Tag Generator</span>
+        <h1>Generate <em>perfect meta tags</em> for any page.</h1>
+        <p class="meta-hero__lead">Fill in your page details and get ready-to-copy HTML meta tags including Open Graph and Twitter Card markup.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light meta-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="meta-tool reveal">
+        <div class="meta-form">
+          <div class="meta-form__group">
+            <h4>Basic SEO</h4>
+            <div class="meta-field">
+              <label for="metaTitle">Page Title <span class="meta-req">*</span></label>
+              <input type="text" id="metaTitle" placeholder="e.g. Best Marketing Tools for Startups in 2025" maxlength="200" />
+              <span class="meta-hint"><span id="metaTitleCount">0</span>/60 characters</span>
+            </div>
+            <div class="meta-field">
+              <label for="metaDesc">Meta Description <span class="meta-req">*</span></label>
+              <textarea id="metaDesc" rows="3" placeholder="e.g. Discover the top marketing tools that help startups grow faster. Compare features, pricing, and integrations." maxlength="400"></textarea>
+              <span class="meta-hint"><span id="metaDescCount">0</span>/160 characters</span>
+            </div>
+            <div class="meta-field">
+              <label for="metaKeywords">Keywords (comma-separated)</label>
+              <input type="text" id="metaKeywords" placeholder="e.g. marketing tools, startup marketing, growth hacking" />
+              <span class="meta-hint">Optional — most search engines ignore this, but some still use it</span>
+            </div>
+            <div class="meta-field">
+              <label for="metaCanonical">Canonical URL</label>
+              <input type="text" id="metaCanonical" placeholder="https://yourdomain.com/page" />
+            </div>
+            <div class="meta-field">
+              <label for="metaRobots">Robots</label>
+              <select id="metaRobots">
+                <option value="index, follow">index, follow (default)</option>
+                <option value="noindex, follow">noindex, follow</option>
+                <option value="index, nofollow">index, nofollow</option>
+                <option value="noindex, nofollow">noindex, nofollow</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="meta-form__group">
+            <h4>Open Graph / Social</h4>
+            <div class="meta-form__grid">
+              <div class="meta-field">
+                <label for="ogType">OG Type</label>
+                <select id="ogType">
+                  <option value="website">website</option>
+                  <option value="article">article</option>
+                  <option value="product">product</option>
+                  <option value="profile">profile</option>
+                </select>
+              </div>
+              <div class="meta-field">
+                <label for="ogImage">OG Image URL</label>
+                <input type="text" id="ogImage" placeholder="https://yourdomain.com/og-image.jpg" />
+              </div>
+              <div class="meta-field">
+                <label for="ogSiteName">Site Name</label>
+                <input type="text" id="ogSiteName" placeholder="e.g. Your Brand" />
+              </div>
+              <div class="meta-field">
+                <label for="twHandle">Twitter @handle</label>
+                <input type="text" id="twHandle" placeholder="e.g. @yourbrand" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="meta-output dark">
+          <div class="meta-output__header">
+            <span class="sec-label">Generated Tags</span>
+            <h3>Your meta tags</h3>
+          </div>
+          <div class="meta-code-wrap">
+            <pre id="metaOutput" class="meta-code"><code><!-- Fill in the fields above to generate meta tags --></code></pre>
+          </div>
+          <div class="meta-actions">
+            <button class="btn btn--primary" id="metaCopy">Copy Tags <span>&rarr;</span></button>
+            <span class="meta-copied" id="metaCopied">Copied!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light" style="padding-top: 0;">
+    <div class="container">
+      <div style="max-width: 760px; margin: 0 auto;">
+        <div class="meta-nudge" id="metaNudge" style="display: none;">
+          <div class="meta-nudge__inner">
+            <span class="meta-nudge__label">Mavek Tip</span>
+            <p class="meta-nudge__text" id="metaNudgeText">You just generated tags for 1 page. Mavek auto-generates and maintains optimized meta tags, OG tags, and schema markup across your entire site — no copying and pasting needed.</p>
+            <a href="/contact" class="meta-nudge__link">Automate your meta tags with Mavek &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek generate your SEO tags"
+    subtitle="Automated meta tags, Open Graph, schema markup, and more -- optimized for every page."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+  .back-link:hover { gap: 0.8rem; }
+
+  .meta-hero__content { max-width: 640px; }
+  .meta-hero__content h1 { margin: var(--space-xs) 0 var(--space-md); }
+  .meta-hero__lead { font-size: 1.1rem; }
+  .meta-tool { max-width: 760px; margin: 0 auto; }
+
+  .meta-form { margin-bottom: var(--space-xl); }
+
+  .meta-form__group {
+    margin-bottom: var(--space-xl);
+  }
+
+  .meta-form__group h4 {
+    margin-bottom: var(--space-md);
+    font-size: 1rem;
+  }
+
+  .meta-form__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .meta-field {
+    margin-bottom: var(--space-md);
+  }
+
+  .meta-field label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+    opacity: 0.6;
+  }
+
+  .meta-req { color: var(--gold-dark); }
+
+  .meta-field input,
+  .meta-field textarea,
+  .meta-field select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26,26,24,0.1);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+  }
+
+  .meta-field input:focus,
+  .meta-field textarea:focus,
+  .meta-field select:focus { border-color: var(--gold-dark); }
+
+  .meta-field input::placeholder,
+  .meta-field textarea::placeholder { color: var(--muted); }
+
+  .meta-hint {
+    display: block;
+    font-size: 0.72rem;
+    opacity: 0.4;
+    margin-top: 0.3rem;
+  }
+
+  /* Output */
+  .meta-output {
+    background: var(--dark);
+    padding: var(--space-xl);
+    color: #F5F5F7;
+  }
+
+  .meta-output__header { margin-bottom: var(--space-md); }
+  .meta-output__header .sec-label { color: var(--gold-mid); }
+  .meta-output__header h3 { color: #F5F5F7; margin-top: var(--space-xs); }
+
+  .meta-code-wrap {
+    background: var(--night-3);
+    border: 1px solid var(--dark-border);
+    border-radius: 10px;
+    padding: var(--space-md);
+    overflow-x: auto;
+  }
+
+  .meta-code {
+    font-family: monospace;
+    font-size: 0.78rem;
+    line-height: 1.8;
+    color: #F5F5F7;
+    white-space: pre-wrap;
+    word-break: break-all;
+    margin: 0;
+  }
+
+  .meta-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .meta-copied {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--gold-mid);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .meta-copied.show { opacity: 1; }
+
+  /* Nudge */
+  .meta-nudge__inner { background: rgba(138,112,40,0.06); border: 1px solid rgba(138,112,40,0.15); padding: var(--space-md) var(--space-lg); }
+  .meta-nudge__label { display: block; font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-dark); margin-bottom: 0.35rem; }
+  .meta-nudge__text { font-size: 0.9rem; margin-bottom: 0.5rem; opacity: 0.8; }
+  .meta-nudge__link { font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; color: var(--gold-dark); }
+
+  @media (max-width: 600px) {
+    .meta-form__grid { grid-template-columns: 1fr; }
+    .meta-output { padding: var(--space-lg); }
+  }
+</style>
+
+<script is:inline>
+  var fields = {
+    title: document.getElementById('metaTitle'),
+    desc: document.getElementById('metaDesc'),
+    keywords: document.getElementById('metaKeywords'),
+    canonical: document.getElementById('metaCanonical'),
+    robots: document.getElementById('metaRobots'),
+    ogType: document.getElementById('ogType'),
+    ogImage: document.getElementById('ogImage'),
+    ogSiteName: document.getElementById('ogSiteName'),
+    twHandle: document.getElementById('twHandle'),
+  };
+
+  var output = document.getElementById('metaOutput');
+  var titleCount = document.getElementById('metaTitleCount');
+  var descCount = document.getElementById('metaDescCount');
+  var copyBtn = document.getElementById('metaCopy');
+  var copiedMsg = document.getElementById('metaCopied');
+
+  function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function generate() {
+    var t = fields.title.value.trim();
+    var d = fields.desc.value.trim();
+
+    titleCount.textContent = t.length;
+    descCount.textContent = d.length;
+
+    if (!t && !d) {
+      output.textContent = '<!-- Fill in the fields above to generate meta tags -->';
+      return;
+    }
+
+    var lines = [];
+
+    // Basic
+    if (t) lines.push('<title>' + esc(t) + '</title>');
+    if (d) lines.push('<meta name="description" content="' + esc(d) + '" />');
+    if (fields.keywords.value.trim()) lines.push('<meta name="keywords" content="' + esc(fields.keywords.value.trim()) + '" />');
+    lines.push('<meta name="robots" content="' + fields.robots.value + '" />');
+    if (fields.canonical.value.trim()) lines.push('<link rel="canonical" href="' + esc(fields.canonical.value.trim()) + '" />');
+
+    lines.push('');
+    lines.push('<!-- Open Graph -->');
+    lines.push('<meta property="og:type" content="' + fields.ogType.value + '" />');
+    if (t) lines.push('<meta property="og:title" content="' + esc(t) + '" />');
+    if (d) lines.push('<meta property="og:description" content="' + esc(d) + '" />');
+    if (fields.ogImage.value.trim()) lines.push('<meta property="og:image" content="' + esc(fields.ogImage.value.trim()) + '" />');
+    if (fields.ogSiteName.value.trim()) lines.push('<meta property="og:site_name" content="' + esc(fields.ogSiteName.value.trim()) + '" />');
+    if (fields.canonical.value.trim()) lines.push('<meta property="og:url" content="' + esc(fields.canonical.value.trim()) + '" />');
+
+    lines.push('');
+    lines.push('<!-- Twitter Card -->');
+    lines.push('<meta name="twitter:card" content="summary_large_image" />');
+    if (fields.twHandle.value.trim()) lines.push('<meta name="twitter:site" content="' + esc(fields.twHandle.value.trim()) + '" />');
+    if (t) lines.push('<meta name="twitter:title" content="' + esc(t) + '" />');
+    if (d) lines.push('<meta name="twitter:description" content="' + esc(d) + '" />');
+    if (fields.ogImage.value.trim()) lines.push('<meta name="twitter:image" content="' + esc(fields.ogImage.value.trim()) + '" />');
+
+    output.textContent = lines.join('\n');
+
+    // Show nudge
+    document.getElementById('metaNudge').style.display = 'block';
+  }
+
+  Object.values(fields).forEach(function(el) {
+    el.addEventListener('input', generate);
+    el.addEventListener('change', generate);
+  });
+
+  copyBtn.addEventListener('click', function() {
+    var text = output.textContent;
+    if (!text || text.indexOf('Fill in') === 0) return;
+    navigator.clipboard.writeText(text).then(function() {
+      copiedMsg.classList.add('show');
+      setTimeout(function() { copiedMsg.classList.remove('show'); }, 2000);
+    });
+  });
+</script>

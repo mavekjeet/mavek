@@ -1,0 +1,280 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Robots.txt Generator" description="Create a properly formatted robots.txt file for your website. Free visual builder for controlling how search engines crawl your site.">
+  <Nav />
+
+  <section class="light robots-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="robots-hero__content reveal">
+        <span class="sec-label">Robots.txt Generator</span>
+        <h1>Control how search engines <em>crawl your site</em>.</h1>
+        <p class="robots-hero__lead">Build a properly formatted robots.txt file with our visual editor. Add rules for different bots, set crawl permissions, and add your sitemap.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light robots-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="robots-tool reveal">
+        <div class="robots-form">
+          <div class="robots-field">
+            <label for="sitemapUrl">Sitemap URL</label>
+            <input type="text" id="sitemapUrl" placeholder="https://yourdomain.com/sitemap.xml" />
+            <span class="robots-hint">Optional but recommended — helps search engines discover your pages</span>
+          </div>
+
+          <div class="robots-rules" id="robotsRules">
+            <div class="robots-rule">
+              <div class="robots-rule__header">
+                <span class="robots-rule__label">Rule 1</span>
+              </div>
+              <div class="robots-rule__grid">
+                <div class="robots-field">
+                  <label>User-Agent</label>
+                  <select class="rule-agent">
+                    <option value="*">* (All bots)</option>
+                    <option value="Googlebot">Googlebot</option>
+                    <option value="Bingbot">Bingbot</option>
+                    <option value="GPTBot">GPTBot (OpenAI)</option>
+                    <option value="ChatGPT-User">ChatGPT-User</option>
+                    <option value="CCBot">CCBot (Common Crawl)</option>
+                    <option value="anthropic-ai">Anthropic AI</option>
+                    <option value="Google-Extended">Google-Extended (Gemini)</option>
+                    <option value="Slurp">Slurp (Yahoo)</option>
+                    <option value="DuckDuckBot">DuckDuckBot</option>
+                  </select>
+                </div>
+                <div class="robots-field">
+                  <label>Action</label>
+                  <select class="rule-action">
+                    <option value="disallow">Disallow (block)</option>
+                    <option value="allow">Allow</option>
+                  </select>
+                </div>
+                <div class="robots-field">
+                  <label>Path</label>
+                  <input type="text" class="rule-path" placeholder="/ (entire site) or /admin/" />
+                  <span class="robots-hint">Use / for entire site, or specify paths like /admin/ or /private/</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-add" id="addRule">+ Add Rule</button>
+
+          <div class="robots-presets">
+            <span class="robots-presets__label">Quick Presets:</span>
+            <button class="robots-preset-btn" data-preset="allow-all">Allow All</button>
+            <button class="robots-preset-btn" data-preset="block-all">Block All</button>
+            <button class="robots-preset-btn" data-preset="block-ai">Block AI Bots</button>
+            <button class="robots-preset-btn" data-preset="standard">Standard</button>
+          </div>
+        </div>
+
+        <div class="robots-output dark">
+          <div class="robots-output__header">
+            <span class="sec-label">Generated robots.txt</span>
+            <h3>Your robots.txt file</h3>
+          </div>
+          <div class="robots-code-wrap">
+            <pre id="robotsOutput" class="robots-code"><code># Generating...</code></pre>
+          </div>
+          <div class="robots-actions">
+            <button class="btn btn--primary" id="robotsCopy">Copy <span>&rarr;</span></button>
+            <button class="btn btn--ghost" id="robotsDownload">Download robots.txt</button>
+            <span class="robots-copied" id="robotsCopied">Copied!</span>
+          </div>
+        </div>
+
+        <div class="robots-nudge">
+          <div class="robots-nudge__inner">
+            <span class="robots-nudge__label">Mavek Tip</span>
+            <p class="robots-nudge__text">A robots.txt file controls crawling, but it doesn't control indexing. For full control, you also need meta robots tags and proper canonical URLs on every page. Mavek manages all of this automatically.</p>
+            <a href="/contact" class="robots-nudge__link">Let Mavek handle your technical SEO &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Technical SEO handled for you"
+    subtitle="Robots.txt, sitemaps, canonicals, and crawl optimization -- Mavek keeps your technical SEO in check."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-body); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); margin-bottom: var(--space-lg); transition: gap 0.3s var(--ease); }
+  .back-link:hover { gap: 0.8rem; }
+  .robots-hero__content { max-width: 640px; }
+  .robots-hero__content h1 { margin: var(--space-xs) 0 var(--space-md); }
+  .robots-hero__lead { font-size: 1.1rem; }
+  .robots-tool { max-width: 760px; margin: 0 auto; }
+  .robots-form { margin-bottom: var(--space-xl); }
+
+  .robots-field { margin-bottom: var(--space-md); }
+  .robots-field label { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; opacity: 0.6; }
+  .robots-field input, .robots-field select { width: 100%; padding: 0.75rem 1rem; font-family: var(--font-body); font-size: 0.95rem; background: var(--parchment-dark); border: 1px solid rgba(26,26,24,0.1); color: var(--ink); outline: none; transition: border-color 0.2s ease; }
+  .robots-field input:focus { border-color: var(--gold-dark); }
+  .robots-field input::placeholder { color: var(--muted); }
+  .robots-hint { display: block; font-size: 0.72rem; opacity: 0.4; margin-top: 0.3rem; }
+
+  .robots-rule { padding: var(--space-md); background: var(--parchment-dark); margin-bottom: var(--space-md); border-left: 3px solid rgba(138,112,40,0.3); }
+  .robots-rule__header { margin-bottom: var(--space-sm); }
+  .robots-rule__label { font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); }
+  .robots-rule__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+  .robots-rule__grid .robots-field:last-child { grid-column: 1 / -1; }
+
+  .btn-add { font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; color: var(--gold-dark); background: none; border: 1px dashed rgba(138,112,40,0.3); padding: 0.5rem 1rem; cursor: pointer; transition: all 0.2s ease; margin-bottom: var(--space-lg); }
+  .btn-add:hover { background: rgba(138,112,40,0.05); border-color: var(--gold-dark); }
+
+  .robots-presets { display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; }
+  .robots-presets__label { font-family: var(--font-body); font-size: 0.75rem; opacity: 0.5; }
+  .robots-preset-btn { font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; padding: 0.35rem 0.75rem; background: rgba(138,112,40,0.08); border: 1px solid rgba(138,112,40,0.2); color: var(--gold-dark); cursor: pointer; transition: all 0.2s ease; }
+  .robots-preset-btn:hover { background: rgba(138,112,40,0.15); }
+
+  .robots-output { background: var(--dark); padding: var(--space-xl); color: #F5F5F7; margin-bottom: var(--space-lg); }
+  .robots-output__header { margin-bottom: var(--space-md); }
+  .robots-output__header .sec-label { color: var(--gold-mid); }
+  .robots-output__header h3 { color: #F5F5F7; margin-top: var(--space-xs); }
+  .robots-code-wrap { background: var(--night-3); border: 1px solid var(--dark-border); border-radius: 10px; padding: var(--space-md); overflow-x: auto; }
+  .robots-code { font-family: monospace; font-size: 0.82rem; line-height: 1.8; color: #F5F5F7; white-space: pre-wrap; margin: 0; }
+
+  .robots-actions { display: flex; align-items: center; gap: var(--space-md); margin-top: var(--space-md); }
+  .robots-copied { font-family: var(--font-body); font-size: 0.8rem; color: var(--gold-mid); opacity: 0; transition: opacity 0.3s ease; }
+  .robots-copied.show { opacity: 1; }
+
+  .btn--ghost { background: none; border: 1px solid rgba(255,255,255,0.2); color: #F5F5F7; padding: 0.6rem 1.2rem; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+  .btn--ghost:hover { border-color: rgba(255,255,255,0.5); }
+
+  .robots-nudge__inner { background: rgba(138,112,40,0.06); border: 1px solid rgba(138,112,40,0.15); padding: var(--space-md) var(--space-lg); }
+  .robots-nudge__label { display: block; font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-dark); margin-bottom: 0.35rem; }
+  .robots-nudge__text { font-size: 0.9rem; margin-bottom: 0.5rem; opacity: 0.8; }
+  .robots-nudge__link { font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; color: var(--gold-dark); }
+
+  @media (max-width: 600px) {
+    .robots-rule__grid { grid-template-columns: 1fr; }
+    .robots-output { padding: var(--space-lg); }
+    .robots-actions { flex-wrap: wrap; }
+  }
+</style>
+
+<script is:inline>
+  var rulesContainer = document.getElementById('robotsRules');
+  var output = document.getElementById('robotsOutput');
+  var sitemapInput = document.getElementById('sitemapUrl');
+  var ruleCount = 1;
+
+  function generate() {
+    var lines = [];
+    var rules = document.querySelectorAll('.robots-rule');
+    var grouped = {};
+
+    rules.forEach(function(rule) {
+      var agent = rule.querySelector('.rule-agent').value;
+      var action = rule.querySelector('.rule-action').value;
+      var path = rule.querySelector('.rule-path').value.trim() || '/';
+      if (!grouped[agent]) grouped[agent] = [];
+      grouped[agent].push({ action: action, path: path });
+    });
+
+    Object.keys(grouped).forEach(function(agent, i) {
+      if (i > 0) lines.push('');
+      lines.push('User-agent: ' + agent);
+      grouped[agent].forEach(function(r) {
+        var directive = r.action === 'allow' ? 'Allow' : 'Disallow';
+        lines.push(directive + ': ' + r.path);
+      });
+    });
+
+    if (sitemapInput.value.trim()) {
+      lines.push('');
+      lines.push('Sitemap: ' + sitemapInput.value.trim());
+    }
+
+    output.textContent = lines.join('\n');
+  }
+
+  document.getElementById('addRule').addEventListener('click', function() {
+    ruleCount++;
+    var rule = document.createElement('div');
+    rule.className = 'robots-rule';
+    rule.innerHTML = '<div class="robots-rule__header"><span class="robots-rule__label">Rule ' + ruleCount + '</span></div><div class="robots-rule__grid"><div class="robots-field"><label>User-Agent</label><select class="rule-agent"><option value="*">* (All bots)</option><option value="Googlebot">Googlebot</option><option value="Bingbot">Bingbot</option><option value="GPTBot">GPTBot (OpenAI)</option><option value="ChatGPT-User">ChatGPT-User</option><option value="CCBot">CCBot (Common Crawl)</option><option value="anthropic-ai">Anthropic AI</option><option value="Google-Extended">Google-Extended (Gemini)</option><option value="Slurp">Slurp (Yahoo)</option><option value="DuckDuckBot">DuckDuckBot</option></select></div><div class="robots-field"><label>Action</label><select class="rule-action"><option value="disallow">Disallow (block)</option><option value="allow">Allow</option></select></div><div class="robots-field"><label>Path</label><input type="text" class="rule-path" placeholder="/ or /admin/" /><span class="robots-hint">Use / for entire site</span></div></div>';
+    rulesContainer.appendChild(rule);
+    rule.querySelectorAll('input, select').forEach(function(el) { el.addEventListener('input', generate); el.addEventListener('change', generate); });
+    generate();
+  });
+
+  // Presets
+  document.querySelectorAll('.robots-preset-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var preset = btn.getAttribute('data-preset');
+      rulesContainer.innerHTML = '';
+      ruleCount = 0;
+
+      if (preset === 'allow-all') {
+        addPresetRule('*', 'allow', '/');
+      } else if (preset === 'block-all') {
+        addPresetRule('*', 'disallow', '/');
+      } else if (preset === 'block-ai') {
+        addPresetRule('*', 'allow', '/');
+        addPresetRule('GPTBot', 'disallow', '/');
+        addPresetRule('ChatGPT-User', 'disallow', '/');
+        addPresetRule('CCBot', 'disallow', '/');
+        addPresetRule('anthropic-ai', 'disallow', '/');
+        addPresetRule('Google-Extended', 'disallow', '/');
+      } else if (preset === 'standard') {
+        addPresetRule('*', 'allow', '/');
+        addPresetRule('*', 'disallow', '/admin/');
+        addPresetRule('*', 'disallow', '/private/');
+        addPresetRule('*', 'disallow', '/api/');
+      }
+      generate();
+    });
+  });
+
+  function addPresetRule(agent, action, path) {
+    ruleCount++;
+    var rule = document.createElement('div');
+    rule.className = 'robots-rule';
+    rule.innerHTML = '<div class="robots-rule__header"><span class="robots-rule__label">Rule ' + ruleCount + '</span></div><div class="robots-rule__grid"><div class="robots-field"><label>User-Agent</label><select class="rule-agent"><option value="*">* (All bots)</option><option value="Googlebot">Googlebot</option><option value="Bingbot">Bingbot</option><option value="GPTBot">GPTBot (OpenAI)</option><option value="ChatGPT-User">ChatGPT-User</option><option value="CCBot">CCBot (Common Crawl)</option><option value="anthropic-ai">Anthropic AI</option><option value="Google-Extended">Google-Extended (Gemini)</option><option value="Slurp">Slurp (Yahoo)</option><option value="DuckDuckBot">DuckDuckBot</option></select></div><div class="robots-field"><label>Action</label><select class="rule-action"><option value="disallow">Disallow (block)</option><option value="allow">Allow</option></select></div><div class="robots-field"><label>Path</label><input type="text" class="rule-path" placeholder="/" /><span class="robots-hint">Use / for entire site</span></div></div>';
+    rulesContainer.appendChild(rule);
+    rule.querySelector('.rule-agent').value = agent;
+    rule.querySelector('.rule-action').value = action;
+    rule.querySelector('.rule-path').value = path;
+    rule.querySelectorAll('input, select').forEach(function(el) { el.addEventListener('input', generate); el.addEventListener('change', generate); });
+  }
+
+  sitemapInput.addEventListener('input', generate);
+  document.querySelectorAll('.rule-agent, .rule-action, .rule-path').forEach(function(el) { el.addEventListener('input', generate); el.addEventListener('change', generate); });
+
+  document.getElementById('robotsCopy').addEventListener('click', function() {
+    navigator.clipboard.writeText(output.textContent).then(function() {
+      var msg = document.getElementById('robotsCopied');
+      msg.classList.add('show');
+      setTimeout(function() { msg.classList.remove('show'); }, 2000);
+    });
+  });
+
+  document.getElementById('robotsDownload').addEventListener('click', function() {
+    var blob = new Blob([output.textContent], { type: 'text/plain' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'robots.txt';
+    a.click();
+  });
+
+  generate();
+</script>

@@ -1,0 +1,646 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="On-Page SEO Auditor" description="Paste your HTML and get an instant on-page SEO audit. Check title tags, meta descriptions, headings, images, links, schema markup, and more.">
+  <Nav />
+
+  <section class="light audit-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="audit-hero__content reveal">
+        <span class="sec-label">On-Page SEO Auditor</span>
+        <h1>Audit your page's SEO <em>in seconds</em>.</h1>
+        <p class="audit-hero__lead">Paste your page's HTML source and get instant analysis of title tags, meta descriptions, headings, images, links, and structured data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light audit-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="audit-tool reveal">
+        <div class="audit-input-wrap">
+          <label for="htmlInput">Paste your HTML source code</label>
+          <textarea id="htmlInput" rows="10" placeholder="<!DOCTYPE html>&#10;<html>&#10;<head>&#10;  <title>Your page title</title>&#10;  <meta name=&quot;description&quot; content=&quot;...&quot;>&#10;</head>&#10;<body>...</body>&#10;</html>"></textarea>
+          <button class="btn btn--primary audit-submit" id="auditSubmit">Run Audit <span>&rarr;</span></button>
+        </div>
+
+        <div class="audit-results" id="auditResults" style="display: none;">
+          <div class="audit-score-section dark">
+            <div class="audit-score-wrap">
+              <div class="audit-score-ring">
+                <svg viewBox="0 0 160 160" class="audit-score-svg">
+                  <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8" />
+                  <circle cx="80" cy="80" r="70" fill="none" stroke="var(--gold-mid)" stroke-width="8" stroke-linecap="square" stroke-dasharray="440" stroke-dashoffset="440" id="auditScoreCircle" transform="rotate(-90 80 80)" />
+                </svg>
+                <div class="audit-score-inner">
+                  <span class="audit-score-number" id="auditScoreNumber">0</span>
+                  <span class="audit-score-label">out of 100</span>
+                </div>
+              </div>
+              <div class="audit-score-meta">
+                <span class="audit-score-grade" id="auditScoreGrade">--</span>
+                <p class="audit-score-summary" id="auditScoreSummary">Paste HTML to begin.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Title & Meta -->
+          <div class="audit-section">
+            <h3>Title &amp; Meta</h3>
+            <div class="audit-items" id="auditTitleMeta"></div>
+          </div>
+
+          <!-- Headings -->
+          <div class="audit-section">
+            <h3>Heading Structure</h3>
+            <div class="audit-items" id="auditHeadings"></div>
+            <div class="audit-heading-tree" id="auditHeadingTree" style="display:none;"></div>
+          </div>
+
+          <!-- Images -->
+          <div class="audit-section">
+            <h3>Images</h3>
+            <div class="audit-items" id="auditImages"></div>
+          </div>
+
+          <!-- Links -->
+          <div class="audit-section">
+            <h3>Links</h3>
+            <div class="audit-items" id="auditLinks"></div>
+          </div>
+
+          <!-- Schema -->
+          <div class="audit-section">
+            <h3>Structured Data</h3>
+            <div class="audit-items" id="auditSchema"></div>
+          </div>
+
+          <!-- Misc -->
+          <div class="audit-section">
+            <h3>Other Checks</h3>
+            <div class="audit-items" id="auditMisc"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light" style="padding-top: 0;">
+    <div class="container">
+      <div style="max-width: 860px; margin: 0 auto;">
+        <div class="audit-nudge" id="auditNudge" style="display: none;">
+          <div class="audit-nudge__inner">
+            <span class="audit-nudge__label">Mavek Tip</span>
+            <p class="audit-nudge__text" id="auditNudgeText"></p>
+            <a href="/contact" class="audit-nudge__link">Let Mavek handle your SEO &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek handle your on-page SEO"
+    subtitle="Automated audits, content optimization, and technical SEO fixes -- all powered by AI."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover { gap: 0.8rem; }
+
+  .audit-hero__content { max-width: 640px; }
+  .audit-hero__content h1 { margin: var(--space-xs) 0 var(--space-md); }
+  .audit-hero__lead { font-size: 1.1rem; }
+
+  .audit-tool { max-width: 860px; margin: 0 auto; }
+
+  .audit-input-wrap { margin-bottom: var(--space-xl); }
+
+  .audit-input-wrap label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+    opacity: 0.6;
+  }
+
+  .audit-input-wrap textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-family: monospace;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26,26,24,0.1);
+    color: var(--ink);
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+  }
+
+  .audit-input-wrap textarea:focus { border-color: var(--gold-dark); }
+  .audit-input-wrap textarea::placeholder { color: var(--muted); }
+
+  .audit-submit { margin-top: var(--space-md); }
+
+  /* Score */
+  .audit-score-section {
+    background: var(--dark);
+    padding: var(--space-2xl);
+    color: #F5F5F7;
+    margin-bottom: var(--space-xl);
+  }
+
+  .audit-score-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+  }
+
+  .audit-score-ring {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+  }
+
+  .audit-score-svg { width: 100%; height: 100%; }
+  #auditScoreCircle { transition: stroke-dashoffset 0.8s var(--ease); }
+
+  .audit-score-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .audit-score-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--gold-bright);
+    line-height: 1;
+  }
+
+  .audit-score-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    color: #F5F5F7;
+    margin-top: 0.25rem;
+  }
+
+  .audit-score-meta { flex: 1; }
+
+  .audit-score-grade {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.35rem 0.8rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .audit-score-grade.grade-excellent { background: var(--gold-mid); color: var(--ink); }
+  .audit-score-grade.grade-good { background: rgba(201,168,76,0.2); color: var(--gold-mid); }
+  .audit-score-grade.grade-average { background: rgba(255,200,0,0.2); color: #FFC800; }
+  .audit-score-grade.grade-weak { background: rgba(255,80,60,0.2); color: #FF503C; }
+
+  .audit-score-summary { font-size: 1rem; opacity: 0.7; color: #F5F5F7; }
+
+  /* Sections */
+  .audit-section {
+    margin-bottom: var(--space-xl);
+  }
+
+  .audit-section h3 { margin-bottom: var(--space-md); }
+
+  .audit-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .audit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    padding: 0.6rem 0.8rem;
+    background: var(--parchment-dark);
+    border-left: 3px solid transparent;
+    line-height: 1.5;
+  }
+
+  .audit-item.item-pass { border-left-color: var(--gold-dark); }
+  .audit-item.item-warn { border-left-color: #B89200; }
+  .audit-item.item-fail { border-left-color: #CC4030; }
+  .audit-item.item-info { border-left-color: rgba(26,26,24,0.2); }
+
+  .audit-item__icon {
+    font-size: 0.75rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .audit-item__text { flex: 1; }
+  .audit-item__detail {
+    display: block;
+    font-size: 0.78rem;
+    opacity: 0.55;
+    margin-top: 0.15rem;
+    word-break: break-all;
+  }
+
+  /* Heading tree */
+  .audit-heading-tree {
+    font-family: monospace;
+    font-size: 0.78rem;
+    background: var(--parchment-dark);
+    padding: var(--space-md);
+    margin-top: var(--space-sm);
+    line-height: 1.7;
+    overflow-x: auto;
+  }
+
+  /* Nudge */
+  .audit-nudge__inner { background: rgba(138,112,40,0.06); border: 1px solid rgba(138,112,40,0.15); padding: var(--space-md) var(--space-lg); }
+  .audit-nudge__label { display: block; font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-dark); margin-bottom: 0.35rem; }
+  .audit-nudge__text { font-size: 0.9rem; margin-bottom: 0.5rem; opacity: 0.8; }
+  .audit-nudge__link { font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; color: var(--gold-dark); }
+
+  @media (max-width: 900px) {
+    .audit-score-wrap { flex-direction: column; text-align: center; }
+    .audit-score-section { padding: var(--space-xl); }
+  }
+
+  @media (max-width: 600px) {
+    .audit-score-section { padding: var(--space-lg); }
+  }
+</style>
+
+<script is:inline>
+  var htmlInput = document.getElementById('htmlInput');
+  var auditSubmit = document.getElementById('auditSubmit');
+  var auditResults = document.getElementById('auditResults');
+
+  function escHtml(s) {
+    var d = document.createElement('div');
+    d.appendChild(document.createTextNode(s));
+    return d.innerHTML;
+  }
+
+  function makeItem(status, text, detail) {
+    var icons = { pass: '+', warn: '!', fail: '-', info: 'i' };
+    var html = '<div class="audit-item item-' + status + '">';
+    html += '<span class="audit-item__icon">' + icons[status] + '</span>';
+    html += '<span class="audit-item__text">' + escHtml(text);
+    if (detail) html += '<span class="audit-item__detail">' + escHtml(detail) + '</span>';
+    html += '</span></div>';
+    return html;
+  }
+
+  function runAudit() {
+    var raw = htmlInput.value.trim();
+    if (!raw) return;
+
+    var parser = new DOMParser();
+    var doc = parser.parseFromString(raw, 'text/html');
+    var score = 0;
+    var maxScore = 0;
+
+    auditResults.style.display = 'block';
+
+    // ===== TITLE & META =====
+    var titleMetaHtml = '';
+    var titleEl = doc.querySelector('title');
+    var titleText = titleEl ? titleEl.textContent.trim() : '';
+    maxScore += 15;
+    if (!titleText) {
+      titleMetaHtml += makeItem('fail', 'Missing <title> tag');
+    } else if (titleText.length >= 50 && titleText.length <= 60) {
+      score += 15;
+      titleMetaHtml += makeItem('pass', 'Title tag is ' + titleText.length + ' characters (ideal)', titleText);
+    } else if (titleText.length >= 30 && titleText.length <= 70) {
+      score += 10;
+      titleMetaHtml += makeItem('warn', 'Title tag is ' + titleText.length + ' characters (aim for 50-60)', titleText);
+    } else {
+      score += 5;
+      titleMetaHtml += makeItem('warn', 'Title tag is ' + titleText.length + ' characters', titleText);
+    }
+
+    var metaDesc = doc.querySelector('meta[name="description"]');
+    var descText = metaDesc ? (metaDesc.getAttribute('content') || '').trim() : '';
+    maxScore += 15;
+    if (!descText) {
+      titleMetaHtml += makeItem('fail', 'Missing meta description');
+    } else if (descText.length >= 120 && descText.length <= 160) {
+      score += 15;
+      titleMetaHtml += makeItem('pass', 'Meta description is ' + descText.length + ' characters (ideal)', descText);
+    } else if (descText.length >= 80 && descText.length <= 180) {
+      score += 10;
+      titleMetaHtml += makeItem('warn', 'Meta description is ' + descText.length + ' characters (aim for 120-160)', descText);
+    } else {
+      score += 5;
+      titleMetaHtml += makeItem('warn', 'Meta description is ' + descText.length + ' characters', descText);
+    }
+
+    // Canonical
+    var canonical = doc.querySelector('link[rel="canonical"]');
+    maxScore += 5;
+    if (canonical && canonical.getAttribute('href')) {
+      score += 5;
+      titleMetaHtml += makeItem('pass', 'Canonical URL set', canonical.getAttribute('href'));
+    } else {
+      titleMetaHtml += makeItem('warn', 'No canonical URL found');
+    }
+
+    // Robots meta
+    var robotsMeta = doc.querySelector('meta[name="robots"]');
+    maxScore += 5;
+    if (robotsMeta) {
+      var robotsContent = robotsMeta.getAttribute('content') || '';
+      if (robotsContent.indexOf('noindex') !== -1) {
+        titleMetaHtml += makeItem('warn', 'Page is set to noindex', robotsContent);
+        score += 5;
+      } else {
+        score += 5;
+        titleMetaHtml += makeItem('pass', 'Robots meta tag present', robotsContent);
+      }
+    } else {
+      score += 5;
+      titleMetaHtml += makeItem('info', 'No robots meta tag (defaults to index, follow)');
+    }
+
+    // Viewport
+    var viewport = doc.querySelector('meta[name="viewport"]');
+    maxScore += 5;
+    if (viewport) {
+      score += 5;
+      titleMetaHtml += makeItem('pass', 'Viewport meta tag present');
+    } else {
+      titleMetaHtml += makeItem('fail', 'Missing viewport meta tag (mobile-friendliness issue)');
+    }
+
+    document.getElementById('auditTitleMeta').innerHTML = titleMetaHtml;
+
+    // ===== HEADINGS =====
+    var headingsHtml = '';
+    var headingTreeHtml = '';
+    var h1s = doc.querySelectorAll('h1');
+    var allHeadings = doc.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+    maxScore += 15;
+    if (h1s.length === 0) {
+      headingsHtml += makeItem('fail', 'No H1 tag found');
+    } else if (h1s.length === 1) {
+      score += 15;
+      headingsHtml += makeItem('pass', 'Single H1 tag found', h1s[0].textContent.trim());
+    } else {
+      score += 8;
+      headingsHtml += makeItem('warn', h1s.length + ' H1 tags found (recommended: 1)');
+    }
+
+    headingsHtml += makeItem('info', allHeadings.length + ' total headings on page');
+
+    // Check for skipped levels
+    maxScore += 5;
+    var levels = [];
+    allHeadings.forEach(function(h) { levels.push(parseInt(h.tagName.charAt(1))); });
+    var skipped = false;
+    for (var i = 1; i < levels.length; i++) {
+      if (levels[i] > levels[i-1] + 1) { skipped = true; break; }
+    }
+    if (skipped) {
+      headingsHtml += makeItem('warn', 'Heading levels are skipped (e.g. H2 to H4) — consider a sequential structure');
+    } else if (allHeadings.length > 0) {
+      score += 5;
+      headingsHtml += makeItem('pass', 'Heading hierarchy is sequential');
+    }
+
+    // Build heading tree
+    if (allHeadings.length > 0) {
+      var treeLines = [];
+      allHeadings.forEach(function(h) {
+        var level = parseInt(h.tagName.charAt(1));
+        var indent = '';
+        for (var j = 1; j < level; j++) indent += '  ';
+        treeLines.push(indent + h.tagName + ': ' + h.textContent.trim().substring(0, 80));
+      });
+      headingTreeHtml = treeLines.join('\n');
+      var treeEl = document.getElementById('auditHeadingTree');
+      treeEl.textContent = headingTreeHtml;
+      treeEl.style.display = 'block';
+    } else {
+      document.getElementById('auditHeadingTree').style.display = 'none';
+    }
+
+    document.getElementById('auditHeadings').innerHTML = headingsHtml;
+
+    // ===== IMAGES =====
+    var imagesHtml = '';
+    var imgs = doc.querySelectorAll('img');
+    var withAlt = 0;
+    var withoutAlt = 0;
+    var missingList = [];
+    imgs.forEach(function(img) {
+      var alt = img.getAttribute('alt');
+      if (alt !== null && alt.trim() !== '') {
+        withAlt++;
+      } else {
+        withoutAlt++;
+        var src = img.getAttribute('src') || '(no src)';
+        if (missingList.length < 5) missingList.push(src);
+      }
+    });
+
+    maxScore += 10;
+    if (imgs.length === 0) {
+      score += 10;
+      imagesHtml += makeItem('info', 'No images found on page');
+    } else if (withoutAlt === 0) {
+      score += 10;
+      imagesHtml += makeItem('pass', 'All ' + imgs.length + ' images have alt text');
+    } else {
+      var pct = Math.round((withAlt / imgs.length) * 100);
+      score += Math.round((withAlt / imgs.length) * 10);
+      imagesHtml += makeItem('warn', withoutAlt + ' of ' + imgs.length + ' images missing alt text (' + pct + '% coverage)');
+      missingList.forEach(function(src) {
+        imagesHtml += makeItem('fail', 'Missing alt text', src);
+      });
+    }
+
+    document.getElementById('auditImages').innerHTML = imagesHtml;
+
+    // ===== LINKS =====
+    var linksHtml = '';
+    var allLinks = doc.querySelectorAll('a[href]');
+    var internal = 0;
+    var external = 0;
+    var nofollow = 0;
+
+    allLinks.forEach(function(a) {
+      var href = a.getAttribute('href') || '';
+      var rel = (a.getAttribute('rel') || '').toLowerCase();
+      if (href.indexOf('http') === 0) {
+        external++;
+      } else {
+        internal++;
+      }
+      if (rel.indexOf('nofollow') !== -1) nofollow++;
+    });
+
+    maxScore += 10;
+    score += allLinks.length > 0 ? 10 : 5;
+    linksHtml += makeItem('info', allLinks.length + ' total links found');
+    linksHtml += makeItem('info', internal + ' internal, ' + external + ' external');
+    if (nofollow > 0) {
+      linksHtml += makeItem('info', nofollow + ' links with rel="nofollow"');
+    }
+    if (internal === 0 && allLinks.length > 0) {
+      linksHtml += makeItem('warn', 'No internal links found — consider adding internal links for SEO');
+    }
+
+    document.getElementById('auditLinks').innerHTML = linksHtml;
+
+    // ===== SCHEMA =====
+    var schemaHtml = '';
+    var schemaScripts = doc.querySelectorAll('script[type="application/ld+json"]');
+    maxScore += 10;
+    if (schemaScripts.length === 0) {
+      schemaHtml += makeItem('warn', 'No JSON-LD structured data found');
+    } else {
+      score += 10;
+      schemaHtml += makeItem('pass', schemaScripts.length + ' JSON-LD block(s) found');
+      schemaScripts.forEach(function(s, idx) {
+        try {
+          var data = JSON.parse(s.textContent);
+          var type = data['@type'] || (Array.isArray(data['@graph']) ? 'Graph' : 'Unknown');
+          schemaHtml += makeItem('info', 'Block ' + (idx+1) + ': @type = ' + type);
+        } catch(e) {
+          schemaHtml += makeItem('fail', 'Block ' + (idx+1) + ': Invalid JSON-LD');
+        }
+      });
+    }
+
+    document.getElementById('auditSchema').innerHTML = schemaHtml;
+
+    // ===== MISC =====
+    var miscHtml = '';
+
+    // Open Graph
+    var ogTitle = doc.querySelector('meta[property="og:title"]');
+    var ogDesc = doc.querySelector('meta[property="og:description"]');
+    var ogImage = doc.querySelector('meta[property="og:image"]');
+    maxScore += 5;
+    if (ogTitle && ogDesc && ogImage) {
+      score += 5;
+      miscHtml += makeItem('pass', 'Open Graph tags present (title, description, image)');
+    } else if (ogTitle || ogDesc) {
+      score += 3;
+      miscHtml += makeItem('warn', 'Partial Open Graph tags — missing ' + (!ogTitle ? 'og:title ' : '') + (!ogDesc ? 'og:description ' : '') + (!ogImage ? 'og:image' : ''));
+    } else {
+      miscHtml += makeItem('warn', 'No Open Graph tags found');
+    }
+
+    // Twitter Card
+    var twCard = doc.querySelector('meta[name="twitter:card"]');
+    miscHtml += twCard ? makeItem('pass', 'Twitter Card meta tag present') : makeItem('info', 'No Twitter Card meta tag found');
+
+    // Lang attribute
+    var htmlEl = doc.querySelector('html');
+    var lang = htmlEl ? htmlEl.getAttribute('lang') : null;
+    maxScore += 5;
+    if (lang) {
+      score += 5;
+      miscHtml += makeItem('pass', 'HTML lang attribute set', lang);
+    } else {
+      miscHtml += makeItem('warn', 'Missing lang attribute on <html> tag');
+    }
+
+    // Word count
+    var bodyText = (doc.body ? doc.body.textContent : '').trim();
+    var words = bodyText.split(/\s+/).filter(function(w) { return w.length > 0; });
+    miscHtml += makeItem('info', 'Page word count: ' + words.length);
+
+    document.getElementById('auditMisc').innerHTML = miscHtml;
+
+    // ===== SCORE =====
+    var finalScore = Math.round((score / maxScore) * 100);
+    document.getElementById('auditScoreNumber').textContent = finalScore;
+    var circumference = 2 * Math.PI * 70;
+    var offset = circumference - (finalScore / 100) * circumference;
+    document.getElementById('auditScoreCircle').style.strokeDashoffset = offset;
+
+    var grade, gradeClass, summary;
+    if (finalScore >= 80) {
+      grade = 'Excellent'; gradeClass = 'grade-excellent';
+      summary = 'This page is well-optimized for search engines. Minor improvements may still be possible.';
+    } else if (finalScore >= 60) {
+      grade = 'Good'; gradeClass = 'grade-good';
+      summary = 'Solid SEO foundation with some areas to improve. Review the warnings above.';
+    } else if (finalScore >= 40) {
+      grade = 'Average'; gradeClass = 'grade-average';
+      summary = 'Several SEO issues found. Address the failing checks to improve your search visibility.';
+    } else {
+      grade = 'Needs Work'; gradeClass = 'grade-weak';
+      summary = 'Significant SEO issues detected. Focus on the critical items first.';
+    }
+
+    var gradeEl = document.getElementById('auditScoreGrade');
+    gradeEl.textContent = grade;
+    gradeEl.className = 'audit-score-grade ' + gradeClass;
+    document.getElementById('auditScoreSummary').textContent = summary;
+
+    // Show contextual nudge
+    var nudge = document.getElementById('auditNudge');
+    var nudgeText = document.getElementById('auditNudgeText');
+    nudge.style.display = 'block';
+    if (finalScore < 50) {
+      nudgeText.textContent = 'Your page scored ' + finalScore + '/100. That\'s a lot of issues to fix manually. Mavek continuously audits and fixes on-page SEO across your entire site — automatically.';
+    } else if (finalScore < 80) {
+      nudgeText.textContent = 'Good start at ' + finalScore + '/100, but there\'s room to improve. Mavek monitors every page on your site and flags issues before they hurt your rankings.';
+    } else {
+      nudgeText.textContent = 'Great score. Now imagine maintaining this across every page as your site grows. Mavek runs continuous SEO audits and keeps every page optimized.';
+    }
+
+    auditResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  auditSubmit.addEventListener('click', runAudit);
+</script>

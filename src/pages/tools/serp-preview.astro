@@ -1,0 +1,538 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="SERP Preview Tool" description="See exactly how your page will appear in Google search results. Preview title truncation, meta description length, and URL display before you publish.">
+  <Nav />
+
+  <section class="light serp-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="serp-hero__content reveal">
+        <span class="sec-label">SERP Preview</span>
+        <h1>Preview your <em>Google listing</em> before you publish.</h1>
+        <p class="serp-hero__lead">See exactly how your page will appear in search results. Check title truncation, description length, and URL display in real time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light serp-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="serp-tool reveal">
+        <div class="serp-form">
+          <div class="serp-field">
+            <label for="serpTitle">Page Title</label>
+            <input type="text" id="serpTitle" placeholder="e.g. Best Marketing Automation Tools for 2025" maxlength="200" />
+            <div class="serp-counter"><span id="titleCount">0</span>/60 characters <span id="titleStatus" class="serp-status"></span></div>
+          </div>
+
+          <div class="serp-field">
+            <label for="serpUrl">URL / Slug</label>
+            <input type="text" id="serpUrl" placeholder="e.g. https://yourdomain.com/blog/marketing-automation" />
+          </div>
+
+          <div class="serp-field">
+            <label for="serpDesc">Meta Description</label>
+            <textarea id="serpDesc" rows="3" placeholder="e.g. Discover the top marketing automation tools that save time, reduce costs, and scale your campaigns. Compare features, pricing, and more." maxlength="400"></textarea>
+            <div class="serp-counter"><span id="descCount">0</span>/160 characters <span id="descStatus" class="serp-status"></span></div>
+          </div>
+        </div>
+
+        <div class="serp-preview-wrap dark">
+          <div class="serp-preview-header">
+            <span class="sec-label">Google Preview</span>
+            <div class="serp-device-toggle">
+              <button class="serp-device-btn active" data-device="desktop">Desktop</button>
+              <button class="serp-device-btn" data-device="mobile">Mobile</button>
+            </div>
+          </div>
+
+          <div class="serp-result" id="serpResult">
+            <div class="serp-result__breadcrumb" id="serpBreadcrumb">yourdomain.com</div>
+            <div class="serp-result__title" id="serpPreviewTitle">Your Page Title</div>
+            <div class="serp-result__desc" id="serpPreviewDesc">Your meta description will appear here. Fill in the fields above to see a live preview of your Google search result listing.</div>
+          </div>
+        </div>
+
+        <div class="serp-analysis" id="serpAnalysis" style="display: none;">
+          <h3>Analysis</h3>
+          <div class="serp-checks" id="serpChecks"></div>
+        </div>
+
+        <div class="serp-nudge" id="serpNudge" style="display: none;">
+          <div class="serp-nudge__inner">
+            <span class="serp-nudge__label">Mavek Tip</span>
+            <p class="serp-nudge__text" id="serpNudgeText"></p>
+            <a href="/contact" class="serp-nudge__link">See how Mavek automates this &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="serp-tips reveal">
+        <div class="serp-tips__header">
+          <span class="sec-label">Optimization Tips</span>
+          <h2>Write titles &amp; descriptions <em>that get clicks</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Title: 50-60 characters</h4>
+            <p>Google typically displays the first 50-60 characters. Front-load your primary keyword for maximum visibility.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Description: 150-160 characters</h4>
+            <p>Meta descriptions don't affect rankings directly, but a compelling description boosts click-through rate significantly.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>URLs: short and descriptive</h4>
+            <p>Clean, keyword-rich URLs signal relevance. Remove unnecessary parameters and keep slugs under 5 words.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek optimize your SEO"
+    subtitle="AI-powered title tags, meta descriptions, and content optimization -- all handled automatically."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .serp-hero__content {
+    max-width: 640px;
+  }
+
+  .serp-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .serp-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .serp-tool {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .serp-form {
+    margin-bottom: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .serp-field label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+    opacity: 0.6;
+  }
+
+  .serp-field input,
+  .serp-field textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+  }
+
+  .serp-field input:focus,
+  .serp-field textarea:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .serp-field input::placeholder,
+  .serp-field textarea::placeholder {
+    color: var(--muted);
+  }
+
+  .serp-counter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    opacity: 0.45;
+    margin-top: 0.3rem;
+  }
+
+  .serp-status {
+    font-weight: 600;
+    opacity: 1;
+  }
+
+  .serp-status.status-good { color: var(--gold-dark); }
+  .serp-status.status-warn { color: #B89200; }
+  .serp-status.status-bad { color: #CC4030; }
+
+  /* Preview */
+  .serp-preview-wrap {
+    background: var(--dark);
+    padding: var(--space-xl);
+    color: #F5F5F7;
+    margin-bottom: var(--space-xl);
+  }
+
+  .serp-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .serp-preview-header .sec-label {
+    color: var(--gold-mid);
+  }
+
+  .serp-device-toggle {
+    display: flex;
+    gap: 0.25rem;
+    background: var(--night-3);
+    padding: 0.2rem;
+    border-radius: 6px;
+  }
+
+  .serp-device-btn {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .serp-device-btn.active {
+    background: rgba(255,255,255,0.08);
+    color: #F5F5F7;
+  }
+
+  .serp-result {
+    background: #fff;
+    padding: var(--space-lg);
+    border-radius: 10px;
+  }
+
+  .serp-result__breadcrumb {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    color: #202124;
+    margin-bottom: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .serp-result__title {
+    font-family: Arial, sans-serif;
+    font-size: 1.25rem;
+    color: #1a0dab;
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  .serp-result__title:hover {
+    text-decoration: underline;
+  }
+
+  .serp-result__desc {
+    font-family: Arial, sans-serif;
+    font-size: 0.875rem;
+    color: #4d5156;
+    line-height: 1.58;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .serp-result.mobile .serp-result__title {
+    font-size: 1.05rem;
+  }
+
+  .serp-result.mobile .serp-result__desc {
+    font-size: 0.8rem;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Analysis */
+  .serp-analysis h3 {
+    margin-bottom: var(--space-md);
+  }
+
+  .serp-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .serp-check {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    padding: 0.6rem 0.8rem;
+    background: var(--parchment-dark);
+    border-left: 3px solid transparent;
+  }
+
+  .serp-check.check-pass { border-left-color: var(--gold-dark); }
+  .serp-check.check-warn { border-left-color: #B89200; }
+  .serp-check.check-fail { border-left-color: #CC4030; }
+
+  .serp-check__icon {
+    font-size: 0.75rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  /* Nudge */
+  .serp-nudge__inner {
+    background: rgba(138,112,40,0.06);
+    border: 1px solid rgba(138,112,40,0.15);
+    padding: var(--space-md) var(--space-lg);
+  }
+  .serp-nudge__label { display: block; font-family: var(--font-body); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-dark); margin-bottom: 0.35rem; }
+  .serp-nudge__text { font-size: 0.9rem; margin-bottom: 0.5rem; opacity: 0.8; }
+  .serp-nudge__link { font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; color: var(--gold-dark); }
+
+  .serp-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .serp-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .serp-preview-wrap {
+      padding: var(--space-lg);
+    }
+
+    .serp-preview-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+
+    .serp-result {
+      padding: var(--space-md);
+    }
+  }
+</style>
+
+<script is:inline>
+  var titleInput = document.getElementById('serpTitle');
+  var urlInput = document.getElementById('serpUrl');
+  var descInput = document.getElementById('serpDesc');
+  var titleCount = document.getElementById('titleCount');
+  var descCount = document.getElementById('descCount');
+  var titleStatus = document.getElementById('titleStatus');
+  var descStatus = document.getElementById('descStatus');
+  var previewTitle = document.getElementById('serpPreviewTitle');
+  var previewDesc = document.getElementById('serpPreviewDesc');
+  var breadcrumb = document.getElementById('serpBreadcrumb');
+  var serpResult = document.getElementById('serpResult');
+  var analysisSection = document.getElementById('serpAnalysis');
+  var checksContainer = document.getElementById('serpChecks');
+  var deviceBtns = document.querySelectorAll('.serp-device-btn');
+
+  var currentDevice = 'desktop';
+
+  deviceBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      deviceBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentDevice = btn.getAttribute('data-device');
+      serpResult.className = currentDevice === 'mobile' ? 'serp-result mobile' : 'serp-result';
+      updatePreview();
+    });
+  });
+
+  function updatePreview() {
+    var title = titleInput.value.trim();
+    var url = urlInput.value.trim();
+    var desc = descInput.value.trim();
+
+    // Title count and status
+    var tLen = title.length;
+    titleCount.textContent = tLen;
+    if (tLen === 0) {
+      titleStatus.textContent = '';
+      titleStatus.className = 'serp-status';
+    } else if (tLen >= 50 && tLen <= 60) {
+      titleStatus.textContent = 'Perfect';
+      titleStatus.className = 'serp-status status-good';
+    } else if (tLen >= 30 && tLen <= 70) {
+      titleStatus.textContent = 'Acceptable';
+      titleStatus.className = 'serp-status status-warn';
+    } else {
+      titleStatus.textContent = tLen < 30 ? 'Too short' : 'Will be truncated';
+      titleStatus.className = 'serp-status status-bad';
+    }
+
+    // Desc count and status
+    var dLen = desc.length;
+    descCount.textContent = dLen;
+    if (dLen === 0) {
+      descStatus.textContent = '';
+      descStatus.className = 'serp-status';
+    } else if (dLen >= 120 && dLen <= 160) {
+      descStatus.textContent = 'Perfect';
+      descStatus.className = 'serp-status status-good';
+    } else if (dLen >= 80 && dLen <= 180) {
+      descStatus.textContent = 'Acceptable';
+      descStatus.className = 'serp-status status-warn';
+    } else {
+      descStatus.textContent = dLen < 80 ? 'Too short' : 'Will be truncated';
+      descStatus.className = 'serp-status status-bad';
+    }
+
+    // Preview title — truncate at ~60 chars for desktop, ~55 for mobile
+    var maxTitle = currentDevice === 'mobile' ? 55 : 60;
+    var displayTitle = title || 'Your Page Title';
+    if (displayTitle.length > maxTitle) {
+      displayTitle = displayTitle.substring(0, maxTitle).trim() + '...';
+    }
+    previewTitle.textContent = displayTitle;
+
+    // Preview URL
+    if (url) {
+      try {
+        var parsed = new URL(url.indexOf('://') === -1 ? 'https://' + url : url);
+        var pathParts = parsed.pathname.split('/').filter(Boolean);
+        var crumb = parsed.hostname;
+        if (pathParts.length > 0) {
+          crumb += ' > ' + pathParts.join(' > ');
+        }
+        breadcrumb.textContent = crumb;
+      } catch (e) {
+        breadcrumb.textContent = url;
+      }
+    } else {
+      breadcrumb.textContent = 'yourdomain.com';
+    }
+
+    // Preview desc — truncate at ~160 for desktop, ~120 for mobile
+    var maxDesc = currentDevice === 'mobile' ? 120 : 160;
+    var displayDesc = desc || 'Your meta description will appear here. Fill in the fields above to see a live preview of your Google search result listing.';
+    if (displayDesc.length > maxDesc) {
+      displayDesc = displayDesc.substring(0, maxDesc).trim() + '...';
+    }
+    previewDesc.textContent = displayDesc;
+
+    // Analysis
+    if (title || desc) {
+      analysisSection.style.display = 'block';
+      var checks = [];
+
+      // Title checks
+      if (tLen >= 50 && tLen <= 60) {
+        checks.push({ status: 'pass', text: 'Title length is ideal (' + tLen + ' characters)' });
+      } else if (tLen > 60) {
+        checks.push({ status: 'fail', text: 'Title is too long (' + tLen + ' characters) — will be truncated in search results' });
+      } else if (tLen > 0 && tLen < 30) {
+        checks.push({ status: 'warn', text: 'Title is quite short (' + tLen + ' characters) — may not be descriptive enough' });
+      } else if (tLen > 0) {
+        checks.push({ status: 'warn', text: 'Title length is acceptable (' + tLen + ' characters) — aim for 50-60' });
+      }
+
+      // Desc checks
+      if (dLen >= 120 && dLen <= 160) {
+        checks.push({ status: 'pass', text: 'Meta description length is ideal (' + dLen + ' characters)' });
+      } else if (dLen > 160) {
+        checks.push({ status: 'fail', text: 'Meta description is too long (' + dLen + ' characters) — will be truncated' });
+      } else if (dLen > 0 && dLen < 80) {
+        checks.push({ status: 'warn', text: 'Meta description is quite short (' + dLen + ' characters) — aim for 120-160' });
+      } else if (dLen > 0) {
+        checks.push({ status: 'warn', text: 'Meta description length is acceptable (' + dLen + ' characters) — aim for 120-160' });
+      }
+
+      // URL check
+      if (url) {
+        if (url.length <= 75) {
+          checks.push({ status: 'pass', text: 'URL length is good' });
+        } else {
+          checks.push({ status: 'warn', text: 'URL is on the long side — shorter URLs tend to perform better' });
+        }
+      }
+
+      checksContainer.innerHTML = checks.map(function(c) {
+        var icon = c.status === 'pass' ? '+' : (c.status === 'warn' ? '!' : '-');
+        return '<div class="serp-check check-' + c.status + '"><span class="serp-check__icon">' + icon + '</span>' + c.text + '</div>';
+      }).join('');
+      // Show nudge
+      var nudge = document.getElementById('serpNudge');
+      var nudgeText = document.getElementById('serpNudgeText');
+      nudge.style.display = 'block';
+      if (tLen > 60) {
+        nudgeText.textContent = 'Your title will be truncated in search results. Mavek auto-optimizes every title tag across your entire site to the perfect length — no manual checking needed.';
+      } else if (dLen > 160) {
+        nudgeText.textContent = 'Your description will be cut off. Mavek writes and maintains perfectly-sized meta descriptions for every page, automatically.';
+      } else {
+        nudgeText.textContent = 'You just optimized 1 page. Mavek does this for every page on your site — automatically writing, testing, and optimizing titles and descriptions at scale.';
+      }
+    } else {
+      analysisSection.style.display = 'none';
+      document.getElementById('serpNudge').style.display = 'none';
+    }
+  }
+
+  titleInput.addEventListener('input', updatePreview);
+  urlInput.addEventListener('input', updatePreview);
+  descInput.addEventListener('input', updatePreview);
+</script>

@@ -1,0 +1,408 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Schema Markup Generator" description="Generate JSON-LD structured data for your website. Free schema markup generator for FAQ, Article, LocalBusiness, Product, HowTo, and more.">
+  <Nav />
+
+  <section class="light schema-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="schema-hero__content reveal">
+        <span class="sec-label">Schema Markup Generator</span>
+        <h1>Generate <em>structured data</em> that Google loves.</h1>
+        <p class="schema-hero__lead">Create valid JSON-LD schema markup for rich snippets. Choose a type, fill in the fields, and copy your code.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light schema-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="schema-tool reveal">
+        <div class="schema-type-select">
+          <label for="schemaType">Schema Type</label>
+          <select id="schemaType">
+            <option value="faq">FAQ Page</option>
+            <option value="article">Article</option>
+            <option value="localbusiness">Local Business</option>
+            <option value="product">Product</option>
+            <option value="howto">How-To</option>
+            <option value="organization">Organization</option>
+          </select>
+        </div>
+
+        <!-- FAQ -->
+        <div class="schema-form" id="formFaq">
+          <p class="schema-form__intro">Add question and answer pairs for your FAQ page schema.</p>
+          <div id="faqItems">
+            <div class="schema-faq-item">
+              <div class="schema-field">
+                <label>Question</label>
+                <input type="text" class="faq-q" placeholder="e.g. What is your return policy?" />
+              </div>
+              <div class="schema-field">
+                <label>Answer</label>
+                <textarea class="faq-a" rows="2" placeholder="e.g. We offer a 30-day money-back guarantee on all purchases."></textarea>
+              </div>
+            </div>
+          </div>
+          <button class="btn-add" id="addFaq">+ Add Question</button>
+        </div>
+
+        <!-- Article -->
+        <div class="schema-form" id="formArticle" style="display:none;">
+          <div class="schema-field"><label>Headline</label><input type="text" id="artHeadline" placeholder="Article title" /></div>
+          <div class="schema-field"><label>Author Name</label><input type="text" id="artAuthor" placeholder="John Smith" /></div>
+          <div class="schema-field"><label>Publisher Name</label><input type="text" id="artPublisher" placeholder="Your Brand" /></div>
+          <div class="schema-field"><label>Publisher Logo URL</label><input type="text" id="artLogo" placeholder="https://yourdomain.com/logo.png" /></div>
+          <div class="schema-form__grid">
+            <div class="schema-field"><label>Date Published</label><input type="date" id="artDatePub" /></div>
+            <div class="schema-field"><label>Date Modified</label><input type="date" id="artDateMod" /></div>
+          </div>
+          <div class="schema-field"><label>Image URL</label><input type="text" id="artImage" placeholder="https://yourdomain.com/article-image.jpg" /></div>
+          <div class="schema-field"><label>Description</label><textarea id="artDesc" rows="2" placeholder="Brief description of the article"></textarea></div>
+        </div>
+
+        <!-- Local Business -->
+        <div class="schema-form" id="formLocalbusiness" style="display:none;">
+          <div class="schema-field"><label>Business Name</label><input type="text" id="lbName" placeholder="Acme Marketing Co." /></div>
+          <div class="schema-field"><label>Business Type</label>
+            <select id="lbType">
+              <option value="LocalBusiness">Local Business (generic)</option>
+              <option value="Restaurant">Restaurant</option>
+              <option value="Store">Store</option>
+              <option value="ProfessionalService">Professional Service</option>
+              <option value="MedicalBusiness">Medical Business</option>
+              <option value="FinancialService">Financial Service</option>
+            </select>
+          </div>
+          <div class="schema-field"><label>Street Address</label><input type="text" id="lbStreet" placeholder="123 Main St" /></div>
+          <div class="schema-form__grid">
+            <div class="schema-field"><label>City</label><input type="text" id="lbCity" placeholder="San Francisco" /></div>
+            <div class="schema-field"><label>State</label><input type="text" id="lbState" placeholder="CA" /></div>
+            <div class="schema-field"><label>ZIP Code</label><input type="text" id="lbZip" placeholder="94102" /></div>
+            <div class="schema-field"><label>Country</label><input type="text" id="lbCountry" placeholder="US" /></div>
+          </div>
+          <div class="schema-form__grid">
+            <div class="schema-field"><label>Phone</label><input type="text" id="lbPhone" placeholder="+1-555-123-4567" /></div>
+            <div class="schema-field"><label>Website URL</label><input type="text" id="lbUrl" placeholder="https://yourdomain.com" /></div>
+          </div>
+        </div>
+
+        <!-- Product -->
+        <div class="schema-form" id="formProduct" style="display:none;">
+          <div class="schema-field"><label>Product Name</label><input type="text" id="prodName" placeholder="Marketing Automation Suite" /></div>
+          <div class="schema-field"><label>Description</label><textarea id="prodDesc" rows="2" placeholder="Brief description"></textarea></div>
+          <div class="schema-field"><label>Image URL</label><input type="text" id="prodImage" placeholder="https://yourdomain.com/product.jpg" /></div>
+          <div class="schema-form__grid">
+            <div class="schema-field"><label>Price</label><input type="text" id="prodPrice" placeholder="99.00" /></div>
+            <div class="schema-field"><label>Currency</label><input type="text" id="prodCurrency" placeholder="USD" value="USD" /></div>
+          </div>
+          <div class="schema-form__grid">
+            <div class="schema-field"><label>Brand</label><input type="text" id="prodBrand" placeholder="Your Brand" /></div>
+            <div class="schema-field"><label>Availability</label>
+              <select id="prodAvail">
+                <option value="https://schema.org/InStock">In Stock</option>
+                <option value="https://schema.org/OutOfStock">Out of Stock</option>
+                <option value="https://schema.org/PreOrder">Pre-Order</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- HowTo -->
+        <div class="schema-form" id="formHowto" style="display:none;">
+          <div class="schema-field"><label>Title</label><input type="text" id="htTitle" placeholder="How to Set Up Google Analytics" /></div>
+          <div class="schema-field"><label>Description</label><textarea id="htDesc" rows="2" placeholder="A step-by-step guide to..."></textarea></div>
+          <div id="htSteps">
+            <div class="schema-step-item">
+              <div class="schema-field"><label>Step 1 Name</label><input type="text" class="ht-name" placeholder="Create a Google account" /></div>
+              <div class="schema-field"><label>Step 1 Instructions</label><textarea class="ht-text" rows="2" placeholder="Go to accounts.google.com and..."></textarea></div>
+            </div>
+          </div>
+          <button class="btn-add" id="addStep">+ Add Step</button>
+        </div>
+
+        <!-- Organization -->
+        <div class="schema-form" id="formOrganization" style="display:none;">
+          <div class="schema-field"><label>Organization Name</label><input type="text" id="orgName" placeholder="Acme Inc." /></div>
+          <div class="schema-field"><label>URL</label><input type="text" id="orgUrl" placeholder="https://yourdomain.com" /></div>
+          <div class="schema-field"><label>Logo URL</label><input type="text" id="orgLogo" placeholder="https://yourdomain.com/logo.png" /></div>
+          <div class="schema-field"><label>Description</label><textarea id="orgDesc" rows="2" placeholder="Brief description of your organization"></textarea></div>
+          <div class="schema-form__grid">
+            <div class="schema-field"><label>Email</label><input type="text" id="orgEmail" placeholder="info@yourdomain.com" /></div>
+            <div class="schema-field"><label>Phone</label><input type="text" id="orgPhone" placeholder="+1-555-123-4567" /></div>
+          </div>
+        </div>
+
+        <div class="schema-output dark">
+          <div class="schema-output__header">
+            <span class="sec-label">Generated JSON-LD</span>
+            <h3>Your schema markup</h3>
+          </div>
+          <div class="schema-code-wrap">
+            <pre id="schemaOutput" class="schema-code"><code><!-- Select a type and fill in the fields --></code></pre>
+          </div>
+          <div class="schema-actions">
+            <button class="btn btn--primary" id="schemaCopy">Copy Code <span>&rarr;</span></button>
+            <span class="schema-copied" id="schemaCopied">Copied!</span>
+          </div>
+        </div>
+
+        <div class="schema-nudge" id="schemaNudge">
+          <div class="schema-nudge__inner">
+            <span class="schema-nudge__label">Mavek Tip</span>
+            <p class="schema-nudge__text">You're generating schema for 1 page. Mavek auto-generates and maintains structured data across your entire site — FAQ, Article, Product, and more — with zero manual work.</p>
+            <a href="/contact" class="schema-nudge__link">Automate your schema markup &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Structured data on autopilot"
+    subtitle="Mavek generates and maintains schema markup for every page. Rich snippets without the manual work."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-family: var(--font-body); font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--gold-dark); margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+  .back-link:hover { gap: 0.8rem; }
+  .schema-hero__content { max-width: 640px; }
+  .schema-hero__content h1 { margin: var(--space-xs) 0 var(--space-md); }
+  .schema-hero__lead { font-size: 1.1rem; }
+  .schema-tool { max-width: 760px; margin: 0 auto; }
+
+  .schema-type-select { margin-bottom: var(--space-xl); }
+  .schema-type-select label {
+    display: block; font-family: var(--font-body); font-size: 0.7rem;
+    font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.4rem; opacity: 0.6;
+  }
+  .schema-type-select select {
+    width: 100%; padding: 0.75rem 1rem;
+    font-family: var(--font-body); font-size: 0.95rem;
+    background: var(--parchment-dark); border: 1px solid rgba(26,26,24,0.1);
+    color: var(--ink); outline: none;
+  }
+
+  .schema-form { margin-bottom: var(--space-xl); }
+  .schema-form__intro { font-size: 0.9rem; opacity: 0.6; margin-bottom: var(--space-md); }
+  .schema-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+
+  .schema-field { margin-bottom: var(--space-md); }
+  .schema-field label {
+    display: block; font-family: var(--font-body); font-size: 0.7rem;
+    font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 0.4rem; opacity: 0.6;
+  }
+  .schema-field input, .schema-field textarea, .schema-field select {
+    width: 100%; padding: 0.75rem 1rem; font-family: var(--font-body);
+    font-size: 0.95rem; background: var(--parchment-dark);
+    border: 1px solid rgba(26,26,24,0.1); color: var(--ink);
+    outline: none; resize: vertical; transition: border-color 0.2s ease;
+  }
+  .schema-field input:focus, .schema-field textarea:focus { border-color: var(--gold-dark); }
+  .schema-field input::placeholder, .schema-field textarea::placeholder { color: var(--muted); }
+
+  .schema-faq-item, .schema-step-item {
+    padding: var(--space-md); background: var(--parchment-dark);
+    margin-bottom: var(--space-md); border-left: 3px solid rgba(138,112,40,0.3);
+  }
+  .schema-faq-item .schema-field, .schema-step-item .schema-field { margin-bottom: var(--space-sm); }
+  .schema-faq-item .schema-field:last-child, .schema-step-item .schema-field:last-child { margin-bottom: 0; }
+
+  .btn-add {
+    font-family: var(--font-body); font-size: 0.82rem; font-weight: 600;
+    color: var(--gold-dark); background: none; border: 1px dashed rgba(138,112,40,0.3);
+    padding: 0.5rem 1rem; cursor: pointer; transition: all 0.2s ease;
+  }
+  .btn-add:hover { background: rgba(138,112,40,0.05); border-color: var(--gold-dark); }
+
+  .schema-output {
+    background: var(--dark); padding: var(--space-xl); color: #F5F5F7;
+    margin-bottom: var(--space-lg);
+  }
+  .schema-output__header { margin-bottom: var(--space-md); }
+  .schema-output__header .sec-label { color: var(--gold-mid); }
+  .schema-output__header h3 { color: #F5F5F7; margin-top: var(--space-xs); }
+
+  .schema-code-wrap {
+    background: var(--night-3); border: 1px solid var(--dark-border);
+    border-radius: 10px; padding: var(--space-md); overflow-x: auto;
+  }
+  .schema-code {
+    font-family: monospace; font-size: 0.78rem; line-height: 1.8;
+    color: #F5F5F7; white-space: pre-wrap; word-break: break-all; margin: 0;
+  }
+
+  .schema-actions {
+    display: flex; align-items: center; gap: var(--space-md); margin-top: var(--space-md);
+  }
+  .schema-copied {
+    font-family: var(--font-body); font-size: 0.8rem; color: var(--gold-mid);
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .schema-copied.show { opacity: 1; }
+
+  .schema-nudge__inner {
+    background: rgba(138,112,40,0.06); border: 1px solid rgba(138,112,40,0.15);
+    padding: var(--space-md) var(--space-lg);
+  }
+  .schema-nudge__label {
+    display: block; font-family: var(--font-body); font-size: 0.65rem;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold-dark); margin-bottom: 0.35rem;
+  }
+  .schema-nudge__text { font-size: 0.9rem; margin-bottom: 0.5rem; opacity: 0.8; }
+  .schema-nudge__link { font-family: var(--font-body); font-weight: 600; font-size: 0.82rem; color: var(--gold-dark); }
+
+  @media (max-width: 600px) {
+    .schema-form__grid { grid-template-columns: 1fr; }
+    .schema-output { padding: var(--space-lg); }
+  }
+</style>
+
+<script is:inline>
+  var typeSelect = document.getElementById('schemaType');
+  var forms = { faq: document.getElementById('formFaq'), article: document.getElementById('formArticle'), localbusiness: document.getElementById('formLocalbusiness'), product: document.getElementById('formProduct'), howto: document.getElementById('formHowto'), organization: document.getElementById('formOrganization') };
+  var output = document.getElementById('schemaOutput');
+  var copyBtn = document.getElementById('schemaCopy');
+  var copiedMsg = document.getElementById('schemaCopied');
+  var stepCount = 1;
+  var faqCount = 1;
+
+  typeSelect.addEventListener('change', function() {
+    Object.values(forms).forEach(function(f) { f.style.display = 'none'; });
+    forms[typeSelect.value].style.display = 'block';
+    generate();
+  });
+
+  document.getElementById('addFaq').addEventListener('click', function() {
+    faqCount++;
+    var item = document.createElement('div');
+    item.className = 'schema-faq-item';
+    item.innerHTML = '<div class="schema-field"><label>Question</label><input type="text" class="faq-q" placeholder="Another question..." /></div><div class="schema-field"><label>Answer</label><textarea class="faq-a" rows="2" placeholder="The answer..."></textarea></div>';
+    document.getElementById('faqItems').appendChild(item);
+    item.querySelectorAll('input, textarea').forEach(function(el) { el.addEventListener('input', generate); });
+  });
+
+  document.getElementById('addStep').addEventListener('click', function() {
+    stepCount++;
+    var item = document.createElement('div');
+    item.className = 'schema-step-item';
+    item.innerHTML = '<div class="schema-field"><label>Step ' + stepCount + ' Name</label><input type="text" class="ht-name" placeholder="Step name" /></div><div class="schema-field"><label>Step ' + stepCount + ' Instructions</label><textarea class="ht-text" rows="2" placeholder="Instructions..."></textarea></div>';
+    document.getElementById('htSteps').appendChild(item);
+    item.querySelectorAll('input, textarea').forEach(function(el) { el.addEventListener('input', generate); });
+  });
+
+  function v(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+
+  function generate() {
+    var type = typeSelect.value;
+    var json = {};
+
+    if (type === 'faq') {
+      var qs = document.querySelectorAll('.faq-q');
+      var as = document.querySelectorAll('.faq-a');
+      var items = [];
+      for (var i = 0; i < qs.length; i++) {
+        if (qs[i].value.trim() && as[i].value.trim()) {
+          items.push({ '@type': 'Question', name: qs[i].value.trim(), acceptedAnswer: { '@type': 'Answer', text: as[i].value.trim() } });
+        }
+      }
+      json = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items };
+    } else if (type === 'article') {
+      json = { '@context': 'https://schema.org', '@type': 'Article' };
+      if (v('artHeadline')) json.headline = v('artHeadline');
+      if (v('artDesc')) json.description = v('artDesc');
+      if (v('artImage')) json.image = v('artImage');
+      if (v('artAuthor')) json.author = { '@type': 'Person', name: v('artAuthor') };
+      if (v('artPublisher')) {
+        json.publisher = { '@type': 'Organization', name: v('artPublisher') };
+        if (v('artLogo')) json.publisher.logo = { '@type': 'ImageObject', url: v('artLogo') };
+      }
+      if (v('artDatePub')) json.datePublished = v('artDatePub');
+      if (v('artDateMod')) json.dateModified = v('artDateMod');
+    } else if (type === 'localbusiness') {
+      json = { '@context': 'https://schema.org', '@type': v('lbType') || 'LocalBusiness' };
+      if (v('lbName')) json.name = v('lbName');
+      if (v('lbStreet') || v('lbCity')) {
+        json.address = { '@type': 'PostalAddress' };
+        if (v('lbStreet')) json.address.streetAddress = v('lbStreet');
+        if (v('lbCity')) json.address.addressLocality = v('lbCity');
+        if (v('lbState')) json.address.addressRegion = v('lbState');
+        if (v('lbZip')) json.address.postalCode = v('lbZip');
+        if (v('lbCountry')) json.address.addressCountry = v('lbCountry');
+      }
+      if (v('lbPhone')) json.telephone = v('lbPhone');
+      if (v('lbUrl')) json.url = v('lbUrl');
+    } else if (type === 'product') {
+      json = { '@context': 'https://schema.org', '@type': 'Product' };
+      if (v('prodName')) json.name = v('prodName');
+      if (v('prodDesc')) json.description = v('prodDesc');
+      if (v('prodImage')) json.image = v('prodImage');
+      if (v('prodBrand')) json.brand = { '@type': 'Brand', name: v('prodBrand') };
+      if (v('prodPrice')) {
+        json.offers = { '@type': 'Offer', price: v('prodPrice'), priceCurrency: v('prodCurrency') || 'USD', availability: v('prodAvail') };
+      }
+    } else if (type === 'howto') {
+      json = { '@context': 'https://schema.org', '@type': 'HowTo' };
+      if (v('htTitle')) json.name = v('htTitle');
+      if (v('htDesc')) json.description = v('htDesc');
+      var names = document.querySelectorAll('.ht-name');
+      var texts = document.querySelectorAll('.ht-text');
+      var steps = [];
+      for (var j = 0; j < names.length; j++) {
+        if (names[j].value.trim()) {
+          steps.push({ '@type': 'HowToStep', name: names[j].value.trim(), text: texts[j].value.trim() });
+        }
+      }
+      if (steps.length) json.step = steps;
+    } else if (type === 'organization') {
+      json = { '@context': 'https://schema.org', '@type': 'Organization' };
+      if (v('orgName')) json.name = v('orgName');
+      if (v('orgUrl')) json.url = v('orgUrl');
+      if (v('orgLogo')) json.logo = v('orgLogo');
+      if (v('orgDesc')) json.description = v('orgDesc');
+      if (v('orgEmail')) json.email = v('orgEmail');
+      if (v('orgPhone')) json.telephone = v('orgPhone');
+    }
+
+    var script = '<script type="application/ld+json">\n' + JSON.stringify(json, null, 2) + '\n<\/script>';
+    output.textContent = script;
+  }
+
+  // Listen to all inputs
+  document.querySelectorAll('.schema-form input, .schema-form textarea, .schema-form select').forEach(function(el) {
+    el.addEventListener('input', generate);
+    el.addEventListener('change', generate);
+  });
+
+  copyBtn.addEventListener('click', function() {
+    var text = output.textContent;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(function() {
+      copiedMsg.classList.add('show');
+      setTimeout(function() { copiedMsg.classList.remove('show'); }, 2000);
+    });
+  });
+
+  generate();
+</script>
