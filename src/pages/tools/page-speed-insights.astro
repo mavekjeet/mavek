@@ -1,0 +1,807 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Page Speed Insights" description="Test your website's performance, accessibility, best practices, and SEO with Google Lighthouse. Get Core Web Vitals, scores, and actionable improvement tips.">
+  <Nav />
+
+  <section class="light psi-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="psi-hero__content reveal">
+        <span class="sec-label">Page Speed Insights</span>
+        <h1>See how fast your site <em>really is</em>.</h1>
+        <p class="psi-hero__lead">Enter any URL and get a full Lighthouse audit -- performance, accessibility, best practices, and SEO scores plus Core Web Vitals and actionable fixes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light psi-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="psi-tool reveal">
+        <div class="psi-input-wrap">
+          <div class="psi-input-row">
+            <input
+              type="url"
+              id="urlInput"
+              class="psi-input"
+              placeholder="https://example.com"
+            />
+            <button class="btn btn--primary psi-submit" id="analyzeBtn">Analyze <span>&rarr;</span></button>
+          </div>
+          <div class="psi-device-toggle">
+            <button class="psi-device-btn active" data-strategy="mobile" id="btnMobile">Mobile</button>
+            <button class="psi-device-btn" data-strategy="desktop" id="btnDesktop">Desktop</button>
+          </div>
+        </div>
+
+        <div class="psi-error" id="psiError" style="display: none;">
+          <p id="errorText"></p>
+        </div>
+
+        <div class="psi-loading" id="psiLoading" style="display: none;">
+          <div class="psi-loading__spinner"></div>
+          <p class="psi-loading__text">Running Lighthouse audit...</p>
+          <p class="psi-loading__hint">This usually takes 10-30 seconds</p>
+        </div>
+
+        <div class="psi-results" id="psiResults" style="display: none;">
+          <!-- Score Rings -->
+          <div class="psi-scores dark">
+            <div class="psi-scores__grid">
+              <div class="psi-score-item">
+                <div class="psi-score-ring">
+                  <svg viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6" />
+                    <circle cx="60" cy="60" r="52" fill="none" stroke-width="6" stroke-linecap="square" stroke-dasharray="327" stroke-dashoffset="327" class="psi-score-circle" id="circPerf" transform="rotate(-90 60 60)" />
+                  </svg>
+                  <span class="psi-score-val" id="valPerf">--</span>
+                </div>
+                <span class="psi-score-label">Performance</span>
+              </div>
+              <div class="psi-score-item">
+                <div class="psi-score-ring">
+                  <svg viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6" />
+                    <circle cx="60" cy="60" r="52" fill="none" stroke-width="6" stroke-linecap="square" stroke-dasharray="327" stroke-dashoffset="327" class="psi-score-circle" id="circA11y" transform="rotate(-90 60 60)" />
+                  </svg>
+                  <span class="psi-score-val" id="valA11y">--</span>
+                </div>
+                <span class="psi-score-label">Accessibility</span>
+              </div>
+              <div class="psi-score-item">
+                <div class="psi-score-ring">
+                  <svg viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6" />
+                    <circle cx="60" cy="60" r="52" fill="none" stroke-width="6" stroke-linecap="square" stroke-dasharray="327" stroke-dashoffset="327" class="psi-score-circle" id="circBP" transform="rotate(-90 60 60)" />
+                  </svg>
+                  <span class="psi-score-val" id="valBP">--</span>
+                </div>
+                <span class="psi-score-label">Best Practices</span>
+              </div>
+              <div class="psi-score-item">
+                <div class="psi-score-ring">
+                  <svg viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6" />
+                    <circle cx="60" cy="60" r="52" fill="none" stroke-width="6" stroke-linecap="square" stroke-dasharray="327" stroke-dashoffset="327" class="psi-score-circle" id="circSEO" transform="rotate(-90 60 60)" />
+                  </svg>
+                  <span class="psi-score-val" id="valSEO">--</span>
+                </div>
+                <span class="psi-score-label">SEO</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Core Web Vitals -->
+          <div class="psi-cwv">
+            <h3>Core Web Vitals</h3>
+            <div class="grid-3" style="margin-top: var(--space-md);">
+              <div class="card psi-cwv-card">
+                <div class="psi-cwv-card__header">
+                  <span class="psi-cwv-card__title">LCP</span>
+                  <span class="psi-cwv-card__badge" id="badgeLCP">--</span>
+                </div>
+                <p class="psi-cwv-card__value" id="valLCP">--</p>
+                <p class="psi-cwv-card__hint">Largest Contentful Paint. Good: &le; 2.5s</p>
+              </div>
+              <div class="card psi-cwv-card">
+                <div class="psi-cwv-card__header">
+                  <span class="psi-cwv-card__title">INP</span>
+                  <span class="psi-cwv-card__badge" id="badgeINP">--</span>
+                </div>
+                <p class="psi-cwv-card__value" id="valINP">--</p>
+                <p class="psi-cwv-card__hint">Interaction to Next Paint. Good: &le; 200ms</p>
+              </div>
+              <div class="card psi-cwv-card">
+                <div class="psi-cwv-card__header">
+                  <span class="psi-cwv-card__title">CLS</span>
+                  <span class="psi-cwv-card__badge" id="badgeCLS">--</span>
+                </div>
+                <p class="psi-cwv-card__value" id="valCLS">--</p>
+                <p class="psi-cwv-card__hint">Cumulative Layout Shift. Good: &le; 0.1</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opportunities -->
+          <div class="psi-opportunities" id="opportunitiesSection" style="display: none;">
+            <h3>Opportunities</h3>
+            <p class="psi-section-desc">These optimizations can speed up your page load.</p>
+            <div class="psi-audit-list" id="opportunitiesList"></div>
+          </div>
+
+          <!-- Diagnostics -->
+          <div class="psi-diagnostics" id="diagnosticsSection" style="display: none;">
+            <h3>Diagnostics</h3>
+            <p class="psi-section-desc">Additional items to check for best performance.</p>
+            <div class="psi-audit-list" id="diagnosticsList"></div>
+          </div>
+
+          <!-- Nudge -->
+          <div class="psi-nudge">
+            <div class="card">
+              <span class="psi-nudge__label">Mavek Tip</span>
+              <p class="psi-nudge__text" id="nudgeText">Run this tool on both mobile and desktop -- Google uses mobile-first indexing, so your mobile score matters most for rankings.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="psi-tips reveal">
+        <div class="psi-tips__header">
+          <span class="sec-label">Speed Tips</span>
+          <h2>How to improve <em>page speed</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Optimize your images</h4>
+            <p>Images are usually the heaviest assets. Use WebP, compress aggressively, and serve responsive sizes with srcset. Aim for under 100KB per image.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Minimize render-blocking resources</h4>
+            <p>Defer non-critical CSS and JS. Inline critical styles, lazy-load below-the-fold content, and use async/defer on script tags.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Use a CDN and caching</h4>
+            <p>Serve assets from edge locations close to your users. Set proper cache headers so repeat visits are instant. Cloudflare, Fastly, or Vercel Edge all work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek speed up your site"
+    subtitle="From image optimization to Core Web Vitals -- our AI handles the technical performance work that keeps your site fast and ranking."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .psi-hero__content {
+    max-width: 640px;
+  }
+
+  .psi-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .psi-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .psi-tool {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Input */
+  .psi-input-wrap {
+    margin-bottom: var(--space-xl);
+  }
+
+  .psi-input-row {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .psi-input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .psi-input:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .psi-input::placeholder {
+    color: var(--muted);
+  }
+
+  .psi-submit {
+    white-space: nowrap;
+  }
+
+  /* Device Toggle */
+  .psi-device-toggle {
+    display: flex;
+    gap: 0;
+    border: 1px solid rgba(26, 26, 24, 0.12);
+    border-radius: 8px;
+    overflow: hidden;
+    width: fit-content;
+  }
+
+  .psi-device-btn {
+    padding: 0.5rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink);
+    opacity: 0.5;
+    transition: all 0.2s ease;
+  }
+
+  .psi-device-btn.active {
+    background: var(--gold-dark);
+    color: #fff;
+    opacity: 1;
+  }
+
+  /* Error */
+  .psi-error {
+    padding: 1rem 1.25rem;
+    background: rgba(196, 75, 63, 0.08);
+    border: 1px solid rgba(196, 75, 63, 0.2);
+    border-radius: 10px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .psi-error p {
+    color: #C44B3F;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  /* Loading */
+  .psi-loading {
+    text-align: center;
+    padding: var(--space-2xl) 0;
+  }
+
+  .psi-loading__spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(26, 26, 24, 0.08);
+    border-top-color: var(--gold-mid);
+    border-radius: 50%;
+    margin: 0 auto var(--space-md);
+    animation: psi-spin 0.8s linear infinite;
+  }
+
+  @keyframes psi-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .psi-loading__text {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .psi-loading__hint {
+    font-size: 0.82rem;
+    opacity: 0.4;
+  }
+
+  /* Scores */
+  .psi-scores {
+    background: var(--dark);
+    padding: var(--space-xl) var(--space-2xl);
+    color: #F5F5F7;
+    margin-bottom: var(--space-xl);
+  }
+
+  .psi-scores__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  .psi-score-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .psi-score-ring {
+    position: relative;
+    width: 100px;
+    height: 100px;
+  }
+
+  .psi-score-ring svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .psi-score-circle {
+    transition: stroke-dashoffset 0.8s var(--ease), stroke 0.3s ease;
+  }
+
+  .psi-score-val {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: #F5F5F7;
+    line-height: 1;
+  }
+
+  .psi-score-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.5;
+  }
+
+  /* Core Web Vitals */
+  .psi-cwv {
+    margin-bottom: var(--space-xl);
+  }
+
+  .psi-cwv h3 {
+    margin-bottom: 0;
+  }
+
+  .psi-cwv-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .psi-cwv-card__title {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+  }
+
+  .psi-cwv-card__badge {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .psi-cwv-card__badge.badge-good {
+    background: rgba(52, 168, 83, 0.12);
+    color: #1e8e3e;
+  }
+
+  .psi-cwv-card__badge.badge-needs-improvement {
+    background: rgba(255, 171, 0, 0.12);
+    color: #e37400;
+  }
+
+  .psi-cwv-card__badge.badge-poor {
+    background: rgba(255, 80, 60, 0.1);
+    color: #CC4030;
+  }
+
+  .psi-cwv-card__value {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+  }
+
+  .psi-cwv-card__hint {
+    font-size: 0.78rem;
+    opacity: 0.45;
+  }
+
+  /* Opportunities & Diagnostics */
+  .psi-opportunities,
+  .psi-diagnostics {
+    margin-bottom: var(--space-xl);
+  }
+
+  .psi-section-desc {
+    font-size: 0.88rem;
+    opacity: 0.5;
+    margin-bottom: var(--space-md);
+  }
+
+  .psi-audit-item {
+    padding: 0.85rem 1rem;
+    border-left: 3px solid var(--gold-mid);
+    background: var(--parchment-dark);
+    margin-bottom: 0.5rem;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .psi-audit-item.severity-high {
+    border-left-color: #C44B3F;
+  }
+
+  .psi-audit-item.severity-medium {
+    border-left-color: #e37400;
+  }
+
+  .psi-audit-item__title {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .psi-audit-item__desc {
+    font-size: 0.8rem;
+    opacity: 0.55;
+    line-height: 1.5;
+  }
+
+  .psi-audit-item__savings {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+    margin-top: 0.3rem;
+  }
+
+  /* Nudge */
+  .psi-nudge {
+    margin-top: var(--space-md);
+  }
+
+  .psi-nudge__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .psi-nudge__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Tips */
+  .psi-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .psi-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 768px) {
+    .psi-scores__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .psi-scores {
+      padding: var(--space-lg);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .psi-input-row {
+      flex-direction: column;
+    }
+
+    .psi-scores__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+    }
+
+    .psi-cwv .grid-3 {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script is:inline>
+  var urlInput = document.getElementById('urlInput');
+  var analyzeBtn = document.getElementById('analyzeBtn');
+  var btnMobile = document.getElementById('btnMobile');
+  var btnDesktop = document.getElementById('btnDesktop');
+  var psiLoading = document.getElementById('psiLoading');
+  var psiResults = document.getElementById('psiResults');
+  var psiError = document.getElementById('psiError');
+  var errorText = document.getElementById('errorText');
+  var nudgeText = document.getElementById('nudgeText');
+
+  var cache = {};
+  var currentStrategy = 'mobile';
+
+  function getScoreColor(score) {
+    if (score >= 90) return '#34a853';
+    if (score >= 50) return '#ffab00';
+    return '#ff4e42';
+  }
+
+  function setScore(circleId, valId, score) {
+    var circle = document.getElementById(circleId);
+    var valEl = document.getElementById(valId);
+    var s = Math.round(score * 100);
+    var circumference = 2 * Math.PI * 52;
+    var offset = circumference - (s / 100) * circumference;
+
+    circle.style.stroke = getScoreColor(s);
+    circle.style.strokeDashoffset = offset;
+    valEl.textContent = s;
+    valEl.style.color = getScoreColor(s);
+  }
+
+  function formatMs(ms) {
+    if (ms >= 1000) return (ms / 1000).toFixed(1) + ' s';
+    return Math.round(ms) + ' ms';
+  }
+
+  function setCWV(id, badgeId, value, displayValue, thresholds) {
+    var valEl = document.getElementById(id);
+    var badgeEl = document.getElementById(badgeId);
+    valEl.textContent = displayValue;
+
+    if (value <= thresholds[0]) {
+      badgeEl.textContent = 'Good';
+      badgeEl.className = 'psi-cwv-card__badge badge-good';
+    } else if (value <= thresholds[1]) {
+      badgeEl.textContent = 'Needs Work';
+      badgeEl.className = 'psi-cwv-card__badge badge-needs-improvement';
+    } else {
+      badgeEl.textContent = 'Poor';
+      badgeEl.className = 'psi-cwv-card__badge badge-poor';
+    }
+  }
+
+  function renderAuditList(containerId, audits) {
+    var container = document.getElementById(containerId);
+    container.innerHTML = '';
+
+    audits.forEach(function(audit) {
+      var severity = audit.score === null ? '' : (audit.score < 0.5 ? 'severity-high' : 'severity-medium');
+      var div = document.createElement('div');
+      div.className = 'psi-audit-item ' + severity;
+
+      var html = '<div class="psi-audit-item__title">' + escapeHtml(audit.title) + '</div>';
+      if (audit.description) {
+        // Strip markdown links from description
+        var desc = audit.description.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+        html += '<div class="psi-audit-item__desc">' + escapeHtml(desc) + '</div>';
+      }
+      if (audit.details && audit.details.overallSavingsMs) {
+        html += '<div class="psi-audit-item__savings">Potential savings: ' + formatMs(audit.details.overallSavingsMs) + '</div>';
+      }
+
+      div.innerHTML = html;
+      container.appendChild(div);
+    });
+  }
+
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function showResults(data) {
+    psiLoading.style.display = 'none';
+    psiError.style.display = 'none';
+    psiResults.style.display = 'block';
+
+    var cats = data.lighthouseResult.categories;
+
+    // Scores
+    setScore('circPerf', 'valPerf', cats.performance.score);
+    setScore('circA11y', 'valA11y', cats.accessibility.score);
+    setScore('circBP', 'valBP', cats['best-practices'].score);
+    setScore('circSEO', 'valSEO', cats.seo.score);
+
+    // Core Web Vitals
+    var audits = data.lighthouseResult.audits;
+
+    var lcp = audits['largest-contentful-paint'];
+    if (lcp) {
+      setCWV('valLCP', 'badgeLCP', lcp.numericValue, formatMs(lcp.numericValue), [2500, 4000]);
+    }
+
+    var inp = audits['interaction-to-next-paint'];
+    if (inp && inp.numericValue !== undefined) {
+      setCWV('valINP', 'badgeINP', inp.numericValue, formatMs(inp.numericValue), [200, 500]);
+    } else {
+      document.getElementById('valINP').textContent = 'N/A';
+      document.getElementById('badgeINP').textContent = '--';
+      document.getElementById('badgeINP').className = 'psi-cwv-card__badge';
+    }
+
+    var cls = audits['cumulative-layout-shift'];
+    if (cls) {
+      setCWV('valCLS', 'badgeCLS', cls.numericValue, cls.numericValue.toFixed(3), [0.1, 0.25]);
+    }
+
+    // Opportunities
+    var opportunities = [];
+    var diagnostics = [];
+    var auditRefs = cats.performance.auditRefs || [];
+
+    auditRefs.forEach(function(ref) {
+      var audit = audits[ref.id];
+      if (!audit || audit.score === 1 || audit.score === null) return;
+      if (ref.group === 'diagnostics') {
+        diagnostics.push(audit);
+      } else if (audit.details && audit.details.type === 'opportunity') {
+        opportunities.push(audit);
+      }
+    });
+
+    // Sort by savings
+    opportunities.sort(function(a, b) {
+      var savA = (a.details && a.details.overallSavingsMs) || 0;
+      var savB = (b.details && b.details.overallSavingsMs) || 0;
+      return savB - savA;
+    });
+
+    var opSection = document.getElementById('opportunitiesSection');
+    if (opportunities.length > 0) {
+      opSection.style.display = 'block';
+      renderAuditList('opportunitiesList', opportunities);
+    } else {
+      opSection.style.display = 'none';
+    }
+
+    var diagSection = document.getElementById('diagnosticsSection');
+    if (diagnostics.length > 0) {
+      diagSection.style.display = 'block';
+      renderAuditList('diagnosticsList', diagnostics.slice(0, 8));
+    } else {
+      diagSection.style.display = 'none';
+    }
+
+    // Dynamic nudge
+    var perfScore = Math.round(cats.performance.score * 100);
+    if (perfScore >= 90) {
+      nudgeText.textContent = 'Great performance score! Your site is well-optimized. Focus on maintaining this as you add new features and content.';
+    } else if (perfScore >= 50) {
+      nudgeText.textContent = 'Your performance score has room for improvement. Focus on the opportunities listed above -- image optimization and render-blocking resources are usually the biggest wins.';
+    } else {
+      nudgeText.textContent = 'Your performance needs significant work. Start with the top 2-3 opportunities above. Image compression, lazy loading, and reducing JavaScript can often double your score.';
+    }
+
+    psiResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function showError(msg) {
+    psiLoading.style.display = 'none';
+    psiResults.style.display = 'none';
+    psiError.style.display = 'block';
+    errorText.textContent = msg;
+  }
+
+  function runAnalysis(url, strategy) {
+    var cacheKey = url + ':' + strategy;
+    if (cache[cacheKey]) {
+      showResults(cache[cacheKey]);
+      return;
+    }
+
+    psiResults.style.display = 'none';
+    psiError.style.display = 'none';
+    psiLoading.style.display = 'block';
+    analyzeBtn.disabled = true;
+    analyzeBtn.textContent = 'Analyzing...';
+
+    fetch('/api/pagespeed?url=' + encodeURIComponent(url) + '&strategy=' + strategy)
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        analyzeBtn.disabled = false;
+        analyzeBtn.innerHTML = 'Analyze <span>&rarr;</span>';
+
+        if (data.error) {
+          showError(data.error);
+          return;
+        }
+
+        if (!data.lighthouseResult || !data.lighthouseResult.categories) {
+          showError('Unexpected response from Google API. Please try again.');
+          return;
+        }
+
+        cache[cacheKey] = data;
+        showResults(data);
+      })
+      .catch(function(err) {
+        analyzeBtn.disabled = false;
+        analyzeBtn.innerHTML = 'Analyze <span>&rarr;</span>';
+        showError('Network error. Please check your connection and try again.');
+      });
+  }
+
+  analyzeBtn.addEventListener('click', function() {
+    var url = urlInput.value.trim();
+    if (!url) return;
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+    urlInput.value = url;
+    runAnalysis(url, currentStrategy);
+  });
+
+  urlInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') analyzeBtn.click();
+  });
+
+  // Device toggle
+  function setStrategy(strategy) {
+    currentStrategy = strategy;
+    btnMobile.classList.toggle('active', strategy === 'mobile');
+    btnDesktop.classList.toggle('active', strategy === 'desktop');
+
+    // If we already have results, re-run or show cached
+    var url = urlInput.value.trim();
+    if (url && psiResults.style.display !== 'none') {
+      runAnalysis(url, strategy);
+    }
+  }
+
+  btnMobile.addEventListener('click', function() { setStrategy('mobile'); });
+  btnDesktop.addEventListener('click', function() { setStrategy('desktop'); });
+</script>

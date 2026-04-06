@@ -1,0 +1,541 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Image Compressor" description="Compress images in your browser with adjustable quality. See before and after file sizes instantly. Pure client-side -- your images never leave your device.">
+  <Nav />
+
+  <section class="light imgcomp-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="imgcomp-hero__content reveal">
+        <span class="sec-label">Image Compressor</span>
+        <h1>Compress images <em>without losing quality</em>.</h1>
+        <p class="imgcomp-hero__lead">Upload an image, adjust the quality slider, and download the optimized version. Everything happens in your browser -- your files never leave your device.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light imgcomp-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="imgcomp-tool reveal">
+        <div class="imgcomp-upload" id="uploadArea">
+          <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" style="display: none;" />
+          <div class="imgcomp-upload__content" id="uploadContent">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 32V16M24 16l-6 6M24 16l6 6" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              <rect x="8" y="8" width="32" height="32" rx="4" stroke="var(--gold-dark)" stroke-width="2" />
+            </svg>
+            <p class="imgcomp-upload__text">Drop an image here or <span class="imgcomp-upload__link">click to upload</span></p>
+            <p class="imgcomp-upload__hint">Supports JPEG, PNG, and WebP</p>
+          </div>
+        </div>
+
+        <div class="imgcomp-editor" id="editorSection" style="display: none;">
+          <div class="imgcomp-controls">
+            <div class="imgcomp-quality">
+              <label class="imgcomp-quality__label">
+                Quality: <strong id="qualityValue">80</strong>%
+              </label>
+              <input type="range" id="qualitySlider" min="10" max="100" value="80" class="imgcomp-slider" />
+              <div class="imgcomp-quality__range">
+                <span>Smaller file</span>
+                <span>Higher quality</span>
+              </div>
+            </div>
+            <div class="imgcomp-format">
+              <label class="imgcomp-format__label">Output format</label>
+              <select id="formatSelect" class="imgcomp-select">
+                <option value="image/jpeg">JPEG</option>
+                <option value="image/webp">WebP</option>
+                <option value="image/png">PNG</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="imgcomp-comparison dark">
+            <div class="imgcomp-comparison__grid">
+              <div class="imgcomp-comparison__item">
+                <span class="imgcomp-comparison__badge">Original</span>
+                <img id="originalPreview" class="imgcomp-preview" alt="Original" />
+                <div class="imgcomp-comparison__info">
+                  <span id="originalSize">--</span>
+                  <span id="originalDimensions">--</span>
+                </div>
+              </div>
+              <div class="imgcomp-comparison__item">
+                <span class="imgcomp-comparison__badge imgcomp-comparison__badge--compressed">Compressed</span>
+                <img id="compressedPreview" class="imgcomp-preview" alt="Compressed" />
+                <div class="imgcomp-comparison__info">
+                  <span id="compressedSize">--</span>
+                  <span id="savings" class="imgcomp-savings">--</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="imgcomp-actions">
+            <button class="btn btn--primary" id="downloadBtn">Download Compressed Image</button>
+            <button class="btn btn--secondary" id="resetBtn">Upload Another</button>
+          </div>
+        </div>
+
+        <div class="imgcomp-nudge">
+          <div class="card">
+            <span class="imgcomp-nudge__label">Mavek Tip</span>
+            <p class="imgcomp-nudge__text">Google recommends images under 100KB for fast page loads. WebP format delivers 25-34% smaller files than JPEG at equivalent quality. Smaller images mean better Core Web Vitals and higher rankings.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="imgcomp-tips reveal">
+        <div class="imgcomp-tips__header">
+          <span class="sec-label">Performance Tips</span>
+          <h2>Why image optimization <em>matters for SEO</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Page speed is a ranking factor</h4>
+            <p>Images are often the largest files on a page. Compressing them can cut load time by 50% or more, directly improving your Core Web Vitals.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Use WebP when possible</h4>
+            <p>WebP delivers smaller files than JPEG or PNG with comparable quality. All modern browsers support it. Use it as your default format.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Right-size your images</h4>
+            <p>Don't upload 4000px images for a 800px container. Resize before uploading and serve responsive sizes with srcset for mobile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek optimize your site performance"
+    subtitle="From image optimization to Core Web Vitals -- our AI handles the technical details that keep your site fast and ranking."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .imgcomp-hero__content {
+    max-width: 640px;
+  }
+
+  .imgcomp-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .imgcomp-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .imgcomp-tool {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Upload */
+  .imgcomp-upload {
+    border: 2px dashed rgba(26, 26, 24, 0.15);
+    border-radius: 10px;
+    padding: var(--space-2xl);
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: var(--space-lg);
+  }
+
+  .imgcomp-upload:hover,
+  .imgcomp-upload.dragover {
+    border-color: var(--gold-dark);
+    background: rgba(138, 112, 40, 0.04);
+  }
+
+  .imgcomp-upload__text {
+    font-size: 1rem;
+    margin: var(--space-sm) 0 0.5rem;
+  }
+
+  .imgcomp-upload__link {
+    color: var(--gold-dark);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .imgcomp-upload__hint {
+    font-size: 0.8rem;
+    opacity: 0.4;
+  }
+
+  /* Controls */
+  .imgcomp-controls {
+    display: flex;
+    gap: var(--space-xl);
+    align-items: flex-start;
+    margin-bottom: var(--space-lg);
+  }
+
+  .imgcomp-quality {
+    flex: 1;
+  }
+
+  .imgcomp-quality__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+  }
+
+  .imgcomp-slider {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(26, 26, 24, 0.1);
+    border-radius: 3px;
+    outline: none;
+  }
+
+  .imgcomp-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gold-mid);
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .imgcomp-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gold-mid);
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .imgcomp-quality__range {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    opacity: 0.4;
+    margin-top: 0.35rem;
+  }
+
+  .imgcomp-format {
+    min-width: 150px;
+  }
+
+  .imgcomp-format__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+  }
+
+  .imgcomp-select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  /* Comparison */
+  .imgcomp-comparison {
+    background: var(--dark);
+    padding: var(--space-xl);
+    color: #F5F5F7;
+    margin-bottom: var(--space-lg);
+  }
+
+  .imgcomp-comparison__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .imgcomp-comparison__badge {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.6rem;
+    background: rgba(255,255,255,0.1);
+    margin-bottom: var(--space-sm);
+  }
+
+  .imgcomp-comparison__badge--compressed {
+    background: rgba(201, 168, 76, 0.2);
+    color: var(--gold-mid);
+  }
+
+  .imgcomp-preview {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .imgcomp-comparison__info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+
+  .imgcomp-savings {
+    color: var(--gold-bright);
+    font-weight: 600;
+    opacity: 1;
+  }
+
+  /* Actions */
+  .imgcomp-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Nudge */
+  .imgcomp-nudge__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .imgcomp-nudge__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Tips */
+  .imgcomp-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .imgcomp-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 768px) {
+    .imgcomp-controls {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .imgcomp-format {
+      min-width: 100%;
+    }
+
+    .imgcomp-comparison__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .imgcomp-actions {
+      flex-direction: column;
+    }
+
+    .imgcomp-upload {
+      padding: var(--space-xl);
+    }
+  }
+</style>
+
+<script is:inline>
+  var uploadArea = document.getElementById('uploadArea');
+  var uploadContent = document.getElementById('uploadContent');
+  var fileInput = document.getElementById('fileInput');
+  var editorSection = document.getElementById('editorSection');
+  var qualitySlider = document.getElementById('qualitySlider');
+  var qualityValue = document.getElementById('qualityValue');
+  var formatSelect = document.getElementById('formatSelect');
+  var originalPreview = document.getElementById('originalPreview');
+  var compressedPreview = document.getElementById('compressedPreview');
+  var originalSize = document.getElementById('originalSize');
+  var originalDimensions = document.getElementById('originalDimensions');
+  var compressedSize = document.getElementById('compressedSize');
+  var savings = document.getElementById('savings');
+  var downloadBtn = document.getElementById('downloadBtn');
+  var resetBtn = document.getElementById('resetBtn');
+
+  var originalFile = null;
+  var compressedBlob = null;
+
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+  }
+
+  function compressImage() {
+    if (!originalFile) return;
+
+    var img = new Image();
+    img.onload = function() {
+      var canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+
+      var quality = parseInt(qualitySlider.value) / 100;
+      var format = formatSelect.value;
+
+      canvas.toBlob(function(blob) {
+        compressedBlob = blob;
+        compressedPreview.src = URL.createObjectURL(blob);
+        compressedSize.textContent = formatBytes(blob.size);
+
+        var saved = ((1 - blob.size / originalFile.size) * 100).toFixed(1);
+        if (saved > 0) {
+          savings.textContent = saved + '% smaller';
+          savings.style.color = 'var(--gold-bright)';
+        } else {
+          savings.textContent = 'No reduction';
+          savings.style.color = '#FF503C';
+        }
+      }, format, quality);
+    };
+    img.src = URL.createObjectURL(originalFile);
+  }
+
+  function handleFile(file) {
+    if (!file || !file.type.match(/^image\/(jpeg|png|webp)$/)) return;
+
+    originalFile = file;
+    uploadArea.style.display = 'none';
+    editorSection.style.display = 'block';
+
+    // Show original
+    var url = URL.createObjectURL(file);
+    originalPreview.src = url;
+    originalSize.textContent = formatBytes(file.size);
+
+    var img = new Image();
+    img.onload = function() {
+      originalDimensions.textContent = img.naturalWidth + ' x ' + img.naturalHeight;
+    };
+    img.src = url;
+
+    // Auto-select format
+    if (file.type === 'image/png') formatSelect.value = 'image/png';
+    else if (file.type === 'image/webp') formatSelect.value = 'image/webp';
+    else formatSelect.value = 'image/jpeg';
+
+    compressImage();
+  }
+
+  // Click to upload
+  uploadArea.addEventListener('click', function() {
+    fileInput.click();
+  });
+
+  fileInput.addEventListener('change', function(e) {
+    if (e.target.files.length > 0) handleFile(e.target.files[0]);
+  });
+
+  // Drag & drop
+  uploadArea.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    uploadArea.classList.add('dragover');
+  });
+
+  uploadArea.addEventListener('dragleave', function() {
+    uploadArea.classList.remove('dragover');
+  });
+
+  uploadArea.addEventListener('drop', function(e) {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+  });
+
+  // Quality / format change
+  qualitySlider.addEventListener('input', function() {
+    qualityValue.textContent = qualitySlider.value;
+    compressImage();
+  });
+
+  formatSelect.addEventListener('change', function() {
+    compressImage();
+  });
+
+  // Download
+  downloadBtn.addEventListener('click', function() {
+    if (!compressedBlob) return;
+    var ext = formatSelect.value === 'image/webp' ? '.webp' : (formatSelect.value === 'image/png' ? '.png' : '.jpg');
+    var name = (originalFile.name.replace(/\.[^.]+$/, '') || 'compressed') + '-compressed' + ext;
+    var url = URL.createObjectURL(compressedBlob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  // Reset
+  resetBtn.addEventListener('click', function() {
+    originalFile = null;
+    compressedBlob = null;
+    fileInput.value = '';
+    editorSection.style.display = 'none';
+    uploadArea.style.display = 'block';
+    qualitySlider.value = 80;
+    qualityValue.textContent = '80';
+  });
+</script>

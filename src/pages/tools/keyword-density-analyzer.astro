@@ -1,0 +1,512 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Keyword Density Analyzer" description="Analyze keyword density in your content. Free tool that counts 1, 2, and 3-word phrases with percentage breakdowns. No signup required.">
+  <Nav />
+
+  <section class="light kda-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="kda-hero__content reveal">
+        <span class="sec-label">Keyword Density Analyzer</span>
+        <h1>See what your content <em>is really about</em>.</h1>
+        <p class="kda-hero__lead">Paste your text and instantly see the most used 1-word, 2-word, and 3-word phrases with percentage breakdowns. Catch over-optimization before Google does.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light kda-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="kda-tool reveal">
+        <div class="kda-input-wrap">
+          <textarea
+            id="kdaInput"
+            class="kda-input"
+            placeholder="Paste your content here..."
+            rows="8"
+          ></textarea>
+          <div class="kda-input-footer">
+            <span class="kda-word-count" id="wordCount">0 words</span>
+            <button class="btn btn--primary kda-submit" id="kdaSubmit">Analyze <span>&rarr;</span></button>
+          </div>
+        </div>
+
+        <div class="kda-results" id="kdaResults" style="display: none;">
+          <div class="kda-stats dark">
+            <div class="kda-stats__grid">
+              <div class="kda-stat">
+                <span class="kda-stat__number" id="statWords">0</span>
+                <span class="kda-stat__label">Total Words</span>
+              </div>
+              <div class="kda-stat">
+                <span class="kda-stat__number" id="statUnique">0</span>
+                <span class="kda-stat__label">Unique Words</span>
+              </div>
+              <div class="kda-stat">
+                <span class="kda-stat__number" id="statTopDensity">0%</span>
+                <span class="kda-stat__label">Top Keyword</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kda-tabs">
+            <button class="kda-tab active" data-tab="1">1-Word</button>
+            <button class="kda-tab" data-tab="2">2-Word</button>
+            <button class="kda-tab" data-tab="3">3-Word</button>
+          </div>
+
+          <div class="kda-table-wrap">
+            <table class="kda-table" id="kdaTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Keyword</th>
+                  <th>Count</th>
+                  <th>Density</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="kdaTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="kda-nudge">
+            <div class="card">
+              <span class="kda-nudge__label">Mavek Tip</span>
+              <p class="kda-nudge__text">Keep primary keyword density between 1-2% for best SEO results. Over 3% may trigger keyword stuffing penalties. Use natural variations and synonyms instead of repeating the same phrase.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="kda-tips reveal">
+        <div class="kda-tips__header">
+          <span class="sec-label">SEO Tips</span>
+          <h2>Keyword density <em>best practices</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Target 1-2% density</h4>
+            <p>Your primary keyword should appear naturally 1-2% of the time. More than that risks looking spammy to search engines.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Use semantic variations</h4>
+            <p>Google understands synonyms. Instead of repeating "best running shoes" ten times, use "top sneakers", "running footwear", etc.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Check 2 and 3-word phrases</h4>
+            <p>Long-tail keywords (2-3 word phrases) often reveal your real topical focus. Make sure they align with your target intent.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek optimize your content"
+    subtitle="Our AI writes SEO-optimized content with the right keyword balance -- naturally, not stuffed."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .kda-hero__content {
+    max-width: 640px;
+  }
+
+  .kda-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .kda-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .kda-tool {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Input */
+  .kda-input-wrap {
+    margin-bottom: var(--space-xl);
+  }
+
+  .kda-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .kda-input:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .kda-input::placeholder {
+    color: var(--muted);
+  }
+
+  .kda-input-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-sm);
+  }
+
+  .kda-word-count {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    opacity: 0.4;
+  }
+
+  /* Stats bar */
+  .kda-stats {
+    background: var(--dark);
+    padding: var(--space-xl) var(--space-2xl);
+    color: #F5F5F7;
+    margin-bottom: var(--space-lg);
+  }
+
+  .kda-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  .kda-stat__number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    color: var(--gold-bright);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  .kda-stat__label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+  }
+
+  /* Tabs */
+  .kda-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(26, 26, 24, 0.1);
+  }
+
+  .kda-tab {
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--ink);
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
+
+  .kda-tab:hover {
+    opacity: 0.8;
+  }
+
+  .kda-tab.active {
+    opacity: 1;
+    border-bottom-color: var(--gold-dark);
+    color: var(--gold-dark);
+  }
+
+  /* Table */
+  .kda-table-wrap {
+    margin-bottom: var(--space-lg);
+    overflow-x: auto;
+  }
+
+  .kda-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+  }
+
+  .kda-table thead th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.1);
+  }
+
+  .kda-table tbody td {
+    padding: 0.75rem 1rem;
+    font-size: 0.92rem;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.05);
+  }
+
+  .kda-table tbody tr:hover {
+    background: rgba(138, 112, 40, 0.04);
+  }
+
+  .kda-density-bar {
+    display: inline-block;
+    height: 6px;
+    background: var(--gold-mid);
+    border-radius: 3px;
+    min-width: 4px;
+    transition: width 0.3s var(--ease);
+  }
+
+  /* Nudge */
+  .kda-nudge {
+    margin-top: var(--space-md);
+  }
+
+  .kda-nudge__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .kda-nudge__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Tips */
+  .kda-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .kda-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .kda-stats__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .kda-stats {
+      padding: var(--space-lg);
+    }
+
+    .kda-input-footer {
+      flex-direction: column;
+      gap: var(--space-sm);
+      align-items: stretch;
+    }
+
+    .kda-tab {
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  var STOP_WORDS = [
+    'a','an','the','and','or','but','in','on','at','to','for','of','with',
+    'by','from','is','it','as','are','was','were','be','been','being',
+    'have','has','had','do','does','did','will','would','could','should',
+    'may','might','shall','can','this','that','these','those','i','you',
+    'he','she','we','they','me','him','her','us','them','my','your',
+    'his','its','our','their','what','which','who','whom','not','no',
+    'so','if','then','than','too','very','just','about','up','out',
+    'all','also','how','each','other','into','over','after','before'
+  ];
+
+  var kdaInput = document.getElementById('kdaInput');
+  var kdaSubmit = document.getElementById('kdaSubmit');
+  var kdaResults = document.getElementById('kdaResults');
+  var wordCountEl = document.getElementById('wordCount');
+  var kdaTableBody = document.getElementById('kdaTableBody');
+  var currentTab = 1;
+  var analysisData = { 1: [], 2: [], 3: [] };
+  var totalWords = 0;
+
+  kdaInput.addEventListener('input', function() {
+    var words = kdaInput.value.trim().split(/\s+/).filter(function(w) { return w.length > 0; });
+    wordCountEl.textContent = words.length + ' word' + (words.length !== 1 ? 's' : '');
+  });
+
+  // Tab switching
+  document.querySelectorAll('.kda-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.kda-tab').forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      currentTab = parseInt(tab.getAttribute('data-tab'));
+      renderTable(currentTab);
+    });
+  });
+
+  function tokenize(text) {
+    return text.toLowerCase()
+      .replace(/[^a-z0-9\s'-]/g, ' ')
+      .split(/\s+/)
+      .filter(function(w) { return w.length > 1; });
+  }
+
+  function getNGrams(words, n) {
+    var filtered = words;
+    if (n === 1) {
+      filtered = words.filter(function(w) { return STOP_WORDS.indexOf(w) === -1; });
+    }
+
+    var counts = {};
+    for (var i = 0; i <= filtered.length - n; i++) {
+      var gram;
+      if (n === 1) {
+        gram = filtered[i];
+      } else {
+        // For n>1, use original words array but skip grams that are ALL stop words
+        var slice = [];
+        // We need to work with original word positions for bigrams/trigrams
+        slice = words.slice(i, i + n);
+        var allStop = true;
+        for (var j = 0; j < slice.length; j++) {
+          if (STOP_WORDS.indexOf(slice[j]) === -1) { allStop = false; break; }
+        }
+        if (allStop) continue;
+        gram = slice.join(' ');
+      }
+      if (!gram) continue;
+      counts[gram] = (counts[gram] || 0) + 1;
+    }
+
+    // Convert to sorted array
+    var result = [];
+    for (var key in counts) {
+      if (counts[key] >= (n === 1 ? 2 : 2)) {
+        result.push({ keyword: key, count: counts[key] });
+      }
+    }
+    result.sort(function(a, b) { return b.count - a.count; });
+    return result.slice(0, 25);
+  }
+
+  function analyzeKeywords(text) {
+    text = text.trim();
+    if (!text) return;
+
+    var words = tokenize(text);
+    totalWords = words.length;
+
+    if (totalWords < 5) return;
+
+    kdaResults.style.display = 'block';
+
+    // Get unique words (excluding stop words)
+    var uniqueSet = {};
+    words.forEach(function(w) {
+      if (STOP_WORDS.indexOf(w) === -1) uniqueSet[w] = true;
+    });
+    var uniqueCount = Object.keys(uniqueSet).length;
+
+    // Compute n-grams
+    analysisData[1] = getNGrams(words, 1);
+    analysisData[2] = getNGrams(words, 2);
+    analysisData[3] = getNGrams(words, 3);
+
+    // Update stats
+    document.getElementById('statWords').textContent = totalWords;
+    document.getElementById('statUnique').textContent = uniqueCount;
+
+    var topDensity = analysisData[1].length > 0
+      ? (analysisData[1][0].count / totalWords * 100).toFixed(1) + '%'
+      : '0%';
+    document.getElementById('statTopDensity').textContent = topDensity;
+
+    renderTable(currentTab);
+    kdaResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function renderTable(n) {
+    var data = analysisData[n];
+    kdaTableBody.innerHTML = '';
+
+    if (data.length === 0) {
+      kdaTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;opacity:0.4;padding:2rem;">Not enough data. Try adding more text.</td></tr>';
+      return;
+    }
+
+    var maxCount = data[0].count;
+
+    data.forEach(function(item, i) {
+      var density = (item.count / totalWords * 100).toFixed(2);
+      var barWidth = Math.max(4, (item.count / maxCount) * 120);
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td style="opacity:0.3;">' + (i + 1) + '</td>' +
+        '<td><strong>' + item.keyword + '</strong></td>' +
+        '<td>' + item.count + '</td>' +
+        '<td>' + density + '%</td>' +
+        '<td><span class="kda-density-bar" style="width:' + barWidth + 'px;"></span></td>';
+      kdaTableBody.appendChild(tr);
+    });
+  }
+
+  kdaSubmit.addEventListener('click', function() {
+    analyzeKeywords(kdaInput.value);
+  });
+
+  kdaInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.ctrlKey) {
+      analyzeKeywords(kdaInput.value);
+    }
+  });
+</script>

@@ -1,0 +1,369 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Slug Generator" description="Convert any title or text into a clean, SEO-friendly URL slug. Lowercase, strip special characters, hyphenate, and optionally remove stop words.">
+  <Nav />
+
+  <section class="light slug-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="slug-hero__content reveal">
+        <span class="sec-label">Slug Generator</span>
+        <h1>Turn any title into a <em>clean URL slug</em>.</h1>
+        <p class="slug-hero__lead">Type or paste your text and get an instant, SEO-friendly URL slug. Lowercase, hyphenated, no special characters. Copy and go.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light slug-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="slug-tool reveal">
+        <div class="slug-input-wrap">
+          <label class="slug-label" for="slugInput">Enter your title or text</label>
+          <input
+            type="text"
+            id="slugInput"
+            class="slug-input"
+            placeholder="e.g. How to Improve Your Website's SEO in 2026"
+            maxlength="300"
+          />
+        </div>
+
+        <div class="slug-options">
+          <label class="slug-checkbox-label">
+            <input type="checkbox" id="removeStopWords" />
+            <span>Remove stop words (a, the, in, of, etc.)</span>
+          </label>
+        </div>
+
+        <div class="slug-output-wrap">
+          <label class="slug-label">Generated Slug</label>
+          <div class="slug-output-row">
+            <div class="slug-output" id="slugOutput">
+              <span class="slug-placeholder">your-slug-will-appear-here</span>
+            </div>
+            <button class="btn btn--primary slug-copy" id="copyBtn">Copy</button>
+          </div>
+          <span class="slug-copied" id="copiedMsg" style="display: none;">Copied to clipboard</span>
+        </div>
+
+        <div class="slug-preview" id="slugPreview" style="display: none;">
+          <label class="slug-label">URL Preview</label>
+          <div class="slug-preview__url">
+            <span class="slug-preview__base">https://example.com/</span><span class="slug-preview__slug" id="previewSlug"></span>
+          </div>
+        </div>
+
+        <div class="slug-nudge">
+          <div class="card">
+            <span class="slug-nudge__label">Mavek Tip</span>
+            <p class="slug-nudge__text">Short, descriptive slugs rank better. Aim for 3-5 words that describe the page content. Remove filler words and keep it readable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="slug-tips reveal">
+        <div class="slug-tips__header">
+          <span class="sec-label">URL Tips</span>
+          <h2>How to write <em>better URLs</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Keep slugs short</h4>
+            <p>3-5 words is ideal. Shorter URLs are easier to share, look cleaner in search results, and are more memorable.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Use hyphens, not underscores</h4>
+            <p>Google treats hyphens as word separators but underscores as joiners. "best-seo-tips" is better than "best_seo_tips".</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Include your target keyword</h4>
+            <p>Your primary keyword should appear in the URL. It's a small ranking factor and helps users understand the page content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek optimize your entire site"
+    subtitle="URLs, meta tags, content structure -- our AI handles every SEO detail for maximum search visibility."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .slug-hero__content {
+    max-width: 640px;
+  }
+
+  .slug-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .slug-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .slug-tool {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .slug-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+  }
+
+  /* Input */
+  .slug-input-wrap {
+    margin-bottom: var(--space-md);
+  }
+
+  .slug-input {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .slug-input:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .slug-input::placeholder {
+    color: var(--muted);
+  }
+
+  /* Options */
+  .slug-options {
+    margin-bottom: var(--space-lg);
+  }
+
+  .slug-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .slug-checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--gold-dark);
+  }
+
+  /* Output */
+  .slug-output-wrap {
+    margin-bottom: var(--space-lg);
+    position: relative;
+  }
+
+  .slug-output-row {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  .slug-output {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    background: var(--dark);
+    color: var(--gold-bright);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    min-height: 1.4em;
+    word-break: break-all;
+  }
+
+  .slug-placeholder {
+    opacity: 0.3;
+    color: #F5F5F7;
+  }
+
+  .slug-copy {
+    white-space: nowrap;
+  }
+
+  .slug-copied {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 0;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+
+  /* Preview */
+  .slug-preview {
+    margin-bottom: var(--space-lg);
+  }
+
+  .slug-preview__url {
+    padding: 0.75rem 1rem;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.06);
+    border-radius: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+
+  .slug-preview__base {
+    opacity: 0.4;
+  }
+
+  .slug-preview__slug {
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+
+  /* Nudge */
+  .slug-nudge {
+    margin-bottom: var(--space-md);
+  }
+
+  .slug-nudge__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .slug-nudge__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Tips */
+  .slug-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .slug-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .slug-output-row {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script is:inline>
+  var STOP_WORDS = [
+    'a','an','the','and','or','but','in','on','at','to','for','of','with',
+    'by','from','is','it','as','are','was','were','be','been','being',
+    'have','has','had','do','does','did','will','would','could','should',
+    'may','might','shall','can','this','that','these','those','not','no',
+    'so','if','then','than','too','very','just','about','up','out',
+    'how','each','other','into','over','after','before','its','your','my'
+  ];
+
+  var slugInput = document.getElementById('slugInput');
+  var slugOutput = document.getElementById('slugOutput');
+  var removeStopWords = document.getElementById('removeStopWords');
+  var copyBtn = document.getElementById('copyBtn');
+  var copiedMsg = document.getElementById('copiedMsg');
+  var slugPreview = document.getElementById('slugPreview');
+  var previewSlug = document.getElementById('previewSlug');
+  var currentSlug = '';
+
+  function generateSlug(text) {
+    text = text.trim().toLowerCase();
+    if (!text) {
+      slugOutput.innerHTML = '<span class="slug-placeholder">your-slug-will-appear-here</span>';
+      slugPreview.style.display = 'none';
+      currentSlug = '';
+      return;
+    }
+
+    // Replace special chars and accents
+    text = text
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // remove accents
+      .replace(/['']/g, '')       // remove apostrophes
+      .replace(/[^a-z0-9\s-]/g, '') // strip non-alphanumeric
+      .replace(/\s+/g, ' ')          // collapse whitespace
+      .trim();
+
+    if (removeStopWords.checked) {
+      var words = text.split(' ').filter(function(w) {
+        return STOP_WORDS.indexOf(w) === -1;
+      });
+      text = words.join(' ');
+    }
+
+    var slug = text
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+
+    currentSlug = slug;
+    slugOutput.textContent = slug;
+    previewSlug.textContent = slug;
+    slugPreview.style.display = 'block';
+  }
+
+  slugInput.addEventListener('input', function() {
+    generateSlug(slugInput.value);
+  });
+
+  removeStopWords.addEventListener('change', function() {
+    generateSlug(slugInput.value);
+  });
+
+  copyBtn.addEventListener('click', function() {
+    if (!currentSlug) return;
+    navigator.clipboard.writeText(currentSlug).then(function() {
+      copiedMsg.style.display = 'inline';
+      setTimeout(function() { copiedMsg.style.display = 'none'; }, 2000);
+    });
+  });
+</script>

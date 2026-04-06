@@ -1,0 +1,435 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="XML Sitemap Generator" description="Generate a valid XML sitemap from a list of URLs. Set lastmod, changefreq, and priority for each URL. Download as .xml file. Free, no signup required.">
+  <Nav />
+
+  <section class="light sitemap-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="sitemap-hero__content reveal">
+        <span class="sec-label">XML Sitemap Generator</span>
+        <h1>Generate a valid <em>XML sitemap</em> in seconds.</h1>
+        <p class="sitemap-hero__lead">Paste your URLs, set optional attributes, and download a ready-to-submit sitemap.xml file. No coding required.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light sitemap-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="sitemap-tool reveal">
+        <div class="sitemap-input-wrap">
+          <label class="sitemap-label" for="urlInput">Enter URLs (one per line)</label>
+          <textarea
+            id="urlInput"
+            class="sitemap-input"
+            placeholder="https://example.com/&#10;https://example.com/about&#10;https://example.com/blog&#10;https://example.com/contact"
+            rows="8"
+          ></textarea>
+          <span class="sitemap-url-count" id="urlCount">0 URLs</span>
+        </div>
+
+        <div class="sitemap-options">
+          <h4>Default Options</h4>
+          <div class="sitemap-options__grid">
+            <div class="sitemap-field">
+              <label class="sitemap-field__label" for="changefreq">Change Frequency</label>
+              <select id="changefreq" class="sitemap-select">
+                <option value="">None</option>
+                <option value="always">Always</option>
+                <option value="hourly">Hourly</option>
+                <option value="daily">Daily</option>
+                <option value="weekly" selected>Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="yearly">Yearly</option>
+                <option value="never">Never</option>
+              </select>
+            </div>
+            <div class="sitemap-field">
+              <label class="sitemap-field__label" for="priority">Priority</label>
+              <select id="priority" class="sitemap-select">
+                <option value="">None</option>
+                <option value="1.0">1.0 (Highest)</option>
+                <option value="0.8" selected>0.8</option>
+                <option value="0.6">0.6</option>
+                <option value="0.5">0.5 (Default)</option>
+                <option value="0.3">0.3</option>
+                <option value="0.1">0.1 (Lowest)</option>
+              </select>
+            </div>
+            <div class="sitemap-field">
+              <label class="sitemap-field__label" for="lastmod">Last Modified</label>
+              <input type="date" id="lastmod" class="sitemap-date" />
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn--primary sitemap-generate" id="generateBtn">Generate Sitemap <span>&rarr;</span></button>
+
+        <div class="sitemap-output" id="sitemapOutput" style="display: none;">
+          <div class="sitemap-output__header">
+            <h4>Generated Sitemap</h4>
+            <div class="sitemap-output__actions">
+              <button class="btn btn--secondary sitemap-copy" id="copyBtn">Copy</button>
+              <button class="btn btn--primary sitemap-download" id="downloadBtn">Download .xml</button>
+            </div>
+          </div>
+          <pre class="sitemap-code" id="sitemapCode"></pre>
+          <span class="sitemap-copied" id="copiedMsg" style="display: none;">Copied to clipboard</span>
+        </div>
+
+        <div class="sitemap-nudge" id="sitemapNudge" style="display: none;">
+          <div class="card">
+            <span class="sitemap-nudge__label">Mavek Tip</span>
+            <p class="sitemap-nudge__text">After generating your sitemap, submit it to Google Search Console at Sitemaps > Add a new sitemap. This tells Google exactly which pages to crawl and index.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="sitemap-tips reveal">
+        <div class="sitemap-tips__header">
+          <span class="sec-label">Sitemap Tips</span>
+          <h2>XML sitemap <em>best practices</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Include important pages only</h4>
+            <p>Only add pages you want indexed. Skip login pages, thank-you pages, and duplicate content. Quality over quantity.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Keep it under 50,000 URLs</h4>
+            <p>Google allows up to 50,000 URLs per sitemap and 50MB file size. For larger sites, use a sitemap index file.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Update lastmod dates</h4>
+            <p>Set accurate last-modified dates. Google uses these to decide when to re-crawl your pages. Fake dates hurt trust.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek handle your technical SEO"
+    subtitle="Sitemaps, schema, meta tags, robots.txt -- our AI handles the technical details so you can focus on growing your business."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .sitemap-hero__content {
+    max-width: 640px;
+  }
+
+  .sitemap-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .sitemap-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .sitemap-tool {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Input */
+  .sitemap-input-wrap {
+    margin-bottom: var(--space-lg);
+  }
+
+  .sitemap-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+  }
+
+  .sitemap-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    line-height: 1.8;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .sitemap-input:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .sitemap-input::placeholder {
+    color: var(--muted);
+  }
+
+  .sitemap-url-count {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    opacity: 0.4;
+    margin-top: 0.5rem;
+  }
+
+  /* Options */
+  .sitemap-options {
+    margin-bottom: var(--space-lg);
+  }
+
+  .sitemap-options h4 {
+    font-size: 1rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .sitemap-options__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .sitemap-field__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    opacity: 0.6;
+  }
+
+  .sitemap-select,
+  .sitemap-date {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .sitemap-select:focus,
+  .sitemap-date:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .sitemap-generate {
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Output */
+  .sitemap-output {
+    margin-bottom: var(--space-lg);
+    position: relative;
+  }
+
+  .sitemap-output__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .sitemap-output__header h4 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .sitemap-output__actions {
+    display: flex;
+    gap: var(--space-xs);
+  }
+
+  .sitemap-output__actions .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .sitemap-code {
+    background: var(--dark);
+    color: #c9d1d9;
+    padding: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .sitemap-copied {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 0;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+
+  /* Nudge */
+  .sitemap-nudge__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .sitemap-nudge__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Tips */
+  .sitemap-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .sitemap-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .sitemap-options__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .sitemap-output__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+  }
+</style>
+
+<script is:inline>
+  var urlInput = document.getElementById('urlInput');
+  var urlCountEl = document.getElementById('urlCount');
+  var generateBtn = document.getElementById('generateBtn');
+  var sitemapOutput = document.getElementById('sitemapOutput');
+  var sitemapCode = document.getElementById('sitemapCode');
+  var copyBtn = document.getElementById('copyBtn');
+  var downloadBtn = document.getElementById('downloadBtn');
+  var copiedMsg = document.getElementById('copiedMsg');
+  var sitemapNudge = document.getElementById('sitemapNudge');
+  var generatedXML = '';
+
+  urlInput.addEventListener('input', function() {
+    var urls = urlInput.value.split('\n').filter(function(u) { return u.trim().length > 0; });
+    urlCountEl.textContent = urls.length + ' URL' + (urls.length !== 1 ? 's' : '');
+  });
+
+  function escapeXml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&apos;');
+  }
+
+  function generateSitemap() {
+    var raw = urlInput.value.split('\n').filter(function(u) { return u.trim().length > 0; });
+    if (raw.length === 0) return;
+
+    var changefreq = document.getElementById('changefreq').value;
+    var priority = document.getElementById('priority').value;
+    var lastmod = document.getElementById('lastmod').value;
+
+    var xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
+    raw.forEach(function(url) {
+      url = url.trim();
+      // Add https:// if no protocol
+      if (!/^https?:\/\//i.test(url)) {
+        url = 'https://' + url;
+      }
+      xml += '  <url>\n';
+      xml += '    <loc>' + escapeXml(url) + '</loc>\n';
+      if (lastmod) {
+        xml += '    <lastmod>' + lastmod + '</lastmod>\n';
+      }
+      if (changefreq) {
+        xml += '    <changefreq>' + changefreq + '</changefreq>\n';
+      }
+      if (priority) {
+        xml += '    <priority>' + priority + '</priority>\n';
+      }
+      xml += '  </url>\n';
+    });
+
+    xml += '</urlset>';
+
+    generatedXML = xml;
+    sitemapCode.textContent = xml;
+    sitemapOutput.style.display = 'block';
+    sitemapNudge.style.display = 'block';
+    sitemapOutput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  generateBtn.addEventListener('click', generateSitemap);
+
+  copyBtn.addEventListener('click', function() {
+    navigator.clipboard.writeText(generatedXML).then(function() {
+      copiedMsg.style.display = 'inline';
+      setTimeout(function() { copiedMsg.style.display = 'none'; }, 2000);
+    });
+  });
+
+  downloadBtn.addEventListener('click', function() {
+    var blob = new Blob([generatedXML], { type: 'application/xml' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'sitemap.xml';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+</script>

@@ -1,0 +1,617 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Readability Scorer" description="Check your content's readability with Flesch-Kincaid scoring. Free readability analyzer that measures reading ease, grade level, sentence length, and word complexity.">
+  <Nav />
+
+  <section class="light readability-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="readability-hero__content reveal">
+        <span class="sec-label">Readability Scorer</span>
+        <h1>Check if your content is <em>easy to read</em>.</h1>
+        <p class="readability-hero__lead">Paste your text and get instant Flesch-Kincaid readability scores. Know the grade level, reading ease, and complexity before you hit publish.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light readability-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="readability-tool reveal">
+        <div class="readability-input-wrap">
+          <textarea
+            id="readabilityInput"
+            class="readability-input"
+            placeholder="Paste your text here..."
+            rows="8"
+          ></textarea>
+          <div class="readability-input-footer">
+            <span class="readability-char-count" id="charCount">0 characters</span>
+            <button class="btn btn--primary readability-submit" id="readabilitySubmit">Analyze <span>&rarr;</span></button>
+          </div>
+        </div>
+
+        <div class="readability-results" id="readabilityResults" style="display: none;">
+          <div class="readability-score-section dark">
+            <div class="readability-score-wrap">
+              <div class="readability-score-ring">
+                <svg viewBox="0 0 160 160" class="readability-score-svg">
+                  <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8" />
+                  <circle
+                    cx="80" cy="80" r="70"
+                    fill="none"
+                    stroke="var(--gold-mid)"
+                    stroke-width="8"
+                    stroke-linecap="square"
+                    stroke-dasharray="440"
+                    stroke-dashoffset="440"
+                    id="scoreCircle"
+                    transform="rotate(-90 80 80)"
+                  />
+                </svg>
+                <div class="readability-score-inner">
+                  <span class="readability-score-number" id="scoreNumber">0</span>
+                  <span class="readability-score-label">Reading Ease</span>
+                </div>
+              </div>
+
+              <div class="readability-score-meta">
+                <span class="readability-score-grade" id="scoreGrade">--</span>
+                <p class="readability-score-feedback" id="scoreFeedback">Paste your text to get started.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="readability-breakdown">
+            <h3>Breakdown</h3>
+            <div class="readability-cards grid-2" style="margin-top: var(--space-lg);">
+              <div class="card readability-card">
+                <div class="readability-card__header">
+                  <span class="readability-card__title">Grade Level</span>
+                  <span class="readability-card__badge" id="badgeGrade">--</span>
+                </div>
+                <p class="readability-card__value" id="valueGrade">--</p>
+                <p class="readability-card__hint">Flesch-Kincaid Grade Level (U.S. school grade)</p>
+              </div>
+
+              <div class="card readability-card">
+                <div class="readability-card__header">
+                  <span class="readability-card__title">Avg Sentence Length</span>
+                  <span class="readability-card__badge" id="badgeSentence">--</span>
+                </div>
+                <p class="readability-card__value" id="valueSentence">--</p>
+                <p class="readability-card__hint">Ideal: 15-20 words per sentence for web content</p>
+              </div>
+
+              <div class="card readability-card">
+                <div class="readability-card__header">
+                  <span class="readability-card__title">Word Count</span>
+                  <span class="readability-card__badge" id="badgeWords">--</span>
+                </div>
+                <p class="readability-card__value" id="valueWords">--</p>
+                <p class="readability-card__hint">Total words analyzed in your text</p>
+              </div>
+
+              <div class="card readability-card">
+                <div class="readability-card__header">
+                  <span class="readability-card__title">Avg Syllables / Word</span>
+                  <span class="readability-card__badge" id="badgeSyllables">--</span>
+                </div>
+                <p class="readability-card__value" id="valueSyllables">--</p>
+                <p class="readability-card__hint">Lower is easier to read. Ideal: under 1.6 for web</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="readability-nudge">
+            <div class="card">
+              <span class="readability-nudge__label">Mavek Tip</span>
+              <p class="readability-nudge__text" id="nudgeText">Web content performs best at a 6th-8th grade reading level. Shorter sentences and simpler words keep readers engaged longer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="readability-tips reveal">
+        <div class="readability-tips__header">
+          <span class="sec-label">Writing Tips</span>
+          <h2>How to improve <em>readability</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Shorten your sentences</h4>
+            <p>Break long sentences into two. Aim for 15-20 words per sentence. Your readers scan -- make it easy for them.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Use simpler words</h4>
+            <p>Replace multi-syllable words with shorter alternatives. "Use" beats "utilize". "Help" beats "facilitate". Clarity wins.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Write for your audience</h4>
+            <p>Blog posts should target grade 6-8. Technical docs can go higher. Know your reader and match their level.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek write content that converts"
+    subtitle="Our AI creates clear, readable content optimized for engagement -- blog posts, landing pages, ad copy, and more."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .readability-hero__content {
+    max-width: 640px;
+  }
+
+  .readability-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .readability-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .readability-tool {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Input */
+  .readability-input-wrap {
+    margin-bottom: var(--space-xl);
+  }
+
+  .readability-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .readability-input:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .readability-input::placeholder {
+    color: var(--muted);
+  }
+
+  .readability-input-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-sm);
+  }
+
+  .readability-char-count {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    opacity: 0.4;
+  }
+
+  /* Score Section */
+  .readability-score-section {
+    background: var(--dark);
+    padding: var(--space-2xl);
+    color: #F5F5F7;
+    margin-bottom: var(--space-xl);
+  }
+
+  .readability-score-wrap {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+  }
+
+  .readability-score-ring {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+  }
+
+  .readability-score-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #scoreCircle {
+    transition: stroke-dashoffset 0.8s var(--ease);
+  }
+
+  .readability-score-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .readability-score-number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--gold-bright);
+    line-height: 1;
+  }
+
+  .readability-score-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    color: #F5F5F7;
+    margin-top: 0.25rem;
+  }
+
+  .readability-score-meta {
+    flex: 1;
+  }
+
+  .readability-score-grade {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.35rem 0.8rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .readability-score-grade.grade-easy {
+    background: var(--gold-mid);
+    color: var(--ink);
+  }
+
+  .readability-score-grade.grade-moderate {
+    background: rgba(201, 168, 76, 0.2);
+    color: var(--gold-mid);
+  }
+
+  .readability-score-grade.grade-difficult {
+    background: rgba(255, 200, 0, 0.2);
+    color: #FFC800;
+  }
+
+  .readability-score-grade.grade-hard {
+    background: rgba(255, 80, 60, 0.2);
+    color: #FF503C;
+  }
+
+  .readability-score-feedback {
+    font-size: 1rem;
+    opacity: 0.7;
+    color: #F5F5F7;
+  }
+
+  /* Breakdown Cards */
+  .readability-breakdown h3 {
+    margin-bottom: 0;
+  }
+
+  .readability-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .readability-card__title {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+  }
+
+  .readability-card__badge {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .readability-card__badge.badge-good {
+    background: rgba(138, 112, 40, 0.12);
+    color: var(--gold-dark);
+  }
+
+  .readability-card__badge.badge-ok {
+    background: rgba(255, 200, 0, 0.12);
+    color: #B89200;
+  }
+
+  .readability-card__badge.badge-weak {
+    background: rgba(255, 80, 60, 0.1);
+    color: #CC4030;
+  }
+
+  .readability-card__value {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    opacity: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .readability-card__hint {
+    font-size: 0.78rem;
+    opacity: 0.45;
+  }
+
+  /* Nudge */
+  .readability-nudge {
+    margin-top: var(--space-lg);
+  }
+
+  .readability-nudge__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .readability-nudge__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Tips */
+  .readability-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .readability-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 900px) {
+    .readability-score-wrap {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .readability-score-section {
+      padding: var(--space-xl);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .readability-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .readability-score-section {
+      padding: var(--space-lg);
+    }
+
+    .readability-input-footer {
+      flex-direction: column;
+      gap: var(--space-sm);
+      align-items: stretch;
+    }
+  }
+</style>
+
+<script is:inline>
+  var readabilityInput = document.getElementById('readabilityInput');
+  var readabilitySubmit = document.getElementById('readabilitySubmit');
+  var readabilityResults = document.getElementById('readabilityResults');
+  var charCountEl = document.getElementById('charCount');
+  var scoreNumber = document.getElementById('scoreNumber');
+  var scoreCircle = document.getElementById('scoreCircle');
+  var scoreGrade = document.getElementById('scoreGrade');
+  var scoreFeedback = document.getElementById('scoreFeedback');
+  var nudgeText = document.getElementById('nudgeText');
+
+  // Update character count on input
+  readabilityInput.addEventListener('input', function() {
+    var len = readabilityInput.value.length;
+    charCountEl.textContent = len + ' character' + (len !== 1 ? 's' : '');
+  });
+
+  function countSyllables(word) {
+    word = word.toLowerCase().replace(/[^a-z]/g, '');
+    if (!word) return 0;
+    if (word.length <= 3) return 1;
+
+    // Remove silent e at end
+    word = word.replace(/(?:[^leas]ed|[^aeiou]e)$/, '');
+    word = word.replace(/^re/, 're');
+
+    // Count vowel groups
+    var matches = word.match(/[aeiouy]+/g);
+    var count = matches ? matches.length : 1;
+    return Math.max(count, 1);
+  }
+
+  function splitSentences(text) {
+    // Split on .!? followed by space or end of string
+    var sentences = text.split(/[.!?]+(?:\s|$)/).filter(function(s) {
+      return s.trim().length > 0;
+    });
+    return sentences;
+  }
+
+  function analyzeReadability(text) {
+    text = text.trim();
+    if (!text) return;
+
+    readabilityResults.style.display = 'block';
+
+    var sentences = splitSentences(text);
+    var sentenceCount = Math.max(sentences.length, 1);
+
+    var words = text.split(/\s+/).filter(function(w) { return w.replace(/[^a-zA-Z0-9]/g, '').length > 0; });
+    var wordCount = words.length;
+
+    if (wordCount < 3) {
+      scoreNumber.textContent = '--';
+      scoreCircle.style.strokeDashoffset = 440;
+      scoreGrade.textContent = 'Too Short';
+      scoreGrade.className = 'readability-score-grade grade-difficult';
+      scoreFeedback.textContent = 'Please enter at least a few sentences for an accurate score.';
+      return;
+    }
+
+    // Count syllables
+    var totalSyllables = 0;
+    words.forEach(function(w) {
+      totalSyllables += countSyllables(w);
+    });
+
+    var avgSentenceLength = wordCount / sentenceCount;
+    var avgSyllablesPerWord = totalSyllables / wordCount;
+
+    // Flesch Reading Ease: 206.835 - 1.015 * (words/sentences) - 84.6 * (syllables/words)
+    var fleschScore = 206.835 - (1.015 * avgSentenceLength) - (84.6 * avgSyllablesPerWord);
+    fleschScore = Math.max(0, Math.min(100, Math.round(fleschScore)));
+
+    // Flesch-Kincaid Grade Level: 0.39 * (words/sentences) + 11.8 * (syllables/words) - 15.59
+    var gradeLevel = (0.39 * avgSentenceLength) + (11.8 * avgSyllablesPerWord) - 15.59;
+    gradeLevel = Math.max(0, Math.round(gradeLevel * 10) / 10);
+
+    // Animate score ring
+    scoreNumber.textContent = fleschScore;
+    var circumference = 2 * Math.PI * 70;
+    var offset = circumference - (fleschScore / 100) * circumference;
+    scoreCircle.style.strokeDashoffset = offset;
+
+    // Grade and feedback
+    var grade, gradeClass, feedback;
+    if (fleschScore >= 70) {
+      grade = 'Easy to Read';
+      gradeClass = 'grade-easy';
+      feedback = 'Your text is easy to understand. Most web readers will find this comfortable and engaging.';
+    } else if (fleschScore >= 50) {
+      grade = 'Moderate';
+      gradeClass = 'grade-moderate';
+      feedback = 'Fairly readable. Consider simplifying some sentences or using shorter words to improve flow.';
+    } else if (fleschScore >= 30) {
+      grade = 'Difficult';
+      gradeClass = 'grade-difficult';
+      feedback = 'This text is hard to read for a general audience. Try breaking up long sentences and replacing complex words.';
+    } else {
+      grade = 'Very Hard';
+      gradeClass = 'grade-hard';
+      feedback = 'This text is very dense. Unless writing for specialists, simplify sentence structure and word choice significantly.';
+    }
+
+    scoreGrade.textContent = grade;
+    scoreGrade.className = 'readability-score-grade ' + gradeClass;
+    scoreFeedback.textContent = feedback;
+
+    // Grade Level card
+    var gradeBadge = gradeLevel <= 8 ? 'good' : (gradeLevel <= 12 ? 'ok' : 'weak');
+    var gradeText = 'Grade ' + gradeLevel;
+    if (gradeLevel <= 6) gradeText += ' (elementary)';
+    else if (gradeLevel <= 8) gradeText += ' (middle school)';
+    else if (gradeLevel <= 12) gradeText += ' (high school)';
+    else gradeText += ' (college level)';
+
+    document.getElementById('valueGrade').textContent = gradeText;
+    var badgeGrade = document.getElementById('badgeGrade');
+    badgeGrade.textContent = gradeBadge === 'good' ? 'Good' : (gradeBadge === 'ok' ? 'OK' : 'High');
+    badgeGrade.className = 'readability-card__badge badge-' + gradeBadge;
+
+    // Sentence Length card
+    var sentAvg = Math.round(avgSentenceLength * 10) / 10;
+    var sentBadge = sentAvg <= 20 ? 'good' : (sentAvg <= 25 ? 'ok' : 'weak');
+    document.getElementById('valueSentence').textContent = sentAvg + ' words per sentence';
+    var badgeSentence = document.getElementById('badgeSentence');
+    badgeSentence.textContent = sentBadge === 'good' ? 'Good' : (sentBadge === 'ok' ? 'OK' : 'Long');
+    badgeSentence.className = 'readability-card__badge badge-' + sentBadge;
+
+    // Word Count card
+    var wordBadge = 'good';
+    document.getElementById('valueWords').textContent = wordCount + ' words, ' + sentenceCount + ' sentences';
+    var badgeWords = document.getElementById('badgeWords');
+    badgeWords.textContent = wordCount + '';
+    badgeWords.className = 'readability-card__badge badge-good';
+
+    // Syllables card
+    var syllAvg = Math.round(avgSyllablesPerWord * 100) / 100;
+    var syllBadge = syllAvg <= 1.5 ? 'good' : (syllAvg <= 1.8 ? 'ok' : 'weak');
+    document.getElementById('valueSyllables').textContent = syllAvg + ' syllables per word';
+    var badgeSyllables = document.getElementById('badgeSyllables');
+    badgeSyllables.textContent = syllBadge === 'good' ? 'Simple' : (syllBadge === 'ok' ? 'OK' : 'Complex');
+    badgeSyllables.className = 'readability-card__badge badge-' + syllBadge;
+
+    // Dynamic nudge
+    if (gradeLevel > 10) {
+      nudgeText.textContent = 'Your content reads at a college level. For web content, aim for grade 6-8. Try replacing long words and splitting complex sentences.';
+    } else if (avgSentenceLength > 22) {
+      nudgeText.textContent = 'Your sentences are on the long side. Try breaking them into shorter ones. Readers scan online -- shorter sentences keep them moving.';
+    } else if (fleschScore >= 70) {
+      nudgeText.textContent = 'Nice work -- your text is easy to read. This level of clarity keeps bounce rates low and engagement high.';
+    } else {
+      nudgeText.textContent = 'Web content performs best at a 6th-8th grade reading level. Shorter sentences and simpler words keep readers engaged longer.';
+    }
+
+    readabilityResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  readabilitySubmit.addEventListener('click', function() {
+    analyzeReadability(readabilityInput.value);
+  });
+
+  readabilityInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && e.ctrlKey) {
+      analyzeReadability(readabilityInput.value);
+    }
+  });
+</script>

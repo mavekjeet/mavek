@@ -4,60 +4,150 @@ import Nav from '../../components/Nav.astro';
 import CTASection from '../../components/CTASection.astro';
 import Footer from '../../components/Footer.astro';
 
-const tools = [
+const sections = [
   {
-    title: "Marketing ROI Calculator",
-    description: "See exactly how much you could save by switching from a traditional marketing team to Mavek. Input your budget and team size to get instant results.",
-    href: "/tools/marketing-roi-calculator",
-    icon: "chart",
+    label: "SEO Tools",
+    description: "Optimize your pages for search engines with these technical SEO tools.",
+    tools: [
+      {
+        title: "SERP Preview",
+        description: "See exactly how your page will appear in Google search results. Check title truncation, description length, and URL display in real time.",
+        href: "/tools/serp-preview",
+        icon: "search",
+      },
+      {
+        title: "Google SERP Simulator",
+        description: "Simulate a full Google search results page. Add multiple listings to see how your page stacks up visually against competitors.",
+        href: "/tools/serp-simulator",
+        icon: "serp",
+      },
+      {
+        title: "On-Page SEO Auditor",
+        description: "Paste your HTML and get an instant SEO audit. Check title tags, meta descriptions, headings, images, links, and structured data.",
+        href: "/tools/onpage-seo-auditor",
+        icon: "audit",
+      },
+      {
+        title: "Meta Tag Generator",
+        description: "Generate ready-to-copy HTML meta tags including Open Graph and Twitter Card markup. Fill in your page details and get perfect tags.",
+        href: "/tools/meta-tag-generator",
+        icon: "code",
+      },
+      {
+        title: "Schema Markup Generator",
+        description: "Create valid JSON-LD structured data for rich snippets. Generate FAQ, Article, LocalBusiness, Product, HowTo, and Organization schema.",
+        href: "/tools/schema-generator",
+        icon: "schema",
+      },
+      {
+        title: "Keyword Density Analyzer",
+        description: "Analyze keyword frequency in your content. See 1, 2, and 3-word phrase counts with percentage breakdowns to avoid over-optimization.",
+        href: "/tools/keyword-density-analyzer",
+        icon: "density",
+      },
+    ],
   },
   {
-    title: "UTM Link Builder",
-    description: "Build perfectly formatted UTM tracking URLs in seconds. Never mess up campaign attribution again with our simple, copy-ready URL generator.",
-    href: "/tools/utm-builder",
-    icon: "link",
+    label: "Content Tools",
+    description: "Write better headlines, check readability, and create cleaner URLs.",
+    tools: [
+      {
+        title: "Headline Analyzer",
+        description: "Score your headlines before you publish. Get data-driven feedback on character count, word balance, power words, and emotional impact.",
+        href: "/tools/headline-analyzer",
+        icon: "pen",
+      },
+      {
+        title: "Readability Scorer",
+        description: "Check your content's readability with Flesch-Kincaid scoring. Get instant grade level, reading ease, and sentence complexity analysis.",
+        href: "/tools/readability-scorer",
+        icon: "readability",
+      },
+      {
+        title: "Slug Generator",
+        description: "Convert any title into a clean, SEO-friendly URL slug. Lowercase, hyphenated, special characters stripped, with optional stop word removal.",
+        href: "/tools/slug-generator",
+        icon: "slug",
+      },
+    ],
   },
   {
-    title: "Headline Analyzer",
-    description: "Score your headlines before you publish. Get data-driven feedback on character count, word balance, power words, and emotional impact.",
-    href: "/tools/headline-analyzer",
-    icon: "pen",
+    label: "Technical Tools",
+    description: "Generate sitemaps, hreflang tags, robots.txt, and other technical assets.",
+    tools: [
+      {
+        title: "XML Sitemap Generator",
+        description: "Generate a valid XML sitemap from a list of URLs. Set changefreq, priority, and lastmod. Download as a ready-to-submit .xml file.",
+        href: "/tools/xml-sitemap-generator",
+        icon: "sitemap",
+      },
+      {
+        title: "Robots.txt Generator",
+        description: "Build a properly formatted robots.txt file with our visual editor. Control how search engines and AI bots crawl your site.",
+        href: "/tools/robots-txt-generator",
+        icon: "robot",
+      },
+      {
+        title: "Hreflang Tag Generator",
+        description: "Generate hreflang link tags for multilingual sites. Pick language, region, and URLs to get valid alternate link tags with x-default support.",
+        href: "/tools/hreflang-generator",
+        icon: "globe",
+      },
+      {
+        title: "Open Graph Preview",
+        description: "Preview how your links will appear when shared on Facebook, Twitter/X, and LinkedIn. Catch display issues before your audience does.",
+        href: "/tools/open-graph-preview",
+        icon: "share",
+      },
+      {
+        title: "UTM Link Builder",
+        description: "Build perfectly formatted UTM tracking URLs in seconds. Never mess up campaign attribution again with our simple, copy-ready URL generator.",
+        href: "/tools/utm-builder",
+        icon: "link",
+      },
+    ],
   },
   {
-    title: "SERP Preview",
-    description: "See exactly how your page will appear in Google search results. Check title truncation, description length, and URL display in real time.",
-    href: "/tools/serp-preview",
-    icon: "search",
+    label: "Performance Tools",
+    description: "Test and improve your site speed, Core Web Vitals, and Lighthouse scores.",
+    tools: [
+      {
+        title: "Page Speed Insights",
+        description: "Run a full Lighthouse audit on any URL. Get performance, accessibility, best practices, and SEO scores plus Core Web Vitals and fix recommendations.",
+        href: "/tools/page-speed-insights",
+        icon: "speed",
+      },
+    ],
   },
   {
-    title: "On-Page SEO Auditor",
-    description: "Paste your HTML and get an instant SEO audit. Check title tags, meta descriptions, headings, images, links, and structured data.",
-    href: "/tools/onpage-seo-auditor",
-    icon: "audit",
+    label: "Image Tools",
+    description: "Compress images and generate favicons for faster, better-looking sites.",
+    tools: [
+      {
+        title: "Image Compressor",
+        description: "Compress images in your browser with adjustable quality. See before/after file sizes instantly. Your images never leave your device.",
+        href: "/tools/image-compressor",
+        icon: "image",
+      },
+      {
+        title: "Favicon Generator",
+        description: "Upload an image and get favicons in every size -- 16x16, 32x32, 48x48, 192x192, and 512x512. Download individually with ready-to-copy HTML.",
+        href: "/tools/favicon-generator",
+        icon: "favicon",
+      },
+    ],
   },
   {
-    title: "Meta Tag Generator",
-    description: "Generate ready-to-copy HTML meta tags including Open Graph and Twitter Card markup. Fill in your page details and get perfect tags.",
-    href: "/tools/meta-tag-generator",
-    icon: "code",
-  },
-  {
-    title: "Open Graph Preview",
-    description: "Preview how your links will appear when shared on Facebook, Twitter/X, and LinkedIn. Catch display issues before your audience does.",
-    href: "/tools/open-graph-preview",
-    icon: "share",
-  },
-  {
-    title: "Schema Markup Generator",
-    description: "Create valid JSON-LD structured data for rich snippets. Generate FAQ, Article, LocalBusiness, Product, HowTo, and Organization schema.",
-    href: "/tools/schema-generator",
-    icon: "schema",
-  },
-  {
-    title: "Robots.txt Generator",
-    description: "Build a properly formatted robots.txt file with our visual editor. Control how search engines and AI bots crawl your site.",
-    href: "/tools/robots-txt-generator",
-    icon: "robot",
+    label: "Business Tools",
+    description: "Calculate ROI and make data-driven marketing decisions.",
+    tools: [
+      {
+        title: "Marketing ROI Calculator",
+        description: "See exactly how much you could save by switching from a traditional marketing team to Mavek. Input your budget and team size to get instant results.",
+        href: "/tools/marketing-roi-calculator",
+        icon: "chart",
+      },
+    ],
   },
 ];
 ---
@@ -75,11 +165,16 @@ const tools = [
     </div>
   </section>
 
+  {sections.map((section) => (
   <section class="light tools-grid-section">
     <div class="container">
+      <div class="tools-section-header">
+        <h2 class="tools-section-label">{section.label}</h2>
+        <p class="tools-section-desc">{section.description}</p>
+      </div>
       <div class="grid-3">
-        {tools.map((tool, i) => (
-          <a href={tool.href} class="card tool-card reveal" style={`transition-delay: ${i * 0.08}s`}>
+        {section.tools.map((tool) => (
+          <a href={tool.href} class="card tool-card">
             <div class="tool-card__icon">
               {tool.icon === "chart" && (
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -140,6 +235,65 @@ const tools = [
                   <path d="M16 4v6" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
                 </svg>
               )}
+              {tool.icon === "readability" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 8h20M6 14h14M6 20h18M6 26h10" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              )}
+              {tool.icon === "density" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="6" width="24" height="4" rx="1" fill="var(--gold-dark)" />
+                  <rect x="4" y="14" width="16" height="4" rx="1" fill="var(--gold-dark)" opacity="0.6" />
+                  <rect x="4" y="22" width="10" height="4" rx="1" fill="var(--gold-dark)" opacity="0.35" />
+                </svg>
+              )}
+              {tool.icon === "sitemap" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="12" y="4" width="8" height="6" rx="1" stroke="var(--gold-dark)" stroke-width="2" />
+                  <rect x="4" y="22" width="8" height="6" rx="1" stroke="var(--gold-dark)" stroke-width="2" />
+                  <rect x="20" y="22" width="8" height="6" rx="1" stroke="var(--gold-dark)" stroke-width="2" />
+                  <path d="M16 10v4M16 14H8v8M16 14h8v8" stroke="var(--gold-dark)" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              )}
+              {tool.icon === "globe" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="16" cy="16" r="11" stroke="var(--gold-dark)" stroke-width="2.5" />
+                  <ellipse cx="16" cy="16" rx="5" ry="11" stroke="var(--gold-dark)" stroke-width="2" />
+                  <path d="M5 16h22" stroke="var(--gold-dark)" stroke-width="2" />
+                </svg>
+              )}
+              {tool.icon === "slug" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 16h20" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M12 10l-2 12M22 10l-2 12" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              )}
+              {tool.icon === "image" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="6" width="24" height="20" rx="2" stroke="var(--gold-dark)" stroke-width="2.5" />
+                  <circle cx="12" cy="14" r="3" stroke="var(--gold-dark)" stroke-width="2" />
+                  <path d="M4 22l7-5 4 3 5-4 8 6" stroke="var(--gold-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              )}
+              {tool.icon === "favicon" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="6" y="6" width="20" height="20" rx="4" stroke="var(--gold-dark)" stroke-width="2.5" />
+                  <rect x="11" y="11" width="10" height="10" rx="2" fill="var(--gold-dark)" opacity="0.4" />
+                </svg>
+              )}
+              {tool.icon === "serp" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="4" width="24" height="24" rx="3" stroke="var(--gold-dark)" stroke-width="2" />
+                  <path d="M8 10h16M8 15h12M8 20h14" stroke="var(--gold-dark)" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              )}
+              {tool.icon === "speed" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 22a12 12 0 0120 0" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M16 20l4-8" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx="16" cy="20" r="2" fill="var(--gold-dark)" />
+                </svg>
+              )}
             </div>
             <h3 class="tool-card__title">{tool.title}</h3>
             <p class="tool-card__desc">{tool.description}</p>
@@ -149,6 +303,7 @@ const tools = [
       </div>
     </div>
   </section>
+  ))}
 
   <CTASection
     title="Need more than free tools?"
@@ -178,6 +333,27 @@ const tools = [
 
   .tools-grid-section {
     padding-top: 0;
+    padding-bottom: var(--space-lg);
+  }
+
+  .tools-grid-section + .tools-grid-section {
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(26, 26, 24, 0.06);
+  }
+
+  .tools-section-header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .tools-section-label {
+    font-size: 1.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .tools-section-desc {
+    font-size: 0.95rem;
+    opacity: 0.55;
+    max-width: 480px;
   }
 
   .tool-card {

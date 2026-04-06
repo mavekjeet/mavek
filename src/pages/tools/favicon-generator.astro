@@ -1,0 +1,464 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Favicon Generator" description="Upload an image and generate favicons in all sizes. Get 16x16, 32x32, 48x48, 192x192, and 512x512 PNG files. Pure client-side, no signup required.">
+  <Nav />
+
+  <section class="light favicon-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="favicon-hero__content reveal">
+        <span class="sec-label">Favicon Generator</span>
+        <h1>Generate favicons <em>in every size</em>.</h1>
+        <p class="favicon-hero__lead">Upload your logo or icon and instantly get properly sized favicon files for browsers, tabs, bookmarks, and mobile home screens.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light favicon-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="favicon-tool reveal">
+        <div class="favicon-upload" id="uploadArea">
+          <input type="file" id="fileInput" accept="image/*" style="display: none;" />
+          <div class="favicon-upload__content">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 32V16M24 16l-6 6M24 16l6 6" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              <rect x="8" y="8" width="32" height="32" rx="4" stroke="var(--gold-dark)" stroke-width="2" />
+            </svg>
+            <p class="favicon-upload__text">Drop an image here or <span class="favicon-upload__link">click to upload</span></p>
+            <p class="favicon-upload__hint">Use a square image for best results (PNG, JPG, SVG)</p>
+          </div>
+        </div>
+
+        <div class="favicon-results" id="resultsSection" style="display: none;">
+          <div class="favicon-preview dark">
+            <h4>Preview</h4>
+            <div class="favicon-preview__grid">
+              <div class="favicon-preview__item">
+                <canvas id="preview16" width="16" height="16"></canvas>
+                <span>16x16</span>
+              </div>
+              <div class="favicon-preview__item">
+                <canvas id="preview32" width="32" height="32"></canvas>
+                <span>32x32</span>
+              </div>
+              <div class="favicon-preview__item">
+                <canvas id="preview48" width="48" height="48"></canvas>
+                <span>48x48</span>
+              </div>
+              <div class="favicon-preview__item">
+                <canvas id="preview192" width="192" height="192"></canvas>
+                <span>192x192</span>
+              </div>
+              <div class="favicon-preview__item">
+                <canvas id="preview512" width="512" height="512"></canvas>
+                <span>512x512</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="favicon-downloads">
+            <h4>Download Individual Sizes</h4>
+            <div class="favicon-downloads__grid">
+              <button class="btn btn--secondary favicon-dl-btn" data-size="16">16x16 PNG</button>
+              <button class="btn btn--secondary favicon-dl-btn" data-size="32">32x32 PNG</button>
+              <button class="btn btn--secondary favicon-dl-btn" data-size="48">48x48 PNG</button>
+              <button class="btn btn--secondary favicon-dl-btn" data-size="192">192x192 PNG</button>
+              <button class="btn btn--secondary favicon-dl-btn" data-size="512">512x512 PNG</button>
+            </div>
+          </div>
+
+          <div class="favicon-code">
+            <h4>HTML Code</h4>
+            <div class="favicon-code__wrap">
+              <pre class="favicon-code__block" id="faviconCode"></pre>
+              <button class="btn btn--secondary favicon-code__copy" id="copyCodeBtn">Copy</button>
+            </div>
+            <span class="favicon-copied" id="copiedMsg" style="display: none;">Copied to clipboard</span>
+          </div>
+
+          <div class="favicon-actions">
+            <button class="btn btn--secondary" id="resetBtn">Upload Another Image</button>
+          </div>
+        </div>
+
+        <div class="favicon-nudge">
+          <div class="card">
+            <span class="favicon-nudge__label">Mavek Tip</span>
+            <p class="favicon-nudge__text">A good favicon is recognizable at 16x16 pixels. Use a simplified version of your logo -- avoid text and fine details. The 192x192 and 512x512 sizes are used for Android home screens and PWA splash screens.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="favicon-tips reveal">
+        <div class="favicon-tips__header">
+          <span class="sec-label">Favicon Tips</span>
+          <h2>Get your favicon <em>right</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Start with a square image</h4>
+            <p>Favicons are always square. If your logo is wide, use just the icon or lettermark. Non-square images will be stretched.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Include all sizes</h4>
+            <p>Browsers use 16x16 and 32x32 for tabs. Android uses 192x192 for home screen icons. PWAs need 512x512 for splash screens.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Test on dark backgrounds</h4>
+            <p>Browser tabs and bookmarks bars can be dark. Make sure your favicon is visible against both light and dark backgrounds.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek build your brand online"
+    subtitle="From favicon to full brand presence -- our AI creates consistent, professional marketing assets across every channel."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .favicon-hero__content {
+    max-width: 640px;
+  }
+
+  .favicon-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .favicon-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .favicon-tool {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Upload */
+  .favicon-upload {
+    border: 2px dashed rgba(26, 26, 24, 0.15);
+    border-radius: 10px;
+    padding: var(--space-2xl);
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    margin-bottom: var(--space-lg);
+  }
+
+  .favicon-upload:hover,
+  .favicon-upload.dragover {
+    border-color: var(--gold-dark);
+    background: rgba(138, 112, 40, 0.04);
+  }
+
+  .favicon-upload__text {
+    font-size: 1rem;
+    margin: var(--space-sm) 0 0.5rem;
+  }
+
+  .favicon-upload__link {
+    color: var(--gold-dark);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .favicon-upload__hint {
+    font-size: 0.8rem;
+    opacity: 0.4;
+  }
+
+  /* Preview */
+  .favicon-preview {
+    background: var(--dark);
+    padding: var(--space-xl);
+    color: #F5F5F7;
+    margin-bottom: var(--space-lg);
+  }
+
+  .favicon-preview h4 {
+    margin-bottom: var(--space-md);
+    color: #F5F5F7;
+  }
+
+  .favicon-preview__grid {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+  }
+
+  .favicon-preview__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .favicon-preview__item canvas {
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px;
+    image-rendering: pixelated;
+  }
+
+  .favicon-preview__item span {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    opacity: 0.4;
+  }
+
+  /* Scale up small canvases for visibility */
+  #preview16 { width: 32px; height: 32px; }
+  #preview32 { width: 48px; height: 48px; }
+  #preview48 { width: 64px; height: 64px; }
+  #preview192 { width: 96px; height: 96px; }
+  #preview512 { width: 128px; height: 128px; }
+
+  /* Downloads */
+  .favicon-downloads {
+    margin-bottom: var(--space-lg);
+  }
+
+  .favicon-downloads h4 {
+    margin-bottom: var(--space-md);
+  }
+
+  .favicon-downloads__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .favicon-dl-btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Code */
+  .favicon-code {
+    margin-bottom: var(--space-lg);
+    position: relative;
+  }
+
+  .favicon-code h4 {
+    margin-bottom: var(--space-sm);
+  }
+
+  .favicon-code__wrap {
+    position: relative;
+  }
+
+  .favicon-code__block {
+    background: var(--dark);
+    color: #c9d1d9;
+    padding: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  .favicon-code__copy {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  .favicon-copied {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+
+  /* Actions */
+  .favicon-actions {
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Nudge */
+  .favicon-nudge__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .favicon-nudge__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Tips */
+  .favicon-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .favicon-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .favicon-preview__grid {
+      justify-content: center;
+    }
+
+    .favicon-downloads__grid {
+      flex-direction: column;
+    }
+
+    .favicon-upload {
+      padding: var(--space-xl);
+    }
+  }
+</style>
+
+<script is:inline>
+  var SIZES = [16, 32, 48, 192, 512];
+  var uploadArea = document.getElementById('uploadArea');
+  var fileInput = document.getElementById('fileInput');
+  var resultsSection = document.getElementById('resultsSection');
+  var faviconCode = document.getElementById('faviconCode');
+  var copyCodeBtn = document.getElementById('copyCodeBtn');
+  var copiedMsg = document.getElementById('copiedMsg');
+  var resetBtn = document.getElementById('resetBtn');
+  var canvases = {};
+  var generatedCode = '';
+
+  SIZES.forEach(function(size) {
+    canvases[size] = document.getElementById('preview' + size);
+  });
+
+  function generateFavicons(file) {
+    var img = new Image();
+    img.onload = function() {
+      SIZES.forEach(function(size) {
+        var canvas = canvases[size];
+        canvas.width = size;
+        canvas.height = size;
+        var ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, size, size);
+        ctx.drawImage(img, 0, 0, size, size);
+      });
+
+      // Generate HTML code
+      generatedCode =
+        '<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">\n' +
+        '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">\n' +
+        '<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">\n' +
+        '<link rel="apple-touch-icon" sizes="192x192" href="/favicon-192x192.png">\n' +
+        '<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">';
+      faviconCode.textContent = generatedCode;
+
+      uploadArea.style.display = 'none';
+      resultsSection.style.display = 'block';
+      resultsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    };
+    img.src = URL.createObjectURL(file);
+  }
+
+  function downloadSize(size) {
+    var canvas = canvases[size];
+    canvas.toBlob(function(blob) {
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'favicon-' + size + 'x' + size + '.png';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 'image/png');
+  }
+
+  // Click upload
+  uploadArea.addEventListener('click', function() {
+    fileInput.click();
+  });
+
+  fileInput.addEventListener('change', function(e) {
+    if (e.target.files.length > 0) generateFavicons(e.target.files[0]);
+  });
+
+  // Drag & drop
+  uploadArea.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    uploadArea.classList.add('dragover');
+  });
+
+  uploadArea.addEventListener('dragleave', function() {
+    uploadArea.classList.remove('dragover');
+  });
+
+  uploadArea.addEventListener('drop', function(e) {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    if (e.dataTransfer.files.length > 0) generateFavicons(e.dataTransfer.files[0]);
+  });
+
+  // Download buttons
+  document.querySelectorAll('.favicon-dl-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var size = parseInt(btn.getAttribute('data-size'));
+      downloadSize(size);
+    });
+  });
+
+  // Copy code
+  copyCodeBtn.addEventListener('click', function() {
+    navigator.clipboard.writeText(generatedCode).then(function() {
+      copiedMsg.style.display = 'block';
+      setTimeout(function() { copiedMsg.style.display = 'none'; }, 2000);
+    });
+  });
+
+  // Reset
+  resetBtn.addEventListener('click', function() {
+    fileInput.value = '';
+    resultsSection.style.display = 'none';
+    uploadArea.style.display = 'block';
+  });
+</script>

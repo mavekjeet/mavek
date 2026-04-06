@@ -1,0 +1,536 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Hreflang Tag Generator" description="Generate hreflang link tags for multilingual and multi-regional websites. Select language and region, add URLs, and get ready-to-copy HTML tags.">
+  <Nav />
+
+  <section class="light hreflang-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="hreflang-hero__content reveal">
+        <span class="sec-label">Hreflang Tag Generator</span>
+        <h1>Get your hreflang tags <em>right the first time</em>.</h1>
+        <p class="hreflang-hero__lead">Add your language and region variants, and we'll generate valid hreflang link tags you can paste straight into your HTML head.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light hreflang-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="hreflang-tool reveal">
+        <div class="hreflang-entries" id="hreflangEntries">
+          <div class="hreflang-entry" data-index="0">
+            <div class="hreflang-entry__fields">
+              <div class="hreflang-field">
+                <label class="hreflang-field__label">Language *</label>
+                <select class="hreflang-select lang-select">
+                  <option value="">Select language</option>
+                  <option value="en" selected>English</option>
+                  <option value="es">Spanish</option>
+                  <option value="fr">French</option>
+                  <option value="de">German</option>
+                  <option value="it">Italian</option>
+                  <option value="pt">Portuguese</option>
+                  <option value="nl">Dutch</option>
+                  <option value="ru">Russian</option>
+                  <option value="ja">Japanese</option>
+                  <option value="zh">Chinese</option>
+                  <option value="ko">Korean</option>
+                  <option value="ar">Arabic</option>
+                  <option value="hi">Hindi</option>
+                  <option value="sv">Swedish</option>
+                  <option value="da">Danish</option>
+                  <option value="fi">Finnish</option>
+                  <option value="no">Norwegian</option>
+                  <option value="pl">Polish</option>
+                  <option value="tr">Turkish</option>
+                  <option value="th">Thai</option>
+                  <option value="vi">Vietnamese</option>
+                  <option value="id">Indonesian</option>
+                  <option value="ms">Malay</option>
+                  <option value="cs">Czech</option>
+                  <option value="el">Greek</option>
+                  <option value="he">Hebrew</option>
+                  <option value="hu">Hungarian</option>
+                  <option value="ro">Romanian</option>
+                  <option value="uk">Ukrainian</option>
+                </select>
+              </div>
+              <div class="hreflang-field">
+                <label class="hreflang-field__label">Region (optional)</label>
+                <select class="hreflang-select region-select">
+                  <option value="">None</option>
+                  <option value="US" selected>United States</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="CA">Canada</option>
+                  <option value="AU">Australia</option>
+                  <option value="IN">India</option>
+                  <option value="DE">Germany</option>
+                  <option value="FR">France</option>
+                  <option value="ES">Spain</option>
+                  <option value="MX">Mexico</option>
+                  <option value="BR">Brazil</option>
+                  <option value="PT">Portugal</option>
+                  <option value="IT">Italy</option>
+                  <option value="NL">Netherlands</option>
+                  <option value="BE">Belgium</option>
+                  <option value="CH">Switzerland</option>
+                  <option value="AT">Austria</option>
+                  <option value="JP">Japan</option>
+                  <option value="CN">China</option>
+                  <option value="KR">South Korea</option>
+                  <option value="RU">Russia</option>
+                  <option value="SE">Sweden</option>
+                  <option value="NO">Norway</option>
+                  <option value="DK">Denmark</option>
+                  <option value="FI">Finland</option>
+                  <option value="PL">Poland</option>
+                  <option value="IE">Ireland</option>
+                  <option value="NZ">New Zealand</option>
+                  <option value="SG">Singapore</option>
+                  <option value="ZA">South Africa</option>
+                  <option value="AR">Argentina</option>
+                  <option value="CL">Chile</option>
+                  <option value="CO">Colombia</option>
+                </select>
+              </div>
+              <div class="hreflang-field hreflang-field--url">
+                <label class="hreflang-field__label">URL *</label>
+                <input type="url" class="hreflang-url-input url-input" placeholder="https://example.com/" />
+              </div>
+            </div>
+            <button class="hreflang-remove" title="Remove">&times;</button>
+          </div>
+        </div>
+
+        <div class="hreflang-actions">
+          <button class="btn btn--secondary hreflang-add" id="addEntryBtn">+ Add Language Variant</button>
+          <div class="hreflang-x-default">
+            <label class="hreflang-checkbox-label">
+              <input type="checkbox" id="xDefaultCheck" checked />
+              <span>Include x-default (fallback) tag</span>
+            </label>
+            <input type="url" class="hreflang-url-input" id="xDefaultUrl" placeholder="https://example.com/" style="margin-top: 0.5rem;" />
+          </div>
+        </div>
+
+        <button class="btn btn--primary hreflang-generate" id="generateBtn">Generate Tags <span>&rarr;</span></button>
+
+        <div class="hreflang-output" id="hreflangOutput" style="display: none;">
+          <div class="hreflang-output__header">
+            <h4>Generated Hreflang Tags</h4>
+            <button class="btn btn--secondary hreflang-copy" id="copyBtn">Copy</button>
+          </div>
+          <pre class="hreflang-code" id="hreflangCode"></pre>
+          <span class="hreflang-copied" id="copiedMsg" style="display: none;">Copied to clipboard</span>
+        </div>
+
+        <div class="hreflang-nudge" id="hreflangNudge" style="display: none;">
+          <div class="card">
+            <span class="hreflang-nudge__label">Mavek Tip</span>
+            <p class="hreflang-nudge__text">Paste these tags inside the &lt;head&gt; section of each corresponding page. Every page referenced in hreflang must link back to all other variants -- including itself.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="hreflang-tips reveal">
+        <div class="hreflang-tips__header">
+          <span class="sec-label">SEO Tips</span>
+          <h2>Hreflang tags <em>done right</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Always use return links</h4>
+            <p>If page A links to page B with hreflang, page B must link back to page A. Missing return links are the #1 hreflang error.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Include x-default</h4>
+            <p>The x-default tag tells Google which page to show when no language/region match is found. Usually your main English page.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Use canonical + hreflang together</h4>
+            <p>Each page should have both a canonical tag and hreflang tags. They serve different purposes and work together for proper indexing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek manage your international SEO"
+    subtitle="Our AI handles hreflang, localized content, and technical SEO for multi-language sites -- so nothing falls through the cracks."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .hreflang-hero__content {
+    max-width: 640px;
+  }
+
+  .hreflang-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .hreflang-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .hreflang-tool {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Entries */
+  .hreflang-entry {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-end;
+    padding: var(--space-md);
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.06);
+    border-radius: 10px;
+    margin-bottom: var(--space-sm);
+  }
+
+  .hreflang-entry__fields {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: var(--space-sm);
+  }
+
+  .hreflang-field__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    opacity: 0.6;
+  }
+
+  .hreflang-select,
+  .hreflang-url-input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    background: #fff;
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .hreflang-select:focus,
+  .hreflang-url-input:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .hreflang-remove {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--ink);
+    opacity: 0.3;
+    cursor: pointer;
+    padding: 0.4rem;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .hreflang-remove:hover {
+    opacity: 0.8;
+    color: #CC4030;
+  }
+
+  /* Actions */
+  .hreflang-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: var(--space-md) 0 var(--space-lg);
+    gap: var(--space-md);
+  }
+
+  .hreflang-add {
+    white-space: nowrap;
+  }
+
+  .hreflang-x-default {
+    flex: 1;
+    max-width: 400px;
+  }
+
+  .hreflang-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .hreflang-checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--gold-dark);
+  }
+
+  .hreflang-generate {
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Output */
+  .hreflang-output {
+    margin-bottom: var(--space-lg);
+    position: relative;
+  }
+
+  .hreflang-output__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-sm);
+  }
+
+  .hreflang-output__header h4 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .hreflang-output__header .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .hreflang-code {
+    background: var(--dark);
+    color: #c9d1d9;
+    padding: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .hreflang-copied {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 0;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+
+  /* Nudge */
+  .hreflang-nudge__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hreflang-nudge__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Tips */
+  .hreflang-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hreflang-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 768px) {
+    .hreflang-entry__fields {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hreflang-field--url {
+      grid-column: 1 / -1;
+    }
+
+    .hreflang-actions {
+      flex-direction: column;
+    }
+
+    .hreflang-x-default {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hreflang-entry__fields {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script is:inline>
+  var entriesContainer = document.getElementById('hreflangEntries');
+  var addEntryBtn = document.getElementById('addEntryBtn');
+  var generateBtn = document.getElementById('generateBtn');
+  var hreflangOutput = document.getElementById('hreflangOutput');
+  var hreflangCode = document.getElementById('hreflangCode');
+  var copyBtn = document.getElementById('copyBtn');
+  var copiedMsg = document.getElementById('copiedMsg');
+  var hreflangNudge = document.getElementById('hreflangNudge');
+  var generatedHTML = '';
+
+  function getEntryTemplate() {
+    return '<div class="hreflang-entry__fields">' +
+      '<div class="hreflang-field">' +
+      '<label class="hreflang-field__label">Language *</label>' +
+      '<select class="hreflang-select lang-select">' +
+      '<option value="">Select language</option>' +
+      '<option value="en">English</option><option value="es">Spanish</option>' +
+      '<option value="fr">French</option><option value="de">German</option>' +
+      '<option value="it">Italian</option><option value="pt">Portuguese</option>' +
+      '<option value="nl">Dutch</option><option value="ru">Russian</option>' +
+      '<option value="ja">Japanese</option><option value="zh">Chinese</option>' +
+      '<option value="ko">Korean</option><option value="ar">Arabic</option>' +
+      '<option value="hi">Hindi</option><option value="sv">Swedish</option>' +
+      '<option value="da">Danish</option><option value="fi">Finnish</option>' +
+      '<option value="no">Norwegian</option><option value="pl">Polish</option>' +
+      '<option value="tr">Turkish</option><option value="th">Thai</option>' +
+      '<option value="vi">Vietnamese</option><option value="id">Indonesian</option>' +
+      '<option value="ms">Malay</option><option value="cs">Czech</option>' +
+      '<option value="el">Greek</option><option value="he">Hebrew</option>' +
+      '<option value="hu">Hungarian</option><option value="ro">Romanian</option>' +
+      '<option value="uk">Ukrainian</option>' +
+      '</select></div>' +
+      '<div class="hreflang-field">' +
+      '<label class="hreflang-field__label">Region (optional)</label>' +
+      '<select class="hreflang-select region-select">' +
+      '<option value="">None</option>' +
+      '<option value="US">United States</option><option value="GB">United Kingdom</option>' +
+      '<option value="CA">Canada</option><option value="AU">Australia</option>' +
+      '<option value="IN">India</option><option value="DE">Germany</option>' +
+      '<option value="FR">France</option><option value="ES">Spain</option>' +
+      '<option value="MX">Mexico</option><option value="BR">Brazil</option>' +
+      '<option value="PT">Portugal</option><option value="IT">Italy</option>' +
+      '<option value="NL">Netherlands</option><option value="BE">Belgium</option>' +
+      '<option value="CH">Switzerland</option><option value="AT">Austria</option>' +
+      '<option value="JP">Japan</option><option value="CN">China</option>' +
+      '<option value="KR">South Korea</option><option value="RU">Russia</option>' +
+      '<option value="SE">Sweden</option><option value="NO">Norway</option>' +
+      '<option value="DK">Denmark</option><option value="FI">Finland</option>' +
+      '<option value="PL">Poland</option><option value="IE">Ireland</option>' +
+      '<option value="NZ">New Zealand</option><option value="SG">Singapore</option>' +
+      '<option value="ZA">South Africa</option><option value="AR">Argentina</option>' +
+      '<option value="CL">Chile</option><option value="CO">Colombia</option>' +
+      '</select></div>' +
+      '<div class="hreflang-field hreflang-field--url">' +
+      '<label class="hreflang-field__label">URL *</label>' +
+      '<input type="url" class="hreflang-url-input url-input" placeholder="https://example.com/es/" />' +
+      '</div></div>' +
+      '<button class="hreflang-remove" title="Remove">&times;</button>';
+  }
+
+  addEntryBtn.addEventListener('click', function() {
+    var entry = document.createElement('div');
+    entry.className = 'hreflang-entry';
+    entry.innerHTML = getEntryTemplate();
+    entriesContainer.appendChild(entry);
+  });
+
+  // Remove entry (delegated)
+  entriesContainer.addEventListener('click', function(e) {
+    if (e.target.classList.contains('hreflang-remove')) {
+      var entries = entriesContainer.querySelectorAll('.hreflang-entry');
+      if (entries.length > 1) {
+        e.target.closest('.hreflang-entry').remove();
+      }
+    }
+  });
+
+  function generateTags() {
+    var entries = entriesContainer.querySelectorAll('.hreflang-entry');
+    var tags = [];
+
+    entries.forEach(function(entry) {
+      var lang = entry.querySelector('.lang-select').value;
+      var region = entry.querySelector('.region-select').value;
+      var url = entry.querySelector('.url-input').value.trim();
+
+      if (!lang || !url) return;
+
+      var hreflangValue = lang;
+      if (region) hreflangValue += '-' + region;
+
+      tags.push({ hreflang: hreflangValue, url: url });
+    });
+
+    if (tags.length === 0) return;
+
+    // Add x-default if checked
+    var xDefaultCheck = document.getElementById('xDefaultCheck');
+    var xDefaultUrl = document.getElementById('xDefaultUrl').value.trim();
+    if (xDefaultCheck.checked && xDefaultUrl) {
+      tags.push({ hreflang: 'x-default', url: xDefaultUrl });
+    }
+
+    var html = '';
+    tags.forEach(function(tag) {
+      html += '<link rel="alternate" hreflang="' + tag.hreflang + '" href="' + tag.url + '" />\n';
+    });
+
+    generatedHTML = html.trim();
+    hreflangCode.textContent = generatedHTML;
+    hreflangOutput.style.display = 'block';
+    hreflangNudge.style.display = 'block';
+    hreflangOutput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  generateBtn.addEventListener('click', generateTags);
+
+  copyBtn.addEventListener('click', function() {
+    navigator.clipboard.writeText(generatedHTML).then(function() {
+      copiedMsg.style.display = 'inline';
+      setTimeout(function() { copiedMsg.style.display = 'none'; }, 2000);
+    });
+  });
+</script>
