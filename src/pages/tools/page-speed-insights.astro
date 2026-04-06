@@ -49,6 +49,14 @@ import Footer from '../../components/Footer.astro';
         </div>
 
         <div class="psi-results" id="psiResults" style="display: none;">
+          <!-- Plain English Summary -->
+          <div class="psi-summary" id="psiSummary">
+            <div class="card">
+              <h3 class="psi-summary__title" id="summaryTitle">Your Results</h3>
+              <p class="psi-summary__text" id="summaryText"></p>
+            </div>
+          </div>
+
           <!-- Score Rings -->
           <div class="psi-scores dark">
             <div class="psi-scores__grid">
@@ -61,6 +69,7 @@ import Footer from '../../components/Footer.astro';
                   <span class="psi-score-val" id="valPerf">--</span>
                 </div>
                 <span class="psi-score-label">Performance</span>
+                <span class="psi-score-explain">How fast your page loads and becomes usable. Think of it like a stopwatch -- the quicker, the better.</span>
               </div>
               <div class="psi-score-item">
                 <div class="psi-score-ring">
@@ -71,6 +80,7 @@ import Footer from '../../components/Footer.astro';
                   <span class="psi-score-val" id="valA11y">--</span>
                 </div>
                 <span class="psi-score-label">Accessibility</span>
+                <span class="psi-score-explain">Can everyone use your site -- including people who use screen readers or can't see colors well?</span>
               </div>
               <div class="psi-score-item">
                 <div class="psi-score-ring">
@@ -81,6 +91,7 @@ import Footer from '../../components/Footer.astro';
                   <span class="psi-score-val" id="valBP">--</span>
                 </div>
                 <span class="psi-score-label">Best Practices</span>
+                <span class="psi-score-explain">Is your site built the right way? Secure connections, no errors in the code, images sized correctly.</span>
               </div>
               <div class="psi-score-item">
                 <div class="psi-score-ring">
@@ -91,13 +102,20 @@ import Footer from '../../components/Footer.astro';
                   <span class="psi-score-val" id="valSEO">--</span>
                 </div>
                 <span class="psi-score-label">SEO</span>
+                <span class="psi-score-explain">Can Google find and understand your page? Good SEO = more people find you in search results.</span>
               </div>
+            </div>
+            <div class="psi-scores__legend">
+              <span class="psi-legend-item"><span class="psi-legend-dot" style="background:#34a853;"></span> 90-100: Great</span>
+              <span class="psi-legend-item"><span class="psi-legend-dot" style="background:#ffab00;"></span> 50-89: Needs work</span>
+              <span class="psi-legend-item"><span class="psi-legend-dot" style="background:#ff4e42;"></span> 0-49: Poor</span>
             </div>
           </div>
 
           <!-- Core Web Vitals -->
           <div class="psi-cwv">
             <h3>Core Web Vitals</h3>
+            <p class="psi-section-desc">These are the 3 things Google actually measures to decide if your site feels fast to real visitors.</p>
             <div class="grid-3" style="margin-top: var(--space-md);">
               <div class="card psi-cwv-card">
                 <div class="psi-cwv-card__header">
@@ -105,7 +123,9 @@ import Footer from '../../components/Footer.astro';
                   <span class="psi-cwv-card__badge" id="badgeLCP">--</span>
                 </div>
                 <p class="psi-cwv-card__value" id="valLCP">--</p>
-                <p class="psi-cwv-card__hint">Largest Contentful Paint. Good: &le; 2.5s</p>
+                <p class="psi-cwv-card__name">Largest Contentful Paint</p>
+                <p class="psi-cwv-card__hint">How long until the biggest thing on your page (usually a hero image or heading) shows up. Under 2.5 seconds is good. Over 4 seconds means visitors are waiting too long and might leave.</p>
+                <p class="psi-cwv-card__fix" id="fixLCP"></p>
               </div>
               <div class="card psi-cwv-card">
                 <div class="psi-cwv-card__header">
@@ -113,7 +133,9 @@ import Footer from '../../components/Footer.astro';
                   <span class="psi-cwv-card__badge" id="badgeINP">--</span>
                 </div>
                 <p class="psi-cwv-card__value" id="valINP">--</p>
-                <p class="psi-cwv-card__hint">Interaction to Next Paint. Good: &le; 200ms</p>
+                <p class="psi-cwv-card__name">Interaction to Next Paint</p>
+                <p class="psi-cwv-card__hint">When someone clicks a button or types something, how fast does the page respond? Under 200ms feels instant. Over 500ms feels laggy and frustrating.</p>
+                <p class="psi-cwv-card__fix" id="fixINP"></p>
               </div>
               <div class="card psi-cwv-card">
                 <div class="psi-cwv-card__header">
@@ -121,7 +143,9 @@ import Footer from '../../components/Footer.astro';
                   <span class="psi-cwv-card__badge" id="badgeCLS">--</span>
                 </div>
                 <p class="psi-cwv-card__value" id="valCLS">--</p>
-                <p class="psi-cwv-card__hint">Cumulative Layout Shift. Good: &le; 0.1</p>
+                <p class="psi-cwv-card__name">Cumulative Layout Shift</p>
+                <p class="psi-cwv-card__hint">Does stuff jump around while the page loads? Like when you're about to click something and it moves? Under 0.1 means your layout stays still. Over 0.25 means things are shifting a lot.</p>
+                <p class="psi-cwv-card__fix" id="fixCLS"></p>
               </div>
             </div>
           </div>
@@ -129,14 +153,14 @@ import Footer from '../../components/Footer.astro';
           <!-- Opportunities -->
           <div class="psi-opportunities" id="opportunitiesSection" style="display: none;">
             <h3>Opportunities</h3>
-            <p class="psi-section-desc">These optimizations can speed up your page load.</p>
+            <p class="psi-section-desc">Things you can fix to make your page load faster. Start from the top -- the first items save the most time.</p>
             <div class="psi-audit-list" id="opportunitiesList"></div>
           </div>
 
           <!-- Diagnostics -->
           <div class="psi-diagnostics" id="diagnosticsSection" style="display: none;">
             <h3>Diagnostics</h3>
-            <p class="psi-section-desc">Additional items to check for best performance.</p>
+            <p class="psi-section-desc">Extra things to look at. These won't always save loading time directly, but fixing them helps your site run cleaner.</p>
             <div class="psi-audit-list" id="diagnosticsList"></div>
           </div>
 
@@ -391,6 +415,56 @@ import Footer from '../../components/Footer.astro';
     opacity: 0.5;
   }
 
+  .psi-score-explain {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    line-height: 1.5;
+    opacity: 0.35;
+    max-width: 180px;
+    text-align: center;
+  }
+
+  .psi-scores__legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .psi-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    opacity: 0.5;
+  }
+
+  .psi-legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* Summary */
+  .psi-summary {
+    margin-bottom: var(--space-lg);
+  }
+
+  .psi-summary__title {
+    font-size: 1.15rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .psi-summary__text {
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.75;
+  }
+
   /* Core Web Vitals */
   .psi-cwv {
     margin-bottom: var(--space-xl);
@@ -449,9 +523,34 @@ import Footer from '../../components/Footer.astro';
     line-height: 1.2;
   }
 
+  .psi-cwv-card__name {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.35;
+    margin-bottom: var(--space-sm);
+  }
+
   .psi-cwv-card__hint {
-    font-size: 0.78rem;
-    opacity: 0.45;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    opacity: 0.55;
+  }
+
+  .psi-cwv-card__fix {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid rgba(26, 26, 24, 0.06);
+    color: var(--gold-dark);
+    font-weight: 500;
+  }
+
+  .psi-cwv-card__fix:empty {
+    display: none;
   }
 
   /* Opportunities & Diagnostics */
@@ -554,6 +653,12 @@ import Footer from '../../components/Footer.astro';
       gap: var(--space-md);
     }
 
+    .psi-scores__legend {
+      flex-direction: column;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
     .psi-cwv .grid-3 {
       grid-template-columns: 1fr;
     }
@@ -615,6 +720,53 @@ import Footer from '../../components/Footer.astro';
     }
   }
 
+  // Simple explanations for common Lighthouse audits
+  var SIMPLE_EXPLANATIONS = {
+    'render-blocking-resources': 'Your page loads CSS or JavaScript files that block everything else from showing up. Move them lower or load them later so the page appears faster.',
+    'unused-css-rules': 'Your page is loading CSS styles it doesn\'t actually use. It\'s like packing a huge suitcase for a day trip -- remove what you don\'t need.',
+    'unused-javascript': 'There\'s JavaScript code loading that your page doesn\'t need right now. Defer it or remove it to speed things up.',
+    'modern-image-formats': 'Your images are in older formats (JPEG/PNG). Convert them to WebP -- it\'s the same quality but way smaller files.',
+    'uses-optimized-images': 'Your images are bigger than they need to be. Compress them to save bandwidth and load faster.',
+    'uses-responsive-images': 'You\'re loading huge images even on small screens. Use different sizes for different devices so phones don\'t download desktop-sized images.',
+    'offscreen-images': 'Images below the fold (the part you can\'t see yet) are loading right away. Use lazy loading so they only load when the user scrolls to them.',
+    'uses-text-compression': 'Your text files (HTML, CSS, JS) aren\'t compressed. Enable Gzip or Brotli compression on your server -- it\'s like zipping a file before sending it.',
+    'uses-long-cache-ttl': 'Your files don\'t tell the browser to save them for later. Set cache headers so returning visitors don\'t have to re-download everything.',
+    'dom-size': 'Your page has a LOT of HTML elements. Simpler pages load and scroll faster. Try removing unnecessary wrappers and hidden elements.',
+    'font-display': 'Your fonts take time to load, and text is invisible until they arrive. Use font-display: swap so text shows immediately with a fallback font.',
+    'server-response-time': 'Your server takes too long to respond to the first request. This could be a slow host, no caching, or heavy server-side processing.',
+    'total-byte-weight': 'Your page is downloading too much data overall. Aim to keep total page weight under 1.5MB for fast loads on mobile networks.',
+    'mainthread-work-breakdown': 'The browser\'s main thread is doing too much work -- processing scripts, styles, and layout all at once. Break up heavy tasks.',
+    'bootup-time': 'JavaScript takes a long time to start up. Large scripts block the page from becoming interactive. Split code and defer what you don\'t need right away.',
+    'third-party-summary': 'Third-party scripts (analytics, ads, widgets) are slowing things down. Each one adds network requests and processing time.',
+    'largest-contentful-paint-element': 'This tells you exactly which element is the "biggest thing" on your page. Optimize that specific image or text block to improve LCP.',
+    'layout-shifts': 'These are the specific elements that moved around while loading. Fix them by setting dimensions on images and reserving space for dynamic content.',
+    'long-tasks': 'Some JavaScript tasks take too long and freeze the page. Break them into smaller chunks so the browser can stay responsive.',
+    'unminified-css': 'Your CSS files have extra spaces and comments. Minify them to make the files smaller.',
+    'unminified-javascript': 'Your JavaScript files have extra spaces and comments. Minify them to make the files smaller.',
+    'redirects': 'Your page redirects to another URL before loading. Each redirect adds a delay. Link directly to the final URL instead.',
+    'uses-rel-preconnect': 'Your page loads files from other domains. Use preconnect hints so the browser starts connecting to them earlier.',
+    'uses-rel-preload': 'Important files aren\'t being prioritized. Use preload to tell the browser to fetch critical fonts, images, or scripts first.',
+    'efficient-animated-content': 'You have animated content (like GIFs) that could be much smaller as a video. Replace GIFs with MP4 or WebM for huge file savings.',
+    'duplicated-javascript': 'The same JavaScript code is being loaded more than once. Remove duplicates to save bandwidth.',
+    'legacy-javascript': 'Your JavaScript includes old compatibility code that modern browsers don\'t need. Use modern bundles to cut file size.',
+    'first-contentful-paint': 'This is how long until the very first thing appears on screen -- even just text or a background color. Faster is better because it tells the user "something is happening".',
+    'speed-index': 'This measures how quickly the visible parts of your page fill in. A low score means users see a blank screen for too long before content appears.',
+    'total-blocking-time': 'This is the total time your page was frozen and couldn\'t respond to clicks or taps. It adds up all the moments where JavaScript was hogging the browser. Under 200ms is good.',
+    'interactive': 'How long until the page is fully ready to use -- all buttons work, all content is loaded. Under 3.8 seconds is good. Over 7.3 seconds is poor.',
+    'max-potential-fid': 'The worst-case delay a user might experience when they first try to interact with your page. Caused by long-running JavaScript tasks.',
+    'unsized-images': 'Your images don\'t have width and height set in the HTML. This means the browser doesn\'t know how much space to reserve, so the layout jumps around as images load. Always add width and height attributes.',
+    'cache-insight': 'Your files don\'t have good cache settings. When someone visits again, their browser has to re-download everything instead of using saved copies. Set longer cache lifetimes.',
+    'document-latency-insight': 'Your server is slow to send back the HTML document. This is the very first step -- everything else waits for this. Look into faster hosting or server-side caching.',
+    'font-display-insight': 'Your custom fonts are blocking text from showing up. Use font-display: swap in your @font-face rules so text appears immediately with a fallback font while the custom font loads.',
+    'image-delivery-insight': 'Your images could be delivered in a better way -- smaller format (WebP), better compression, or more appropriate sizing for the screen they\'re displayed on.',
+    'lcp-breakdown-insight': 'This breaks down why your biggest element took so long to appear. It shows time spent on server response, resource loading, and rendering.',
+    'lcp-discovery-insight': 'The browser discovered your LCP image late. Use a preload tag or make sure the image URL is directly in the HTML (not loaded via JavaScript or CSS) so the browser finds it immediately.',
+    'legacy-javascript-insight': 'You\'re shipping JavaScript code designed for old browsers that most people don\'t use anymore. Serve modern JavaScript to modern browsers for smaller, faster files.',
+    'network-dependency-tree-insight': 'Your page has a chain of files that depend on each other -- one has to finish loading before the next can start. Try to load things in parallel instead of in sequence.',
+    'render-blocking-insight': 'Some CSS or JavaScript files block the page from rendering. The browser has to download and process them before showing anything. Defer non-critical ones.',
+    'forced-reflow-insight': 'Your JavaScript is forcing the browser to recalculate the layout repeatedly. This is like asking someone to rearrange a room while they\'re still putting furniture in. Batch your DOM reads and writes.'
+  };
+
   function renderAuditList(containerId, audits) {
     var container = document.getElementById(containerId);
     container.innerHTML = '';
@@ -625,11 +777,16 @@ import Footer from '../../components/Footer.astro';
       div.className = 'psi-audit-item ' + severity;
 
       var html = '<div class="psi-audit-item__title">' + escapeHtml(audit.title) + '</div>';
-      if (audit.description) {
-        // Strip markdown links from description
+
+      // Use simple explanation if available, otherwise fall back to Google's description
+      var simpleExplain = SIMPLE_EXPLANATIONS[audit.id];
+      if (simpleExplain) {
+        html += '<div class="psi-audit-item__desc">' + escapeHtml(simpleExplain) + '</div>';
+      } else if (audit.description) {
         var desc = audit.description.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
         html += '<div class="psi-audit-item__desc">' + escapeHtml(desc) + '</div>';
       }
+
       if (audit.details && audit.details.overallSavingsMs) {
         html += '<div class="psi-audit-item__savings">Potential savings: ' + formatMs(audit.details.overallSavingsMs) + '</div>';
       }
@@ -658,26 +815,66 @@ import Footer from '../../components/Footer.astro';
     setScore('circBP', 'valBP', cats['best-practices'].score);
     setScore('circSEO', 'valSEO', cats.seo.score);
 
+    // Plain English Summary
+    var perfScore = Math.round(cats.performance.score * 100);
+    var a11yScore = Math.round(cats.accessibility.score * 100);
+    var bpScore = Math.round(cats['best-practices'].score * 100);
+    var seoScore = Math.round(cats.seo.score * 100);
+
+    var summaryParts = [];
+    if (perfScore >= 90) summaryParts.push('Your page loads fast -- nice work.');
+    else if (perfScore >= 50) summaryParts.push('Your page is a bit slow to load. Visitors on phones might get impatient.');
+    else summaryParts.push('Your page is pretty slow. Many visitors will leave before it finishes loading.');
+
+    if (seoScore < 80) summaryParts.push('Google might have trouble understanding your page, which means fewer people will find you in search.');
+    else if (seoScore >= 90) summaryParts.push('Google can read your page well -- your SEO basics are solid.');
+
+    if (a11yScore < 80) summaryParts.push('Some people might have trouble using your site, especially those with disabilities.');
+    if (bpScore < 80) summaryParts.push('There are some technical issues with how your site is built that should be cleaned up.');
+
+    var worstScore = Math.min(perfScore, a11yScore, bpScore, seoScore);
+    if (worstScore >= 90) {
+      document.getElementById('summaryTitle').textContent = 'Looking great!';
+    } else if (worstScore >= 50) {
+      document.getElementById('summaryTitle').textContent = 'Good, but there\'s room to improve';
+    } else {
+      document.getElementById('summaryTitle').textContent = 'This needs some attention';
+    }
+    document.getElementById('summaryText').textContent = summaryParts.join(' ');
+
     // Core Web Vitals
     var audits = data.lighthouseResult.audits;
 
     var lcp = audits['largest-contentful-paint'];
     if (lcp) {
       setCWV('valLCP', 'badgeLCP', lcp.numericValue, formatMs(lcp.numericValue), [2500, 4000]);
+      var fixLCP = document.getElementById('fixLCP');
+      if (lcp.numericValue > 4000) fixLCP.textContent = 'Fix: Your main image or heading takes too long to appear. Compress your hero image, use a smaller file, or preload it so the browser grabs it first.';
+      else if (lcp.numericValue > 2500) fixLCP.textContent = 'Fix: Almost there. Try compressing your hero image, using WebP format, or adding a preload tag for your biggest above-the-fold asset.';
+      else fixLCP.textContent = '';
     }
 
     var inp = audits['interaction-to-next-paint'];
     if (inp && inp.numericValue !== undefined) {
       setCWV('valINP', 'badgeINP', inp.numericValue, formatMs(inp.numericValue), [200, 500]);
+      var fixINP = document.getElementById('fixINP');
+      if (inp.numericValue > 500) fixINP.textContent = 'Fix: Your page is slow to respond to clicks. This usually means there\'s too much JavaScript running. Break up long tasks and defer non-essential scripts.';
+      else if (inp.numericValue > 200) fixINP.textContent = 'Fix: Response time is a little sluggish. Look for heavy JavaScript that runs when users interact with the page.';
+      else fixINP.textContent = '';
     } else {
       document.getElementById('valINP').textContent = 'N/A';
       document.getElementById('badgeINP').textContent = '--';
       document.getElementById('badgeINP').className = 'psi-cwv-card__badge';
+      document.getElementById('fixINP').textContent = 'This page doesn\'t have enough interaction data to measure. That\'s normal for simple pages with no buttons or forms.';
     }
 
     var cls = audits['cumulative-layout-shift'];
     if (cls) {
       setCWV('valCLS', 'badgeCLS', cls.numericValue, cls.numericValue.toFixed(3), [0.1, 0.25]);
+      var fixCLS = document.getElementById('fixCLS');
+      if (cls.numericValue > 0.25) fixCLS.textContent = 'Fix: Things are jumping around a lot while loading. Always set width and height on images, and avoid inserting content above existing content after the page starts loading.';
+      else if (cls.numericValue > 0.1) fixCLS.textContent = 'Fix: There\'s some layout movement. Make sure all images have width/height attributes and fonts load without causing text to shift.';
+      else fixCLS.textContent = '';
     }
 
     // Opportunities
@@ -719,7 +916,6 @@ import Footer from '../../components/Footer.astro';
     }
 
     // Dynamic nudge
-    var perfScore = Math.round(cats.performance.score * 100);
     if (perfScore >= 90) {
       nudgeText.textContent = 'Great performance score! Your site is well-optimized. Focus on maintaining this as you add new features and content.';
     } else if (perfScore >= 50) {
