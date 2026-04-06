@@ -41,7 +41,15 @@ const faqs = [
 ];
 ---
 
-<Layout title="Pricing" description="Enterprise marketing execution at a fraction of the cost. Plans starting at $299/month.">
+<Layout title="Pricing" description="Enterprise marketing execution at a fraction of the cost. Plans starting at $299/month." schema={{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+}}>
   <Nav />
 
   <section class="light pricing-hero">

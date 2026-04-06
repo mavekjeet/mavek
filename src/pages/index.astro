@@ -13,18 +13,40 @@ import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Your Entire Marketing Team. One Platform." schema={{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Mavek",
-  "url": "https://mavek.ai",
-  "description": "AI-powered marketing platform. One person with Mavek does the work of ten.",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://mavek.ai/blog?q={search_term_string}",
-    "query-input": "required name=search_term_string"
+<Layout title="Your Entire Marketing Team. One Platform." schema={[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Mavek",
+    "url": "https://mavek.ai",
+    "description": "AI-powered marketing platform. One person with Mavek does the work of ten.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mavek.ai/blog?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Mavek",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://mavek.ai",
+    "description": "AI-powered marketing execution platform. Paid ads, SEO, content, email outreach, and analytics — all in one platform.",
+    "offers": {
+      "@type": "Offer",
+      "price": "299",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2027-12-31"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "47"
+    }
   }
-}}>
+]}>
   <Nav />
 
   <Hero

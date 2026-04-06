@@ -1,11 +1,12 @@
 ---
 import ExitIntent from '../components/ExitIntent.astro';
 import PageLoader from '../components/PageLoader.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 interface Props {
   title: string;
   description?: string;
-  schema?: object;
+  schema?: object | object[];
   ogImage?: string;
 }
 
@@ -51,10 +52,11 @@ const CAL_LINK = import.meta.env.PUBLIC_CAL_LINK || 'YOUR_USERNAME/EVENT_SLUG';
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={new URL(ogImage, Astro.site || 'https://mavek.ai').href} />
 
-  <!-- Schema.org JSON-LD -->
-  {schema && (
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-  )}
+  <!-- Schema.org JSON-LD (supports single object or array) -->
+  {schema && Array.isArray(schema)
+    ? schema.map(s => <script type="application/ld+json" set:html={JSON.stringify(s)} />)
+    : schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  }
 
   <!-- Default Organization Schema -->
   <script type="application/ld+json" set:html={JSON.stringify({
@@ -68,6 +70,9 @@ const CAL_LINK = import.meta.env.PUBLIC_CAL_LINK || 'YOUR_USERNAME/EVENT_SLUG';
       "https://x.com/mavekAI"
     ]
   })} />
+
+  <!-- Breadcrumb Schema (auto-generated from URL path) -->
+  <Breadcrumbs />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HT4R5D0MC" is:inline></script>

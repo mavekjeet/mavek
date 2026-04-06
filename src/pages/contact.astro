@@ -3,9 +3,21 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import CalEmbed from '../components/CalEmbed.astro';
 import Footer from '../components/Footer.astro';
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is there a free trial?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. 14 days, full access, no credit card required." }},
+    { "@type": "Question", "name": "How long is onboarding?", "acceptedAnswer": { "@type": "Answer", "text": "Most teams are fully operational within 48 hours of connecting their tools." }},
+    { "@type": "Question", "name": "Do I need technical skills?", "acceptedAnswer": { "@type": "Answer", "text": "No. If you can write a marketing brief, you can use Mavek." }},
+    { "@type": "Question", "name": "What if I'm not satisfied?", "acceptedAnswer": { "@type": "Answer", "text": "Cancel anytime. No contracts, no lock-in, no hard feelings." }},
+    { "@type": "Question", "name": "Is my data safe?", "acceptedAnswer": { "@type": "Answer", "text": "End-to-end encryption. Your data never leaves your control. SOC 2 compliant." }},
+    { "@type": "Question", "name": "Which plan is right for me?", "acceptedAnswer": { "@type": "Answer", "text": "Start with Growth for most use cases. Enterprise for agencies managing 10+ clients." }},
+  ]
+};
 ---
 
-<Layout title="Get Started" description="Book a demo and see how Mavek can 10x your marketing.">
+<Layout title="Get Started" description="Book a demo and see how Mavek can 10x your marketing." schema={faqSchema}>
   <Nav />
 
   <section class="light contact-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">

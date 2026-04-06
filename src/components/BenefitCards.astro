@@ -31,7 +31,10 @@ const benefits = [
       {benefits.map((b, i) => (
         <div class="benefit-card reveal" style={`transition-delay: ${i * 0.1}s`}>
           <div class="benefit-img">
-            <img src={b.image} alt={b.alt} loading="lazy" width="340" height="191" style="aspect-ratio: 16/9; object-fit: cover; width: 100%; height: auto; display: block;" />
+            <picture>
+              <source srcset={b.image.replace('.jpg', '.webp')} type="image/webp" />
+              <img src={b.image} alt={b.alt} loading="lazy" width="340" height="191" style="aspect-ratio: 16/9; object-fit: cover; width: 100%; height: auto; display: block;" />
+            </picture>
           </div>
           <h3 class="benefit-card__title">{b.title}</h3>
           <p class="benefit-card__desc">{b.description}</p>
