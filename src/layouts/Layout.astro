@@ -1,5 +1,6 @@
 ---
 import ExitIntent from '../components/ExitIntent.astro';
+import PageLoader from '../components/PageLoader.astro';
 
 interface Props {
   title: string;
@@ -77,13 +78,17 @@ const CAL_LINK = import.meta.env.PUBLIC_CAL_LINK || 'YOUR_USERNAME/EVENT_SLUG';
     gtag('config', 'G-4HT4R5D0MC');
   </script>
 
-  <!-- Microsoft Clarity -->
+  <!-- Microsoft Clarity — deferred to avoid blocking LCP -->
   <script is:inline>
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/CLARITY_ID";
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script");
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/CLARITY_ID";
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window,document,"clarity","script");
+      }, 2000);
+    });
   </script>
 
   <!-- Mavek config (form keys, Cal.com link) exposed to inline form scripts -->
@@ -91,12 +96,15 @@ const CAL_LINK = import.meta.env.PUBLIC_CAL_LINK || 'YOUR_USERNAME/EVENT_SLUG';
     window.__MAVEK_CFG = { web3formsKey: WEB3FORMS_KEY, calLink: CAL_LINK };
   </script>
 
-  <!-- Preload fonts for performance -->
+  <!-- Fonts — preconnect + async load to avoid render-blocking -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" /></noscript>
 </head>
 <body>
+  <PageLoader />
   <main id="main">
     <slot />
   </main>

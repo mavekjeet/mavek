@@ -96,8 +96,8 @@
 
     // Hide logic: minimum show time (so it doesn't flash), then hide once ready.
     var loadStart = Date.now();
-    var MIN_SHOW_MS = 600;
-    var MAX_SHOW_MS = 2500;
+    var MIN_SHOW_MS = 300;
+    var MAX_SHOW_MS = 1500;
 
     function hideLoader() {
       var elapsed = Date.now() - loadStart;

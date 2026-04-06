@@ -1,0 +1,333 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Word Counter" description="Count words, characters, sentences, paragraphs, and estimated reading time. Paste your text and get instant SEO-focused content metrics.">
+  <Nav />
+
+  <section class="light wc-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="wc-hero__content reveal">
+        <span class="sec-label">Word Counter</span>
+        <h1>Count every word that <em>matters</em>.</h1>
+        <p class="wc-hero__lead">Paste your content and get instant word, character, sentence, and paragraph counts plus estimated reading time. Built for SEO writers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light wc-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="wc-tool reveal">
+        <div class="wc-input-wrap">
+          <label class="wc-label" for="wcInput">Paste or type your content</label>
+          <textarea
+            id="wcInput"
+            class="wc-textarea"
+            placeholder="Start typing or paste your content here..."
+            rows="10"
+          ></textarea>
+        </div>
+
+        <div class="wc-stats" id="wcStats">
+          <div class="wc-stat">
+            <span class="wc-stat__value" id="statWords">0</span>
+            <span class="wc-stat__label">Words</span>
+          </div>
+          <div class="wc-stat">
+            <span class="wc-stat__value" id="statChars">0</span>
+            <span class="wc-stat__label">Characters</span>
+          </div>
+          <div class="wc-stat">
+            <span class="wc-stat__value" id="statCharsNoSpace">0</span>
+            <span class="wc-stat__label">Chars (no spaces)</span>
+          </div>
+          <div class="wc-stat">
+            <span class="wc-stat__value" id="statSentences">0</span>
+            <span class="wc-stat__label">Sentences</span>
+          </div>
+          <div class="wc-stat">
+            <span class="wc-stat__value" id="statParagraphs">0</span>
+            <span class="wc-stat__label">Paragraphs</span>
+          </div>
+          <div class="wc-stat">
+            <span class="wc-stat__value" id="statAvgWord">0</span>
+            <span class="wc-stat__label">Avg Word Length</span>
+          </div>
+          <div class="wc-stat wc-stat--accent">
+            <span class="wc-stat__value" id="statReadTime">0 min</span>
+            <span class="wc-stat__label">Reading Time</span>
+          </div>
+        </div>
+
+        <div class="wc-nudge">
+          <div class="card">
+            <span class="wc-nudge__label">Mavek Tip</span>
+            <p class="wc-nudge__text">For blog posts, aim for 1,500-2,500 words to rank well in search. Product pages perform best at 300-500 words. Always prioritize quality and relevance over hitting a word count target.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="wc-tips reveal">
+        <div class="wc-tips__header">
+          <span class="sec-label">Content Tips</span>
+          <h2>How to write the <em>right amount</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Match search intent</h4>
+            <p>Check the top-ranking pages for your keyword. If they average 2,000 words, a 500-word post won't compete. Match the depth your audience expects.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Keep sentences short</h4>
+            <p>Aim for an average of 15-20 words per sentence. Shorter sentences improve readability and keep readers engaged longer.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Break up long paragraphs</h4>
+            <p>Web readers scan, not read. Keep paragraphs to 2-3 sentences max. Use headers, bullet points, and white space to improve scannability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek write content that <em>ranks</em>"
+    subtitle="AI-powered content that hits the right length, tone, and keyword density every time."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .wc-hero__content {
+    max-width: 640px;
+  }
+
+  .wc-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .wc-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .wc-tool {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .wc-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+  }
+
+  .wc-input-wrap {
+    margin-bottom: var(--space-lg);
+  }
+
+  .wc-textarea {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .wc-textarea:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .wc-textarea::placeholder {
+    color: var(--muted);
+  }
+
+  /* Stats grid */
+  .wc-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .wc-stat {
+    background: var(--night);
+    padding: var(--space-md);
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .wc-stat--accent {
+    background: var(--gold-dark);
+  }
+
+  .wc-stat__value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gold-bright);
+    margin-bottom: 0.25rem;
+  }
+
+  .wc-stat--accent .wc-stat__value {
+    color: var(--parchment);
+  }
+
+  .wc-stat__label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--cream-40);
+  }
+
+  .wc-stat--accent .wc-stat__label {
+    color: rgba(246, 243, 232, 0.7);
+  }
+
+  /* Nudge */
+  .wc-nudge {
+    margin-bottom: var(--space-md);
+  }
+
+  .wc-nudge__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .wc-nudge__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Tips */
+  .wc-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .wc-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 700px) {
+    .wc-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 400px) {
+    .wc-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script is:inline>
+  var wcInput = document.getElementById('wcInput');
+  var statWords = document.getElementById('statWords');
+  var statChars = document.getElementById('statChars');
+  var statCharsNoSpace = document.getElementById('statCharsNoSpace');
+  var statSentences = document.getElementById('statSentences');
+  var statParagraphs = document.getElementById('statParagraphs');
+  var statAvgWord = document.getElementById('statAvgWord');
+  var statReadTime = document.getElementById('statReadTime');
+
+  function analyze(text) {
+    if (!text.trim()) {
+      statWords.textContent = '0';
+      statChars.textContent = '0';
+      statCharsNoSpace.textContent = '0';
+      statSentences.textContent = '0';
+      statParagraphs.textContent = '0';
+      statAvgWord.textContent = '0';
+      statReadTime.textContent = '0 min';
+      return;
+    }
+
+    // Characters
+    var chars = text.length;
+    var charsNoSpace = text.replace(/\s/g, '').length;
+
+    // Words
+    var words = text.trim().split(/\s+/).filter(function(w) { return w.length > 0; });
+    var wordCount = words.length;
+
+    // Sentences — split on . ! ? followed by space or end
+    var sentences = text.split(/[.!?]+/).filter(function(s) { return s.trim().length > 0; });
+    var sentenceCount = sentences.length;
+
+    // Paragraphs — split on double newlines or single newlines with content
+    var paragraphs = text.split(/\n\s*\n|\n/).filter(function(p) { return p.trim().length > 0; });
+    var paragraphCount = paragraphs.length;
+
+    // Average word length
+    var totalCharsInWords = 0;
+    for (var i = 0; i < words.length; i++) {
+      totalCharsInWords += words[i].replace(/[^a-zA-Z0-9]/g, '').length;
+    }
+    var avgWordLen = wordCount > 0 ? (totalCharsInWords / wordCount).toFixed(1) : '0';
+
+    // Reading time (avg 238 words per minute)
+    var readMins = Math.ceil(wordCount / 238);
+    var readTimeStr = readMins < 1 ? '< 1 min' : readMins + ' min';
+
+    statWords.textContent = wordCount.toLocaleString();
+    statChars.textContent = chars.toLocaleString();
+    statCharsNoSpace.textContent = charsNoSpace.toLocaleString();
+    statSentences.textContent = sentenceCount.toLocaleString();
+    statParagraphs.textContent = paragraphCount.toLocaleString();
+    statAvgWord.textContent = avgWordLen;
+    statReadTime.textContent = readTimeStr;
+  }
+
+  wcInput.addEventListener('input', function() {
+    analyze(wcInput.value);
+  });
+</script>

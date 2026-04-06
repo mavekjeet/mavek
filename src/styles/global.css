@@ -3,8 +3,7 @@
    Philosopher's Stone Visual Identity
    ============================================ */
 
-/* --- Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* --- Fonts (loaded in Layout.astro — do NOT duplicate here) --- */
 
 /* --- Design Tokens --- */
 :root {

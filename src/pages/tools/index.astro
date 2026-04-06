@@ -45,6 +45,12 @@ const sections = [
         href: "/tools/keyword-density-analyzer",
         icon: "density",
       },
+      {
+        title: "Bulk Title & Description Checker",
+        description: "Check multiple page titles and meta descriptions at once. Flag length violations with color-coded results. Paste CSV or enter manually.",
+        href: "/tools/bulk-title-checker",
+        icon: "bulkcheck",
+      },
     ],
   },
   {
@@ -68,6 +74,12 @@ const sections = [
         description: "Convert any title into a clean, SEO-friendly URL slug. Lowercase, hyphenated, special characters stripped, with optional stop word removal.",
         href: "/tools/slug-generator",
         icon: "slug",
+      },
+      {
+        title: "Word Counter",
+        description: "Count words, characters, sentences, paragraphs, and estimated reading time. Paste your content and get instant SEO-focused metrics.",
+        href: "/tools/word-counter",
+        icon: "wordcount",
       },
     ],
   },
@@ -285,6 +297,24 @@ const sections = [
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect x="4" y="4" width="24" height="24" rx="3" stroke="var(--gold-dark)" stroke-width="2" />
                   <path d="M8 10h16M8 15h12M8 20h14" stroke="var(--gold-dark)" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              )}
+              {tool.icon === "wordcount" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 8h20M6 13h16M6 18h12M6 23h8" stroke="var(--gold-dark)" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx="24" cy="22" r="5" stroke="var(--gold-dark)" stroke-width="2" />
+                  <path d="M24 20v3h2" stroke="var(--gold-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              )}
+              {tool.icon === "bulkcheck" && (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="6" width="24" height="5" rx="1" stroke="var(--gold-dark)" stroke-width="2" />
+                  <rect x="4" y="14" width="24" height="5" rx="1" stroke="var(--gold-dark)" stroke-width="2" />
+                  <rect x="4" y="22" width="24" height="5" rx="1" stroke="var(--gold-dark)" stroke-width="2" />
+                  <path d="M22 8l1.5 1.5L27 6" stroke="var(--gold-dark)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M23 16.5l3-3" stroke="var(--gold-dark)" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M23 14l3 3" stroke="var(--gold-dark)" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M22 24l1.5 1.5L27 22" stroke="var(--gold-dark)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               )}
               {tool.icon === "speed" && (

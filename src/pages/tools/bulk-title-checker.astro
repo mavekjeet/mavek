@@ -1,0 +1,503 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import CTASection from '../../components/CTASection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Bulk Title & Description Checker" description="Check multiple page titles and meta descriptions at once. Flag length violations with color-coded results. Paste CSV or enter manually.">
+  <Nav />
+
+  <section class="light btc-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <a href="/tools" class="back-link reveal">&larr; Back to Tools</a>
+      <div class="btc-hero__content reveal">
+        <span class="sec-label">Bulk Title / Description Checker</span>
+        <h1>Audit every title and description <em>at once</em>.</h1>
+        <p class="btc-hero__lead">Paste your titles and meta descriptions — one per line or CSV format — and instantly see which ones are too long, too short, or just right.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light btc-tool-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="btc-tool reveal">
+        <div class="btc-input-wrap">
+          <label class="btc-label" for="btcInput">Paste titles and descriptions (one per line or CSV)</label>
+          <p class="btc-hint">Format: <code>Title, Description</code> — one pair per line. Or paste titles only (one per line) to check just titles.</p>
+          <textarea
+            id="btcInput"
+            class="btc-textarea"
+            placeholder="How to Improve SEO in 2026, Learn the latest SEO strategies and techniques to boost your website rankings in search engines this year.
+Best Marketing Tools for Small Business, Discover the top marketing tools that help small businesses grow their online presence without breaking the bank."
+            rows="8"
+          ></textarea>
+        </div>
+
+        <div class="btc-actions">
+          <button class="btn btn--primary" id="btcCheck">Check All</button>
+          <button class="btn btn--ghost" id="btcClear">Clear</button>
+        </div>
+
+        <div class="btc-results" id="btcResults" style="display: none;">
+          <div class="btc-summary" id="btcSummary"></div>
+          <div class="btc-table-wrap">
+            <table class="btc-table" id="btcTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Title Length</th>
+                  <th>Description</th>
+                  <th>Desc Length</th>
+                </tr>
+              </thead>
+              <tbody id="btcBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="btc-nudge">
+          <div class="card">
+            <span class="btc-nudge__label">Mavek Tip</span>
+            <p class="btc-nudge__text">Google typically displays 50-60 characters for titles and 150-160 for descriptions. Titles under 30 characters waste valuable SERP real estate. Keep your most important keywords near the front.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="btc-tips reveal">
+        <div class="btc-tips__header">
+          <span class="sec-label">Title & Meta Tips</span>
+          <h2>How to write titles that <em>get clicks</em></h2>
+        </div>
+        <div class="grid-3" style="margin-top: var(--space-xl);">
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Front-load your keyword</h4>
+            <p>Put your primary keyword within the first 30 characters. Google bolds matching terms and users scan left to right — early placement wins more clicks.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Avoid truncation</h4>
+            <p>Titles over 60 characters and descriptions over 160 get cut off with "..." in search results. Every truncated tag is a missed opportunity to persuade.</p>
+          </div>
+          <div class="card card--dark" style="border-radius: 10px;">
+            <h4>Write for humans, not bots</h4>
+            <p>A technically perfect title means nothing if nobody clicks it. Use power words, numbers, and clear value propositions to stand out in the SERP.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Let Mavek optimize every tag <em>automatically</em>"
+    subtitle="AI-powered title and meta description generation that hits the sweet spot every time."
+    primaryCta="Get Started"
+    primaryHref="/contact"
+    secondaryCta="See How It Works"
+    secondaryHref="/how-it-works"
+  />
+
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-lg);
+    transition: gap 0.3s var(--ease);
+  }
+
+  .back-link:hover {
+    gap: 0.8rem;
+  }
+
+  .btc-hero__content {
+    max-width: 680px;
+  }
+
+  .btc-hero__content h1 {
+    margin: var(--space-xs) 0 var(--space-md);
+  }
+
+  .btc-hero__lead {
+    font-size: 1.1rem;
+  }
+
+  .btc-tool {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .btc-label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+  }
+
+  .btc-hint {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .btc-hint code {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: rgba(26, 26, 24, 0.06);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+  }
+
+  .btc-input-wrap {
+    margin-bottom: var(--space-md);
+  }
+
+  .btc-textarea {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    background: var(--parchment-dark);
+    border: 1px solid rgba(26, 26, 24, 0.1);
+    color: var(--ink);
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .btc-textarea:focus {
+    border-color: var(--gold-dark);
+  }
+
+  .btc-textarea::placeholder {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .btc-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+
+  .btn--ghost {
+    background: transparent;
+    border: 1px solid rgba(26, 26, 24, 0.15);
+    color: var(--ink-soft);
+    padding: 0.6rem 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn--ghost:hover {
+    border-color: var(--ink-muted);
+    color: var(--ink);
+  }
+
+  /* Results */
+  .btc-results {
+    margin-bottom: var(--space-lg);
+  }
+
+  .btc-summary {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .btc-summary__item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .btc-summary__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .btc-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .btc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+  }
+
+  .btc-table th {
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    padding: 0.75rem 0.75rem;
+    border-bottom: 2px solid rgba(26, 26, 24, 0.08);
+    white-space: nowrap;
+  }
+
+  .btc-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid rgba(26, 26, 24, 0.05);
+    vertical-align: top;
+  }
+
+  .btc-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .btc-table td:nth-child(1) {
+    color: var(--ink-muted);
+    font-size: 0.75rem;
+    width: 32px;
+  }
+
+  .btc-table td:nth-child(2),
+  .btc-table td:nth-child(4) {
+    max-width: 280px;
+    word-break: break-word;
+  }
+
+  .btc-len {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .btc-len--good {
+    background: rgba(52, 168, 83, 0.1);
+    color: #217a3b;
+  }
+
+  .btc-len--warn {
+    background: rgba(234, 179, 8, 0.12);
+    color: #92700c;
+  }
+
+  .btc-len--bad {
+    background: rgba(220, 53, 69, 0.1);
+    color: #b02a37;
+  }
+
+  .btc-len--empty {
+    background: rgba(26, 26, 24, 0.05);
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+
+  /* Nudge */
+  .btc-nudge {
+    margin-bottom: var(--space-md);
+  }
+
+  .btc-nudge__label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold-dark);
+    margin-bottom: var(--space-sm);
+  }
+
+  .btc-nudge__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Tips */
+  .btc-tips__header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .btc-tips__header h2 {
+    margin-top: var(--space-xs);
+  }
+
+  @media (max-width: 600px) {
+    .btc-actions {
+      flex-direction: column;
+    }
+
+    .btc-table {
+      font-size: 0.78rem;
+    }
+
+    .btc-table td:nth-child(2),
+    .btc-table td:nth-child(4) {
+      max-width: 160px;
+    }
+  }
+</style>
+
+<script is:inline>
+  var btcInput = document.getElementById('btcInput');
+  var btcCheck = document.getElementById('btcCheck');
+  var btcClear = document.getElementById('btcClear');
+  var btcResults = document.getElementById('btcResults');
+  var btcSummary = document.getElementById('btcSummary');
+  var btcBody = document.getElementById('btcBody');
+
+  // Limits
+  var TITLE_MIN = 30;
+  var TITLE_MAX = 60;
+  var DESC_MIN = 70;
+  var DESC_MAX = 160;
+
+  function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  function parseLine(line) {
+    line = line.trim();
+    if (!line) return null;
+
+    // Try to split on first comma that's followed by content
+    // Smart CSV: find first comma that separates title from description
+    var firstComma = line.indexOf(',');
+    if (firstComma === -1) {
+      return { title: line, desc: '' };
+    }
+
+    var title = line.substring(0, firstComma).trim();
+    var desc = line.substring(firstComma + 1).trim();
+
+    // Remove surrounding quotes if present
+    if (title.charAt(0) === '"' && title.charAt(title.length - 1) === '"') {
+      title = title.substring(1, title.length - 1);
+    }
+    if (desc.charAt(0) === '"' && desc.charAt(desc.length - 1) === '"') {
+      desc = desc.substring(1, desc.length - 1);
+    }
+
+    return { title: title, desc: desc };
+  }
+
+  function getLenClass(len, min, max) {
+    if (len === 0) return 'btc-len--empty';
+    if (len >= min && len <= max) return 'btc-len--good';
+    if (len > max) return 'btc-len--bad';
+    if (len < min) return 'btc-len--warn';
+    return 'btc-len--good';
+  }
+
+  function getLenIcon(len, min, max) {
+    if (len === 0) return '—';
+    if (len >= min && len <= max) return '&#10003;';
+    return '&#10007;';
+  }
+
+  function runCheck() {
+    var text = btcInput.value.trim();
+    if (!text) return;
+
+    var lines = text.split('\n');
+    var rows = [];
+    for (var i = 0; i < lines.length; i++) {
+      var parsed = parseLine(lines[i]);
+      if (parsed) rows.push(parsed);
+    }
+
+    if (rows.length === 0) return;
+
+    // Count stats
+    var goodTitles = 0, warnTitles = 0, badTitles = 0;
+    var goodDescs = 0, warnDescs = 0, badDescs = 0, emptyDescs = 0;
+
+    var html = '';
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      var tLen = row.title.length;
+      var dLen = row.desc.length;
+
+      var tClass = getLenClass(tLen, TITLE_MIN, TITLE_MAX);
+      var dClass = getLenClass(dLen, DESC_MIN, DESC_MAX);
+
+      // Count
+      if (tLen >= TITLE_MIN && tLen <= TITLE_MAX) goodTitles++;
+      else if (tLen > TITLE_MAX) badTitles++;
+      else if (tLen > 0) warnTitles++;
+
+      if (dLen === 0) emptyDescs++;
+      else if (dLen >= DESC_MIN && dLen <= DESC_MAX) goodDescs++;
+      else if (dLen > DESC_MAX) badDescs++;
+      else warnDescs++;
+
+      html += '<tr>' +
+        '<td>' + (i + 1) + '</td>' +
+        '<td>' + escapeHtml(row.title) + '</td>' +
+        '<td><span class="btc-len ' + tClass + '">' + getLenIcon(tLen, TITLE_MIN, TITLE_MAX) + ' ' + tLen + '</span></td>' +
+        '<td>' + (row.desc ? escapeHtml(row.desc) : '<span style="color:var(--ink-muted);font-style:italic;">No description</span>') + '</td>' +
+        '<td><span class="btc-len ' + dClass + '">' + getLenIcon(dLen, DESC_MIN, DESC_MAX) + ' ' + dLen + '</span></td>' +
+        '</tr>';
+    }
+
+    btcBody.innerHTML = html;
+
+    // Summary
+    var total = rows.length;
+    var summaryHtml =
+      '<span class="btc-summary__item"><span class="btc-summary__dot" style="background:#34a853;"></span> ' + goodTitles + ' good titles</span>' +
+      '<span class="btc-summary__item"><span class="btc-summary__dot" style="background:#eab308;"></span> ' + warnTitles + ' too short</span>' +
+      '<span class="btc-summary__item"><span class="btc-summary__dot" style="background:#dc3545;"></span> ' + badTitles + ' too long</span>' +
+      '<span class="btc-summary__item" style="margin-left:var(--space-sm);padding-left:var(--space-sm);border-left:1px solid rgba(26,26,24,0.1);">' + total + ' rows checked</span>';
+
+    btcSummary.innerHTML = summaryHtml;
+    btcResults.style.display = 'block';
+  }
+
+  btcCheck.addEventListener('click', runCheck);
+
+  btcClear.addEventListener('click', function() {
+    btcInput.value = '';
+    btcResults.style.display = 'none';
+    btcBody.innerHTML = '';
+    btcSummary.innerHTML = '';
+  });
+
+  // Allow Enter key to trigger check (Ctrl/Cmd + Enter)
+  btcInput.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      runCheck();
+    }
+  });
+</script>
