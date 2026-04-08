@@ -1,0 +1,182 @@
+---
+/**
+ * Team Credibility — replaces integration logo bar in the social proof position.
+ * Shows founder credentials + brands worked with.
+ */
+interface Props { dark?: boolean; }
+const { dark = false } = Astro.props;
+---
+
+<section class:list={["cred", dark ? "dark" : "light"]}>
+  <div class="container">
+    <div class="cred__inner reveal">
+      <p class="cred__lead">Built by marketers from</p>
+      <div class="cred__brand">
+        <svg width="60" height="20" viewBox="0 0 60 20" fill="none" class="cred__adidas-logo">
+          <text x="0" y="15" font-family="var(--font-display)" font-weight="700" font-size="16" fill="currentColor" letter-spacing="-0.5">adidas</text>
+        </svg>
+      </div>
+      <p class="cred__detail">20+ years of combined experience in SEO, performance marketing, and growth across global brands.</p>
+      <div class="cred__founders">
+        <div class="cred__founder">
+          <div class="cred__avatar">JB</div>
+          <div class="cred__info">
+            <span class="cred__name">Jeet Bhanushali</span>
+            <span class="cred__role">8 years in SEO. Managed accounts with 1M+ visits/month. Grew sites from zero to 2.2M monthly traffic.</span>
+          </div>
+        </div>
+        <div class="cred__founder">
+          <div class="cred__avatar">AS</div>
+          <div class="cred__info">
+            <span class="cred__name">Abhishek Sagar</span>
+            <span class="cred__role">12 years in performance marketing. IIT grad. Led campaigns across MENA, Turkey, India, South Africa, and Israel.</span>
+          </div>
+        </div>
+      </div>
+      <div class="cred__brands reveal">
+        <span class="cred__brands-label">Previously worked with</span>
+        <div class="cred__brands-list">
+          <span>Standard Chartered</span>
+          <span>Angel One</span>
+          <span>Fynd</span>
+          <span>LBB</span>
+          <span>+10 international brands</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cred__inner {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cred__lead {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .light .cred__lead { color: var(--ink-muted); }
+  .dark .cred__lead { color: var(--cream-40); }
+
+  .cred__brand {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-sm);
+  }
+  .cred__adidas-logo {
+    color: var(--ink);
+  }
+  .dark .cred__adidas-logo {
+    color: var(--cream);
+  }
+
+  .cred__detail {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 480px;
+    margin: 0 auto var(--space-lg);
+  }
+  .light .cred__detail { color: var(--ink-soft); }
+  .dark .cred__detail { color: var(--cream-60); }
+
+  .cred__founders {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .cred__founder {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.06);
+  }
+  .dark .cred__founder {
+    background: var(--night-3);
+    border-color: rgba(201,168,76,0.08);
+  }
+
+  .cred__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gold-mid);
+    color: var(--night);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .cred__name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .dark .cred__name { color: var(--cream); }
+
+  .cred__role {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .light .cred__role { color: var(--ink-muted); }
+  .dark .cred__role { color: var(--cream-40); }
+
+  .cred__brands-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+  .light .cred__brands-label { color: var(--ink-muted); }
+  .dark .cred__brands-label { color: var(--cream-40); }
+
+  .cred__brands-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .cred__brands-list span {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.3px;
+  }
+  .light .cred__brands-list span {
+    background: rgba(26,26,24,0.04);
+    color: var(--ink-soft);
+  }
+  .dark .cred__brands-list span {
+    background: rgba(201,168,76,0.06);
+    color: var(--cream-60);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+
+  @media (max-width: 600px) {
+    .cred__founders { grid-template-columns: 1fr; }
+  }
+</style>
