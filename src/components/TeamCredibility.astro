@@ -22,15 +22,11 @@ const { dark = false } = Astro.props;
           <div class="cred__avatar">JB</div>
           <div class="cred__info">
             <span class="cred__name">Jeet Bhanushali</span>
-            <span class="cred__role">Spent 8 years doing SEO for global brands. Built Mavek because he saw every client struggling with the same problem — too many tools, not enough output.</span>
+            <span class="cred__role">8 years doing SEO for global brands across the Middle East, US, Canada, and India. Built Mavek because he saw every client struggling with the same problem — too many tools, not enough output.</span>
             <div class="cred__stats">
               <span class="cred__stat">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                7,400+
-              </span>
-              <span class="cred__stat">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="6" r="1.5" fill="currentColor"/></svg>
-                10,000+
+                10,000+ followers
               </span>
             </div>
           </div>
@@ -68,6 +64,27 @@ const { dark = false } = Astro.props;
             <span class="cred__result-num">20+</span>
             <span class="cred__result-desc">brands scaled across channels</span>
           </div>
+        </div>
+      </div>
+      <div class="cred__brands reveal">
+        <span class="cred__brands-label">Managed marketing for brands like</span>
+        <div class="cred__brands-list">
+          <span>Puma</span>
+          <span>Standard Chartered</span>
+          <span>HDFC</span>
+          <span>DLF</span>
+          <span>Sun Pharma</span>
+          <span>Cipla</span>
+          <span>Thermo Fisher</span>
+          <span>Angel One</span>
+          <span>Kenstar</span>
+          <span>Erase.bg</span>
+          <span>Upscale.media</span>
+          <span>WatermarkRemover.io</span>
+          <span>Shrink.media</span>
+          <span>Foundation Commerce</span>
+          <span>Fynd</span>
+          <span>LBB</span>
         </div>
       </div>
     </div>
@@ -242,6 +259,53 @@ const { dark = false } = Astro.props;
   }
   .light .cred__result-desc { color: var(--ink-muted); }
   .dark .cred__result-desc { color: var(--cream-40); }
+
+  /* Brand pills */
+  .cred__brands {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(26,26,24,0.06);
+  }
+  .dark .cred__brands {
+    border-top-color: rgba(246,243,232,0.06);
+  }
+
+  .cred__brands-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+  .light .cred__brands-label { color: var(--ink-muted); }
+  .dark .cred__brands-label { color: var(--cream-40); }
+
+  .cred__brands-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .cred__brands-list span {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.3px;
+  }
+  .light .cred__brands-list span {
+    background: rgba(26,26,24,0.04);
+    color: var(--ink-soft);
+  }
+  .dark .cred__brands-list span {
+    background: rgba(201,168,76,0.06);
+    color: var(--cream-60);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
 
   @media (max-width: 600px) {
     .cred__founders { grid-template-columns: 1fr; }
