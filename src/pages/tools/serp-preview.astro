@@ -484,22 +484,22 @@ import Footer from '../../components/Footer.astro';
       if (tLen >= 50 && tLen <= 60) {
         checks.push({ status: 'pass', text: 'Title length is ideal (' + tLen + ' characters)' });
       } else if (tLen > 60) {
-        checks.push({ status: 'fail', text: 'Title is too long (' + tLen + ' characters) — will be truncated in search results' });
+        checks.push({ status: 'fail', text: 'Title is too long (' + tLen + ' characters). It will be truncated in search results' });
       } else if (tLen > 0 && tLen < 30) {
-        checks.push({ status: 'warn', text: 'Title is quite short (' + tLen + ' characters) — may not be descriptive enough' });
+        checks.push({ status: 'warn', text: 'Title is quite short (' + tLen + ' characters). It may not be descriptive enough' });
       } else if (tLen > 0) {
-        checks.push({ status: 'warn', text: 'Title length is acceptable (' + tLen + ' characters) — aim for 50-60' });
+        checks.push({ status: 'warn', text: 'Title length is acceptable (' + tLen + ' characters). Aim for 50-60' });
       }
 
       // Desc checks
       if (dLen >= 120 && dLen <= 160) {
         checks.push({ status: 'pass', text: 'Meta description length is ideal (' + dLen + ' characters)' });
       } else if (dLen > 160) {
-        checks.push({ status: 'fail', text: 'Meta description is too long (' + dLen + ' characters) — will be truncated' });
+        checks.push({ status: 'fail', text: 'Meta description is too long (' + dLen + ' characters). It will be truncated' });
       } else if (dLen > 0 && dLen < 80) {
-        checks.push({ status: 'warn', text: 'Meta description is quite short (' + dLen + ' characters) — aim for 120-160' });
+        checks.push({ status: 'warn', text: 'Meta description is quite short (' + dLen + ' characters). Aim for 120-160' });
       } else if (dLen > 0) {
-        checks.push({ status: 'warn', text: 'Meta description length is acceptable (' + dLen + ' characters) — aim for 120-160' });
+        checks.push({ status: 'warn', text: 'Meta description length is acceptable (' + dLen + ' characters). Aim for 120-160' });
       }
 
       // URL check
@@ -507,7 +507,7 @@ import Footer from '../../components/Footer.astro';
         if (url.length <= 75) {
           checks.push({ status: 'pass', text: 'URL length is good' });
         } else {
-          checks.push({ status: 'warn', text: 'URL is on the long side — shorter URLs tend to perform better' });
+          checks.push({ status: 'warn', text: 'URL is on the long side. Shorter URLs tend to perform better' });
         }
       }
 
@@ -520,11 +520,11 @@ import Footer from '../../components/Footer.astro';
       var nudgeText = document.getElementById('serpNudgeText');
       nudge.style.display = 'block';
       if (tLen > 60) {
-        nudgeText.textContent = 'Your title will be truncated in search results. Mavek auto-optimizes every title tag across your entire site to the perfect length — no manual checking needed.';
+        nudgeText.textContent = 'Your title will be truncated in search results. Mavek auto-optimizes every title tag across your entire site to the perfect length. No manual checking needed.';
       } else if (dLen > 160) {
         nudgeText.textContent = 'Your description will be cut off. Mavek writes and maintains perfectly-sized meta descriptions for every page, automatically.';
       } else {
-        nudgeText.textContent = 'You just optimized 1 page. Mavek does this for every page on your site — automatically writing, testing, and optimizing titles and descriptions at scale.';
+        nudgeText.textContent = 'You just optimized 1 page. Mavek does this for every page on your site, automatically writing, testing, and optimizing titles and descriptions at scale.';
       }
     } else {
       analysisSection.style.display = 'none';

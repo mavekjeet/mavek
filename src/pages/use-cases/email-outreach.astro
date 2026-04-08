@@ -5,7 +5,7 @@ import CTASection from '../../components/CTASection.astro';
 import Footer from '../../components/Footer.astro';
 
 const capabilities = [
-  { title: "Prospect Identification", desc: "Mavek finds and verifies prospects that match your ICP — using firmographic, technographic, and intent signals, not purchased lists." },
+  { title: "Prospect Identification", desc: "Mavek finds and verifies prospects that match your ICP using firmographic, technographic, and intent signals, not purchased lists." },
   { title: "Personalized Sequences", desc: "Every email is tailored to the prospect's role, company, and pain points. No mail-merge tokens that scream automation." },
   { title: "Follow-Up Automation", desc: "Multi-touch sequences that adapt based on engagement. Mavek knows when to nudge, when to pivot, and when to stop." },
   { title: "Response Handling", desc: "Positive replies are flagged and routed instantly. Objections are categorized. Out-of-office replies are handled automatically." },
@@ -14,13 +14,13 @@ const capabilities = [
 ];
 
 const personalizationPoints = [
-  { title: "ICP-Driven Targeting", desc: "Define your ideal customer profile once. Mavek finds prospects that match — and skips everyone who doesn't." },
+  { title: "ICP-Driven Targeting", desc: "Define your ideal customer profile once. Mavek finds prospects that match and skips everyone who doesn't." },
   { title: "Research-Based Messaging", desc: "Each email references the prospect's company, recent activity, or industry context. Personalization goes beyond {first_name}." },
   { title: "Adaptive Sequences", desc: "If a prospect engages but doesn't reply, the next email shifts angle. Mavek tests messaging variants and doubles down on what works." },
 ];
 ---
 
-<Layout title="Automated Email Outreach & Lead Gen" description="AI-powered email outreach that finds ideal prospects, writes personalized sequences, and fills your pipeline — without templates or spam.">
+<Layout title="Automated Email Outreach & Lead Gen" description="AI-powered email outreach that finds ideal prospects, writes personalized sequences, and fills your pipeline without templates or spam.">
   <Nav />
 
   <section class="section light hero-section">
@@ -28,7 +28,7 @@ const personalizationPoints = [
       <div class="hero__inner reveal">
         <span class="sec-label">USE CASE</span>
         <h1>Automated Email Outreach & Lead Gen</h1>
-        <p class="hero__subtitle">Fill your pipeline with qualified prospects through personalized outreach sequences that run autonomously — no templates, no spam, no manual work.</p>
+        <p class="hero__subtitle">Fill your pipeline with qualified prospects through personalized outreach sequences that run autonomously. No templates, no spam, no manual work.</p>
         <div class="hero__actions">
           <a href="/contact" class="btn btn--primary">Get Started <span>&rarr;</span></a>
           <a href="/use-cases" class="btn btn--secondary">All Use Cases</a>
@@ -59,7 +59,7 @@ const personalizationPoints = [
       <div class="section-header reveal">
         <span class="sec-label">Personalization</span>
         <h2>How personalization <em>actually works</em></h2>
-        <p class="section-header__sub">Most outreach tools promise personalization but deliver mail merge. Mavek takes a different approach — using your ICP data and real prospect research to craft emails that get replies.</p>
+        <p class="section-header__sub">Most outreach tools promise personalization but deliver mail merge. Mavek takes a different approach, using your ICP data and real prospect research to craft emails that get replies.</p>
       </div>
       <div class="grid-3">
         {personalizationPoints.map((p, i) => (
@@ -83,7 +83,7 @@ const personalizationPoints = [
           <span class="step__num">01</span>
           <div class="step__content">
             <h3>Define your ICP</h3>
-            <p>Tell Mavek who you sell to — industry, company size, role, tech stack, pain points. The more specific, the better the targeting.</p>
+            <p>Tell Mavek who you sell to: industry, company size, role, tech stack, pain points. The more specific, the better the targeting.</p>
           </div>
         </div>
         <div class="step reveal" style="transition-delay: 0.1s">
@@ -97,7 +97,7 @@ const personalizationPoints = [
           <span class="step__num">03</span>
           <div class="step__content">
             <h3>Replies flow to your inbox</h3>
-            <p>Interested prospects are flagged and routed. Mavek handles the noise — bounces, out-of-office, and unsubscribes — so you only see real opportunities.</p>
+            <p>Interested prospects are flagged and routed. Mavek handles the noise (bounces, out-of-office, and unsubscribes) so you only see real opportunities.</p>
           </div>
         </div>
       </div>

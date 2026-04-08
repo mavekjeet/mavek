@@ -9,14 +9,14 @@ const caseStudies = [
     tag: "Agency",
     company: "Pixel & Pulse Agency",
     industry: "Digital Marketing Agency",
-    headline: "From 8 clients to 22 — without a single new hire.",
+    headline: "From 8 clients to 22, without a single new hire.",
     metrics: [
       { label: "Campaign Output", before: "32/mo", after: "120/mo" },
       { label: "Client Capacity", before: "8", after: "22" },
       { label: "Team Size", before: "12", after: "12" },
       { label: "Monthly Revenue", before: "Rs.18L", after: "Rs.52L" },
     ],
-    quote: "Mavek didn't just automate our workflows — it fundamentally changed what our team of 12 could deliver. We tripled our client base without a single new hire.",
+    quote: "Mavek didn't just automate our workflows. It fundamentally changed what our team of 12 could deliver. We tripled our client base without a single new hire.",
     author: "Vikram Singh",
     role: "Founder, Pixel & Pulse",
   },
@@ -31,7 +31,7 @@ const caseStudies = [
       { label: "Organic Traffic", before: "4K/mo", after: "28K/mo" },
       { label: "Marketing Cost", before: "Rs.3.5L/mo", after: "$499/mo" },
     ],
-    quote: "We were spending more on our agency than on ads. Mavek gave us better execution at a tenth of the cost — and the content actually sounds like us.",
+    quote: "We were spending more on our agency than on ads. Mavek gave us better execution at a tenth of the cost, and the content actually sounds like us.",
     author: "Neha Kapoor",
     role: "Founder, Bloom & Co",
   },
@@ -73,7 +73,7 @@ const caseStudies = [
           <div class="case__header">
             <span class="case__tag">{cs.tag}</span>
             <h2>{cs.headline}</h2>
-            <p class="case__company">{cs.company} — {cs.industry}</p>
+            <p class="case__company">{cs.company}, {cs.industry}</p>
           </div>
 
           <div class="case__metrics grid-4">

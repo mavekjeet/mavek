@@ -447,7 +447,7 @@ import Footer from '../../components/Footer.astro';
       if (levels[i] > levels[i-1] + 1) { skipped = true; break; }
     }
     if (skipped) {
-      headingsHtml += makeItem('warn', 'Heading levels are skipped (e.g. H2 to H4) — consider a sequential structure');
+      headingsHtml += makeItem('warn', 'Heading levels are skipped (e.g. H2 to H4). Consider a sequential structure');
     } else if (allHeadings.length > 0) {
       score += 5;
       headingsHtml += makeItem('pass', 'Heading hierarchy is sequential');
@@ -533,7 +533,7 @@ import Footer from '../../components/Footer.astro';
       linksHtml += makeItem('info', nofollow + ' links with rel="nofollow"');
     }
     if (internal === 0 && allLinks.length > 0) {
-      linksHtml += makeItem('warn', 'No internal links found — consider adding internal links for SEO');
+      linksHtml += makeItem('warn', 'No internal links found. Consider adding internal links for SEO');
     }
 
     document.getElementById('auditLinks').innerHTML = linksHtml;
@@ -573,7 +573,7 @@ import Footer from '../../components/Footer.astro';
       miscHtml += makeItem('pass', 'Open Graph tags present (title, description, image)');
     } else if (ogTitle || ogDesc) {
       score += 3;
-      miscHtml += makeItem('warn', 'Partial Open Graph tags — missing ' + (!ogTitle ? 'og:title ' : '') + (!ogDesc ? 'og:description ' : '') + (!ogImage ? 'og:image' : ''));
+      miscHtml += makeItem('warn', 'Partial Open Graph tags, missing ' + (!ogTitle ? 'og:title ' : '') + (!ogDesc ? 'og:description ' : '') + (!ogImage ? 'og:image' : ''));
     } else {
       miscHtml += makeItem('warn', 'No Open Graph tags found');
     }
@@ -632,7 +632,7 @@ import Footer from '../../components/Footer.astro';
     var nudgeText = document.getElementById('auditNudgeText');
     nudge.style.display = 'block';
     if (finalScore < 50) {
-      nudgeText.textContent = 'Your page scored ' + finalScore + '/100. That\'s a lot of issues to fix manually. Mavek continuously audits and fixes on-page SEO across your entire site — automatically.';
+      nudgeText.textContent = 'Your page scored ' + finalScore + '/100. That\'s a lot of issues to fix manually. Mavek continuously audits and fixes on-page SEO across your entire site, automatically.';
     } else if (finalScore < 80) {
       nudgeText.textContent = 'Good start at ' + finalScore + '/100, but there\'s room to improve. Mavek monitors every page on your site and flags issues before they hurt your rankings.';
     } else {
