@@ -1,7 +1,7 @@
 ---
 /**
- * Team Credibility — replaces integration logo bar in the social proof position.
- * Shows founder credentials + brands worked with.
+ * Team Credibility — social proof via founder credentials.
+ * Narrative bios + social stats + results that founders relate to.
  */
 interface Props { dark?: boolean; }
 const { dark = false } = Astro.props;
@@ -16,31 +16,58 @@ const { dark = false } = Astro.props;
           <text x="0" y="15" font-family="var(--font-display)" font-weight="700" font-size="16" fill="currentColor" letter-spacing="-0.5">adidas</text>
         </svg>
       </div>
-      <p class="cred__detail">20+ years of combined experience in SEO, performance marketing, and growth across global brands.</p>
+      <p class="cred__detail">We've spent years running marketing for global brands. We built Mavek because we kept seeing the same problem — smart founders drowning in tools and busywork instead of growing their business.</p>
       <div class="cred__founders">
         <div class="cred__founder">
           <div class="cred__avatar">JB</div>
           <div class="cred__info">
             <span class="cred__name">Jeet Bhanushali</span>
             <span class="cred__role">Spent 8 years doing SEO for global brands. Built Mavek because he saw every client struggling with the same problem — too many tools, not enough output.</span>
+            <div class="cred__stats">
+              <span class="cred__stat">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                7,400+
+              </span>
+              <span class="cred__stat">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="6" r="1.5" fill="currentColor"/></svg>
+                10,000+
+              </span>
+            </div>
           </div>
         </div>
         <div class="cred__founder">
           <div class="cred__avatar">AS</div>
           <div class="cred__info">
             <span class="cred__name">Abhishek Sagar</span>
-            <span class="cred__role">12 years running performance marketing across 5 countries. Knows exactly what it takes to generate leads — and what breaks when you try to do it with duct tape and AI prompts.</span>
+            <span class="cred__role">12 years in performance marketing. Former CMO. Ran campaigns across 5 countries at adidas. Knows what it takes to generate leads — and what breaks when you try to DIY it.</span>
+            <div class="cred__stats">
+              <span class="cred__stat">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                IIT
+              </span>
+              <span class="cred__stat">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="1.5"/></svg>
+                5 countries
+              </span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="cred__brands reveal">
-        <span class="cred__brands-label">Previously worked with</span>
-        <div class="cred__brands-list">
-          <span>Standard Chartered</span>
-          <span>Angel One</span>
-          <span>Fynd</span>
-          <span>LBB</span>
-          <span>+10 international brands</span>
+      <div class="cred__results reveal">
+        <span class="cred__results-label">What we've delivered</span>
+        <div class="cred__results-grid">
+          <div class="cred__result">
+            <span class="cred__result-num">50x</span>
+            <span class="cred__result-desc">traffic growth in 6 months</span>
+          </div>
+          <div class="cred__result">
+            <span class="cred__result-num">2.2M</span>
+            <span class="cred__result-desc">monthly visits from zero</span>
+          </div>
+          <div class="cred__result">
+            <span class="cred__result-num">20+</span>
+            <span class="cred__result-desc">brands scaled across channels</span>
+          </div>
         </div>
       </div>
     </div>
@@ -70,17 +97,13 @@ const { dark = false } = Astro.props;
     justify-content: center;
     margin-bottom: var(--space-sm);
   }
-  .cred__adidas-logo {
-    color: var(--ink);
-  }
-  .dark .cred__adidas-logo {
-    color: var(--cream);
-  }
+  .cred__adidas-logo { color: var(--ink); }
+  .dark .cred__adidas-logo { color: var(--cream); }
 
   .cred__detail {
     font-size: 0.95rem;
-    line-height: 1.5;
-    max-width: 480px;
+    line-height: 1.55;
+    max-width: 520px;
     margin: 0 auto var(--space-lg);
   }
   .light .cred__detail { color: var(--ink-soft); }
@@ -98,7 +121,7 @@ const { dark = false } = Astro.props;
     align-items: flex-start;
     gap: 12px;
     text-align: left;
-    padding: 20px;
+    padding: 22px;
     border-radius: 10px;
     background: var(--surface);
     border: 1px solid rgba(26,26,24,0.06);
@@ -135,48 +158,93 @@ const { dark = false } = Astro.props;
   .cred__role {
     font-size: 12px;
     line-height: 1.5;
+    display: block;
+    margin-bottom: 10px;
   }
   .light .cred__role { color: var(--ink-muted); }
   .dark .cred__role { color: var(--cream-40); }
 
-  .cred__brands-label {
+  .cred__stats {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .cred__stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+  .cred__stat svg {
+    flex-shrink: 0;
+  }
+  .light .cred__stat {
+    background: rgba(26,26,24,0.04);
+    color: var(--ink-soft);
+  }
+  .dark .cred__stat {
+    background: rgba(201,168,76,0.06);
+    color: var(--gold-mid);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+
+  /* Results row */
+  .cred__results {
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(26,26,24,0.06);
+  }
+  .dark .cred__results {
+    border-top-color: rgba(246,243,232,0.06);
+  }
+
+  .cred__results-label {
     font-family: var(--font-body);
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 3px;
     text-transform: uppercase;
     display: block;
-    margin-bottom: var(--space-xs);
+    margin-bottom: var(--space-sm);
   }
-  .light .cred__brands-label { color: var(--ink-muted); }
-  .dark .cred__brands-label { color: var(--cream-40); }
+  .light .cred__results-label { color: var(--ink-muted); }
+  .dark .cred__results-label { color: var(--cream-40); }
 
-  .cred__brands-list {
+  .cred__results-grid {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    gap: var(--space-lg);
   }
 
-  .cred__brands-list span {
+  .cred__result {
+    text-align: center;
+  }
+
+  .cred__result-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .light .cred__result-num { color: var(--gold-dark); }
+  .dark .cred__result-num { color: var(--gold-mid); }
+
+  .cred__result-desc {
     font-family: var(--font-body);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 4px 14px;
-    border-radius: 100px;
+    font-size: 11px;
     letter-spacing: 0.3px;
   }
-  .light .cred__brands-list span {
-    background: rgba(26,26,24,0.04);
-    color: var(--ink-soft);
-  }
-  .dark .cred__brands-list span {
-    background: rgba(201,168,76,0.06);
-    color: var(--cream-60);
-    border: 1px solid rgba(201,168,76,0.1);
-  }
+  .light .cred__result-desc { color: var(--ink-muted); }
+  .dark .cred__result-desc { color: var(--cream-40); }
 
   @media (max-width: 600px) {
     .cred__founders { grid-template-columns: 1fr; }
+    .cred__results-grid { flex-direction: column; gap: var(--space-sm); }
   }
 </style>
