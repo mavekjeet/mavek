@@ -48,7 +48,17 @@ const ingredients = [
       ))}
       <div class="eq__operator">=</div>
       <div class="eq__result">
-        <div class="eq__result-logo">M</div>
+        <div class="eq__stone-wrap">
+          <svg width="60" height="80" viewBox="0 0 200 280" id="eqStone">
+            <ellipse id="eqShadow" cx="100" cy="226.52" rx="58" ry="8" fill="#1A1A18" opacity="0.07" data-op-min="0.05" data-op-max="0.08"/>
+            <g id="eqStoneGroup" transform="translate(100, 115)">
+              <path d="M-68 0 L-30.6 -54.4 L0 -54.4 L0 0 Z" fill="#E8C95A"/>
+              <path d="M0 -54.4 L30.6 -54.4 L68 0 L0 0 Z" fill="#8A7028"/>
+              <path d="M-68 0 L0 0 L0 81.6 Z" fill="#33302A"/>
+              <path d="M0 0 L68 0 L0 81.6 Z" fill="#0A0A08"/>
+            </g>
+          </svg>
+        </div>
         <div class="eq__label">Mavek</div>
         <div class="eq__sub">Your full marketing team</div>
       </div>
@@ -145,12 +155,10 @@ const ingredients = [
     border: 2px solid var(--gold-mid);
     background: rgba(201,168,76,0.06);
   }
-  .eq__result-logo {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--gold-mid);
-    margin-bottom: 4px;
+  .eq__stone-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6px;
   }
 
   .eq__footnote {
@@ -172,3 +180,24 @@ const ingredients = [
     .eq__operator { padding-bottom: 0; transform: rotate(90deg); font-size: 1.2rem; }
   }
 </style>
+
+<script is:inline>
+  (function() {
+    var stone = document.getElementById('eqStoneGroup');
+    var shadow = document.getElementById('eqShadow');
+    if (!stone || !shadow) return;
+    var baseY = 115, amplitude = 10, duration = 4000;
+    var rxMin = 50, rxMax = 62, ryMin = 6, ryMax = 10;
+    var opMin = 0.05, opMax = 0.08;
+    function animate(time) {
+      var t = (time % duration) / duration;
+      var ease = (Math.sin(t * Math.PI * 2 - Math.PI / 2) + 1) / 2;
+      stone.setAttribute('transform', 'translate(100, ' + (baseY - ease * amplitude) + ')');
+      shadow.setAttribute('rx', (rxMin + ease * (rxMax - rxMin)).toFixed(1));
+      shadow.setAttribute('ry', (ryMin + ease * (ryMax - ryMin)).toFixed(1));
+      shadow.setAttribute('opacity', (opMax - ease * (opMax - opMin)).toFixed(3));
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  })();
+</script>
