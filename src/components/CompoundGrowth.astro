@@ -1,0 +1,245 @@
+---
+/**
+ * Memory Flywheel — shows how Mavek compounds over time.
+ * Distinct from Gushwork's timeline/chart approach.
+ * Uses a flywheel cycle + output/effort contrast.
+ */
+interface Props { dark?: boolean; }
+const { dark = true } = Astro.props;
+
+const cycles = [
+  { step: "Execute", desc: "Campaigns launch. Content publishes. Emails send." },
+  { step: "Measure", desc: "Data flows back from every channel automatically." },
+  { step: "Learn", desc: "Memory layer updates — what worked, what didn't, why." },
+  { step: "Improve", desc: "Next cycle's output is sharper. Every round compounds." },
+];
+---
+
+<section class:list={["flywheel", dark ? "dark" : "light"]}>
+  <div class="container">
+    <div class="flywheel__header reveal">
+      <span class="sec-label">The Memory Advantage</span>
+      <h2>Month 6 Mavek is <em>nothing</em> like month 1.</h2>
+      <p class="sub flywheel__desc">Every campaign feeds the memory layer. Every result sharpens the next move. Generic AI starts from zero every time. Mavek compounds.</p>
+    </div>
+
+    <div class="flywheel__cycle reveal">
+      {cycles.map((c, i) => (
+        <>
+          <div class="flywheel__node">
+            <span class="flywheel__step-num">{String(i + 1).padStart(2, '0')}</span>
+            <h4 class="flywheel__step-title">{c.step}</h4>
+            <p class="flywheel__step-desc">{c.desc}</p>
+          </div>
+          {i < cycles.length - 1 && (
+            <div class="flywheel__arrow">
+              <svg width="24" height="16" viewBox="0 0 24 16" fill="none"><path d="M0 8h20M16 2l6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+          )}
+        </>
+      ))}
+      <div class="flywheel__arrow flywheel__arrow--loop">
+        <svg width="24" height="16" viewBox="0 0 24 16" fill="none"><path d="M0 8h20M16 2l6 6-6 6" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span class="flywheel__loop-label">repeat</span>
+      </div>
+    </div>
+
+    <div class="flywheel__contrast reveal">
+      <div class="flywheel__contrast-row">
+        <span class="flywheel__contrast-label">Marketing output</span>
+        <div class="flywheel__bar-track">
+          <div class="flywheel__bar flywheel__bar--high"></div>
+        </div>
+        <span class="flywheel__contrast-value">10x</span>
+      </div>
+      <div class="flywheel__contrast-row">
+        <span class="flywheel__contrast-label">Your time invested</span>
+        <div class="flywheel__bar-track">
+          <div class="flywheel__bar flywheel__bar--low"></div>
+        </div>
+        <span class="flywheel__contrast-value flywheel__contrast-value--muted">2h/wk</span>
+      </div>
+    </div>
+
+    <p class="flywheel__punchline reveal">The gap widens every month. That's the flywheel.</p>
+  </div>
+</section>
+
+<style>
+  .flywheel__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .flywheel__header h2 {
+    margin-top: var(--space-xs);
+    font-family: var(--font-display); font-weight: 400;
+  }
+  .flywheel__header h2 em { font-style: normal; text-decoration: underline; text-decoration-color: var(--gold-mid); text-underline-offset: 4px; }
+
+  .sec-label {
+    font-family: var(--font-body); font-size: 11px; font-weight: 500;
+    letter-spacing: 4px; text-transform: uppercase;
+  }
+  .light .sec-label { color: var(--gold-dark); }
+  .dark .sec-label { color: var(--gold-mid); }
+
+  .flywheel__desc {
+    max-width: 560px; margin: var(--space-md) auto 0;
+  }
+  .light .flywheel__desc { color: var(--ink-soft); }
+  .dark .flywheel__desc { color: var(--cream-60); }
+
+  /* Cycle */
+  .flywheel__cycle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-xl);
+  }
+
+  .flywheel__node {
+    text-align: center;
+    padding: 28px 20px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.06);
+    min-width: 160px;
+    flex: 1;
+    max-width: 200px;
+  }
+  .dark .flywheel__node {
+    background: var(--night-3);
+    border-color: rgba(201,168,76,0.08);
+  }
+
+  .flywheel__step-num {
+    font-family: var(--font-body);
+    font-size: 11px; font-weight: 500; letter-spacing: 3px;
+    display: block; margin-bottom: 6px;
+  }
+  .light .flywheel__step-num { color: var(--gold-dark); }
+  .dark .flywheel__step-num { color: var(--gold-mid); }
+
+  .flywheel__step-title {
+    font-family: var(--font-display);
+    font-weight: 600; font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+  .dark .flywheel__step-title { color: var(--cream); }
+
+  .flywheel__step-desc {
+    font-size: 12px; line-height: 1.5;
+  }
+  .light .flywheel__step-desc { color: var(--ink-muted); }
+  .dark .flywheel__step-desc { color: var(--cream-40); }
+
+  .flywheel__arrow {
+    color: var(--gold-mid);
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+  .flywheel__arrow--loop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .flywheel__loop-label {
+    font-family: var(--font-body);
+    font-size: 9px; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold-mid);
+    opacity: 0.6;
+  }
+
+  /* Contrast bars */
+  .flywheel__contrast {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 28px 32px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.06);
+  }
+  .dark .flywheel__contrast {
+    background: var(--night-3);
+    border-color: rgba(201,168,76,0.1);
+  }
+
+  .flywheel__contrast-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .flywheel__contrast-label {
+    font-family: var(--font-body);
+    font-size: 12px; font-weight: 500;
+    min-width: 130px;
+    flex-shrink: 0;
+  }
+  .dark .flywheel__contrast-label { color: var(--cream-60); }
+
+  .flywheel__bar-track {
+    flex: 1;
+    height: 10px;
+    border-radius: 100px;
+    background: rgba(246,243,232,0.05);
+    overflow: hidden;
+  }
+  .light .flywheel__bar-track { background: rgba(26,26,24,0.05); }
+
+  .flywheel__bar {
+    height: 100%;
+    border-radius: 100px;
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .visible .flywheel__bar {
+    width: var(--w, 0%);
+  }
+  .flywheel__bar--high {
+    --w: 90%;
+    background: linear-gradient(to right, var(--gold-dark), var(--gold-bright));
+  }
+  .flywheel__bar--low {
+    --w: 12%;
+    background: rgba(201,168,76,0.3);
+  }
+
+  .flywheel__contrast-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--gold-mid);
+    min-width: 40px;
+    text-align: right;
+  }
+  .flywheel__contrast-value--muted {
+    font-weight: 500;
+    opacity: 0.5;
+  }
+
+  .flywheel__punchline {
+    text-align: center;
+    margin-top: var(--space-lg);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .light .flywheel__punchline { color: var(--ink); }
+  .dark .flywheel__punchline { color: var(--cream); }
+
+  @media (max-width: 768px) {
+    .flywheel__cycle { flex-direction: column; }
+    .flywheel__arrow { transform: rotate(90deg); }
+    .flywheel__node { max-width: 100%; min-width: auto; }
+    .flywheel__contrast-row { flex-wrap: wrap; }
+    .flywheel__contrast-label { min-width: 100%; }
+  }
+</style>

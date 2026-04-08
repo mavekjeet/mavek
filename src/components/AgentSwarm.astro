@@ -1,0 +1,208 @@
+---
+/**
+ * AI Agent Swarm — modeled after Gushwork's named agents section,
+ * with skill categories inspired by coreyhaines31/marketingskills repo.
+ */
+interface Props { dark?: boolean; }
+const { dark = true } = Astro.props;
+
+const agents = [
+  {
+    name: "Memory Agent",
+    skill: "Brand Context",
+    desc: "Builds a living profile of your business — brand voice, audience, past campaigns, what works. Powers every other agent with your real context.",
+    skills: 3,
+  },
+  {
+    name: "Paid Ads Agent",
+    skill: "Ads & Distribution",
+    desc: "Creates campaigns, writes ad copy in your voice, sets targeting and budgets based on your performance data. Launches directly via Google & Meta APIs.",
+    skills: 4,
+  },
+  {
+    name: "SEO Agent",
+    skill: "SEO & Discovery",
+    desc: "Keyword research, content strategy, site architecture, schema markup. Finds what your buyers are searching for and builds a plan to rank.",
+    skills: 6,
+  },
+  {
+    name: "Content Agent",
+    skill: "Content & Copy",
+    desc: "Writes blog posts, landing pages, and email copy in your brand voice. Grounded in your data and SEO strategy — not generic templates.",
+    skills: 5,
+  },
+  {
+    name: "Analytics Agent",
+    skill: "Measurement",
+    desc: "Pulls data from every connected channel into unified dashboards. Cross-channel attribution, performance insights, and specific next-step recommendations.",
+    skills: 3,
+  },
+  {
+    name: "Outreach Agent",
+    skill: "Email & Nurture",
+    desc: "Cold email sequences, lead nurturing, and follow-up automation. Personalised at scale using your CRM data and prospect signals.",
+    skills: 4,
+  },
+  {
+    name: "CRO Agent",
+    skill: "Conversion",
+    desc: "Analyzes your pages, forms, and funnels. Recommends A/B tests, copy improvements, and UX changes to turn more visitors into leads.",
+    skills: 6,
+  },
+  {
+    name: "Strategy Agent",
+    skill: "Growth & Planning",
+    desc: "Sees across every channel. Identifies what's working, what's stalling, and where to double down. Creates the cross-channel playbook your competitors don't have.",
+    skills: 5,
+  },
+];
+---
+
+<section class:list={["swarm", dark ? "dark" : "light"]}>
+  <div class="container">
+    <div class="swarm__header reveal">
+      <span class="sec-label">Expert Skills, Not Generic AI</span>
+      <h2>35+ marketing skills. <em>Zero guesswork.</em></h2>
+      <p class="sub swarm__desc">Each agent runs skills built by domain experts — not generic prompts. They share a memory layer, coordinate across channels, and operate on your real data.</p>
+    </div>
+    <div class="swarm__grid">
+      {agents.map((agent, i) => (
+        <div class:list={["swarm__card", "reveal"]} style={`transition-delay: ${i * 0.06}s`}>
+          <div class="swarm__card-top">
+            <div class="swarm__pulse"></div>
+            <span class="swarm__agent-name">{agent.name}</span>
+          </div>
+          <span class="swarm__skill-tag">{agent.skill} &middot; {agent.skills} skills</span>
+          <p class="swarm__card-desc">{agent.desc}</p>
+        </div>
+      ))}
+    </div>
+    <p class="swarm__footnote reveal">
+      <span class="swarm__footnote-num">7</span> disciplines. <span class="swarm__footnote-num">35+</span> skills. Updated by marketing specialists. Powered by your data.
+    </p>
+  </div>
+</section>
+
+<style>
+  .swarm__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .swarm__header h2 {
+    margin-top: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+  .swarm__header h2 em { font-style: italic; }
+  .light .swarm__header h2 em { color: var(--gold-dark); }
+  .dark .swarm__header h2 em { color: var(--gold-bright); }
+
+  .sec-label {
+    font-family: var(--font-body); font-size: 11px; font-weight: 500;
+    letter-spacing: 4px; text-transform: uppercase;
+  }
+  .light .sec-label { color: var(--gold-dark); }
+  .dark .sec-label { color: var(--gold-mid); }
+
+  .swarm__desc {
+    max-width: 580px; margin: var(--space-md) auto 0;
+  }
+  .light .swarm__desc { color: var(--ink-soft); }
+  .dark .swarm__desc { color: var(--cream-60); }
+
+  .swarm__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .swarm__card {
+    padding: 24px 22px;
+    border-radius: 10px;
+    border: 1px solid rgba(26,26,24,0.06);
+    background: var(--surface);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+  .swarm__card:hover { transform: translateY(-3px); }
+  .dark .swarm__card {
+    background: var(--night-3);
+    border-color: rgba(201,168,76,0.08);
+  }
+  .dark .swarm__card:hover {
+    border-color: rgba(201,168,76,0.2);
+  }
+
+  .swarm__card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .swarm__pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 6px rgba(90,158,62,0.4);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .swarm__agent-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .dark .swarm__agent-name { color: var(--cream); }
+
+  .swarm__skill-tag {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .light .swarm__skill-tag {
+    background: rgba(26,26,24,0.04);
+    color: var(--ink-muted);
+  }
+  .dark .swarm__skill-tag {
+    background: rgba(201,168,76,0.08);
+    color: var(--gold-mid);
+    border: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .swarm__card-desc {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .light .swarm__card-desc { color: var(--ink-soft); }
+  .dark .swarm__card-desc { color: var(--cream-40); }
+
+  .swarm__footnote {
+    text-align: center;
+    margin-top: var(--space-lg);
+    font-size: 0.95rem;
+  }
+  .light .swarm__footnote { color: var(--ink-soft); }
+  .dark .swarm__footnote { color: var(--cream-60); }
+  .swarm__footnote-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--gold-mid);
+  }
+
+  @media (max-width: 900px) {
+    .swarm__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .swarm__grid { grid-template-columns: 1fr; }
+  }
+</style>

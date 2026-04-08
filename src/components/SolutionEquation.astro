@@ -1,0 +1,154 @@
+---
+/** Option A: Visual Equation — AI + Skills + Data + Humans = Mavek */
+interface Props { dark?: boolean; }
+const { dark = false } = Astro.props;
+
+const ingredients = [
+  { icon: "⚡", label: "AI Models", desc: "Foundation-level intelligence" },
+  { icon: "🎯", label: "Expert Skills", desc: "Built by marketing specialists" },
+  { icon: "📊", label: "Your Data", desc: "Real-time, cross-channel" },
+  { icon: "🤝", label: "Human Team", desc: "Strategy & execution partners" },
+];
+---
+
+<section class:list={["equation", dark ? "dark" : "light"]}>
+  <div class="container">
+    <div class="eq__header reveal">
+      <span class="sec-label">Why Mavek</span>
+      <h2>Not another AI tool. <em>A marketing team.</em></h2>
+      <p class="sub eq__desc">Most AI tools give you a model and leave you to figure out the rest. Mavek gives you the full stack.</p>
+    </div>
+
+    <div class="eq__formula reveal">
+      {ingredients.map((item, i) => (
+        <>
+          <div class="eq__ingredient">
+            <div class="eq__icon">{item.icon}</div>
+            <div class="eq__label">{item.label}</div>
+            <div class="eq__sub">{item.desc}</div>
+          </div>
+          {i < ingredients.length - 1 && <div class="eq__operator">+</div>}
+        </>
+      ))}
+      <div class="eq__operator">=</div>
+      <div class="eq__result">
+        <div class="eq__result-logo">M</div>
+        <div class="eq__label">Mavek</div>
+        <div class="eq__sub">Your full marketing team</div>
+      </div>
+    </div>
+
+    <p class="eq__footnote reveal">AI and humans working together on your marketing. Not AI with humans as a fallback — a full partnership.</p>
+  </div>
+</section>
+
+<style>
+  .eq__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .eq__header h2 {
+    margin-top: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+  .eq__header h2 em { font-style: italic; }
+  .light .eq__header h2 em { color: var(--gold-dark); }
+  .dark .eq__header h2 em { color: var(--gold-bright); }
+  .sec-label {
+    font-family: var(--font-body); font-size: 11px; font-weight: 500;
+    letter-spacing: 4px; text-transform: uppercase;
+  }
+  .light .sec-label { color: var(--gold-dark); }
+  .dark .sec-label { color: var(--gold-mid); }
+  .eq__desc {
+    max-width: 520px; margin: var(--space-md) auto 0;
+  }
+  .light .eq__desc { color: var(--ink-soft); }
+  .dark .eq__desc { color: var(--cream-60); }
+
+  .eq__formula {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 48px 32px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.06);
+  }
+  .dark .eq__formula {
+    background: var(--night-3);
+    border-color: rgba(201,168,76,0.1);
+  }
+
+  .eq__ingredient {
+    text-align: center;
+    min-width: 120px;
+  }
+  .eq__icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .eq__label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+  }
+  .dark .eq__label { color: var(--cream); }
+  .eq__sub {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.3px;
+  }
+  .light .eq__sub { color: var(--ink-muted); }
+  .dark .eq__sub { color: var(--cream-40); }
+
+  .eq__operator {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 1;
+    padding-bottom: 20px;
+  }
+  .light .eq__operator { color: var(--gold-dark); }
+  .dark .eq__operator { color: var(--gold-mid); }
+
+  .eq__result {
+    text-align: center;
+    min-width: 140px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    border: 2px solid var(--gold-mid);
+    background: rgba(201,168,76,0.06);
+  }
+  .eq__result-logo {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--gold-mid);
+    margin-bottom: 4px;
+  }
+
+  .eq__footnote {
+    text-align: center;
+    margin-top: var(--space-lg);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .light .eq__footnote { color: var(--ink-soft); }
+  .dark .eq__footnote { color: var(--cream-60); }
+
+  @media (max-width: 768px) {
+    .eq__formula { gap: 12px; padding: 32px 20px; }
+    .eq__ingredient { min-width: 80px; }
+    .eq__operator { font-size: 1.4rem; padding-bottom: 10px; }
+  }
+  @media (max-width: 520px) {
+    .eq__formula { flex-direction: column; gap: 16px; }
+    .eq__operator { padding-bottom: 0; transform: rotate(90deg); font-size: 1.2rem; }
+  }
+</style>

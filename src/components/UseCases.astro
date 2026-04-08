@@ -1,0 +1,213 @@
+---
+interface Props {
+  dark?: boolean;
+}
+const { dark = true } = Astro.props;
+
+const useCases = [
+  {
+    number: "01",
+    title: "Paid Ads",
+    capability: "Campaigns created, launched, and optimized",
+    description: "Mavek's paid ads agents analyze your campaign data, create ad copy in your brand voice, set targeting and budgets — then launch directly via API. You approve the strategy. Mavek handles the rest.",
+    outputs: ["Ad copy & creatives", "Campaign setup & launch", "Budget optimization", "Continuous performance tuning"],
+  },
+  {
+    number: "02",
+    title: "Content & SEO",
+    capability: "Content written, optimized, and published",
+    description: "From keyword strategy to full blog posts, Mavek's content agents create SEO-driven content grounded in your analytics. Content calendars, drafts in your voice, and publication — all handled end-to-end.",
+    outputs: ["Blog posts & articles", "Keyword strategy", "Content calendars", "On-page SEO optimization"],
+  },
+  {
+    number: "03",
+    title: "Analytics & Insights",
+    capability: "Cross-channel intelligence, built for you",
+    description: "Mavek pulls data from every connected channel into dashboards that would take a normal team weeks to build. Cross-channel insights, AI-powered strategy recommendations, and automated reporting — all in one view.",
+    outputs: ["Cross-channel dashboards", "AI strategy recommendations", "Automated reporting", "Performance attribution"],
+  },
+];
+---
+
+<section class:list={["use-cases", dark ? "dark" : "light"]}>
+  <div class="container">
+    <div class="uc__header reveal">
+      <span class="sec-label">Use Cases</span>
+      <h2>Everything you need. <em>Ready to publish.</em></h2>
+    </div>
+    <div class="uc__grid">
+      {useCases.map((uc, i) => (
+        <div class:list={["uc__card", "reveal", dark && "uc__card--dark"]} style={`transition-delay: ${i * 0.1}s`}>
+          <span class="uc__number">{uc.number}</span>
+          <h3 class="uc__title">{uc.title}</h3>
+          <p class="uc__capability">{uc.capability}</p>
+          <p class="uc__desc">{uc.description}</p>
+          <ul class="uc__outputs">
+            {uc.outputs.map(output => (
+              <li>{output}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .uc__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .uc__header h2 {
+    margin-top: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+
+  .uc__header h2 em {
+    font-style: italic;
+  }
+
+  .light .uc__header h2 em {
+    color: var(--gold-dark);
+  }
+
+  .dark .uc__header h2 em {
+    color: var(--gold-bright);
+  }
+
+  .sec-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .light .sec-label {
+    color: var(--gold-dark);
+  }
+
+  .dark .sec-label {
+    color: var(--gold-mid);
+  }
+
+  .uc__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .uc__card {
+    border-radius: 10px;
+    padding: 36px 32px;
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.06);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+
+  .uc__card:hover {
+    transform: translateY(-3px);
+  }
+
+  .uc__card--dark {
+    background: var(--night-3) !important;
+    border-color: rgba(201, 168, 76, 0.1);
+  }
+
+  .uc__card--dark:hover {
+    border-color: rgba(201, 168, 76, 0.2);
+  }
+
+  .uc__number {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .light .uc__number {
+    color: var(--gold-dark);
+  }
+
+  .dark .uc__number {
+    color: var(--gold-mid);
+  }
+
+  .uc__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+  }
+
+  .dark .uc__title {
+    color: var(--cream);
+  }
+
+  .uc__capability {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+  }
+
+  .light .uc__capability {
+    color: var(--gold-dark);
+  }
+
+  .dark .uc__capability {
+    color: var(--gold-mid);
+  }
+
+  .uc__desc {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: var(--space-md);
+  }
+
+  .light .uc__desc {
+    color: var(--ink-soft);
+  }
+
+  .dark .uc__desc {
+    color: var(--cream-60);
+  }
+
+  .uc__outputs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .uc__outputs li {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .light .uc__outputs li {
+    background: rgba(26,26,24,0.05);
+    color: var(--ink-soft);
+  }
+
+  .dark .uc__outputs li {
+    background: rgba(201, 168, 76, 0.08);
+    color: var(--gold-mid);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+  }
+
+  @media (max-width: 900px) {
+    .uc__grid { grid-template-columns: 1fr; gap: var(--space-md); }
+  }
+</style>

@@ -4,22 +4,23 @@ import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import LogoBar from '../components/LogoBar.astro';
 import ProblemCards from '../components/ProblemCards.astro';
-import BenefitCards from '../components/BenefitCards.astro';
-import DualAudience from '../components/DualAudience.astro';
+import SolutionIntro from '../components/SolutionEquation.astro';
+import UseCases from '../components/UseCases.astro';
+import AgentSwarm from '../components/AgentSwarm.astro';
 import HowItWorks from '../components/HowItWorks.astro';
-import Testimonials from '../components/Testimonials.astro';
+import Flywheel from '../components/CompoundGrowth.astro';
 import Differentiator from '../components/Differentiator.astro';
 import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Your Entire Marketing Team. One Platform." schema={[
+<Layout title="Your AI Marketing Team | Mavek" schema={[
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Mavek",
     "url": "https://mavek.ai",
-    "description": "AI-powered marketing platform. One person with Mavek does the work of ten.",
+    "description": "Your AI marketing team. Expert AI agents powered by your real data — Mavek handles your ads, content, SEO, and analytics end-to-end.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://mavek.ai/blog?q={search_term_string}",
@@ -33,28 +34,22 @@ import Footer from '../components/Footer.astro';
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
     "url": "https://mavek.ai",
-    "description": "AI-powered marketing execution platform. Paid ads, SEO, content, email outreach, and analytics — all in one platform.",
+    "description": "AI marketing team for founders and solo marketers. Expert AI agents handle your ads, content, SEO, and analytics end-to-end — powered by your real-time data.",
     "offers": {
       "@type": "Offer",
       "price": "299",
       "priceCurrency": "USD",
       "priceValidUntil": "2027-12-31"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "47"
     }
   }
 ]}>
   <Nav />
 
   <Hero
-    eyebrow="THE 10x MARKETING ENGINE"
-    title="Make your marketing <em>10x more efficient.</em>"
-    highlight="10x"
-    subtitle="No spam. No AI slop. Just the minimal things that work — powered by your data, running autonomously, 24/7."
-    primaryCta="Book a Demo"
+    eyebrow="YOUR AI MARKETING TEAM"
+    title="Your AI marketing <em>team.</em>"
+    subtitle="Expert AI agents — built by marketing specialists, powered by your real data. Mavek handles your ads, content, SEO, and analytics end-to-end. You just approve."
+    primaryCta="Talk to the Team"
     primaryHref="/contact"
     secondaryCta="See How It Works"
     secondaryHref="/how-it-works"
@@ -64,136 +59,26 @@ import Footer from '../components/Footer.astro';
 
   <ProblemCards dark={true} />
 
-  <BenefitCards />
+  <SolutionIntro />
 
-  <DualAudience dark={true} />
+  <UseCases dark={true} />
 
-  <section class="dark stat-section">
-    <div class="container">
-      <div class="stat__inner reveal">
-        <div class="stat__number"><span class="stat__counter" data-target="500" data-prefix="$">$0</span><span>/mo</span></div>
-        <div class="stat__vs">vs</div>
-        <div class="stat__compare"><span class="stat__counter" data-target="3600" data-prefix="$" data-suffix="+">$0+</span><span>/mo for a team</span></div>
-      </div>
-      <p class="stat__caption reveal">Enterprise marketing execution at a fraction of the cost. No hires. No overhead. No compromises.</p>
-    </div>
-  </section>
+  <AgentSwarm />
 
   <HowItWorks />
 
+  <Flywheel dark={true} />
+
   <Differentiator />
 
-  <Testimonials />
-
   <CTASection
-    primaryCta="Book a Demo"
+    title="Your marketing doesn't need more tools. <em>It needs Mavek.</em>"
+    subtitle="Expert AI agents. Your real data. Real humans. Full execution."
+    primaryCta="Talk to the Team"
     primaryHref="/contact"
-    secondaryCta="Join the Waitlist"
-    secondaryHref="/waitlist"
+    secondaryCta="See Pricing"
+    secondaryHref="/pricing"
   />
 
   <Footer />
 </Layout>
-
-<style>
-  .stat-section {
-    text-align: center;
-  }
-
-  .stat__inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-lg);
-    margin-bottom: var(--space-md);
-  }
-
-  .stat__number {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 6vw, 5rem);
-    color: var(--gold-bright);
-  }
-
-  .stat__number span:not(.stat__counter) {
-    font-size: 0.4em;
-    opacity: 0.6;
-    color: rgba(255,255,255,0.5);
-  }
-
-  .stat__vs {
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.3);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .stat__compare {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    color: rgba(255,255,255,0.3);
-    text-decoration: line-through;
-    text-decoration-color: rgba(255,255,255,0.15);
-  }
-
-  .stat__compare span:not(.stat__counter) {
-    font-family: var(--font-body);
-    font-size: 0.35em;
-    display: block;
-    text-decoration: none;
-  }
-
-  .stat__caption {
-    max-width: 500px;
-    margin: 0 auto;
-    font-size: 1rem;
-    color: rgba(255,255,255,0.5) !important;
-  }
-
-  @media (max-width: 600px) {
-    .stat__inner { flex-direction: column; gap: var(--space-sm); }
-  }
-</style>
-
-<script is:inline>
-  // Counter animation for stat section
-  (function() {
-    var animated = false;
-    var counters = document.querySelectorAll('.stat__counter');
-    if (!counters.length) return;
-
-    function animateCounter(el) {
-      var target = parseInt(el.getAttribute('data-target'), 10);
-      var prefix = el.getAttribute('data-prefix') || '';
-      var suffix = el.getAttribute('data-suffix') || '';
-      var duration = 1500;
-      var start = performance.now();
-
-      function tick(now) {
-        var elapsed = now - start;
-        var progress = Math.min(elapsed / duration, 1);
-        // ease-out cubic
-        var eased = 1 - Math.pow(1 - progress, 3);
-        var current = Math.round(eased * target);
-        el.textContent = prefix + current.toLocaleString('en-US') + suffix;
-        if (progress < 1) {
-          requestAnimationFrame(tick);
-        }
-      }
-      requestAnimationFrame(tick);
-    }
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting && !animated) {
-          animated = true;
-          counters.forEach(animateCounter);
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.4 });
-
-    var section = document.querySelector('.stat-section');
-    if (section) observer.observe(section);
-  })();
-</script>

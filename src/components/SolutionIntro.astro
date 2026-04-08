@@ -1,0 +1,169 @@
+---
+interface Props {
+  dark?: boolean;
+}
+const { dark = false } = Astro.props;
+
+const pillars = [
+  {
+    number: "01",
+    title: "Expert AI agents",
+    description: "Not generic AI. Mavek's agents are built by marketing specialists in each discipline — paid ads, SEO, content, analytics. Their skills are constantly updated and powered by your real data, not templates.",
+  },
+  {
+    number: "02",
+    title: "Full execution",
+    description: "Mavek doesn't just recommend — it implements. Campaigns go live, content gets published, emails get sent. What APIs can't handle, our team does manually. You just approve.",
+  },
+  {
+    number: "03",
+    title: "Dashboards that take weeks to build",
+    description: "Cross-channel analytics and AI-powered strategy recommendations in one view. The kind of marketing command center a normal team would spend months building. Yours from day one.",
+  },
+];
+---
+
+<section class:list={["solution", dark ? "dark" : "light"]}>
+  <div class="container">
+    <div class="solution__header reveal">
+      <span class="sec-label">Why Mavek</span>
+      <h2>Not another AI tool. <em>A marketing team.</em></h2>
+      <p class="sub solution__desc">Mavek combines expert AI agents, your real-time data, and full end-to-end execution. Better than using ChatGPT with custom prompts — because that's still a broken, fragmented workflow.</p>
+    </div>
+    <div class="solution__pillars">
+      {pillars.map((p, i) => (
+        <div class="solution__pillar reveal" style={`transition-delay: ${i * 0.1}s`}>
+          <span class="pillar__number">{p.number}</span>
+          <h3 class="pillar__title">{p.title}</h3>
+          <p class="pillar__desc">{p.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .solution__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .solution__header h2 {
+    margin-top: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+
+  .solution__header h2 em {
+    font-style: italic;
+  }
+
+  .light .solution__header h2 em {
+    color: var(--gold-dark);
+  }
+
+  .dark .solution__header h2 em {
+    color: var(--gold-bright);
+  }
+
+  .sec-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .light .sec-label {
+    color: var(--gold-dark);
+  }
+
+  .dark .sec-label {
+    color: var(--gold-mid);
+  }
+
+  .solution__desc {
+    max-width: 620px;
+    margin: var(--space-md) auto 0;
+  }
+
+  .light .solution__desc {
+    color: var(--ink-soft);
+  }
+
+  .dark .solution__desc {
+    color: var(--cream-60);
+  }
+
+  .solution__pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .solution__pillar {
+    padding: 36px 32px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid rgba(26,26,24,0.06);
+    transition: transform 0.2s, border-color 0.3s;
+  }
+
+  .solution__pillar:hover {
+    transform: translateY(-3px);
+  }
+
+  .dark .solution__pillar {
+    background: var(--night-3);
+    border-color: rgba(201, 168, 76, 0.1);
+  }
+
+  .dark .solution__pillar:hover {
+    border-color: rgba(201, 168, 76, 0.2);
+  }
+
+  .pillar__number {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .light .pillar__number {
+    color: var(--gold-dark);
+  }
+
+  .dark .pillar__number {
+    color: var(--gold-mid);
+  }
+
+  .pillar__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin-bottom: var(--space-xs);
+  }
+
+  .dark .pillar__title {
+    color: var(--cream);
+  }
+
+  .pillar__desc {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .light .pillar__desc {
+    color: var(--ink-soft);
+  }
+
+  .dark .pillar__desc {
+    color: var(--cream-60);
+  }
+
+  @media (max-width: 900px) {
+    .solution__pillars { grid-template-columns: 1fr; gap: var(--space-md); }
+  }
+</style>
