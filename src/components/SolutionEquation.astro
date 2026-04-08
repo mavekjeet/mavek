@@ -1,13 +1,29 @@
 ---
-/** Option A: Visual Equation — AI + Skills + Data + Humans = Mavek */
+/** Visual Equation — AI + Skills + Data + Humans = Mavek */
 interface Props { dark?: boolean; }
 const { dark = false } = Astro.props;
 
 const ingredients = [
-  { icon: "⚡", label: "AI Models", desc: "Foundation-level intelligence" },
-  { icon: "🎯", label: "Expert Skills", desc: "Built by marketing specialists" },
-  { icon: "📊", label: "Your Data", desc: "Real-time, cross-channel" },
-  { icon: "🤝", label: "Human Team", desc: "Strategy & execution partners" },
+  {
+    label: "AI Models",
+    desc: "Foundation-level intelligence",
+    svg: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M20 8l2-2M8 8L6 6M14 4V2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
+  {
+    label: "Expert Skills",
+    desc: "Built by marketing specialists",
+    svg: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="6" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 12h20" stroke="currentColor" stroke-width="1.5"/><path d="M10 6V4M18 6V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M9 16.5l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  },
+  {
+    label: "Your Data",
+    desc: "Real-time, cross-channel",
+    svg: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 22V10l4 4 4-8 4 6 4-4v14H6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 22h16" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+  {
+    label: "Human Team",
+    desc: "Strategy & execution partners",
+    svg: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 22c0-3.3 2.7-6 6-6M18 16c3.3 0 6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M10 16c2.2 0 4 1.8 4 4v2M18 16c-2.2 0-4 1.8-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+  },
 ];
 ---
 
@@ -15,7 +31,7 @@ const ingredients = [
   <div class="container">
     <div class="eq__header reveal">
       <span class="sec-label">Why Mavek</span>
-      <h2>Not another AI tool. <em>A marketing team.</em></h2>
+      <h2>Four ingredients. <em>One team.</em></h2>
       <p class="sub eq__desc">Most AI tools give you a model and leave you to figure out the rest. Mavek gives you the full stack.</p>
     </div>
 
@@ -23,7 +39,7 @@ const ingredients = [
       {ingredients.map((item, i) => (
         <>
           <div class="eq__ingredient">
-            <div class="eq__icon">{item.icon}</div>
+            <div class="eq__icon" set:html={item.svg} />
             <div class="eq__label">{item.label}</div>
             <div class="eq__sub">{item.desc}</div>
           </div>
@@ -88,10 +104,14 @@ const ingredients = [
     min-width: 120px;
   }
   .eq__icon {
-    font-size: 2rem;
     margin-bottom: 8px;
     line-height: 1;
+    display: flex;
+    justify-content: center;
   }
+  .light .eq__icon { color: var(--gold-dark); }
+  .dark .eq__icon { color: var(--gold-mid); }
+
   .eq__label {
     font-family: var(--font-display);
     font-weight: 600;
