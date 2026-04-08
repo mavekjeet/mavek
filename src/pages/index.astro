@@ -2,14 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
-import TeamCredibility from '../components/TeamCredibility.astro';
 import ProblemCards from '../components/ProblemCards.astro';
 import SolutionIntro from '../components/SolutionEquation.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import UseCases from '../components/UseCases.astro';
-import AgentSwarm from '../components/AgentSwarm.astro';
-import Differentiator from '../components/Differentiator.astro';
 import CTASection from '../components/CTASection.astro';
+import TeamCredibility from '../components/TeamCredibility.astro';
+import Differentiator from '../components/Differentiator.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -47,14 +46,12 @@ import Footer from '../components/Footer.astro';
   <Hero
     eyebrow="AI AGENTS + REAL HUMANS"
     title="Your AI marketing <em>team.</em>"
-    subtitle="For founders and lean teams who need full-stack marketing but can't hire a department. Expert AI agents and real humans handle your ads, content, SEO, and analytics end-to-end. You just approve."
+    subtitle="Expert AI agents and real humans handle your ads, content, SEO, and analytics end-to-end. You just approve."
     primaryCta="Talk to the Team"
     primaryHref="/contact"
     secondaryCta="See How It Works"
     secondaryHref="/how-it-works"
   />
-
-  <TeamCredibility />
 
   <ProblemCards dark={true} />
 
@@ -64,9 +61,18 @@ import Footer from '../components/Footer.astro';
 
   <UseCases dark={true} />
 
-  <AgentSwarm />
+  <CTASection
+    title="Starting at <em>$299/month.</em>"
+    subtitle="Full-stack marketing execution. No hires. No overhead. Talk to us."
+    primaryCta="Talk to the Team"
+    primaryHref="/contact"
+    secondaryCta="See All Plans"
+    secondaryHref="/pricing"
+  />
 
-  <Differentiator />
+  <TeamCredibility />
+
+  <Differentiator dark={true} />
 
   <CTASection
     title="Your marketing doesn't need more tools. <em>It needs Mavek.</em>"
