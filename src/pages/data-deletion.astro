@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Data Deletion Instructions" description="How to request deletion of your Mavek account data, including data obtained through Meta and other connected platforms.">
+  <Nav />
+
+  <section class="light policy-hero" style="padding-top: calc(var(--nav-height) + var(--space-3xl));">
+    <div class="container">
+      <div class="policy__header reveal">
+        <span class="sec-label">Legal</span>
+        <h1>Data <em>Deletion</em></h1>
+        <p class="policy__effective">Effective Date: April 6, 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="container">
+      <div class="policy__content">
+
+        <div class="policy__block reveal">
+          <p>Mavek ("we," "us," or "our") respects your right to control your personal information. This page explains how you can request deletion of data that Mavek stores about you, including data obtained through Meta (Facebook and Instagram) and other connected platforms.</p>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>1. What Data We Store</h2>
+          <p>When you connect Meta or other marketing platforms to Mavek, we may store:</p>
+          <ul>
+            <li><strong>Account information:</strong> your name, email address, and company details.</li>
+            <li><strong>Authorization tokens:</strong> secure access tokens that allow Mavek to act on your behalf on connected platforms.</li>
+            <li><strong>Campaign &amp; performance data:</strong> ad accounts, campaigns, creatives, audiences, and reporting metrics pulled from Meta Ads Manager and similar services.</li>
+            <li><strong>Usage data:</strong> logs of actions you take inside the Mavek platform.</li>
+          </ul>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>2. How to Request Data Deletion</h2>
+          <p>You can request deletion of your Mavek data at any time using either of the following methods:</p>
+
+          <h3>Option A: Email Request</h3>
+          <p>Send an email to <a href="mailto:hello@mavek.ai">hello@mavek.ai</a> from the email address associated with your Mavek account. Include the following:</p>
+          <ul>
+            <li>Subject line: "Data Deletion Request"</li>
+            <li>Your full name and the email you signed up with.</li>
+            <li>The platforms connected to your Mavek account (for example, Meta, Google Ads, HubSpot).</li>
+          </ul>
+
+          <h3>Option B: In App Disconnect</h3>
+          <p>If you only want to revoke Mavek's access to a specific connected platform, you can disconnect it from inside your Mavek dashboard under <strong>Settings &rarr; Integrations</strong>. You can also remove Mavek directly from your Meta account at any time:</p>
+          <ul>
+            <li>Go to <a href="https://www.facebook.com/settings?tab=business_tools" target="_blank" rel="noopener noreferrer">Facebook Settings &rarr; Business Integrations</a>.</li>
+            <li>Find <strong>Mavek</strong> in the list of connected apps.</li>
+            <li>Select <strong>Remove</strong>.</li>
+          </ul>
+          <p>Revoking access through Meta stops Mavek from pulling any new data from your Meta accounts. To also delete data that Mavek has already stored, submit a deletion request via Option A.</p>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>3. What Happens After Your Request</h2>
+          <ul>
+            <li>We will confirm receipt of your request within 5 business days.</li>
+            <li>We will permanently delete your personal information, connected platform tokens, and associated campaign data within 30 days of verifying your request.</li>
+            <li>Some records may be retained in backups or where retention is legally required (for example, billing and tax records). These will be deleted on our standard backup rotation.</li>
+            <li>Once deletion is complete, you will receive a confirmation email.</li>
+          </ul>
+        </div>
+
+        <div class="policy__block reveal">
+          <h2>4. Contact</h2>
+          <p>For any questions about data deletion or your privacy rights, contact us:</p>
+          <ul class="policy__contact">
+            <li><strong>Email:</strong> <a href="mailto:hello@mavek.ai">hello@mavek.ai</a></li>
+            <li><strong>Website:</strong> <a href="/contact">mavek.ai/contact</a></li>
+            <li><strong>Privacy Policy:</strong> <a href="/privacy">mavek.ai/privacy</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .policy__header {
+    max-width: 680px;
+  }
+  .policy__header h1 {
+    margin-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+  }
+  .policy__effective {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .policy__content {
+    max-width: 720px;
+    padding-bottom: var(--space-xl);
+  }
+
+  .policy__block {
+    margin-bottom: var(--space-xl);
+  }
+
+  .policy__block h2 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+    color: var(--ink);
+  }
+
+  .policy__block h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: var(--space-md) 0 var(--space-xs);
+    color: var(--ink-2);
+  }
+
+  .policy__block p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: var(--space-sm);
+  }
+
+  .policy__block ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--space-sm);
+  }
+
+  .policy__block ul li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+
+  .policy__block ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--gold-mid);
+  }
+
+  .policy__block a {
+    color: var(--gold-mid);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .policy__block a:hover {
+    border-bottom-color: var(--gold-mid);
+  }
+
+  .policy__contact {
+    list-style: none;
+    padding: 0;
+  }
+
+  .policy__contact li::before {
+    display: none;
+  }
+
+  .policy__contact li {
+    padding-left: 0;
+  }
+</style>
